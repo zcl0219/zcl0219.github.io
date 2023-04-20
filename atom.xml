@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2023-04-19T19:13:48.609Z</updated>
+  <updated>2023-04-20T05:41:50.222Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -17,15 +17,23 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>第一篇博客</title>
+    <title>C++头文件保护符</title>
     <link href="http://example.com/2023/04/20/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/"/>
     <id>http://example.com/2023/04/20/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/</id>
     <published>2023-04-19T19:13:48.000Z</published>
-    <updated>2023-04-19T19:13:48.609Z</updated>
+    <updated>2023-04-20T05:41:50.222Z</updated>
     
     
     
     
+    
+    <category term="C++" scheme="http://example.com/tags/C/"/>
+    
+    <category term="include ifndef" scheme="http://example.com/tags/include-ifndef/"/>
+    
+    <category term="include define" scheme="http://example.com/tags/include-define/"/>
+    
+    <category term="include endif" scheme="http://example.com/tags/include-endif/"/>
     
   </entry>
   
