@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2023-04-20T05:55:51.760Z</updated>
+  <updated>2023-04-20T05:58:19.581Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -20,8 +20,8 @@
     <title>C++头文件保护符</title>
     <link href="http://example.com/2023/04/20/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/"/>
     <id>http://example.com/2023/04/20/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/</id>
-    <published>2023-04-19T19:13:48.000Z</published>
-    <updated>2023-04-20T05:55:51.760Z</updated>
+    <published>2023-04-20T05:57:48.000Z</published>
+    <updated>2023-04-20T05:58:19.581Z</updated>
     
     <content type="html"><![CDATA[<p>头文件保护符（Header guards）的主要作用是防止头文件在同一个编译单元中被多次包含。这可以避免因多次包含相同的头文件导致的编译错误，例如重复定义类、函数或变量。头文件保护符是通过使用预处理器指令 <code>#ifndef</code>、<code>#define</code> 和 <code>#endif</code> 实现的。</p>]]></content>
     
@@ -36,11 +36,7 @@
     
     <category term="C++" scheme="http://example.com/tags/C/"/>
     
-    <category term="include ifndef" scheme="http://example.com/tags/include-ifndef/"/>
-    
-    <category term="include define" scheme="http://example.com/tags/include-define/"/>
-    
-    <category term="include endif" scheme="http://example.com/tags/include-endif/"/>
+    <category term="include" scheme="http://example.com/tags/include/"/>
     
   </entry>
   
