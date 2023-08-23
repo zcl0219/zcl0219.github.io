@@ -6,7 +6,7 @@
   <link href="http://zcl0219.github.io/atom.xml" rel="self"/>
   
   <link href="http://zcl0219.github.io/"/>
-  <updated>2023-08-10T15:29:15.120Z</updated>
+  <updated>2023-08-23T09:43:09.155Z</updated>
   <id>http://zcl0219.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>中缀表达式转后缀表达式</title>
+    <link href="http://zcl0219.github.io/2023/08/23/%E4%B8%AD%E7%BC%80%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%BD%AC%E5%90%8E%E7%BC%80%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
+    <id>http://zcl0219.github.io/2023/08/23/%E4%B8%AD%E7%BC%80%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%BD%AC%E5%90%8E%E7%BC%80%E8%A1%A8%E8%BE%BE%E5%BC%8F/</id>
+    <published>2023-08-23T09:16:28.000Z</published>
+    <updated>2023-08-23T09:43:09.155Z</updated>
+    
+    <content type="html"><![CDATA[<p>面试时被问到了关于如何将中缀表达式转换为后缀表达式，这里总结一下转换的步骤</p><ol><li>遇到操作数，直接输出</li><li>栈为空时，遇到运算符，入栈</li><li>遇到左括号，将其入栈</li><li>遇到右括号，执行出栈操作，并将出栈的元素输出，直到弹出栈的是左括号，左括号不输出</li><li>遇到其他运算符“+”，“-”，“*”，“&#x2F;”时，弹出所有优先级大于或等于该运算符的栈顶元素，然后将该运算符入栈</li><li>最终将栈中的元素依次出栈，输出</li></ol><img src="/2023/08/23/%E4%B8%AD%E7%BC%80%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%BD%AC%E5%90%8E%E7%BC%80%E8%A1%A8%E8%BE%BE%E5%BC%8F/08/23/%E4%B8%AD%E7%BC%80%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%BD%AC%E5%90%8E%E7%BC%80%E8%A1%A8%E8%BE%BE%E5%BC%8F/1.png" class>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;面试时被问到了关于如何将中缀表达式转换为后缀表达式，这里总结一下转换的步骤&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;遇到操作数，直接输出&lt;/li&gt;
+&lt;li&gt;栈为空时，遇到运算符，入栈&lt;/li&gt;
+&lt;li&gt;遇到左括号，将其入栈&lt;/li&gt;
+&lt;li&gt;遇到右括号，执行出栈操作，并将出栈的元素输出，</summary>
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>智能指针shared_ptr的实现</title>
