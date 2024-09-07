@@ -1,167 +1,206 @@
-<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Cpp高频面经 | Hexo</title><meta name="author" content="zcl"><meta name="copyright" content="zcl"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="new和malloc的区别 属性的区别 new&#x2F;delete：这两个是C++中的关键字； malloc&#x2F;free：这两个是库函数；  使用上的区别 malloc：申请空间需要显式填入申请内存的大小； new：无需显式填入申请内存的大小，new会根据new的类型分配内存；  返回类型的区别 new操作符内存分配成功，返回的是对象类型的指针，类型严格与对象匹配，无需进行类型转换，故">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"zcl0219.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="new和malloc的区别 属性的区别 new&#x2F;delete：这两个是C++中的关键字； malloc&#x2F;free：这两个是库函数；  使用上的区别 malloc：申请空间需要显式填入申请内存的大小； new：无需显式填入申请内存的大小，new会根据new的类型分配内存；  返回类型的区别 new操作符内存分配成功，返回的是对象类型的指针，类型严格与对象匹配，无需进行类型转换，故">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Cpp高频面经">
 <meta property="og:url" content="http://zcl0219.github.io/2023/06/29/Cpp%E9%AB%98%E9%A2%91%E9%9D%A2%E7%BB%8F/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="new和malloc的区别 属性的区别 new&#x2F;delete：这两个是C++中的关键字； malloc&#x2F;free：这两个是库函数；  使用上的区别 malloc：申请空间需要显式填入申请内存的大小； new：无需显式填入申请内存的大小，new会根据new的类型分配内存；  返回类型的区别 new操作符内存分配成功，返回的是对象类型的指针，类型严格与对象匹配，无需进行类型转换，故">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
+<meta property="og:image" content="http://zcl0219.github.io/2023/06/29/Cpp%E9%AB%98%E9%A2%91%E9%9D%A2%E7%BB%8F/png1.gif">
 <meta property="article:published_time" content="2023-06-28T19:50:53.000Z">
-<meta property="article:modified_time" content="2023-09-23T03:28:11.596Z">
-<meta property="article:author" content="zcl">
+<meta property="article:modified_time" content="2023-10-09T08:26:33.676Z">
+<meta property="article:author" content="GGBond">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://zcl0219.github.io/2023/06/29/Cpp%E9%AB%98%E9%A2%91%E9%9D%A2%E7%BB%8F/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
-  root: '/',
-  algolia: undefined,
-  localSearch: undefined,
-  translate: undefined,
-  noticeOutdate: undefined,
-  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
-  copy: {
-    success: 'Copy successfully',
-    error: 'Copy error',
-    noSupport: 'The browser does not support'
-  },
-  relativeDate: {
-    homepage: false,
-    post: false
-  },
-  runtime: '',
-  dateSuffix: {
-    just: 'Just',
-    min: 'minutes ago',
-    hour: 'hours ago',
-    day: 'days ago',
-    month: 'months ago'
-  },
-  copyright: undefined,
-  lightbox: 'fancybox',
-  Snackbar: undefined,
-  source: {
-    justifiedGallery: {
-      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
-      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
-    }
-  },
-  isPhotoFigcaption: false,
-  islazyload: false,
-  isAnchor: false,
-  percent: {
-    toc: true,
-    rightside: false,
-  }
-}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
-  title: 'Cpp高频面经',
-  isPost: true,
-  isHome: false,
-  isHighlightShrink: false,
-  isToc: true,
-  postUpdate: '2023-09-23 11:28:11'
-}</script><noscript><style type="text/css">
-  #nav {
-    opacity: 1
-  }
-  .justified-gallery img {
-    opacity: 1
-  }
+<meta name="twitter:image" content="http://zcl0219.github.io/2023/06/29/Cpp%E9%AB%98%E9%A2%91%E9%9D%A2%E7%BB%8F/png1.gif">
 
-  #recent-posts time,
-  #post-meta time {
-    display: inline !important
-  }
-</style></noscript><script>(win=>{
-    win.saveToLocal = {
-      set: function setWithExpiry(key, value, ttl) {
-        if (ttl === 0) return
-        const now = new Date()
-        const expiryDay = ttl * 86400000
-        const item = {
-          value: value,
-          expiry: now.getTime() + expiryDay,
-        }
-        localStorage.setItem(key, JSON.stringify(item))
-      },
 
-      get: function getWithExpiry(key) {
-        const itemStr = localStorage.getItem(key)
+<link rel="canonical" href="http://zcl0219.github.io/2023/06/29/Cpp%E9%AB%98%E9%A2%91%E9%9D%A2%E7%BB%8F/">
 
-        if (!itemStr) {
-          return undefined
-        }
-        const item = JSON.parse(itemStr)
-        const now = new Date()
 
-        if (now.getTime() > item.expiry) {
-          localStorage.removeItem(key)
-          return undefined
-        }
-        return item.value
-      }
-    }
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://zcl0219.github.io/2023/06/29/Cpp%E9%AB%98%E9%A2%91%E9%9D%A2%E7%BB%8F/","path":"2023/06/29/Cpp高频面经/","title":"Cpp高频面经"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Cpp高频面经 | Hexo</title>
   
-    win.getScript = url => new Promise((resolve, reject) => {
-      const script = document.createElement('script')
-      script.src = url
-      script.async = true
-      script.onerror = reject
-      script.onload = script.onreadystatechange = function() {
-        const loadState = this.readyState
-        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
-        script.onload = script.onreadystatechange = null
-        resolve()
-      }
-      document.head.appendChild(script)
-    })
-  
-    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
-      const link = document.createElement('link')
-      link.rel = 'stylesheet'
-      link.href = url
-      if (id) link.id = id
-      link.onerror = reject
-      link.onload = link.onreadystatechange = function() {
-        const loadState = this.readyState
-        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
-        link.onload = link.onreadystatechange = null
-        resolve()
-      }
-      document.head.appendChild(link)
-    })
-  
-      win.activateDarkMode = function () {
-        document.documentElement.setAttribute('data-theme', 'dark')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
-        }
-      }
-      win.activateLightMode = function () {
-        document.documentElement.setAttribute('data-theme', 'light')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
-        }
-      }
-      const t = saveToLocal.get('theme')
-    
-          if (t === 'dark') activateDarkMode()
-          else if (t === 'light') activateLightMode()
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Hexo</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</header>
         
-      const asideStatus = saveToLocal.get('aside-status')
-      if (asideStatus !== undefined) {
-        if (asideStatus === 'hide') {
-          document.documentElement.classList.add('hide-aside')
-        } else {
-          document.documentElement.classList.remove('hide-aside')
-        }
-      }
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#new%E5%92%8Cmalloc%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">1.</span> <span class="nav-text">new和malloc的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E9%81%BF%E5%85%8D%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F"><span class="nav-number">2.</span> <span class="nav-text">如何避免内存泄漏</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E6%B1%A0%E7%9A%84%E6%95%B0%E9%87%8F%E4%B8%80%E8%88%AC%E6%80%8E%E4%B9%88%E8%AE%BE%E7%BD%AE"><span class="nav-number">3.</span> <span class="nav-text">线程池的数量一般怎么设置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9D%A5%E4%BA%86%E4%B8%80%E4%B8%AA%E6%96%B0%E4%BB%BB%E5%8A%A1%EF%BC%8C%E7%BA%BF%E7%A8%8B%E6%B1%A0%E6%98%AF%E6%80%8E%E4%B9%88%E5%B7%A5%E4%BD%9C%E7%9A%84%EF%BC%88%E6%9C%AC%E7%AD%94%E6%A1%88%E6%9C%89%E5%BE%85%E5%95%86%E6%A6%B7%EF%BC%89"><span class="nav-number">4.</span> <span class="nav-text">来了一个新任务，线程池是怎么工作的（本答案有待商榷）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%8C%E7%BE%8E%E8%BD%AC%E5%8F%91"><span class="nav-number">5.</span> <span class="nav-text">完美转发</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8E%BB%E6%8E%89std-forward%E4%BC%9A%E5%92%8B%E6%A0%B7"><span class="nav-number">6.</span> <span class="nav-text">去掉std::forward会咋样</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%B2%E4%B8%80%E4%B8%8BC-%E4%B8%AD%E7%9A%84%E8%99%9A%E7%BB%A7%E6%89%BF"><span class="nav-number">7.</span> <span class="nav-text">讲一下C++中的虚继承</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E7%B1%BB%E7%9A%84%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0%E4%B8%BA%E4%BB%80%E4%B9%88%E6%98%AF%E8%99%9A%E5%87%BD%E6%95%B0%EF%BC%9F"><span class="nav-number">8.</span> <span class="nav-text">基类的析构函数为什么是虚函数？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#struct%E5%92%8Cunion%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%88%E9%BB%98%E5%86%99%EF%BC%89"><span class="nav-number">9.</span> <span class="nav-text">struct和union的区别（默写）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#C-%E5%86%85%E5%AD%98%E5%B8%83%E5%B1%80-x2F-%E7%A8%8B%E5%BA%8F%E5%88%86%E6%AE%B5%EF%BC%88%E9%BB%98%E5%86%99%EF%BC%89"><span class="nav-number">10.</span> <span class="nav-text">C++内存布局&#x2F;程序分段（默写）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%86%E8%A7%A3shared-ptr%E5%90%97%EF%BC%9F%E5%A6%82%E6%9E%9C%E8%AE%A9%E4%BD%A0%E6%89%8B%E5%86%99%E4%B8%80%E4%B8%AAshared-ptr%EF%BC%8C%E4%BD%A0%E4%BC%9A%E6%80%8E%E4%B9%88%E8%AE%BE%E8%AE%A1"><span class="nav-number">11.</span> <span class="nav-text">了解shared_ptr吗？如果让你手写一个shared_ptr，你会怎么设计</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8BTCP%EF%BC%8CTCP%E7%B2%98%E5%8C%85%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3"><span class="nav-number">12.</span> <span class="nav-text">介绍一下TCP，TCP粘包如何解决</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%8C%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0%E7%9A%84%E6%9C%AC%E8%B4%A8"><span class="nav-number">13.</span> <span class="nav-text">回调函数是什么，回调函数的本质</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">14.</span> <span class="nav-text">进程和线程的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#GET%E5%92%8CPOST%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">15.</span> <span class="nav-text">GET和POST的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HTTP%E5%92%8CHTTPS"><span class="nav-number">16.</span> <span class="nav-text">HTTP和HTTPS</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#C-11%E6%96%B0%E7%89%B9%E6%80%A7"><span class="nav-number">17.</span> <span class="nav-text">C++ 11新特性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-number">18.</span> <span class="nav-text">lambda表达式的使用场景</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#vector%E8%BF%AD%E4%BB%A3%E5%99%A8%E5%A4%B1%E6%95%88%E7%9A%84%E5%8E%9F%E5%9B%A0"><span class="nav-number">19.</span> <span class="nav-text">vector迭代器失效的原因</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#map%E7%9A%84%E5%BA%95%E5%B1%82%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">20.</span> <span class="nav-text">map的底层数据结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#unordered-map%E5%BA%95%E5%B1%82%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">21.</span> <span class="nav-text">unordered_map底层数据结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TCP%E6%8F%A1%E6%89%8B%E4%B8%BA%E4%BB%80%E4%B9%88%E6%98%AF%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%EF%BC%8C%E4%B8%A4%E6%AC%A1%E6%8F%A1%E6%89%8B%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E8%A1%8C%E5%91%A2"><span class="nav-number">22.</span> <span class="nav-text">TCP握手为什么是三次握手，两次握手为什么不行呢</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HTTP%E7%8A%B6%E6%80%81%E7%A0%81"><span class="nav-number">23.</span> <span class="nav-text">HTTP状态码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88%E4%BA%86%EF%BC%8C%E6%99%AE%E9%80%9A%E6%8C%87%E9%92%88%E8%BF%98%E8%83%BD%E7%94%A8%E5%90%97%EF%BC%9F"><span class="nav-number">24.</span> <span class="nav-text">使用智能指针了，普通指针还能用吗？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E4%BD%BF%E7%94%A8%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88%EF%BC%8C%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E4%BD%BF%E7%94%A8%E6%99%AE%E9%80%9A%E6%8C%87%E9%92%88-%EF%BC%88CHATGPT%EF%BC%89"><span class="nav-number">25.</span> <span class="nav-text">什么时候使用智能指针，什么时候使用普通指针 （CHATGPT）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Hash-map%E5%8E%9F%E7%90%86"><span class="nav-number">26.</span> <span class="nav-text">Hash_map原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#C-%E5%A4%9A%E6%80%81%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B"><span class="nav-number">27.</span> <span class="nav-text">C++多态介绍一下</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%99%9A%E5%87%BD%E6%95%B0%E3%80%81%E7%BA%AF%E8%99%9A%E5%87%BD%E6%95%B0%E5%8E%9F%E7%90%86%EF%BC%8C%E8%99%9A%E8%A1%A8%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E5%BB%BA%E7%AB%8B%E7%9A%84https-zhuanlan-zhihu-com-p-37331092"><span class="nav-number">28.</span> <span class="nav-text">虚函数、纯虚函数原理，虚表什么时候建立的	https:&#x2F;&#x2F;zhuanlan.zhihu.com&#x2F;p&#x2F;37331092</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%92%8C%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0%E5%8F%AF%E4%BB%A5%E6%98%AF%E8%99%9A%E5%87%BD%E6%95%B0%E5%90%97%EF%BC%9F"><span class="nav-number">29.</span> <span class="nav-text">构造函数和析构函数可以是虚函数吗？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#map%E4%B8%BA%E5%95%A5%E7%94%A8%E7%BA%A2%E9%BB%91%E6%A0%91%E4%B8%8D%E7%94%A8avl%E6%A0%91%EF%BC%9F"><span class="nav-number">30.</span> <span class="nav-text">map为啥用红黑树不用avl树？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%80%8E%E4%B9%88%E5%88%A4%E6%96%ADmap%E9%87%8Ckey%E5%80%BC%E5%AD%98%E4%B8%8D%E5%AD%98%E5%9C%A8"><span class="nav-number">31.</span> <span class="nav-text">怎么判断map里key值存不存在</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%9A%E8%BF%9B%E7%A8%8B%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F"><span class="nav-number">32.</span> <span class="nav-text">多进程通信方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TCP%E5%92%8CUDP%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">33.</span> <span class="nav-text">TCP和UDP的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TCP-x2F-IP%E5%8D%8F%E8%AE%AE%E7%BB%84"><span class="nav-number">34.</span> <span class="nav-text">TCP&#x2F;IP协议组</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#OSI%E4%B8%83%E5%B1%82"><span class="nav-number">35.</span> <span class="nav-text">OSI七层</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#socket%E7%BC%96%E7%A8%8Brecv%E5%87%BD%E6%95%B0"><span class="nav-number">36.</span> <span class="nav-text">socket编程recv函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95"><span class="nav-number">37.</span> <span class="nav-text">排序算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HTTP%E7%8A%B6%E6%80%81%E7%A0%81-1"><span class="nav-number">38.</span> <span class="nav-text">HTTP状态码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DNS%E8%A7%A3%E6%9E%90%E8%BF%87%E7%A8%8B"><span class="nav-number">39.</span> <span class="nav-text">DNS解析过程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TCP%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B%EF%BC%8C%E4%B8%89%E6%AC%A1%E6%8C%A5%E6%89%8B%E6%9C%89%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98"><span class="nav-number">40.</span> <span class="nav-text">TCP为什么需要四次挥手，三次挥手有什么问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TCP%E4%BC%A0%E8%BE%93%E4%B8%BA%E4%BB%80%E4%B9%88%E6%98%AF%E5%8F%AF%E9%9D%A0%E7%9A%84"><span class="nav-number">41.</span> <span class="nav-text">TCP传输为什么是可靠的</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E7%9A%84%E7%8A%B6%E6%80%81"><span class="nav-number">42.</span> <span class="nav-text">线程的状态</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%AD%BB%E9%94%81%E4%BA%A7%E7%94%9F%E7%9A%84%E6%9D%A1%E4%BB%B6"><span class="nav-number">43.</span> <span class="nav-text">死锁产生的条件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%AD%BB%E9%94%81%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="nav-number">44.</span> <span class="nav-text">死锁解决方案</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%91%E7%9A%84%E7%9F%A5%E8%AF%86"><span class="nav-number">45.</span> <span class="nav-text">树的知识</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Linux-API%E8%B0%83%E7%94%A8%E8%BF%94%E5%9B%9E%E5%80%BC%E6%B1%87%E6%80%BB"><span class="nav-number">46.</span> <span class="nav-text">Linux API调用返回值汇总</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DNS%E7%9A%84%E8%A7%A3%E6%9E%90%E8%BF%87%E7%A8%8B"><span class="nav-number">47.</span> <span class="nav-text">DNS的解析过程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TCP%E4%BC%A0%E8%BE%93%E4%B8%BA%E4%BB%80%E4%B9%88%E6%98%AF%E5%8F%AF%E9%9D%A0%E7%9A%84-1"><span class="nav-number">48.</span> <span class="nav-text">TCP传输为什么是可靠的</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#NAT%E5%8D%8F%E8%AE%AE%E5%92%8C%E8%B7%A8%E5%9F%9F%EF%BC%88%E4%B8%8D%E4%BA%86%E8%A7%A3%EF%BC%89"><span class="nav-number">49.</span> <span class="nav-text">NAT协议和跨域（不了解）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#GET%E5%92%8CPOST%E5%8C%BA%E5%88%AB"><span class="nav-number">50.</span> <span class="nav-text">GET和POST区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%86%99%E4%B8%80%E6%AE%B5%E6%AD%BB%E9%94%81%E7%9A%84%E4%BB%A3%E7%A0%81"><span class="nav-number">51.</span> <span class="nav-text">写一段死锁的代码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%B4%E5%B0%BE%E7%A9%BA%E6%A0%BC%E4%BB%A3%E7%A0%81"><span class="nav-number">52.</span> <span class="nav-text">删除字符串头尾空格代码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#shared-ptr%E6%98%AF%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E7%9A%84%E5%90%97%EF%BC%9Fhttps-cloud-tencent-com-developer-article-1654442"><span class="nav-number">53.</span> <span class="nav-text">shared_ptr是线程安全的吗？https:&#x2F;&#x2F;cloud.tencent.com&#x2F;developer&#x2F;article&#x2F;1654442</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#mysql%E8%AF%BB%E5%86%99%E9%94%81%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0-mysql-%E8%AF%BB%E5%86%99%E9%94%81%E5%92%8C%E4%BA%92%E6%96%A5%E9%94%81%E7%9A%84%E5%8C%BA%E5%88%ABhttps-blog-51cto-com-u-16099299-7031260"><span class="nav-number">54.</span> <span class="nav-text">mysql读写锁怎么实现 mysql 读写锁和互斥锁的区别	https:&#x2F;&#x2F;blog.51cto.com&#x2F;u_16099299&#x2F;7031260</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#delete%E5%85%B3%E9%94%AE%E5%AD%97%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="nav-number">55.</span> <span class="nav-text">delete关键字的作用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#define%E5%92%8Cconst%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">56.</span> <span class="nav-text">define和const的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%86%99%E6%97%B6%E6%8B%B7%E8%B4%9D%EF%BC%88COW%EF%BC%89https-www-cnblogs-com-biyeymyhjob-archive-2012-07-20-2601655-html"><span class="nav-number">57.</span> <span class="nav-text">写时拷贝（COW）	https:&#x2F;&#x2F;www.cnblogs.com&#x2F;biyeymyhjob&#x2F;archive&#x2F;2012&#x2F;07&#x2F;20&#x2F;2601655.html</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#coredump%EF%BC%8Cgdb%E6%80%8E%E4%B9%88%E5%AE%9A%E4%BD%8D"><span class="nav-number">58.</span> <span class="nav-text">coredump，gdb怎么定位</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#epoll"><span class="nav-number">59.</span> <span class="nav-text">epoll</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#static%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="nav-number">60.</span> <span class="nav-text">static的作用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%89%E5%85%B3static%E7%9A%84%E5%BF%85%E8%A6%81%E8%A1%A5%E5%85%85"><span class="nav-number">61.</span> <span class="nav-text">有关static的必要补充</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%89%E7%A7%8D%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88"><span class="nav-number">62.</span> <span class="nav-text">三种智能指针</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#STL%E5%86%85%E5%AD%98%E6%B1%A0%E6%9C%BA%E5%88%B6"><span class="nav-number">63.</span> <span class="nav-text">STL内存池机制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B4%A2%E5%BC%95%E9%80%89B-%E6%A0%91%E7%9A%84%E5%8E%9F%E5%9B%A0"><span class="nav-number">64.</span> <span class="nav-text">索引选B+树的原因</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E7%AB%AFTIME-WAIT%E8%BF%87%E5%A4%9A%E7%9A%84%E5%8D%B1%E5%AE%B3%E5%8F%8A%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95"><span class="nav-number">65.</span> <span class="nav-text">服务端TIME_WAIT过多的危害及解决办法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#set%E5%BA%95%E5%B1%82%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">66.</span> <span class="nav-text">set底层数据结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#mapreduce%E5%8E%9F%E7%90%86%EF%BC%88%E4%B8%8D%E6%87%82%EF%BC%8C%E9%A2%84%E7%95%99%EF%BC%89"><span class="nav-number">67.</span> <span class="nav-text">mapreduce原理（不懂，预留）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#socket%E5%93%AA%E4%BA%9B%E6%93%8D%E4%BD%9C%E4%BC%9A%E4%BA%A7%E7%94%9F%E9%98%BB%E5%A1%9E"><span class="nav-number">68.</span> <span class="nav-text">socket哪些操作会产生阻塞</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%B3%E8%AF%B7%E4%B8%80%E5%9D%97%E5%A4%A7%E5%86%85%E5%AD%98%E5%92%8C%E4%B8%80%E5%9D%97%E5%B0%8F%E5%86%85%E5%AD%98%E7%9A%84%E6%95%88%E7%8E%87%E6%98%AF%E4%B8%80%E6%A0%B7%E7%9A%84%E5%90%97%EF%BC%9F"><span class="nav-number">69.</span> <span class="nav-text">申请一块大内存和一块小内存的效率是一样的吗？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TCP%E6%85%A2%E5%90%AF%E5%8A%A8%E5%92%8C%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6"><span class="nav-number">70.</span> <span class="nav-text">TCP慢启动和拥塞控制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%91%E9%80%81%E7%AB%AF%E5%88%A4%E6%96%AD%E5%8F%91%E7%94%9F%E6%8B%A5%E5%A1%9E%E7%9A%84%E4%BE%9D%E6%8D%AE"><span class="nav-number">71.</span> <span class="nav-text">发送端判断发生拥塞的依据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Linux%E4%B8%8B%E7%9A%84POSIX%E4%BA%92%E6%96%A5%E9%94%81%E5%92%8C%E6%9D%A1%E4%BB%B6%E5%8F%98%E9%87%8F"><span class="nav-number">72.</span> <span class="nav-text">Linux下的POSIX互斥锁和条件变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%86%99%E4%B8%80%E4%B8%AA%E7%94%9F%E4%BA%A7%E8%80%85-x2F-%E6%B6%88%E8%B4%B9%E8%80%85%E6%A8%A1%E5%9E%8B%EF%BC%88%E9%87%87%E7%94%A8%E4%BF%A1%E5%8F%B7%E9%87%8F%EF%BC%89"><span class="nav-number">73.</span> <span class="nav-text">写一个生产者&#x2F;消费者模型（采用信号量）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E7%B1%BB%E7%9A%84%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0%E4%B8%BA%E4%BB%80%E4%B9%88%E6%98%AF%E8%99%9A%E5%87%BD%E6%95%B0"><span class="nav-number">74.</span> <span class="nav-text">基类的析构函数为什么是虚函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E5%9F%BA%E7%B1%BB%E4%B8%8D%E4%BD%BF%E7%94%A8%E8%99%9A%E5%87%BD%E6%95%B0%E4%BC%9A%E5%AF%BC%E8%87%B4%E6%B4%BE%E7%94%9F%E7%B1%BB%E7%9A%84%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0%E4%B8%8D%E8%B0%83%E7%94%A8%EF%BC%88%E9%99%A4%E4%BA%86%E5%86%99%E7%9A%84%E5%86%85%E5%AE%B9%EF%BC%8C%E6%9C%80%E5%A5%BD%E5%86%8D%E5%8A%A0%E4%B8%8A%E6%9C%89%E5%85%B3%E8%99%9A%E5%87%BD%E6%95%B0%E8%A1%A8%E3%80%81%E6%8C%87%E9%92%88%E7%9A%84%E5%86%85%E5%AE%B9%EF%BC%89"><span class="nav-number">75.</span> <span class="nav-text">为什么基类不使用虚函数会导致派生类的析构函数不调用（除了写的内容，最好再加上有关虚函数表、指针的内容）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8B%B7%E8%B4%9D%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E7%94%A8%E5%BC%95%E7%94%A8"><span class="nav-number">76.</span> <span class="nav-text">拷贝构造函数为什么要用引用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B7%A6%E5%8F%B3%E5%80%BC%E7%9A%84%E5%B7%AE%E5%88%AB"><span class="nav-number">77.</span> <span class="nav-text">左右值的差别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#C-%E4%B8%AD%E7%9A%84%E8%99%9A%E7%BB%A7%E6%89%BF"><span class="nav-number">78.</span> <span class="nav-text">C++中的虚继承</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#C-%E4%B8%AD%E7%9A%84forward%E5%87%BD%E6%95%B0"><span class="nav-number">79.</span> <span class="nav-text">C++中的forward函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E5%88%A4%E6%96%ADTCP%E6%96%AD%E5%BC%80"><span class="nav-number">80.</span> <span class="nav-text">如何判断TCP断开</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E6%9F%A5%E7%9C%8B%E7%B3%BB%E7%BB%9F%E7%9A%84%E6%9C%80%E5%A4%A7%E8%BF%9B%E7%A8%8B%E6%95%B0%E5%92%8C%E7%BA%BF%E7%A8%8B%E6%95%B0"><span class="nav-number">81.</span> <span class="nav-text">如何查看系统的最大进程数和线程数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#git-rebase%E5%92%8Cgit-merge%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%88https-joyohub-com-2020-04-06-git-rebase-%EF%BC%89"><span class="nav-number">82.</span> <span class="nav-text">git rebase和git merge的区别（https:&#x2F;&#x2F;joyohub.com&#x2F;2020&#x2F;04&#x2F;06&#x2F;git-rebase&#x2F;）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#C-calss-%E5%92%8C-struct%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">83.</span> <span class="nav-text">C++ calss 和 struct的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8C%87%E9%92%88%E5%92%8C%E5%BC%95%E7%94%A8%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">84.</span> <span class="nav-text">指针和引用的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E6%A8%A1%E6%9D%BF%E7%B1%BB%E7%9A%84%E5%A3%B0%E6%98%8E%E5%92%8C%E5%AE%9E%E7%8E%B0%E4%B8%8D%E8%83%BD%E5%88%86%E5%88%AB%E5%86%99%E5%9C%A8-h%E6%96%87%E4%BB%B6%E5%92%8C-cpp%E6%96%87%E4%BB%B6%E4%B8%AD"><span class="nav-number">85.</span> <span class="nav-text">为什么模板类的声明和实现不能分别写在.h文件和.cpp文件中</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%E4%B8%8E%E9%9D%99%E6%80%81%E9%93%BE%E6%8E%A5"><span class="nav-number">86.</span> <span class="nav-text">动态链接与静态链接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#pragma-pack%E7%BC%96%E8%AF%91%E5%AE%8F"><span class="nav-number">87.</span> <span class="nav-text">pragma pack编译宏</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#vector%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86"><span class="nav-number">88.</span> <span class="nav-text">vector底层实现原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%B8%E9%87%8F%E6%8C%87%E9%92%88%E5%92%8C%E6%8C%87%E9%92%88%E5%B8%B8%E9%87%8F"><span class="nav-number">89.</span> <span class="nav-text">常量指针和指针常量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#C-%E4%B8%AD%E4%B8%80%E4%BA%9B%E7%89%B9%E5%88%AB%E7%9A%84%E5%85%B3%E9%94%AE%E5%AD%97%EF%BC%88default%EF%BC%8Coverride%E3%80%81final%E3%80%81volatile%EF%BC%89"><span class="nav-number">90.</span> <span class="nav-text">C++中一些特别的关键字（default，override、final、volatile）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%97%E8%8A%82%E7%AE%97%E6%B3%95%E9%A2%98%EF%BC%9A%E5%B0%8F%E4%BA%8EN%E7%9A%84%E6%9C%80%E5%A4%A7%E6%95%B0"><span class="nav-number">91.</span> <span class="nav-text">字节算法题：小于N的最大数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A6%82%E6%9E%9C%E5%90%8C%E6%97%B6%E6%9C%89%E5%A4%A7%E9%87%8F%E5%AE%A2%E6%88%B7%E5%B9%B6%E5%8F%91%E5%BB%BA%E7%AB%8B%E8%BF%9E%E6%8E%A5%EF%BC%8C%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%AF%E6%9C%89%E4%BB%80%E4%B9%88%E6%9C%BA%E5%88%B6%E8%BF%9B%E8%A1%8C%E5%A4%84%E7%90%86"><span class="nav-number">92.</span> <span class="nav-text">如果同时有大量客户并发建立连接，服务器端有什么机制进行处理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HTTP%E5%92%8CTCP%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="nav-number">93.</span> <span class="nav-text">HTTP和TCP之间的关系</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HTTP%E4%BB%8E%E8%AF%B7%E6%B1%82%E5%88%B0%E5%BE%97%E5%88%B0%E7%BB%93%E6%9E%9C%E7%9A%84%E8%BF%87%E7%A8%8B"><span class="nav-number">94.</span> <span class="nav-text">HTTP从请求到得到结果的过程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#https%E5%92%8Chttp%E7%9A%84%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%8Chttps%E5%85%B7%E4%BD%93%E6%98%AF%E6%80%8E%E4%B9%88%E5%81%9A%E7%9A%84"><span class="nav-number">95.</span> <span class="nav-text">https和http的区别是什么，https具体是怎么做的</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#gdb%E4%B8%AD%EF%BC%8C%E5%A6%82%E4%BD%95%E6%9F%A5%E7%9C%8B%E6%AF%8F%E4%B8%AA%E7%BA%BF%E7%A8%8B%E7%9B%B8%E5%85%B3%E7%9A%84%E4%BF%A1%E6%81%AF"><span class="nav-number">96.</span> <span class="nav-text">gdb中，如何查看每个线程相关的信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E4%B8%AD%E8%83%BD%E8%B0%83%E7%94%A8%E8%99%9A%E5%87%BD%E6%95%B0%E5%90%97%EF%BC%8C%E5%A6%82%E6%9E%9C%E8%B0%83%E7%94%A8%E8%99%9A%E5%87%BD%E6%95%B0%EF%BC%8C%E4%BC%9A%E5%87%BA%E7%8E%B0%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98%EF%BC%8C%E5%86%99%E7%A8%8B%E5%BA%8F%E9%AA%8C%E8%AF%81%EF%BC%8C%E5%B9%B6%E4%BB%8E%E5%8E%9F%E7%90%86%E4%B8%8A%E5%88%86%E6%9E%90%E5%8E%9F%E5%9B%A0"><span class="nav-number">97.</span> <span class="nav-text">构造函数中能调用虚函数吗，如果调用虚函数，会出现什么问题，写程序验证，并从原理上分析原因</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%AD%E4%BB%A3%E5%99%A8%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="nav-number">98.</span> <span class="nav-text">迭代器的实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#epoll%E7%BA%A2%E9%BB%91%E6%A0%91%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="nav-number">99.</span> <span class="nav-text">epoll红黑树的作用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%A8%E6%88%B7%E6%80%81%E5%92%8C%E5%86%85%E6%A0%B8%E6%80%81%E5%88%86%E5%88%AB%E4%BC%9A%E5%81%9A%E4%BB%80%E4%B9%88%EF%BC%8C%E6%80%8E%E4%B9%88%E5%88%87%E6%8D%A2%E7%9A%84"><span class="nav-number">100.</span> <span class="nav-text">用户态和内核态分别会做什么，怎么切换的</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%9B%E7%A8%8B%E7%9A%84%E5%88%9B%E5%BB%BA%E9%9C%80%E8%A6%81%E7%B3%BB%E7%BB%9F%E5%88%86%E9%85%8D%E4%BB%80%E4%B9%88%E8%B5%84%E6%BA%90"><span class="nav-number">101.</span> <span class="nav-text">进程的创建需要系统分配什么资源</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HTTPS%E5%8A%A0%E5%AF%86%E6%96%B9%E5%BC%8F%EF%BC%9A%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86%E3%80%81%E9%9D%9E%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86"><span class="nav-number">102.</span> <span class="nav-text">HTTPS加密方式：对称加密、非对称加密</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E7%9A%84%E4%B8%89%E7%A7%8D%E7%8A%B6%E6%80%81"><span class="nav-number">103.</span> <span class="nav-text">线程的三种状态</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0%E9%87%8C%E8%83%BD%E4%B8%8D%E8%83%BD%E6%8A%9B%E5%BC%82%E5%B8%B8-%E4%B8%BA%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">104.</span> <span class="nav-text">析构函数里能不能抛异常?为什么？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%A4%E4%B8%AA%E7%B1%BB%E9%87%8C%E6%9C%89%E7%9B%B8%E5%90%8C%E7%9A%84%E6%88%90%E5%91%98%EF%BC%8C%E5%8C%BA%E5%88%AB%E5%9C%A8%E4%BA%8E%E4%B8%80%E4%B8%AA%E6%9C%89%E8%99%9A%E5%87%BD%E6%95%B0%EF%BC%8C%E4%B8%80%E4%B8%AA%E6%B2%A1%E6%9C%89%EF%BC%8C%E5%93%AA%E4%B8%AA%E5%86%85%E5%AD%98%E5%A4%A7%EF%BC%9F"><span class="nav-number">105.</span> <span class="nav-text">两个类里有相同的成员，区别在于一个有虚函数，一个没有，哪个内存大？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%8A%A5%E5%92%8C%E6%95%B0%E6%8D%AE%E6%B5%81%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-number">106.</span> <span class="nav-text">数据报和数据流的区别？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9C%A8%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E4%B8%AD%EF%BC%8C%E5%A6%82%E6%9E%9C%E6%9F%90%E4%B8%AA%E8%8A%82%E7%82%B9%E5%AE%95%E6%9C%BA%E4%BA%86%E5%92%8B%E5%8A%9E%EF%BC%9F"><span class="nav-number">107.</span> <span class="nav-text">在分布式系统中，如果某个节点宕机了咋办？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%87%AA%E6%97%8B%E9%94%81"><span class="nav-number">108.</span> <span class="nav-text">自旋锁</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E5%90%8C%E6%AD%A5%E7%9A%84%E6%96%B9%E5%BC%8F%E6%9C%89%E5%93%AA%E4%BA%9B"><span class="nav-number">109.</span> <span class="nav-text">线程同步的方式有哪些</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">GGBond</p>
+  <div class="site-description" itemprop="description">Doing the tough things sets winners apart from losers</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
     
-    const detectApple = () => {
-      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
-        document.documentElement.classList.add('apple')
-      }
-    }
-    detectApple()
-    })(window)</script><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">21</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">10</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="Hexo"><span class="site-name">Hexo</span></a></span><div id="menus"><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Cpp高频面经</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2023-06-28T19:50:53.000Z" title="Created 2023-06-29 03:50:53">2023-06-29</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2023-09-23T03:28:11.596Z" title="Updated 2023-09-23 11:28:11">2023-09-23</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Cpp高频面经"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h4 id="new和malloc的区别"><a href="#new和malloc的区别" class="headerlink" title="new和malloc的区别"></a>new和malloc的区别</h4><ul>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://zcl0219.github.io/2023/06/29/Cpp%E9%AB%98%E9%A2%91%E9%9D%A2%E7%BB%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="GGBond">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+      <meta itemprop="description" content="Doing the tough things sets winners apart from losers">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Cpp高频面经 | Hexo">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Cpp高频面经
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2023-06-29 03:50:53" itemprop="dateCreated datePublished" datetime="2023-06-29T03:50:53+08:00">2023-06-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2023-10-09 16:26:33" itemprop="dateModified" datetime="2023-10-09T16:26:33+08:00">2023-10-09</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h4 id="new和malloc的区别"><a href="#new和malloc的区别" class="headerlink" title="new和malloc的区别"></a>new和malloc的区别</h4><ul>
 <li><p>属性的区别</p>
 <p>new&#x2F;delete：这两个是C++中的关键字；</p>
 <p>malloc&#x2F;free：这两个是库函数；</p>
@@ -251,14 +290,53 @@
 </li>
 </ol>
 <h4 id="C-11新特性"><a href="#C-11新特性" class="headerlink" title="C++ 11新特性"></a>C++ 11新特性</h4><ul>
-<li>auto关键字</li>
-<li>智能指针</li>
-<li>lambda表达式</li>
-<li>右值引用和移动语义</li>
+<li><p>auto关键字</p>
+</li>
+<li><p>智能指针</p>
+</li>
+<li><p>lambda表达式	参考链接（<a target="_blank" rel="noopener" href="https://blog.51cto.com/u_15323899/5785594%EF%BC%89">https://blog.51cto.com/u_15323899/5785594）</a></p>
+<p>Lambda表达式是C++11引入的一种新特性，它允许在代码中定义匿名函数。虽然在使用上非常简洁和方便，但lambda表达式背后的实现相对复杂。以下是lambda表达式在底层的工作原理：</p>
+<ol>
+<li><p><strong>转换为类</strong>:</p>
+<ul>
+<li>当你定义一个lambda表达式，编译器会为你生成一个匿名类（也称为闭包类型）。这个类将会覆盖函数调用操作符，使得该对象可以像函数一样被调用。</li>
+<li>如果lambda表达式捕获了外部的局部变量（例如通过值或引用），这些变量将会被添加为该匿名类的成员。</li>
+</ul>
+</li>
+<li><p><strong>成员变量</strong>:</p>
+<ul>
+<li>为了支持捕获，生成的闭包类型可能会包含成员变量。如果使用值捕获，那么这些成员变量将存储捕获的变量的副本；如果使用引用捕获，那么成员变量将存储相应变量的引用。</li>
+</ul>
+</li>
+<li><p><strong>函数调用操作符重载</strong>:</p>
+<ul>
+<li>生成的类会覆盖函数调用操作符<code>operator()</code>. 这个操作符的实现就是lambda表达式的主体。</li>
+</ul>
+</li>
+<li><p><strong>构造函数</strong>:</p>
+<ul>
+<li>该匿名类的构造函数会初始化所有捕获的变量。根据捕获方式（值或引用）来复制或绑定这些变量。</li>
+</ul>
+</li>
+<li><p><strong>生成的类是只移动构造的</strong>:</p>
+<ul>
+<li>这意味着你不能按常规方式复制lambda表达式，但可以移动它。</li>
+</ul>
+</li>
+</ol>
+<p>下面是一个简单的lambda表达式的例子以及一个可能的简化版本的匿名类表示：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Lambda</span></span><br><span class="line"><span class="keyword">auto</span> lambda = [x](<span class="type">int</span> y) &#123; <span class="keyword">return</span> x + y; &#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Possible representation by the compiler</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">__anonymous</span> &#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="type">int</span> x;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    __anonymous(<span class="type">int</span> _x) : <span class="built_in">x</span>(_x) &#123;&#125;</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">operator</span><span class="params">()</span><span class="params">(<span class="type">int</span> y)</span> <span class="type">const</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> x + y;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>要注意的是，这只是一个简化的表示。实际编译器生成的代码会比这更复杂，尤其是当涉及到更高级的特性（如泛型、<code>mutable</code>关键字或捕获列表）时。</p>
+<p>最后，虽然从概念上讲，lambda表达式是转换为类的，但这并不意味着性能会受到影响。优化后的编译器通常会内联这些生成的类和函数调用操作符，从而消除由于间接调用导致的任何额外开销。</p>
+</li>
+<li><p>右值引用和移动语义</p>
+</li>
 </ul>
 <h4 id="lambda表达式的使用场景"><a href="#lambda表达式的使用场景" class="headerlink" title="lambda表达式的使用场景"></a>lambda表达式的使用场景</h4><p>lambda表达式提供了一种简洁、方便的方式来创建匿名对象。在一些需要传递简单函数对象的场景下，使用lambda表达式可以避免额外的函数对象类。</p>
 <h4 id="vector迭代器失效的原因"><a href="#vector迭代器失效的原因" class="headerlink" title="vector迭代器失效的原因"></a>vector迭代器失效的原因</h4><p>vector底层的实现是一个动态数组，vector里面存储的元素都是连续的，一旦比如删除一个元素，后面的所有元素都需要移动。我们可以考虑一种极端情况，删除最后一个元素，此时指向原vector数组的最后一个元素的迭代器就没指向任何元素了，如何此时我们访问这个迭代器所指向的元素，就会导致未定义行为，所以就会判定迭代器失效。其实所有改变vector大小的操作，都会导致vector迭代器失效。</p>
-<h4 id="map的底层数据结构"><a href="#map的底层数据结构" class="headerlink" title="map的底层数据结构"></a>map的底层数据结构</h4><p>map是有序容器，底层数据结构是红黑树，时间复杂度为log(n)。红黑树的前身可以说是二叉搜索树。但是二叉搜索树最坏的情况下树的高度为n，那么就导致时间复杂度为o(n), 所以便衍生出来了平衡二叉树。其实红黑树的五大特性就是为了保持二叉搜索树的平衡。保证时间复杂度稳定在o(logn)。</p>
+<h4 id="map的底层数据结构"><a href="#map的底层数据结构" class="headerlink" title="map的底层数据结构"></a>map的底层数据结构</h4><p>红黑树参考链接：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/e136ec79235c">https://www.jianshu.com/p/e136ec79235c</a></p>
+<p>map是有序容器，底层数据结构是红黑树，时间复杂度为log(n)。红黑树的前身可以说是二叉搜索树。但是二叉搜索树最坏的情况下树的高度为n，那么就导致时间复杂度为o(n), 所以便衍生出来了平衡二叉树。其实红黑树的五大特性就是为了保持二叉搜索树的平衡。保证时间复杂度稳定在o(logn)。</p>
 <h4 id="unordered-map底层数据结构"><a href="#unordered-map底层数据结构" class="headerlink" title="unordered_map底层数据结构"></a>unordered_map底层数据结构</h4><p>unordered_map是无序容器，底层使用哈希表实现的。</p>
 <h4 id="TCP握手为什么是三次握手，两次握手为什么不行呢"><a href="#TCP握手为什么是三次握手，两次握手为什么不行呢" class="headerlink" title="TCP握手为什么是三次握手，两次握手为什么不行呢"></a>TCP握手为什么是三次握手，两次握手为什么不行呢</h4><p>这里有两个大点，第一个字面意思很好理解，第二点举个例子就通透了，面试时最好全部答上来</p>
 <ul>
@@ -879,4 +957,91 @@
 <h4 id="自旋锁"><a href="#自旋锁" class="headerlink" title="自旋锁"></a>自旋锁</h4><p>所谓自旋锁就是通过while循环实现的，让拿到锁的线程进入临界区执行代码，让没有拿到锁的线程一直进行while死循环，这其实就是线程自己“旋”在while循环了，因而这种锁就叫做自旋锁。</p>
 <p>自旋锁实现参考链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/jeffasd/article/details/80661804">https://blog.csdn.net/jeffasd/article/details/80661804</a></p>
 <h4 id="线程同步的方式有哪些"><a href="#线程同步的方式有哪些" class="headerlink" title="线程同步的方式有哪些"></a>线程同步的方式有哪些</h4><p>互斥锁、信号量、条件变量、自旋锁、读写锁、屏障</p>
-</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="http://zcl0219.github.io">zcl</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://zcl0219.github.io/2023/06/29/Cpp%E9%AB%98%E9%A2%91%E9%9D%A2%E7%BB%8F/">http://zcl0219.github.io/2023/06/29/Cpp%E9%AB%98%E9%A2%91%E9%9D%A2%E7%BB%8F/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/07/26/shared-ptr/" title="智能指针shared_ptr的实现"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">智能指针shared_ptr的实现</div></div></a></div><div class="next-post pull-right"><a href="/2023/06/28/RPC/" title="RPC"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">RPC</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">zcl</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">21</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">10</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#new%E5%92%8Cmalloc%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">1.</span> <span class="toc-text">new和malloc的区别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E9%81%BF%E5%85%8D%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F"><span class="toc-number">2.</span> <span class="toc-text">如何避免内存泄漏</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E6%B1%A0%E7%9A%84%E6%95%B0%E9%87%8F%E4%B8%80%E8%88%AC%E6%80%8E%E4%B9%88%E8%AE%BE%E7%BD%AE"><span class="toc-number">3.</span> <span class="toc-text">线程池的数量一般怎么设置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9D%A5%E4%BA%86%E4%B8%80%E4%B8%AA%E6%96%B0%E4%BB%BB%E5%8A%A1%EF%BC%8C%E7%BA%BF%E7%A8%8B%E6%B1%A0%E6%98%AF%E6%80%8E%E4%B9%88%E5%B7%A5%E4%BD%9C%E7%9A%84%EF%BC%88%E6%9C%AC%E7%AD%94%E6%A1%88%E6%9C%89%E5%BE%85%E5%95%86%E6%A6%B7%EF%BC%89"><span class="toc-number">4.</span> <span class="toc-text">来了一个新任务，线程池是怎么工作的（本答案有待商榷）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%8C%E7%BE%8E%E8%BD%AC%E5%8F%91"><span class="toc-number">5.</span> <span class="toc-text">完美转发</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8E%BB%E6%8E%89std-forward%E4%BC%9A%E5%92%8B%E6%A0%B7"><span class="toc-number">6.</span> <span class="toc-text">去掉std::forward会咋样</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%B2%E4%B8%80%E4%B8%8BC-%E4%B8%AD%E7%9A%84%E8%99%9A%E7%BB%A7%E6%89%BF"><span class="toc-number">7.</span> <span class="toc-text">讲一下C++中的虚继承</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E7%B1%BB%E7%9A%84%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0%E4%B8%BA%E4%BB%80%E4%B9%88%E6%98%AF%E8%99%9A%E5%87%BD%E6%95%B0%EF%BC%9F"><span class="toc-number">8.</span> <span class="toc-text">基类的析构函数为什么是虚函数？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#struct%E5%92%8Cunion%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%88%E9%BB%98%E5%86%99%EF%BC%89"><span class="toc-number">9.</span> <span class="toc-text">struct和union的区别（默写）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#C-%E5%86%85%E5%AD%98%E5%B8%83%E5%B1%80-x2F-%E7%A8%8B%E5%BA%8F%E5%88%86%E6%AE%B5%EF%BC%88%E9%BB%98%E5%86%99%EF%BC%89"><span class="toc-number">10.</span> <span class="toc-text">C++内存布局&#x2F;程序分段（默写）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%86%E8%A7%A3shared-ptr%E5%90%97%EF%BC%9F%E5%A6%82%E6%9E%9C%E8%AE%A9%E4%BD%A0%E6%89%8B%E5%86%99%E4%B8%80%E4%B8%AAshared-ptr%EF%BC%8C%E4%BD%A0%E4%BC%9A%E6%80%8E%E4%B9%88%E8%AE%BE%E8%AE%A1"><span class="toc-number">11.</span> <span class="toc-text">了解shared_ptr吗？如果让你手写一个shared_ptr，你会怎么设计</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8BTCP%EF%BC%8CTCP%E7%B2%98%E5%8C%85%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3"><span class="toc-number">12.</span> <span class="toc-text">介绍一下TCP，TCP粘包如何解决</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%8C%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0%E7%9A%84%E6%9C%AC%E8%B4%A8"><span class="toc-number">13.</span> <span class="toc-text">回调函数是什么，回调函数的本质</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">14.</span> <span class="toc-text">进程和线程的区别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#GET%E5%92%8CPOST%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">15.</span> <span class="toc-text">GET和POST的区别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#HTTP%E5%92%8CHTTPS"><span class="toc-number">16.</span> <span class="toc-text">HTTP和HTTPS</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#C-11%E6%96%B0%E7%89%B9%E6%80%A7"><span class="toc-number">17.</span> <span class="toc-text">C++ 11新特性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-number">18.</span> <span class="toc-text">lambda表达式的使用场景</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#vector%E8%BF%AD%E4%BB%A3%E5%99%A8%E5%A4%B1%E6%95%88%E7%9A%84%E5%8E%9F%E5%9B%A0"><span class="toc-number">19.</span> <span class="toc-text">vector迭代器失效的原因</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#map%E7%9A%84%E5%BA%95%E5%B1%82%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="toc-number">20.</span> <span class="toc-text">map的底层数据结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#unordered-map%E5%BA%95%E5%B1%82%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="toc-number">21.</span> <span class="toc-text">unordered_map底层数据结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#TCP%E6%8F%A1%E6%89%8B%E4%B8%BA%E4%BB%80%E4%B9%88%E6%98%AF%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%EF%BC%8C%E4%B8%A4%E6%AC%A1%E6%8F%A1%E6%89%8B%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E8%A1%8C%E5%91%A2"><span class="toc-number">22.</span> <span class="toc-text">TCP握手为什么是三次握手，两次握手为什么不行呢</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#HTTP%E7%8A%B6%E6%80%81%E7%A0%81"><span class="toc-number">23.</span> <span class="toc-text">HTTP状态码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88%E4%BA%86%EF%BC%8C%E6%99%AE%E9%80%9A%E6%8C%87%E9%92%88%E8%BF%98%E8%83%BD%E7%94%A8%E5%90%97%EF%BC%9F"><span class="toc-number">24.</span> <span class="toc-text">使用智能指针了，普通指针还能用吗？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E4%BD%BF%E7%94%A8%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88%EF%BC%8C%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E4%BD%BF%E7%94%A8%E6%99%AE%E9%80%9A%E6%8C%87%E9%92%88-%EF%BC%88CHATGPT%EF%BC%89"><span class="toc-number">25.</span> <span class="toc-text">什么时候使用智能指针，什么时候使用普通指针 （CHATGPT）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Hash-map%E5%8E%9F%E7%90%86"><span class="toc-number">26.</span> <span class="toc-text">Hash_map原理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#C-%E5%A4%9A%E6%80%81%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B"><span class="toc-number">27.</span> <span class="toc-text">C++多态介绍一下</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%99%9A%E5%87%BD%E6%95%B0%E3%80%81%E7%BA%AF%E8%99%9A%E5%87%BD%E6%95%B0%E5%8E%9F%E7%90%86%EF%BC%8C%E8%99%9A%E8%A1%A8%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E5%BB%BA%E7%AB%8B%E7%9A%84https-zhuanlan-zhihu-com-p-37331092"><span class="toc-number">28.</span> <span class="toc-text">虚函数、纯虚函数原理，虚表什么时候建立的	https:&#x2F;&#x2F;zhuanlan.zhihu.com&#x2F;p&#x2F;37331092</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%92%8C%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0%E5%8F%AF%E4%BB%A5%E6%98%AF%E8%99%9A%E5%87%BD%E6%95%B0%E5%90%97%EF%BC%9F"><span class="toc-number">29.</span> <span class="toc-text">构造函数和析构函数可以是虚函数吗？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#map%E4%B8%BA%E5%95%A5%E7%94%A8%E7%BA%A2%E9%BB%91%E6%A0%91%E4%B8%8D%E7%94%A8avl%E6%A0%91%EF%BC%9F"><span class="toc-number">30.</span> <span class="toc-text">map为啥用红黑树不用avl树？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%8E%E4%B9%88%E5%88%A4%E6%96%ADmap%E9%87%8Ckey%E5%80%BC%E5%AD%98%E4%B8%8D%E5%AD%98%E5%9C%A8"><span class="toc-number">31.</span> <span class="toc-text">怎么判断map里key值存不存在</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%9A%E8%BF%9B%E7%A8%8B%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F"><span class="toc-number">32.</span> <span class="toc-text">多进程通信方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#TCP%E5%92%8CUDP%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">33.</span> <span class="toc-text">TCP和UDP的区别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#TCP-x2F-IP%E5%8D%8F%E8%AE%AE%E7%BB%84"><span class="toc-number">34.</span> <span class="toc-text">TCP&#x2F;IP协议组</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#OSI%E4%B8%83%E5%B1%82"><span class="toc-number">35.</span> <span class="toc-text">OSI七层</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#socket%E7%BC%96%E7%A8%8Brecv%E5%87%BD%E6%95%B0"><span class="toc-number">36.</span> <span class="toc-text">socket编程recv函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95"><span class="toc-number">37.</span> <span class="toc-text">排序算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#HTTP%E7%8A%B6%E6%80%81%E7%A0%81-1"><span class="toc-number">38.</span> <span class="toc-text">HTTP状态码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#DNS%E8%A7%A3%E6%9E%90%E8%BF%87%E7%A8%8B"><span class="toc-number">39.</span> <span class="toc-text">DNS解析过程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#TCP%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B%EF%BC%8C%E4%B8%89%E6%AC%A1%E6%8C%A5%E6%89%8B%E6%9C%89%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98"><span class="toc-number">40.</span> <span class="toc-text">TCP为什么需要四次挥手，三次挥手有什么问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#TCP%E4%BC%A0%E8%BE%93%E4%B8%BA%E4%BB%80%E4%B9%88%E6%98%AF%E5%8F%AF%E9%9D%A0%E7%9A%84"><span class="toc-number">41.</span> <span class="toc-text">TCP传输为什么是可靠的</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E7%9A%84%E7%8A%B6%E6%80%81"><span class="toc-number">42.</span> <span class="toc-text">线程的状态</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%BB%E9%94%81%E4%BA%A7%E7%94%9F%E7%9A%84%E6%9D%A1%E4%BB%B6"><span class="toc-number">43.</span> <span class="toc-text">死锁产生的条件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%BB%E9%94%81%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="toc-number">44.</span> <span class="toc-text">死锁解决方案</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%91%E7%9A%84%E7%9F%A5%E8%AF%86"><span class="toc-number">45.</span> <span class="toc-text">树的知识</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Linux-API%E8%B0%83%E7%94%A8%E8%BF%94%E5%9B%9E%E5%80%BC%E6%B1%87%E6%80%BB"><span class="toc-number">46.</span> <span class="toc-text">Linux API调用返回值汇总</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#DNS%E7%9A%84%E8%A7%A3%E6%9E%90%E8%BF%87%E7%A8%8B"><span class="toc-number">47.</span> <span class="toc-text">DNS的解析过程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#TCP%E4%BC%A0%E8%BE%93%E4%B8%BA%E4%BB%80%E4%B9%88%E6%98%AF%E5%8F%AF%E9%9D%A0%E7%9A%84-1"><span class="toc-number">48.</span> <span class="toc-text">TCP传输为什么是可靠的</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#NAT%E5%8D%8F%E8%AE%AE%E5%92%8C%E8%B7%A8%E5%9F%9F%EF%BC%88%E4%B8%8D%E4%BA%86%E8%A7%A3%EF%BC%89"><span class="toc-number">49.</span> <span class="toc-text">NAT协议和跨域（不了解）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#GET%E5%92%8CPOST%E5%8C%BA%E5%88%AB"><span class="toc-number">50.</span> <span class="toc-text">GET和POST区别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%99%E4%B8%80%E6%AE%B5%E6%AD%BB%E9%94%81%E7%9A%84%E4%BB%A3%E7%A0%81"><span class="toc-number">51.</span> <span class="toc-text">写一段死锁的代码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%B4%E5%B0%BE%E7%A9%BA%E6%A0%BC%E4%BB%A3%E7%A0%81"><span class="toc-number">52.</span> <span class="toc-text">删除字符串头尾空格代码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#shared-ptr%E6%98%AF%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E7%9A%84%E5%90%97%EF%BC%9Fhttps-cloud-tencent-com-developer-article-1654442"><span class="toc-number">53.</span> <span class="toc-text">shared_ptr是线程安全的吗？https:&#x2F;&#x2F;cloud.tencent.com&#x2F;developer&#x2F;article&#x2F;1654442</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#mysql%E8%AF%BB%E5%86%99%E9%94%81%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0-mysql-%E8%AF%BB%E5%86%99%E9%94%81%E5%92%8C%E4%BA%92%E6%96%A5%E9%94%81%E7%9A%84%E5%8C%BA%E5%88%ABhttps-blog-51cto-com-u-16099299-7031260"><span class="toc-number">54.</span> <span class="toc-text">mysql读写锁怎么实现 mysql 读写锁和互斥锁的区别	https:&#x2F;&#x2F;blog.51cto.com&#x2F;u_16099299&#x2F;7031260</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#delete%E5%85%B3%E9%94%AE%E5%AD%97%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-number">55.</span> <span class="toc-text">delete关键字的作用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#define%E5%92%8Cconst%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">56.</span> <span class="toc-text">define和const的区别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%99%E6%97%B6%E6%8B%B7%E8%B4%9D%EF%BC%88COW%EF%BC%89https-www-cnblogs-com-biyeymyhjob-archive-2012-07-20-2601655-html"><span class="toc-number">57.</span> <span class="toc-text">写时拷贝（COW）	https:&#x2F;&#x2F;www.cnblogs.com&#x2F;biyeymyhjob&#x2F;archive&#x2F;2012&#x2F;07&#x2F;20&#x2F;2601655.html</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#coredump%EF%BC%8Cgdb%E6%80%8E%E4%B9%88%E5%AE%9A%E4%BD%8D"><span class="toc-number">58.</span> <span class="toc-text">coredump，gdb怎么定位</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#epoll"><span class="toc-number">59.</span> <span class="toc-text">epoll</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#static%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-number">60.</span> <span class="toc-text">static的作用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%89%E5%85%B3static%E7%9A%84%E5%BF%85%E8%A6%81%E8%A1%A5%E5%85%85"><span class="toc-number">61.</span> <span class="toc-text">有关static的必要补充</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%89%E7%A7%8D%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88"><span class="toc-number">62.</span> <span class="toc-text">三种智能指针</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#STL%E5%86%85%E5%AD%98%E6%B1%A0%E6%9C%BA%E5%88%B6"><span class="toc-number">63.</span> <span class="toc-text">STL内存池机制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95%E9%80%89B-%E6%A0%91%E7%9A%84%E5%8E%9F%E5%9B%A0"><span class="toc-number">64.</span> <span class="toc-text">索引选B+树的原因</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E7%AB%AFTIME-WAIT%E8%BF%87%E5%A4%9A%E7%9A%84%E5%8D%B1%E5%AE%B3%E5%8F%8A%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95"><span class="toc-number">65.</span> <span class="toc-text">服务端TIME_WAIT过多的危害及解决办法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#set%E5%BA%95%E5%B1%82%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="toc-number">66.</span> <span class="toc-text">set底层数据结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#mapreduce%E5%8E%9F%E7%90%86%EF%BC%88%E4%B8%8D%E6%87%82%EF%BC%8C%E9%A2%84%E7%95%99%EF%BC%89"><span class="toc-number">67.</span> <span class="toc-text">mapreduce原理（不懂，预留）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#socket%E5%93%AA%E4%BA%9B%E6%93%8D%E4%BD%9C%E4%BC%9A%E4%BA%A7%E7%94%9F%E9%98%BB%E5%A1%9E"><span class="toc-number">68.</span> <span class="toc-text">socket哪些操作会产生阻塞</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%B3%E8%AF%B7%E4%B8%80%E5%9D%97%E5%A4%A7%E5%86%85%E5%AD%98%E5%92%8C%E4%B8%80%E5%9D%97%E5%B0%8F%E5%86%85%E5%AD%98%E7%9A%84%E6%95%88%E7%8E%87%E6%98%AF%E4%B8%80%E6%A0%B7%E7%9A%84%E5%90%97%EF%BC%9F"><span class="toc-number">69.</span> <span class="toc-text">申请一块大内存和一块小内存的效率是一样的吗？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#TCP%E6%85%A2%E5%90%AF%E5%8A%A8%E5%92%8C%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6"><span class="toc-number">70.</span> <span class="toc-text">TCP慢启动和拥塞控制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%91%E9%80%81%E7%AB%AF%E5%88%A4%E6%96%AD%E5%8F%91%E7%94%9F%E6%8B%A5%E5%A1%9E%E7%9A%84%E4%BE%9D%E6%8D%AE"><span class="toc-number">71.</span> <span class="toc-text">发送端判断发生拥塞的依据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Linux%E4%B8%8B%E7%9A%84POSIX%E4%BA%92%E6%96%A5%E9%94%81%E5%92%8C%E6%9D%A1%E4%BB%B6%E5%8F%98%E9%87%8F"><span class="toc-number">72.</span> <span class="toc-text">Linux下的POSIX互斥锁和条件变量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%99%E4%B8%80%E4%B8%AA%E7%94%9F%E4%BA%A7%E8%80%85-x2F-%E6%B6%88%E8%B4%B9%E8%80%85%E6%A8%A1%E5%9E%8B%EF%BC%88%E9%87%87%E7%94%A8%E4%BF%A1%E5%8F%B7%E9%87%8F%EF%BC%89"><span class="toc-number">73.</span> <span class="toc-text">写一个生产者&#x2F;消费者模型（采用信号量）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E7%B1%BB%E7%9A%84%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0%E4%B8%BA%E4%BB%80%E4%B9%88%E6%98%AF%E8%99%9A%E5%87%BD%E6%95%B0"><span class="toc-number">74.</span> <span class="toc-text">基类的析构函数为什么是虚函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E5%9F%BA%E7%B1%BB%E4%B8%8D%E4%BD%BF%E7%94%A8%E8%99%9A%E5%87%BD%E6%95%B0%E4%BC%9A%E5%AF%BC%E8%87%B4%E6%B4%BE%E7%94%9F%E7%B1%BB%E7%9A%84%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0%E4%B8%8D%E8%B0%83%E7%94%A8%EF%BC%88%E9%99%A4%E4%BA%86%E5%86%99%E7%9A%84%E5%86%85%E5%AE%B9%EF%BC%8C%E6%9C%80%E5%A5%BD%E5%86%8D%E5%8A%A0%E4%B8%8A%E6%9C%89%E5%85%B3%E8%99%9A%E5%87%BD%E6%95%B0%E8%A1%A8%E3%80%81%E6%8C%87%E9%92%88%E7%9A%84%E5%86%85%E5%AE%B9%EF%BC%89"><span class="toc-number">75.</span> <span class="toc-text">为什么基类不使用虚函数会导致派生类的析构函数不调用（除了写的内容，最好再加上有关虚函数表、指针的内容）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8B%B7%E8%B4%9D%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E7%94%A8%E5%BC%95%E7%94%A8"><span class="toc-number">76.</span> <span class="toc-text">拷贝构造函数为什么要用引用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B7%A6%E5%8F%B3%E5%80%BC%E7%9A%84%E5%B7%AE%E5%88%AB"><span class="toc-number">77.</span> <span class="toc-text">左右值的差别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#C-%E4%B8%AD%E7%9A%84%E8%99%9A%E7%BB%A7%E6%89%BF"><span class="toc-number">78.</span> <span class="toc-text">C++中的虚继承</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#C-%E4%B8%AD%E7%9A%84forward%E5%87%BD%E6%95%B0"><span class="toc-number">79.</span> <span class="toc-text">C++中的forward函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%88%A4%E6%96%ADTCP%E6%96%AD%E5%BC%80"><span class="toc-number">80.</span> <span class="toc-text">如何判断TCP断开</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E6%9F%A5%E7%9C%8B%E7%B3%BB%E7%BB%9F%E7%9A%84%E6%9C%80%E5%A4%A7%E8%BF%9B%E7%A8%8B%E6%95%B0%E5%92%8C%E7%BA%BF%E7%A8%8B%E6%95%B0"><span class="toc-number">81.</span> <span class="toc-text">如何查看系统的最大进程数和线程数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#git-rebase%E5%92%8Cgit-merge%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%88https-joyohub-com-2020-04-06-git-rebase-%EF%BC%89"><span class="toc-number">82.</span> <span class="toc-text">git rebase和git merge的区别（https:&#x2F;&#x2F;joyohub.com&#x2F;2020&#x2F;04&#x2F;06&#x2F;git-rebase&#x2F;）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#C-calss-%E5%92%8C-struct%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">83.</span> <span class="toc-text">C++ calss 和 struct的区别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8C%87%E9%92%88%E5%92%8C%E5%BC%95%E7%94%A8%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">84.</span> <span class="toc-text">指针和引用的区别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E6%A8%A1%E6%9D%BF%E7%B1%BB%E7%9A%84%E5%A3%B0%E6%98%8E%E5%92%8C%E5%AE%9E%E7%8E%B0%E4%B8%8D%E8%83%BD%E5%88%86%E5%88%AB%E5%86%99%E5%9C%A8-h%E6%96%87%E4%BB%B6%E5%92%8C-cpp%E6%96%87%E4%BB%B6%E4%B8%AD"><span class="toc-number">85.</span> <span class="toc-text">为什么模板类的声明和实现不能分别写在.h文件和.cpp文件中</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%E4%B8%8E%E9%9D%99%E6%80%81%E9%93%BE%E6%8E%A5"><span class="toc-number">86.</span> <span class="toc-text">动态链接与静态链接</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#pragma-pack%E7%BC%96%E8%AF%91%E5%AE%8F"><span class="toc-number">87.</span> <span class="toc-text">pragma pack编译宏</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#vector%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86"><span class="toc-number">88.</span> <span class="toc-text">vector底层实现原理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%B8%E9%87%8F%E6%8C%87%E9%92%88%E5%92%8C%E6%8C%87%E9%92%88%E5%B8%B8%E9%87%8F"><span class="toc-number">89.</span> <span class="toc-text">常量指针和指针常量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#C-%E4%B8%AD%E4%B8%80%E4%BA%9B%E7%89%B9%E5%88%AB%E7%9A%84%E5%85%B3%E9%94%AE%E5%AD%97%EF%BC%88default%EF%BC%8Coverride%E3%80%81final%E3%80%81volatile%EF%BC%89"><span class="toc-number">90.</span> <span class="toc-text">C++中一些特别的关键字（default，override、final、volatile）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%97%E8%8A%82%E7%AE%97%E6%B3%95%E9%A2%98%EF%BC%9A%E5%B0%8F%E4%BA%8EN%E7%9A%84%E6%9C%80%E5%A4%A7%E6%95%B0"><span class="toc-number">91.</span> <span class="toc-text">字节算法题：小于N的最大数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A6%82%E6%9E%9C%E5%90%8C%E6%97%B6%E6%9C%89%E5%A4%A7%E9%87%8F%E5%AE%A2%E6%88%B7%E5%B9%B6%E5%8F%91%E5%BB%BA%E7%AB%8B%E8%BF%9E%E6%8E%A5%EF%BC%8C%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%AF%E6%9C%89%E4%BB%80%E4%B9%88%E6%9C%BA%E5%88%B6%E8%BF%9B%E8%A1%8C%E5%A4%84%E7%90%86"><span class="toc-number">92.</span> <span class="toc-text">如果同时有大量客户并发建立连接，服务器端有什么机制进行处理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#HTTP%E5%92%8CTCP%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-number">93.</span> <span class="toc-text">HTTP和TCP之间的关系</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#HTTP%E4%BB%8E%E8%AF%B7%E6%B1%82%E5%88%B0%E5%BE%97%E5%88%B0%E7%BB%93%E6%9E%9C%E7%9A%84%E8%BF%87%E7%A8%8B"><span class="toc-number">94.</span> <span class="toc-text">HTTP从请求到得到结果的过程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#https%E5%92%8Chttp%E7%9A%84%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%8Chttps%E5%85%B7%E4%BD%93%E6%98%AF%E6%80%8E%E4%B9%88%E5%81%9A%E7%9A%84"><span class="toc-number">95.</span> <span class="toc-text">https和http的区别是什么，https具体是怎么做的</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#gdb%E4%B8%AD%EF%BC%8C%E5%A6%82%E4%BD%95%E6%9F%A5%E7%9C%8B%E6%AF%8F%E4%B8%AA%E7%BA%BF%E7%A8%8B%E7%9B%B8%E5%85%B3%E7%9A%84%E4%BF%A1%E6%81%AF"><span class="toc-number">96.</span> <span class="toc-text">gdb中，如何查看每个线程相关的信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E4%B8%AD%E8%83%BD%E8%B0%83%E7%94%A8%E8%99%9A%E5%87%BD%E6%95%B0%E5%90%97%EF%BC%8C%E5%A6%82%E6%9E%9C%E8%B0%83%E7%94%A8%E8%99%9A%E5%87%BD%E6%95%B0%EF%BC%8C%E4%BC%9A%E5%87%BA%E7%8E%B0%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98%EF%BC%8C%E5%86%99%E7%A8%8B%E5%BA%8F%E9%AA%8C%E8%AF%81%EF%BC%8C%E5%B9%B6%E4%BB%8E%E5%8E%9F%E7%90%86%E4%B8%8A%E5%88%86%E6%9E%90%E5%8E%9F%E5%9B%A0"><span class="toc-number">97.</span> <span class="toc-text">构造函数中能调用虚函数吗，如果调用虚函数，会出现什么问题，写程序验证，并从原理上分析原因</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%AD%E4%BB%A3%E5%99%A8%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-number">98.</span> <span class="toc-text">迭代器的实现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#epoll%E7%BA%A2%E9%BB%91%E6%A0%91%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-number">99.</span> <span class="toc-text">epoll红黑树的作用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E6%80%81%E5%92%8C%E5%86%85%E6%A0%B8%E6%80%81%E5%88%86%E5%88%AB%E4%BC%9A%E5%81%9A%E4%BB%80%E4%B9%88%EF%BC%8C%E6%80%8E%E4%B9%88%E5%88%87%E6%8D%A2%E7%9A%84"><span class="toc-number">100.</span> <span class="toc-text">用户态和内核态分别会做什么，怎么切换的</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E7%9A%84%E5%88%9B%E5%BB%BA%E9%9C%80%E8%A6%81%E7%B3%BB%E7%BB%9F%E5%88%86%E9%85%8D%E4%BB%80%E4%B9%88%E8%B5%84%E6%BA%90"><span class="toc-number">101.</span> <span class="toc-text">进程的创建需要系统分配什么资源</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#HTTPS%E5%8A%A0%E5%AF%86%E6%96%B9%E5%BC%8F%EF%BC%9A%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86%E3%80%81%E9%9D%9E%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86"><span class="toc-number">102.</span> <span class="toc-text">HTTPS加密方式：对称加密、非对称加密</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E7%9A%84%E4%B8%89%E7%A7%8D%E7%8A%B6%E6%80%81"><span class="toc-number">103.</span> <span class="toc-text">线程的三种状态</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0%E9%87%8C%E8%83%BD%E4%B8%8D%E8%83%BD%E6%8A%9B%E5%BC%82%E5%B8%B8-%E4%B8%BA%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">104.</span> <span class="toc-text">析构函数里能不能抛异常?为什么？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%A4%E4%B8%AA%E7%B1%BB%E9%87%8C%E6%9C%89%E7%9B%B8%E5%90%8C%E7%9A%84%E6%88%90%E5%91%98%EF%BC%8C%E5%8C%BA%E5%88%AB%E5%9C%A8%E4%BA%8E%E4%B8%80%E4%B8%AA%E6%9C%89%E8%99%9A%E5%87%BD%E6%95%B0%EF%BC%8C%E4%B8%80%E4%B8%AA%E6%B2%A1%E6%9C%89%EF%BC%8C%E5%93%AA%E4%B8%AA%E5%86%85%E5%AD%98%E5%A4%A7%EF%BC%9F"><span class="toc-number">105.</span> <span class="toc-text">两个类里有相同的成员，区别在于一个有虚函数，一个没有，哪个内存大？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E6%8A%A5%E5%92%8C%E6%95%B0%E6%8D%AE%E6%B5%81%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="toc-number">106.</span> <span class="toc-text">数据报和数据流的区别？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9C%A8%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E4%B8%AD%EF%BC%8C%E5%A6%82%E6%9E%9C%E6%9F%90%E4%B8%AA%E8%8A%82%E7%82%B9%E5%AE%95%E6%9C%BA%E4%BA%86%E5%92%8B%E5%8A%9E%EF%BC%9F"><span class="toc-number">107.</span> <span class="toc-text">在分布式系统中，如果某个节点宕机了咋办？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%87%AA%E6%97%8B%E9%94%81"><span class="toc-number">108.</span> <span class="toc-text">自旋锁</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E5%90%8C%E6%AD%A5%E7%9A%84%E6%96%B9%E5%BC%8F%E6%9C%89%E5%93%AA%E4%BA%9B"><span class="toc-number">109.</span> <span class="toc-text">线程同步的方式有哪些</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/09/07/Linux%E9%AB%98%E6%80%A7%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%99%A8-%E7%AC%AC%E5%85%AB%E7%AB%A0/" title="Linux高性能服务器-第八章">Linux高性能服务器-第八章</a><time datetime="2023-09-07T01:30:19.000Z" title="Created 2023-09-07 09:30:19">2023-09-07</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/08/29/CMake/" title="CMake">CMake</a><time datetime="2023-08-29T14:34:47.000Z" title="Created 2023-08-29 22:34:47">2023-08-29</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/08/29/MySQL/" title="MySQL">MySQL</a><time datetime="2023-08-29T13:56:11.000Z" title="Created 2023-08-29 21:56:11">2023-08-29</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/08/27/Linux-%E9%AB%98%E6%80%A7%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%99%A8-%E7%AC%AC%E4%BA%94%E7%AB%A0/" title="Linux 高性能服务器--第五章">Linux 高性能服务器--第五章</a><time datetime="2023-08-27T04:45:48.000Z" title="Created 2023-08-27 12:45:48">2023-08-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/08/27/C-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/" title="C++内存管理">C++内存管理</a><time datetime="2023-08-27T03:48:36.000Z" title="Created 2023-08-27 11:48:36">2023-08-27</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By zcl</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/06/28/RPC/" rel="prev" title="RPC">
+                  <i class="fa fa-angle-left"></i> RPC
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2023/07/26/shared-ptr/" rel="next" title="智能指针shared_ptr的实现">
+                  智能指针shared_ptr的实现 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">GGBond</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
