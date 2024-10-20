@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar-16.png">
+  <link rel="mask-icon" href="/images/emoji-smile.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Code:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"zcl0219.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":null,"show_result":true},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="DAY1使用指令创建数据库：CREATE DATABASE zcl_db01; 删除数据库指令：DROP DATABASE zcl_db01; 创建一个使用utf8字符集的zcl_db02数据库：CREATE DATABASE zcl_db02 CHARACTER SET utf8 创建一个使用utf8字符集，并带校对规则的zcl_db03数据库：CREATE DATABASE zcl_db03">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL">
+<meta property="og:url" content="http://zcl0219.github.io/2023/08/29/MySQL/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="DAY1使用指令创建数据库：CREATE DATABASE zcl_db01; 删除数据库指令：DROP DATABASE zcl_db01; 创建一个使用utf8字符集的zcl_db02数据库：CREATE DATABASE zcl_db02 CHARACTER SET utf8 创建一个使用utf8字符集，并带校对规则的zcl_db03数据库：CREATE DATABASE zcl_db03">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-08-29T13:56:11.000Z">
+<meta property="article:modified_time" content="2023-10-09T08:27:20.733Z">
+<meta property="article:author" content="GGBond">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://zcl0219.github.io/2023/08/29/MySQL/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://zcl0219.github.io/2023/08/29/MySQL/","path":"2023/08/29/MySQL/","title":"MySQL"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>MySQL | Hexo</title>
+  
+
+
+
+
+
+
+
+<link href="https://fonts.googleapis.com/css?family=Noto+Serif+SC|Roboto&display=swap" rel="stylesheet">
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Hexo</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="Searching..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#DAY1"><span class="nav-number">1.</span> <span class="nav-text">DAY1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DAY2"><span class="nav-number">2.</span> <span class="nav-text">DAY2</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E8%A1%A8"><span class="nav-number">2.1.</span> <span class="nav-text">创建表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Mysql%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">2.2.</span> <span class="nav-text">Mysql常用数据类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E8%A1%A8%E7%9A%84%E8%AF%BE%E5%A0%82%E7%BB%83%E4%B9%A0"><span class="nav-number">2.3.</span> <span class="nav-text">创建表的课堂练习</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93CRUD%E8%AF%AD%E5%8F%A5"><span class="nav-number">2.4.</span> <span class="nav-text">数据库CRUD语句</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="GGBond"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">GGBond</p>
+  <div class="site-description" itemprop="description">Doing the tough things sets winners apart from losers</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://zcl0219.github.io/2023/08/29/MySQL/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="GGBond">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+      <meta itemprop="description" content="Doing the tough things sets winners apart from losers">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="MySQL | Hexo">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          MySQL
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2023-08-29 21:56:11" itemprop="dateCreated datePublished" datetime="2023-08-29T21:56:11+08:00">2023-08-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2023-10-09 16:27:20" itemprop="dateModified" datetime="2023-10-09T16:27:20+08:00">2023-10-09</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h3 id="DAY1"><a href="#DAY1" class="headerlink" title="DAY1"></a><code>DAY1</code></h3><p>使用指令创建数据库：CREATE DATABASE zcl_db01;</p>
+<p>删除数据库指令：DROP DATABASE zcl_db01;</p>
+<p>创建一个使用utf8字符集的zcl_db02数据库：CREATE DATABASE zcl_db02 CHARACTER SET utf8</p>
+<p>创建一个使用utf8字符集，并带校对规则的zcl_db03数据库：CREATE DATABASE zcl_db03 CHARACTER SET utf8 COLLATE utf8_bin<br>utf8_bin区分大小写，utf8_general_ci不区分大小写</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#查看当前数据库服务器中的所有数据库</span><br><span class="line"><span class="keyword">SHOW</span> DATABASES</span><br><span class="line"></span><br><span class="line">#查看前面创建的zcl_db01数据库的定义信息</span><br><span class="line"><span class="keyword">SHOW</span> <span class="keyword">CREATE</span> DATABASE `zcl_db01`</span><br><span class="line"></span><br><span class="line">#在创建数据库、表的时候，为了规避关键字，可以使用``解决</span><br><span class="line"><span class="keyword">CREATE</span> DATABASE `<span class="keyword">CREATE</span>`</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#备份数据库</span><br><span class="line">mysqldump <span class="operator">-</span>u root <span class="operator">-</span>p <span class="operator">-</span>B zcl_db03 <span class="operator">&gt;</span> e:\\tmp.sql (文件名)</span><br><span class="line"></span><br><span class="line">#恢复数据库</span><br><span class="line">source e:\\tmp.sql</span><br><span class="line"></span><br><span class="line">#备份数据库的表</span><br><span class="line">mysqldump <span class="operator">-</span>u root <span class="operator">-</span>p zcl_db03 t1 t2 (t1和t2是表名) <span class="operator">&gt;</span> e:\\tmp1.sql</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="DAY2"><a href="#DAY2" class="headerlink" title="DAY2"></a><code>DAY2</code></h3><h4 id="创建表"><a href="#创建表" class="headerlink" title="创建表"></a>创建表</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"># 创建表</span><br><span class="line"># create table table_name</span><br><span class="line"># (</span><br><span class="line"># 	filed1 datatype,</span><br><span class="line">#	filed2 datatype,</span><br><span class="line">#	filed3 datatype</span><br><span class="line"># )character set 字符集 collate 校对规则 engine 存储引擎</span><br><span class="line">#  filed：指定列名	   datatype：指定列类型（字段类型）</span><br><span class="line">#  character set：如不指定则为所在数据库字符集</span><br><span class="line">#  collate：如不指定则为所在数据库校对规则</span><br><span class="line"></span><br><span class="line"># 实操</span><br><span class="line">create table `user`(</span><br><span class="line">	id int,</span><br><span class="line">    `name` varchar(255),</span><br><span class="line">    `passward` varchar(255),</span><br><span class="line">    `birthday` date</span><br><span class="line">)character set utf8 collate utf8_general_ci engine innodb; </span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="Mysql常用数据类型"><a href="#Mysql常用数据类型" class="headerlink" title="Mysql常用数据类型"></a>Mysql常用数据类型</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># Mysql列类型就是Mysql的数据类型</span><br><span class="line"># 数值类型：</span><br><span class="line"># 整型：tinyint(1个字节)	smallint(2个字节)	mediumint(3个字节)	int(4个字节)	bigint(8个字节)</span><br><span class="line"># 小数类型：float(单精度 4个字节)	double(双精度 8个字节)	decimal[M,D](大小不确定，M代表长度，D代表小数位数)</span><br><span class="line"></span><br><span class="line"># 文本类型（字符串类型）</span><br><span class="line"># char(0-255)	varchar(0~65535)	text(0~2^16-1)	longtext(0~2^32-1)</span><br><span class="line"></span><br><span class="line"># 二进制数据类型</span><br><span class="line"># blob[0~2^16-1]	longblob[0~2^32-1]</span><br><span class="line"></span><br><span class="line"># 日期类型</span><br><span class="line"># date[日期 年月日] time[时间 时分秒]	datetime[年月日 时分秒 YYYY-MM-DD HH:MM:SS]	timestamp[时间戳]</span><br></pre></td></tr></table></figure>
+
+<p>在满足需求的情况下，尽量选择占用空间小的类型</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE t3(</span><br><span class="line">	id TINYINT</span><br><span class="line">);</span><br><span class="line"># INSERT INTO t3 VALUES(128); 错误：越界了，超过了tinyint范围。 </span><br><span class="line">INSERT INTO t3 VALUES(127);</span><br><span class="line"># 定义无符号的整数 指定unsigned</span><br><span class="line">CREATE TABLE t4(</span><br><span class="line">	id TINYINT UNSIGNED</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># BIT(M), M在1-64。显示按照bit。</span><br><span class="line">CREATE TABLE t5(</span><br><span class="line">	num BIT(8)</span><br><span class="line">);</span><br><span class="line">INSERT INTO t5 VALUES(255);</span><br><span class="line">SELECT * FROM t5;</span><br><span class="line"># 输出：11111111</span><br><span class="line">SELECT * FROM t5 WHERE num = 255;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># DECIMAL[M, D] </span><br><span class="line"># M是小数位数（精度）的总数，D是小数点（标度）后面的位数。</span><br><span class="line"># 如果D是0，则值没有小数点或分数部分，M最大是65，D最大是30。如果D被省略，则默认是0，如果M被省略，默认是10。</span><br><span class="line">CREATE TABLE t6(</span><br><span class="line">	num1 FLOAT,</span><br><span class="line">    num2 DOUBLE,</span><br><span class="line">    num3 DECIMAL(30, 20)</span><br><span class="line">);</span><br><span class="line">INSERT INTO t6 VALUES(88.123456789123456, 88.123456789123456, 88.123456789123456)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># char(4) 这个4表示字符数（最大255），不是字节数，不管是中文还是英文都是放四个，按字符计算，定长，即使你插入&#x27;aa&#x27;，也会占用分配的4个字符的空间</span><br><span class="line"># varchar(4) 这个4表示字符数，是变长，如果你插入&#x27;aa&#x27;，实际占用空间并不是4个字符，而是实际占用的空间。</span><br><span class="line"># utf-8：一个字符占三个字节</span><br><span class="line">CREATE TABLE t11(</span><br><span class="line">	&#x27;name&#x27; CHAR(4)</span><br><span class="line">);</span><br><span class="line"># INSERT INTO t11 VALUES(&#x27;ABCDE&#x27;) 报错，太长</span><br><span class="line">INSERT INTO t11 VALUES(&#x27;ABCD&#x27;)</span><br><span class="line">INSERT INTO t11 VALUES(&#x27;你好&#x27;)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># 日期类型 date datetime timestamp</span><br><span class="line">CREATE TABLE birthday11(</span><br><span class="line">	birthday DATE,</span><br><span class="line">    worktime DATETIME,</span><br><span class="line">    login_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP</span><br><span class="line">);</span><br><span class="line">INSERT INTO bithday11(birthday, worktime) VALUES(&#x27;2022-11-11&#x27;, &#x27;2022-11-11 10:10:10&#x27;);</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="创建表的课堂练习"><a href="#创建表的课堂练习" class="headerlink" title="创建表的课堂练习"></a>创建表的课堂练习</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE &#x27;emp&#x27;(</span><br><span class="line">	id INT,</span><br><span class="line">    &#x27;name&#x27; VARCHAR(32),</span><br><span class="line">    sex CHAR(1),</span><br><span class="line">    birthday DATE,</span><br><span class="line">    entry_date DATETIME,</span><br><span class="line">    job VARCHAR(32),</span><br><span class="line">    saraly DOUBLE,</span><br><span class="line">    &#x27;resume&#x27; TEXT</span><br><span class="line">) CHARSET utf8 COLLATE utf8_bin ENGINE INNODB;</span><br><span class="line">INSERT INTO &#x27;emp&#x27; VALUES(</span><br><span class="line">	100, &#x27;小妖怪&#x27;, &#x27;男&#x27;, &#x27;2000-11-11&#x27;, &#x27;巡山的&#x27;, 3000, &#x27;大王叫我来巡山&#x27;</span><br><span class="line">);</span><br><span class="line">SELECT * FROM &#x27;emp&#x27;;</span><br><span class="line"></span><br><span class="line"># 增加列</span><br><span class="line">ALTER TABLE emp ADD image VARCHAR(32) NOT NULL DEFAULT &#x27;&#x27; AFTER RESUME</span><br><span class="line"></span><br><span class="line"># 显示表结构</span><br><span class="line">DESC emp</span><br><span class="line"></span><br><span class="line"># 修改job长度</span><br><span class="line">ALTER TABLE emp MODIFY job VARCHAR(60) NOT NULL DEFAULT &#x27;&#x27;</span><br><span class="line"></span><br><span class="line"># 删除列</span><br><span class="line">ALTER TABLE emp DROP sex</span><br><span class="line"></span><br><span class="line"># 修改表名</span><br><span class="line">RENAME TABLE emp TO employee</span><br><span class="line"></span><br><span class="line"># 修改表的字符集</span><br><span class="line">ALTER TABLE employee CHARACTER SET utf8</span><br><span class="line"></span><br><span class="line"># 修改列名</span><br><span class="line">ALTER TABLE employee CHANGE &#x27;name&#x27; user_name VARCHAR(64) NOT NULL DEFAULT &#x27;&#x27;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="数据库CRUD语句"><a href="#数据库CRUD语句" class="headerlink" title="数据库CRUD语句"></a>数据库CRUD语句</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"># 使用INSERT语句向表中插入数据</span><br><span class="line">CREATE TABLE &#x27;goods&#x27;(</span><br><span class="line">	id INT,</span><br><span class="line">    goods_name VARCHAR(10),</span><br><span class="line">    price DOUBLE</span><br><span class="line">);</span><br><span class="line">INSERT INTO &#x27;goods&#x27; (id, goods_name, price) VALUES (10, &#x27;华为手机&#x27;, 2000);</span><br><span class="line">INSERT INTO &#x27;goods&#x27; (id, goods_name, price) VALUES (20, &#x27;苹果手机&#x27;, 20000);</span><br><span class="line"></span><br><span class="line"># INSERT语句的细节</span><br><span class="line">-- 插入的数据应与字段的数据类型相同，比如把&#x27;abc&#x27;添加到int类型会错误。</span><br><span class="line">-- 数据的长度应在列的规定范围内，不能将一个长度为80的字符串加入到长度为40的列中。</span><br><span class="line">-- 在VALUES中列出的数据位置必须与被加入的列的排列位置相对应。</span><br><span class="line">-- 字符和日期类型应包含在单引号中</span><br><span class="line">-- 列可以插入空值，前提是该字段允许为空（没有NOT NULL）</span><br><span class="line">-- INSERT INTO TABLE_NAME (列名) VALUES (),(),()，添加多条数据一次性</span><br><span class="line">-- 如果是给表中的所有字段添加数据，(id, goods_name, price)这个可以省略</span><br><span class="line">-- 默认值的使用，当不给某个字段赋值时，如果有默认值就会添加，否则报错。</span><br><span class="line">-- 如果我们希望指定某个列的默认值，可以在创建表时指定。</span><br><span class="line">CREATE TABLE &#x27;goods2&#x27;(</span><br><span class="line">	id INT,</span><br><span class="line">    goods_name VARCHAR(10),</span><br><span class="line">    price DOUBLE NOT NULL DEFAULT 100</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">-- 演示update语句</span><br><span class="line">-- employee是表名，salary是列名</span><br><span class="line">-- 将所有员工薪水修改为5000，如果没有带where条件，会修改所有的记录，因此要小心</span><br><span class="line">UPDATE employee SET salary = 5000 </span><br><span class="line">-- 将姓名为小妖怪的员工薪水修改为3000</span><br><span class="line">UPDATE employee SET salary = 3000 WHERE user_name = &#x27;小妖怪&#x27;</span><br><span class="line">-- 将老妖怪的薪水在原有基础上增加1000</span><br><span class="line">INSERT INTO employee VALUES(200, &#x27;老妖怪&#x27;, &#x27;1990-11-11&#x27;, &#x27;2000-11-11 10:10:10&#x27;, &#x27;捶背的&#x27;, 5000,  &#x27;给大王捶背的&#x27;);</span><br><span class="line">UPDATE employee SET salary = salary + 1000 WHERE user_name = &#x27;老妖怪&#x27;</span><br><span class="line">UPDATE employee SET salary = salary + 1000, job = &#x27;出主意的&#x27; WHERE user_name = &#x27;老妖怪&#x27;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">-- 演示delete语句</span><br><span class="line">-- 删除表中名称为‘老妖怪’的记录</span><br><span class="line">DELETE FROM employee WHERE user_name = &#x27;老妖怪&#x27;;</span><br><span class="line">-- 删除表中所有记录</span><br><span class="line">DELETE FROM employee</span><br><span class="line">-- DELETE删除不了一列的值，但可以使用UPDATE语句置为null</span><br><span class="line">UPDATE employee SET job = NULL WHERE user_name = &#x27;老妖怪&#x27;;</span><br><span class="line">-- 要删除这个表</span><br><span class="line">DROP TABLE employee</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line">-- select指定查询哪些列的数据</span><br><span class="line">-- *代表查询所有列</span><br><span class="line">-- from指定查询哪张表</span><br><span class="line">-- DISTINCT可选，指显示结果时，是否去掉重复数据</span><br><span class="line">CREATE TABLE student(</span><br><span class="line">	id INT NOT NULL DEFAULT 1,</span><br><span class="line">    NAME VARCHAR(20) NOT NULL DEFAULT &#x27;&#x27;,</span><br><span class="line">    chinese FLOAT NOT NULL DEFAULT 0.0,</span><br><span class="line">    english FLOAT NOT NULL DEFAULT 0.0,</span><br><span class="line">    math FLOAT NOT NULL DEFAULT 0.0</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">INSERT INTO student(id, NAME, chinese, english, math) VALUES(1, &#x27;韩顺平&#x27;, 89, 78, 90);</span><br><span class="line">INSERT INTO student(id, NAME, chinese, english, math) VALUES(2, &#x27;张飞&#x27;, 67, 98, 56);</span><br><span class="line">INSERT INTO student(id, NAME, chinese, english, math) VALUES(3, &#x27;宋江&#x27;, 87, 78, 77);</span><br><span class="line">INSERT INTO student(id, NAME, chinese, english, math) VALUES(4, &#x27;关羽&#x27;, 88, 98, 90);</span><br><span class="line">INSERT INTO student(id, NAME, chinese, english, math) VALUES(5, &#x27;赵云&#x27;, 82, 84, 67);</span><br><span class="line">INSERT INTO student(id, NAME, chinese, english, math) VALUES(6, &#x27;欧阳锋&#x27;, 55, 85, 45);</span><br><span class="line">INSERT INTO student(id, NAME, chinese, english, math) VALUES(7, &#x27;黄蓉&#x27;, 75, 65, 30);</span><br><span class="line"></span><br><span class="line">SELECT * FROM student;</span><br><span class="line"></span><br><span class="line">-- 查寻表中所有学生的信息</span><br><span class="line">SELECT * FROM student;</span><br><span class="line"></span><br><span class="line">-- 查询表中所有学生的姓名和对应的英语成绩</span><br><span class="line">SELECT &#x27;NAME&#x27;, english FROM student;</span><br><span class="line"></span><br><span class="line">-- 过滤表中重复数据distinct</span><br><span class="line">-- 要查询的记录每个字段都相同，才会去重</span><br><span class="line">SELECT DISTINCT english FROM student;</span><br><span class="line"></span><br><span class="line">-- 统计每个学生的总分</span><br><span class="line">SELECT &#x27;NAME&#x27;, (chinese + english + math) FROM student;</span><br><span class="line"></span><br><span class="line">-- 在所有学生总分加10分</span><br><span class="line">SELECT &#x27;NAME&#x27;, (chinese + english + math + 10) FROM student;</span><br><span class="line"></span><br><span class="line">-- 使用别名表示学生分数</span><br><span class="line">SELECT &#x27;NAME&#x27;, (chinese + english + math + 10) AS total_score FROM student;</span><br><span class="line">SELECT &#x27;NAME&#x27; AS &#x27;名字&#x27;, (chinese + english + math + 10) AS total_score FROM student;</span><br><span class="line"></span><br><span class="line">-- 查询姓名为赵云的学生成绩</span><br><span class="line">SELECT * FROM student WHERE &#x27;NAME&#x27; = &#x27;赵云&#x27;;</span><br><span class="line"></span><br><span class="line">-- 查询英语成绩大于90分的同学</span><br><span class="line">SELECT * FROM student WHERE english &gt; 90;</span><br><span class="line"></span><br><span class="line">-- 查询总分大于200分的所有同学</span><br><span class="line">SELECT * FROM student WHERE (chinese + english + math) &gt; 200;</span><br><span class="line"></span><br><span class="line">-- 查询math大于60并且id大于4的学生成绩</span><br><span class="line">SELECT * FROM student WHERE math &gt; 60 AND id &gt; 4;</span><br><span class="line"></span><br><span class="line">-- 查询英语成绩大于语文成绩的同学</span><br><span class="line">SELECT * FROM student WHERE english &gt; chinese;</span><br><span class="line"></span><br><span class="line">-- 查询总分大于200分并且数学成绩小于语文成绩的姓韩的学生</span><br><span class="line">-- 韩% 表示名字以韩开头的就可以</span><br><span class="line">SELECT * FROM student WHERE (chinese + english + math) &gt; 200 AND </span><br><span class="line">						  math &lt; chinese AND &#x27;NAME&#x27; LIKE &#x27;韩%&#x27;;</span><br><span class="line">						  </span><br><span class="line">-- 查询英语分数在80-90之间的同学</span><br><span class="line">SELECT * FROM student WHERE english &gt;= 80 AND english &lt;= 90;</span><br><span class="line">SELECT * FROM student WHERE english BETWWWN 80 AND 90; -- BETWEEN AND 是闭区间</span><br><span class="line"></span><br><span class="line">-- 查询数学分数为89，90，91的同学</span><br><span class="line">SELECT * FROM student WHERE math = 89 OR math = 90 OR math = 91;</span><br><span class="line">SELECT * FROM student WHERE math IN (89, 90, 91);</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/08/27/Linux-%E9%AB%98%E6%80%A7%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%99%A8-%E7%AC%AC%E4%BA%94%E7%AB%A0/" rel="prev" title="Linux 高性能服务器--第五章">
+                  <i class="fa fa-angle-left"></i> Linux 高性能服务器--第五章
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2023/08/29/CMake/" rel="next" title="CMake">
+                  CMake <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">GGBond</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
