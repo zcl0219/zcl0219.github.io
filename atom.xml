@@ -6,7 +6,7 @@
   <link href="http://zcl0219.github.io/atom.xml" rel="self"/>
   
   <link href="http://zcl0219.github.io/"/>
-  <updated>2024-10-22T16:00:06.402Z</updated>
+  <updated>2024-10-22T16:07:34.243Z</updated>
   <id>http://zcl0219.github.io/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="http://zcl0219.github.io/2024/10/22/DiaDSP/"/>
     <id>http://zcl0219.github.io/2024/10/22/DiaDSP/</id>
     <published>2024-10-22T13:38:57.000Z</published>
-    <updated>2024-10-22T16:00:06.402Z</updated>
+    <updated>2024-10-22T16:07:34.243Z</updated>
     
-    <content type="html"><![CDATA[<p>Differentially Private Distributed Optimization via State and Direction Perturbation in Multiagent Systems</p><span id="more"></span><p>Introduction</p><p>Problem Formulation</p><p>DiaDSP Algorithm</p><p>B. Development of DiaDSP</p><p>We employ the combine-then-adapt strategy for each agent $i$, which is expressed as <script type="math/tex">x_{i}(k+1) = \sum_{j=1}^{n} a_{ij} x_{j}(k) - \alpha_{i} y_{i}(k).</script></p><p>Convergence Analysis of DiaDSP</p><p>Differential Privacy</p><p>Simulations</p><p>Conclusion</p>]]></content>
+    <content type="html"><![CDATA[<p>Differentially Private Distributed Optimization via State and Direction Perturbation in Multiagent Systems</p><span id="more"></span><p>Introduction</p><p>Problem Formulation</p><p>DiaDSP Algorithm</p><p>B. Development of DiaDSP</p><p>We employ the combine-then-adapt strategy for each agent $i$, which is expressed as </p><script type="math/tex; mode=display">x_{i}(k+1) = \sum_{j=1}^{n} a_{ij} x_{j}(k) - \alpha_{i} y_{i}(k).</script><p>Convergence Analysis of DiaDSP</p><p>Differential Privacy</p><p>Simulations</p><p>Conclusion</p>]]></content>
     
     
     <summary type="html">&lt;p&gt;Differentially Private Distributed Optimization via State and Direction Perturbation in Multiagent Systems&lt;/p&gt;</summary>
