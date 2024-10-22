@@ -6,7 +6,7 @@
   <link href="http://zcl0219.github.io/atom.xml" rel="self"/>
   
   <link href="http://zcl0219.github.io/"/>
-  <updated>2024-10-22T14:00:40.513Z</updated>
+  <updated>2024-10-22T15:39:03.072Z</updated>
   <id>http://zcl0219.github.io/</id>
   
   <author>
@@ -21,15 +21,12 @@
     <link href="http://zcl0219.github.io/2024/10/22/DiaDSP/"/>
     <id>http://zcl0219.github.io/2024/10/22/DiaDSP/</id>
     <published>2024-10-22T13:38:57.000Z</published>
-    <updated>2024-10-22T14:00:40.513Z</updated>
+    <updated>2024-10-22T15:39:03.072Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="Differentially-Private-Distributed-Optimization-via-State-and-Direction-Perturbation-in-Multiagent-Systems"><a href="#Differentially-Private-Distributed-Optimization-via-State-and-Direction-Perturbation-in-Multiagent-Systems" class="headerlink" title="Differentially Private Distributed Optimization via State and Direction Perturbation in Multiagent Systems"></a>Differentially Private Distributed Optimization via State and Direction Perturbation in Multiagent Systems</h1><h2 id="amp-8544-Introduction"><a href="#amp-8544-Introduction" class="headerlink" title="&amp;#8544;. Introduction"></a>&amp;#8544;. Introduction</h2><h2 id="amp-8544-amp-8544-Problem-Formulation"><a href="#amp-8544-amp-8544-Problem-Formulation" class="headerlink" title="&amp;#8544;&amp;#8544;. Problem Formulation"></a>&amp;#8544;&amp;#8544;. Problem Formulation</h2><h2 id="amp-8544-amp-8544-amp-8544-DiaDSP-Algorithm"><a href="#amp-8544-amp-8544-amp-8544-DiaDSP-Algorithm" class="headerlink" title="&amp;#8544;&amp;#8544;&amp;#8544;. DiaDSP Algorithm"></a>&amp;#8544;&amp;#8544;&amp;#8544;. DiaDSP Algorithm</h2><h3 id="B-Development-of-DiaDSP"><a href="#B-Development-of-DiaDSP" class="headerlink" title="B. Development of DiaDSP"></a>B. Development of DiaDSP</h3><p>We employ the combine-then-adapt strategy for each agent $i$,</p><h2 id="amp-8544-amp-x2164-Convergence-Analysis-of-DiaDSP"><a href="#amp-8544-amp-x2164-Convergence-Analysis-of-DiaDSP" class="headerlink" title="&amp;#8544;&amp;#x2164;.  Convergence Analysis of DiaDSP"></a>&amp;#8544;&amp;#x2164;.  Convergence Analysis of DiaDSP</h2><h2 id="amp-x2164-Differential-Privacy"><a href="#amp-x2164-Differential-Privacy" class="headerlink" title="&amp;#x2164;. Differential Privacy"></a>&amp;#x2164;. Differential Privacy</h2><h2 id="amp-x2164-amp-8544-Simulations"><a href="#amp-x2164-amp-8544-Simulations" class="headerlink" title="&amp;#x2164;&amp;#8544;. Simulations"></a>&amp;#x2164;&amp;#8544;. Simulations</h2><h2 id="amp-x2164-amp-8544-amp-8544-Conclusion"><a href="#amp-x2164-amp-8544-amp-8544-Conclusion" class="headerlink" title="&amp;#x2164;&amp;#8544;&amp;#8544;. Conclusion"></a>&amp;#x2164;&amp;#8544;&amp;#8544;. Conclusion</h2>]]></content>
+    <content type="html"><![CDATA[<p>Differentially Private Distributed Optimization via State and Direction Perturbation in Multiagent Systems</p><span id="more"></span><p>Introduction</p><p>Problem Formulation</p><p>DiaDSP Algorithm</p><p>B. Development of DiaDSP</p><p>We employ the combine-then-adapt strategy for each agent $i$, which is expressed as</p><p>Convergence Analysis of DiaDSP</p><p>Differential Privacy</p><p>Simulations</p><p>Conclusion</p>]]></content>
     
     
-      
-      
-    <summary type="html">&lt;h1 id=&quot;Differentially-Private-Distributed-Optimization-via-State-and-Direction-Perturbation-in-Multiagent-Systems&quot;&gt;&lt;a href=&quot;#Differentially</summary>
-      
+    <summary type="html">&lt;p&gt;Differentially Private Distributed Optimization via State and Direction Perturbation in Multiagent Systems&lt;/p&gt;</summary>
     
     
     
