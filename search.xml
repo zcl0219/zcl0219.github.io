@@ -2376,7 +2376,7 @@
 <p>Problem Formulation</p>
 <p>DiaDSP Algorithm</p>
 <p>B. Development of DiaDSP</p>
-<p>We employ the combine-then-adapt strategy for each agent $i$, which is expressed as</p>
+<p>We employ the combine-then-adapt strategy for each agent $i$, which is expressed as <script type="math/tex">x_{i}(k+1) = \sum_{j=1}^{n} a_{ij} x_{j}(k) - \alpha_{i} y_{i}(k).</script></p>
 <p>Convergence Analysis of DiaDSP</p>
 <p>Differential Privacy</p>
 <p>Simulations</p>
