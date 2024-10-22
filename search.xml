@@ -1928,6 +1928,9 @@
 
 <p>在以上各种情况下，都可能发生拷贝初始化。然而，需要注意的是，编译器通常会尽可能地优化这些拷贝操作，以提高程序的性能。</p>
 ]]></content>
+      <categories>
+        <category>C++</category>
+      </categories>
       <tags>
         <tag>构造函数</tag>
         <tag>拷贝构造函数</tag>
