@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://zcl0219.github.io/2024/10/22/DiaDSP/</loc>
+    
+    <lastmod>2024-10-22</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://zcl0219.github.io/2023/04/22/%E7%AC%AC%E4%BA%8C%E7%AF%87%E5%8D%9A%E5%AE%A2/</loc>
     
     <lastmod>2024-10-22</lastmod>
@@ -341,10 +350,24 @@
     <priority>0.2</priority>
   </url>
   
+  <url>
+    <loc>http://zcl0219.github.io/tags/Distributed-Optimization-Algorithm/</loc>
+    <lastmod>2024-10-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
 
   
   <url>
     <loc>http://zcl0219.github.io/categories/C/</loc>
+    <lastmod>2024-10-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://zcl0219.github.io/categories/Scholarly-Reads/</loc>
     <lastmod>2024-10-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

@@ -2367,4 +2367,16 @@
     <url>/2023/10/07/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</url>
     <content><![CDATA[]]></content>
   </entry>
+  <entry>
+    <title>DiaDSP</title>
+    <url>/2024/10/22/DiaDSP/</url>
+    <content><![CDATA[<h1 id="Differentially-Private-Distributed-Optimization-via-State-and-Direction-Perturbation-in-Multiagent-Systems"><a href="#Differentially-Private-Distributed-Optimization-via-State-and-Direction-Perturbation-in-Multiagent-Systems" class="headerlink" title="Differentially Private Distributed Optimization via State and Direction Perturbation in Multiagent Systems"></a>Differentially Private Distributed Optimization via State and Direction Perturbation in Multiagent Systems</h1><h2 id="amp-8544-Introduction"><a href="#amp-8544-Introduction" class="headerlink" title="&amp;#8544;. Introduction"></a>&amp;#8544;. Introduction</h2><h2 id="amp-8544-amp-8544-Problem-Formulation"><a href="#amp-8544-amp-8544-Problem-Formulation" class="headerlink" title="&amp;#8544;&amp;#8544;. Problem Formulation"></a>&amp;#8544;&amp;#8544;. Problem Formulation</h2><h2 id="amp-8544-amp-8544-amp-8544-DiaDSP-Algorithm"><a href="#amp-8544-amp-8544-amp-8544-DiaDSP-Algorithm" class="headerlink" title="&amp;#8544;&amp;#8544;&amp;#8544;. DiaDSP Algorithm"></a>&amp;#8544;&amp;#8544;&amp;#8544;. DiaDSP Algorithm</h2><h3 id="B-Development-of-DiaDSP"><a href="#B-Development-of-DiaDSP" class="headerlink" title="B. Development of DiaDSP"></a>B. Development of DiaDSP</h3><p>We employ the combine-then-adapt strategy for each agent $i$,</p>
+<h2 id="amp-8544-amp-x2164-Convergence-Analysis-of-DiaDSP"><a href="#amp-8544-amp-x2164-Convergence-Analysis-of-DiaDSP" class="headerlink" title="&amp;#8544;&amp;#x2164;.  Convergence Analysis of DiaDSP"></a>&amp;#8544;&amp;#x2164;.  Convergence Analysis of DiaDSP</h2><h2 id="amp-x2164-Differential-Privacy"><a href="#amp-x2164-Differential-Privacy" class="headerlink" title="&amp;#x2164;. Differential Privacy"></a>&amp;#x2164;. Differential Privacy</h2><h2 id="amp-x2164-amp-8544-Simulations"><a href="#amp-x2164-amp-8544-Simulations" class="headerlink" title="&amp;#x2164;&amp;#8544;. Simulations"></a>&amp;#x2164;&amp;#8544;. Simulations</h2><h2 id="amp-x2164-amp-8544-amp-8544-Conclusion"><a href="#amp-x2164-amp-8544-amp-8544-Conclusion" class="headerlink" title="&amp;#x2164;&amp;#8544;&amp;#8544;. Conclusion"></a>&amp;#x2164;&amp;#8544;&amp;#8544;. Conclusion</h2>]]></content>
+      <categories>
+        <category>Scholarly Reads</category>
+      </categories>
+      <tags>
+        <tag>Distributed Optimization Algorithm</tag>
+      </tags>
+  </entry>
 </search>
