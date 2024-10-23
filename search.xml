@@ -2376,8 +2376,8 @@
 <p>Problem Formulation</p>
 <p>DiaDSP Algorithm</p>
 <p>B. Development of DiaDSP</p>
-<p>We employ the combine-then-adapt strategy for each agent $i$, which is expressed as </p>
-<script type="math/tex; mode=display">x_{i}(k+1) = \sum_{j=1}^{n} a_{ij} x_{j}(k) - \alpha_{i} y_{i}(k).</script><p>Convergence Analysis of DiaDSP</p>
+<p>We employ the combine-then-adapt strategy for each agent $i$, which is expressed as $$x_{i}(k+1) = \sum_{j=1}^{n} a_{ij} x_{j}(k) - \alpha_{i} y_{i}(k).$$ This formula is analogous to the parameter update mechanism in neural networks. $x_i(k)$ can be considered as the transition between different states. $y_i(k)$  is regarded as the gradient of the cost function. Therefore, $y_i(k)$ is supposed to have the same direction as $\sum_{i=1}^{n} \nabla f_i(x_i(k)).$ One advantage of adopting the GT method is that the iterations $$x_{i}(k+1) = \sum_{j=1}^{n} a_{ij} x_{j}(k) - \alpha_{i} y_{i}(k).$$ and $$y_i(k+1) = \sum_{j=1}^{n} a_{ij} y_j(k) + \nabla f_i(x_i(k+1)) - \nabla f_i(x_i(k)).$$ share the same network and we do not need to generate another network for the GT iteration. The reason is that they have the same input dimension and both update around the gradient of the cost function with respect to $f_i(x_i(k))$.</p>
+<p>Convergence Analysis of DiaDSP</p>
 <p>Differential Privacy</p>
 <p>Simulations</p>
 <p>Conclusion</p>
