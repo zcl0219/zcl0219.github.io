@@ -27,7 +27,7 @@
 <meta property="og:description" content="Differentially Private Distributed Optimization via State and Direction Perturbation in Multiagent Systems">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-10-22T13:38:57.000Z">
-<meta property="article:modified_time" content="2024-10-24T16:13:10.078Z">
+<meta property="article:modified_time" content="2024-10-24T19:27:33.859Z">
 <meta property="article:author" content="GGBond">
 <meta property="article:tag" content="Distributed Optimization Algorithm">
 <meta name="twitter:card" content="summary">
@@ -145,7 +145,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Differentially-Private-Distributed-Optimization-via-State-and-Direction-Perturbation-in-Multiagent-Systems"><span class="nav-number">1.</span> <span class="nav-text">Differentially Private Distributed Optimization via State and Direction Perturbation in Multiagent Systems</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Prerequisite-Knowledge"><span class="nav-number">1.1.</span> <span class="nav-text">Prerequisite Knowledge</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Abstract"><span class="nav-number">1.2.</span> <span class="nav-text">Abstract</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Differentially-Private-Distributed-Optimization-via-State-and-Direction-Perturbation-in-Multiagent-Systems"><span class="nav-number">1.</span> <span class="nav-text">Differentially Private Distributed Optimization via State and Direction Perturbation in Multiagent Systems</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Source"><span class="nav-number">1.1.</span> <span class="nav-text">Source</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Prerequisite-Knowledge"><span class="nav-number">1.2.</span> <span class="nav-text">Prerequisite Knowledge</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Abstract"><span class="nav-number">1.3.</span> <span class="nav-text">Abstract</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Introduction"><span class="nav-number">1.4.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Problem-Formulation"><span class="nav-number">1.5.</span> <span class="nav-text">Problem Formulation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DiaDSP-Algorithm"><span class="nav-number">1.6.</span> <span class="nav-text">DiaDSP Algorithm</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -234,7 +234,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-10-25 00:13:10" itemprop="dateModified" datetime="2024-10-25T00:13:10+08:00">2024-10-25</time>
+      <time title="Modified: 2024-10-25 03:27:33" itemprop="dateModified" datetime="2024-10-25T03:27:33+08:00">2024-10-25</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -256,14 +256,18 @@
     
     
     <div class="post-body" itemprop="articleBody"><h3 id="Differentially-Private-Distributed-Optimization-via-State-and-Direction-Perturbation-in-Multiagent-Systems"><a href="#Differentially-Private-Distributed-Optimization-via-State-and-Direction-Perturbation-in-Multiagent-Systems" class="headerlink" title="Differentially Private Distributed Optimization via State and Direction Perturbation in Multiagent Systems"></a>Differentially Private Distributed Optimization via State and Direction Perturbation in Multiagent Systems</h3><span id="more"></span>
+<h4 id="Source"><a href="#Source" class="headerlink" title="Source"></a>Source</h4><p><a target="_blank" rel="noopener" href="https://differential-privacy.cn/">Differential privacy</a> <i class="fa fa-external-link"></i></p>
 <h4 id="Prerequisite-Knowledge"><a href="#Prerequisite-Knowledge" class="headerlink" title="Prerequisite Knowledge"></a>Prerequisite Knowledge</h4><p>What is state perturbation ?</p>
 <ul>
 <li>State perturbation refers to the intentional modification of an agent’s current state by introducing randomness or noise.</li>
 </ul>
 <p>What is differential privacy ?</p>
 <ul>
-<li>Differential privacy is a formal framework designed to ensure the privacy of individual’s data. Achieving differential privacy requires that any change in the statistics of the messages.</li>
+<li>Differential privacy is a formal framework designed to ensure the privacy of individual’s data. <a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1401.2596">Achieving differential privacy requires that any change in the statistics of the messages</a>.<i class="fa fa-external-link"></i></li>
 </ul>
+<p>What is direction perturbation ?</p>
+<p>What is differential privacy ?</p>
+<p>In simple terms, Laplace noise refers to a random variable that follows a Laplace distribution. The probability density function of Laplace noise is represented as follows:<br>$$f(x \mid \mu, b) = \frac{1}{2b} e^{-\frac{|x-\mu|}{b}}.$$<br>Now, let us introduce the concept of $\epsilon$-differential privacy. Consider a mapping network $\mathbf{A}$ and two sibling datasets $\mathbf{D}$ and $\mathbf{D^{\prime}}$. Note that $\mathbf{D}$ and $\mathbf{D’}$ differ by at most one data point. The mathematical condition for the mapping network $\mathbf{A}$ to satisfy $\epsilon$-differential privacy is as follows<br>$$\operatorname{Pr}\left[A(\mathbf{D})=O\right] \leq e^{\varepsilon} \operatorname{Pr}\left[A\left(\mathbf{D^{\prime}}\right)=O\right].$$<br>The proof is provided here: <a target="_blank" rel="noopener" href="https://blog.csdn.net/A13526_/article/details/121300367">$\epsilon$-differential privacy proof</a>.<i class="fa fa-external-link"></i></p>
 <p>$x \in \mathbb{R}^u$ represents local observation.</p>
 <p>$\mathbf{x} \in \mathbb{R}^{n \times u},$ The rows of $\mathbf{x}$ represent the local observation of each agent $i$.</p>
 <p>$\min \sum_{i=1}^{n} f_{i}(x_{i})$ represents the objective function, associated with four properties as below</p>
@@ -274,10 +278,7 @@
 <li></li>
 </ol>
 <h4 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h4><p>The article focuses on the distributed optimization problem in multi-agent system, where the objective is to minimize the sum of cost functions. It demonstrates that achieving both convergence and differential privacy is impossible through state perturbation in existing algorithms. The authors propose a new algorithm called DiaDSP, which utilizes both state and direction perturbations with decaying Laplace noise to ensure differential privacy. Unlike many prior methods that require diminishing step sizes for convergence, DiaDSP converges in mean and almost surely with a constant step size. The authors establish conditions for linear convergence under strong convexity of the cost functions and R-linear convergence with Lipschitz gradients. The authors also analyze the trade-off between privacy and convergence accuracy and validate their findings through simulations in a sensor fusion context.</p>
-<p>Introduction</p>
-<p>Problem Formulation</p>
-<p>DiaDSP Algorithm</p>
-<p>B. Development of DiaDSP</p>
+<h4 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h4><h4 id="Problem-Formulation"><a href="#Problem-Formulation" class="headerlink" title="Problem Formulation"></a>Problem Formulation</h4><h4 id="DiaDSP-Algorithm"><a href="#DiaDSP-Algorithm" class="headerlink" title="DiaDSP Algorithm"></a>DiaDSP Algorithm</h4><p>B. Development of DiaDSP</p>
 <p>We employ the combine-then-adapt strategy for each agent $i$, which is expressed as $$x_{i}(k+1) = \sum_{j=1}^{n} a_{ij} x_{j}(k) - \alpha_{i} y_{i}(k).$$ This formula is analogous to the parameter update mechanism in neural networks. $x_i(k)$ can be considered as the transition between different states. $y_i(k)$  is regarded as the gradient of the cost function. Therefore, $y_i(k)$ is supposed to have the same direction as $\sum_{i=1}^{n} \nabla f_i(x_i(k)).$ One advantage of adopting the GT method is that the iterations $$x_{i}(k+1) = \sum_{j=1}^{n} a_{ij} x_{j}(k) - \alpha_{i} y_{i}(k).$$ and $$y_i(k+1) = \sum_{j=1}^{n} a_{ij} y_j(k) + \nabla f_i(x_i(k+1)) - \nabla f_i(x_i(k)).$$ share the same network and we do not need to generate another network for the GT iteration. The reason is that they have the same input dimension and both update around the gradient of the cost function with respect to $f_i(x_i(k))$.</p>
 <p>Convergence Analysis of DiaDSP</p>
 <p>This section mainly include three key points:</p>
@@ -294,6 +295,27 @@
 <li>What is R-linear convergence ?</li>
 </ol>
 
+    <style>
+    #refplus, #refplus li{ 
+        padding:0;
+        margin:0;
+        list-style:none;
+    }；
+    </style>
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
+    <script>
+    document.querySelectorAll(".refplus-num").forEach((ref) => {
+        let refid = ref.firstChild.href.replace(location.origin+location.pathname,'');
+        let refel = document.querySelector(refid);
+        let refnum = refel.dataset.num;
+        let ref_content = refel.innerText.replace(`[${refnum}]`,'');
+        tippy(ref, {
+            content: ref_content,
+        });
+    });
+    </script>
+    
     </div>
 
     
