@@ -2370,17 +2370,35 @@
   <entry>
     <title>DiaDSP</title>
     <url>/2024/10/22/DiaDSP/</url>
-    <content><![CDATA[<p>Differentially Private Distributed Optimization via State and Direction Perturbation in Multiagent Systems</p>
-<span id="more"></span>
+    <content><![CDATA[<h3 id="Differentially-Private-Distributed-Optimization-via-State-and-Direction-Perturbation-in-Multiagent-Systems"><a href="#Differentially-Private-Distributed-Optimization-via-State-and-Direction-Perturbation-in-Multiagent-Systems" class="headerlink" title="Differentially Private Distributed Optimization via State and Direction Perturbation in Multiagent Systems"></a>Differentially Private Distributed Optimization via State and Direction Perturbation in Multiagent Systems</h3><span id="more"></span>
+<h4 id="Prerequisite-Knowledge"><a href="#Prerequisite-Knowledge" class="headerlink" title="Prerequisite Knowledge"></a>Prerequisite Knowledge</h4><p>$x \in \mathbb{R}^u$ represents local observation.</p>
+<p>$\mathbf{x} \in \mathbb{R}^{n \times u},$ The rows of $\mathbf{x}$ represent the local observation of each agent $i$.</p>
+<p>$\min \sum_{i=1}^{n} f_{i}(x_{i})$ represents the objective function, associated with four properties as below</p>
+<ol>
+<li><p>$\textit{Existence}$ : </p>
+<p>$$\mathbf{x}^{*}= \mathbf{1} \left( x^{*} \right)^{T} \text{ and } \sum_{i=1}^{n} \nabla f_{i} \left( x^{*} \right) = 0.$$</p>
+</li>
+<li></li>
+</ol>
 <p>Introduction</p>
 <p>Problem Formulation</p>
 <p>DiaDSP Algorithm</p>
 <p>B. Development of DiaDSP</p>
 <p>We employ the combine-then-adapt strategy for each agent $i$, which is expressed as $$x_{i}(k+1) = \sum_{j=1}^{n} a_{ij} x_{j}(k) - \alpha_{i} y_{i}(k).$$ This formula is analogous to the parameter update mechanism in neural networks. $x_i(k)$ can be considered as the transition between different states. $y_i(k)$  is regarded as the gradient of the cost function. Therefore, $y_i(k)$ is supposed to have the same direction as $\sum_{i=1}^{n} \nabla f_i(x_i(k)).$ One advantage of adopting the GT method is that the iterations $$x_{i}(k+1) = \sum_{j=1}^{n} a_{ij} x_{j}(k) - \alpha_{i} y_{i}(k).$$ and $$y_i(k+1) = \sum_{j=1}^{n} a_{ij} y_j(k) + \nabla f_i(x_i(k+1)) - \nabla f_i(x_i(k)).$$ share the same network and we do not need to generate another network for the GT iteration. The reason is that they have the same input dimension and both update around the gradient of the cost function with respect to $f_i(x_i(k))$.</p>
 <p>Convergence Analysis of DiaDSP</p>
+<p>This section mainly include three key points:</p>
+<ol>
+<li>Analyze the convergence of DiaDSP</li>
+<li>Prove the R-linear convergence of DiaDSP</li>
+<li>Determine the optimal step size</li>
+</ol>
 <p>Differential Privacy</p>
 <p>Simulations</p>
 <p>Conclusion</p>
+<p>Questions and Insights</p>
+<ol>
+<li>What is R-linear convergence ?</li>
+</ol>
 ]]></content>
       <categories>
         <category>Scholarly Reads</category>
