@@ -2371,7 +2371,15 @@
     <title>DiaDSP</title>
     <url>/2024/10/22/DiaDSP/</url>
     <content><![CDATA[<h3 id="Differentially-Private-Distributed-Optimization-via-State-and-Direction-Perturbation-in-Multiagent-Systems"><a href="#Differentially-Private-Distributed-Optimization-via-State-and-Direction-Perturbation-in-Multiagent-Systems" class="headerlink" title="Differentially Private Distributed Optimization via State and Direction Perturbation in Multiagent Systems"></a>Differentially Private Distributed Optimization via State and Direction Perturbation in Multiagent Systems</h3><span id="more"></span>
-<h4 id="Prerequisite-Knowledge"><a href="#Prerequisite-Knowledge" class="headerlink" title="Prerequisite Knowledge"></a>Prerequisite Knowledge</h4><p>$x \in \mathbb{R}^u$ represents local observation.</p>
+<h4 id="Prerequisite-Knowledge"><a href="#Prerequisite-Knowledge" class="headerlink" title="Prerequisite Knowledge"></a>Prerequisite Knowledge</h4><p>What is state perturbation ?</p>
+<ul>
+<li>State perturbation refers to the intentional modification of an agent’s current state by introducing randomness or noise.</li>
+</ul>
+<p>What is differential privacy ?</p>
+<ul>
+<li>Differential privacy is a formal framework designed to ensure the privacy of individual’s data. Achieving differential privacy requires that any change in the statistics of the messages.</li>
+</ul>
+<p>$x \in \mathbb{R}^u$ represents local observation.</p>
 <p>$\mathbf{x} \in \mathbb{R}^{n \times u},$ The rows of $\mathbf{x}$ represent the local observation of each agent $i$.</p>
 <p>$\min \sum_{i=1}^{n} f_{i}(x_{i})$ represents the objective function, associated with four properties as below</p>
 <ol>
@@ -2380,6 +2388,7 @@
 </li>
 <li></li>
 </ol>
+<h4 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h4><p>The article focuses on the distributed optimization problem in multi-agent system, where the objective is to minimize the sum of cost functions. It demonstrates that achieving both convergence and differential privacy is impossible through state perturbation in existing algorithms. The authors propose a new algorithm called DiaDSP, which utilizes both state and direction perturbations with decaying Laplace noise to ensure differential privacy. Unlike many prior methods that require diminishing step sizes for convergence, DiaDSP converges in mean and almost surely with a constant step size. The authors establish conditions for linear convergence under strong convexity of the cost functions and R-linear convergence with Lipschitz gradients. The authors also analyze the trade-off between privacy and convergence accuracy and validate their findings through simulations in a sensor fusion context.</p>
 <p>Introduction</p>
 <p>Problem Formulation</p>
 <p>DiaDSP Algorithm</p>
