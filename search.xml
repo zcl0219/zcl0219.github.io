@@ -2408,11 +2408,10 @@
 <h4 id="DiaDSP-Algorithm"><a href="#DiaDSP-Algorithm" class="headerlink" title="DiaDSP Algorithm"></a>DiaDSP Algorithm</h4><p>A. Motivation: An Impossibility Result</p>
 <p>Summary: The result shows that the convergence and differential privacy cannot be guaranteed simultaneously for any global exact DO algorithm.</p>
 <p>Proof of Proposition 1 (convergence ($\surd$))</p>
-<p>$\mathbf{x}^{(l)}(k) \rightarrow$ the convergence point by $\mathbf{x}_{l}^{\infty}$. Hence, there is $\delta^{<em>} &gt; 0$, satisfying $\big| g(\mathbf{x}_{1}^{</em>}, \mathbf{0}) - g(\mathbf{x}_{2}^{<em>}, \mathbf{0})\big|_{\textit{F}}.$ We set an upper threshold $\frac{\delta^{</em>}}{3}$. Therefore, there exists $k_{\delta^{<em>}}^(l) &gt; 0$ such that $\big| \mathbf{z}^{l}(k) - g(\mathbf{x}_{l}^{</em>}, \mathbf{0})\big| &lt; \frac{\delta^{<em>}}{3}.$<br>$$|z^{(1)}(k) - z^{(2)}(k)| \geq |g(x_i^</em>, 0) - g(x_2^<em>, 0)| - |g(x_i^</em>, 0) - z^{(1)}(k)| - |g(x_2^<em>, 0) - z^{(2)}(k)|.$$<br>$$|a + b + c| \geq |b| - |a| - |c|.$$<br>$$a = z^{(1)}(k) - g(x_i^</em>, 0), \quad b = g(x_i^<em>, 0) - g(x_2^</em>, 0), \quad c = g(x_2^<em>, 0) - z^{(2)}(k).$$<br>$$|z^{(1)}(k) - z^{(2)}(k)| \geq |g(x_i^</em>, 0) - g(x_2^<em>, 0)| - |z^{(1)}(k) - g(x_i^</em>, 0)| - |g(x_2^<em>, 0) - z^{(2)}(k)|.$$<br>$$|z^{(1)}(k) - z^{(2)}(k)| \geq |g(x_i^</em>, 0) - g(x_2^<em>, 0)| - \frac{\delta^</em>}{3}.$$</p>
+<p>$\mathbf{x}^{(l)}(k) \rightarrow$ the convergence point by $\mathbf{x}_{l}^{\infty}$. Hence, there is $\delta^{*} &gt; 0$, satisfying $\big| g(\mathbf{x}_{1}^{*}, \mathbf{0}) - g(\mathbf{x}_{2}^{*}, \mathbf{0})\big|_{\textit{F}}$ We set an upper threshold $\frac{\delta^{*}}{3}$. Therefore, there exists $k_{\delta^{*}}^{(l)} &gt; 0$ such that $\big| \mathbf{z}^{l}(k) - g(\mathbf{x}_{l}^{*}, \mathbf{0})\big| &lt; \frac{\delta^{*}}{3}.$<br>$$\big| z^{(1)}(k) - z^{(2)}(k)| \geq |g(x_1^{*}, 0) - g(x_2^{*}, 0)| - |g(x_1^{*}, 0) - z^{(1)}(k)| - |g(x_2^{*}, 0) - z^{(2)}(k)\big|.$$<br>$$|a + b + c| \geq |b| - |a| - |c|.$$<br>$$a = z^{(1)}(k) - g(x_1^{*}, 0), \quad b = g(x_1^{*}, 0) - g(x_2^{*}, 0), \quad c = g(x_2^{*}, 0) - z^{(2)}(k).$$<br>$$|z^{(1)}(k) - z^{(2)}(k)| \geq |g(x_1^{*}, 0) - g(x_2^{*}, 0)| - |z^{(1)}(k) - g(x_1^{*}, 0)| - |g(x_2^{*}, 0) - z^{(2)}(k)|.$$<br>$$|z^{(1)}(k) - z^{(2)}(k)| \geq |g(x_i^{*}, 0) - g(x_2^{*}, 0)| - \frac{2\delta^{*}}{3}.$$</p>
 <p>B. Development of DiaDSP</p>
 <p>We employ the combine-then-adapt strategy for each agent $i$, which is expressed as $$x_{i}(k+1) = \sum_{j=1}^{n} a_{ij} x_{j}(k) - \alpha_{i} y_{i}(k).$$ This formula is analogous to the parameter update mechanism in neural networks. $x_i(k)$ can be considered as the transition between different states. $y_i(k)$  is regarded as the gradient of the cost function. Therefore, $y_i(k)$ is supposed to have the same direction as $\sum_{i=1}^{n} \nabla f_i(x_i(k)).$ One advantage of adopting the GT method is that the iterations $$x_{i}(k+1) = \sum_{j=1}^{n} a_{ij} x_{j}(k) - \alpha_{i} y_{i}(k).$$ and $$y_i(k+1) = \sum_{j=1}^{n} a_{ij} y_j(k) + \nabla f_i(x_i(k+1)) - \nabla f_i(x_i(k)).$$ share the same network and we do not need to generate another network for the GT iteration. The reason is that they have the same input dimension and both update around the gradient of the cost function with respect to $f_i(x_i(k))$.</p>
-<p>Convergence Analysis of DiaDSP</p>
-<p>This section mainly include three key points:</p>
+<h4 id="Convergence-Analysis-of-DiaDSP"><a href="#Convergence-Analysis-of-DiaDSP" class="headerlink" title="Convergence Analysis of DiaDSP"></a>Convergence Analysis of DiaDSP</h4><p>This section mainly include three key points:</p>
 <ol>
 <li>Analyze the convergence of DiaDSP</li>
 <li>Prove the R-linear convergence of DiaDSP</li>
@@ -2453,5 +2452,39 @@
       <tags>
         <tag>Distributed Optimization Algorithm</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>DRL Algorithms</title>
+    <url>/2024/10/30/DRL-Algorithms/</url>
+    <content><![CDATA[<p>在深度强化学习中，(\mathbb{E}_{S}[V(S, \theta)]) 表示对状态 (S) 的期望值。虽然 (S) 是状态，具体理解上可以这样考虑：</p>
+<ol>
+<li><p><strong>状态的分布</strong>：在强化学习中，状态 (S) 是随机变量，它遵循一个分布 (p(S))，该分布反映了状态在环境中的出现概率。这个分布可以是初始状态分布，也可以是策略执行时经过各个状态的访问分布。我们可以理解为期望值 (\mathbb{E}_{S}[V(S, \theta)]) 是对状态分布 (p(S)) 的加权平均。</p>
+</li>
+<li><p><strong>求期望的含义</strong>：当我们求 (\mathbb{E}_{S}[V(S, \theta)]) 时，实际上是在所有可能的状态上计算一个加权平均值，即把每个状态的价值函数 (V(S, \theta)) 按其出现的概率 (p(S)) 来进行加权。这种期望值通常用于估计模型在整个状态空间上的表现。</p>
+</li>
+<li><p><strong>样本估计</strong>：在实际中，这种期望值可以通过采样实现，比如通过从 (p(S)) 中采样得到一系列状态 (\{S_i\})，然后计算这些状态上 (V(S, \theta)) 的平均值来逼近 (\mathbb{E}_{S}[V(S, \theta)])。</p>
+</li>
+</ol>
+<p>综上，(\mathbb{E}_{S}[V(S, \theta)]) 是对状态空间中的每个状态价值的加权平均，权重来自状态的分布 (p(S))。这种方法在强化学习中帮助我们通过全局状态分布来评估价值函数，从而更有效地训练模型。</p>
+<p>随机梯度是对期望的蒙特卡洛近似</p>
+<p><img src="Users\zcl\AppData\Roaming\Typora\typora-user-images\image-20241030002933171.png" alt="image-20241030002933171"></p>
+<p>通常来说，J(\theta)是一个很复杂的函数，而L(\theta | \theta_{old})是一个相对简单的函数</p>
+<p>构建L的方法多种多样，可以是J的二阶泰勒展开，也可以是J的蒙特卡洛近似</p>
+<p>要maximization，即相当于求解一个带置信域约束的最优化问题，求解速度没有梯度上升和随机梯度上升算法快</p>
+<p>但置信域算法强在比这两种算法表现稳定，哪怕最优化问题求解不是很准确。</p>
+<p><img src="Users\zcl\AppData\Roaming\Typora\typora-user-images\image-20241030003652735.png" alt="image-20241030003652735"></p>
+<p>J(\theta) = E_{S}[V_{\pi}(S)]中对S求期望，相当于消除了S，只剩下策略网络参数\theta</p>
+<p><img src="Users\zcl\AppData\Roaming\Typora\typora-user-images\image-20241030004813870.png" alt="image-20241030004813870"></p>
+<p><img src="Users\zcl\AppData\Roaming\Typora\typora-user-images\image-20241030005237667.png" alt="image-20241030005237667"></p>
+<p><img src="Users\zcl\AppData\Roaming\Typora\typora-user-images\image-20241030005401769.png" alt="image-20241030005401769"></p>
+<p><img src="Users\zcl\AppData\Roaming\Typora\typora-user-images\image-20241030010211366.png" alt="image-20241030010211366"></p>
+<p><img src="Users\zcl\AppData\Roaming\Typora\typora-user-images\image-20241030010802155.png" alt="image-20241030010802155"></p>
+<p>第四步需要内层循环求解最大化问题，第四步两个超参数，一个\delta，一个学习步长。</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>强化学习综述</title>
+    <url>/2025/04/16/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%BB%BC%E8%BF%B0/</url>
+    <content><![CDATA[]]></content>
   </entry>
 </search>

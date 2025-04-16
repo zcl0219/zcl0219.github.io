@@ -156,7 +156,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">27</span>
+          <span class="site-state-item-count">29</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -184,6 +184,167 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://zcl0219.github.io/2025/04/16/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%BB%BC%E8%BF%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="GGBond">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+      <meta itemprop="description" content="Doing the tough things sets winners apart from losers">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Hexo">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/04/16/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%BB%BC%E8%BF%B0/" class="post-title-link" itemprop="url">强化学习综述</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2025-04-16 23:50:40" itemprop="dateCreated datePublished" datetime="2025-04-16T23:50:40+08:00">2025-04-16</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://zcl0219.github.io/2024/10/30/DRL-Algorithms/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="GGBond">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+      <meta itemprop="description" content="Doing the tough things sets winners apart from losers">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Hexo">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/10/30/DRL-Algorithms/" class="post-title-link" itemprop="url">DRL Algorithms</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2024-10-30 00:26:54 / Modified: 01:20:24" itemprop="dateCreated datePublished" datetime="2024-10-30T00:26:54+08:00">2024-10-30</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>在深度强化学习中，(\mathbb{E}_{S}[V(S, \theta)]) 表示对状态 (S) 的期望值。虽然 (S) 是状态，具体理解上可以这样考虑：</p>
+<ol>
+<li><p><strong>状态的分布</strong>：在强化学习中，状态 (S) 是随机变量，它遵循一个分布 (p(S))，该分布反映了状态在环境中的出现概率。这个分布可以是初始状态分布，也可以是策略执行时经过各个状态的访问分布。我们可以理解为期望值 (\mathbb{E}_{S}[V(S, \theta)]) 是对状态分布 (p(S)) 的加权平均。</p>
+</li>
+<li><p><strong>求期望的含义</strong>：当我们求 (\mathbb{E}_{S}[V(S, \theta)]) 时，实际上是在所有可能的状态上计算一个加权平均值，即把每个状态的价值函数 (V(S, \theta)) 按其出现的概率 (p(S)) 来进行加权。这种期望值通常用于估计模型在整个状态空间上的表现。</p>
+</li>
+<li><p><strong>样本估计</strong>：在实际中，这种期望值可以通过采样实现，比如通过从 (p(S)) 中采样得到一系列状态 (\{S_i\})，然后计算这些状态上 (V(S, \theta)) 的平均值来逼近 (\mathbb{E}_{S}[V(S, \theta)])。</p>
+</li>
+</ol>
+<p>综上，(\mathbb{E}_{S}[V(S, \theta)]) 是对状态空间中的每个状态价值的加权平均，权重来自状态的分布 (p(S))。这种方法在强化学习中帮助我们通过全局状态分布来评估价值函数，从而更有效地训练模型。</p>
+<p>随机梯度是对期望的蒙特卡洛近似</p>
+<p><img src="Users\zcl\AppData\Roaming\Typora\typora-user-images\image-20241030002933171.png" alt="image-20241030002933171"></p>
+<p>通常来说，J(\theta)是一个很复杂的函数，而L(\theta | \theta_{old})是一个相对简单的函数</p>
+<p>构建L的方法多种多样，可以是J的二阶泰勒展开，也可以是J的蒙特卡洛近似</p>
+<p>要maximization，即相当于求解一个带置信域约束的最优化问题，求解速度没有梯度上升和随机梯度上升算法快</p>
+<p>但置信域算法强在比这两种算法表现稳定，哪怕最优化问题求解不是很准确。</p>
+<p><img src="Users\zcl\AppData\Roaming\Typora\typora-user-images\image-20241030003652735.png" alt="image-20241030003652735"></p>
+<p>J(\theta) = E_{S}[V_{\pi}(S)]中对S求期望，相当于消除了S，只剩下策略网络参数\theta</p>
+<p><img src="Users\zcl\AppData\Roaming\Typora\typora-user-images\image-20241030004813870.png" alt="image-20241030004813870"></p>
+<p><img src="Users\zcl\AppData\Roaming\Typora\typora-user-images\image-20241030005237667.png" alt="image-20241030005237667"></p>
+<p><img src="Users\zcl\AppData\Roaming\Typora\typora-user-images\image-20241030005401769.png" alt="image-20241030005401769"></p>
+<p><img src="Users\zcl\AppData\Roaming\Typora\typora-user-images\image-20241030010211366.png" alt="image-20241030010211366"></p>
+<p><img src="Users\zcl\AppData\Roaming\Typora\typora-user-images\image-20241030010802155.png" alt="image-20241030010802155"></p>
+<p>第四步需要内层循环求解最大化问题，第四步两个超参数，一个\delta，一个学习步长。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -229,7 +390,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-10-27 16:54:22" itemprop="dateModified" datetime="2024-10-27T16:54:22+08:00">2024-10-27</time>
+      <time title="Modified: 2024-10-27 19:06:54" itemprop="dateModified" datetime="2024-10-27T19:06:54+08:00">2024-10-27</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -907,263 +1068,6 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://zcl0219.github.io/2023/08/29/MySQL/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="GGBond">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-      <meta itemprop="description" content="Doing the tough things sets winners apart from losers">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Hexo">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/08/29/MySQL/" class="post-title-link" itemprop="url">MySQL</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2023-08-29 21:56:11" itemprop="dateCreated datePublished" datetime="2023-08-29T21:56:11+08:00">2023-08-29</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-10-09 16:27:20" itemprop="dateModified" datetime="2023-10-09T16:27:20+08:00">2023-10-09</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="DAY1"><a href="#DAY1" class="headerlink" title="DAY1"></a><code>DAY1</code></h3><p>使用指令创建数据库：CREATE DATABASE zcl_db01;</p>
-<p>删除数据库指令：DROP DATABASE zcl_db01;</p>
-<p>创建一个使用utf8字符集的zcl_db02数据库：CREATE DATABASE zcl_db02 CHARACTER SET utf8</p>
-<p>创建一个使用utf8字符集，并带校对规则的zcl_db03数据库：CREATE DATABASE zcl_db03 CHARACTER SET utf8 COLLATE utf8_bin<br>utf8_bin区分大小写，utf8_general_ci不区分大小写</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#查看当前数据库服务器中的所有数据库</span><br><span class="line"><span class="keyword">SHOW</span> DATABASES</span><br><span class="line"></span><br><span class="line">#查看前面创建的zcl_db01数据库的定义信息</span><br><span class="line"><span class="keyword">SHOW</span> <span class="keyword">CREATE</span> DATABASE `zcl_db01`</span><br><span class="line"></span><br><span class="line">#在创建数据库、表的时候，为了规避关键字，可以使用``解决</span><br><span class="line"><span class="keyword">CREATE</span> DATABASE `<span class="keyword">CREATE</span>`</span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#备份数据库</span><br><span class="line">mysqldump <span class="operator">-</span>u root <span class="operator">-</span>p <span class="operator">-</span>B zcl_db03 <span class="operator">&gt;</span> e:\\tmp.sql (文件名)</span><br><span class="line"></span><br><span class="line">#恢复数据库</span><br><span class="line">source e:\\tmp.sql</span><br><span class="line"></span><br><span class="line">#备份数据库的表</span><br><span class="line">mysqldump <span class="operator">-</span>u root <span class="operator">-</span>p zcl_db03 t1 t2 (t1和t2是表名) <span class="operator">&gt;</span> e:\\tmp1.sql</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="DAY2"><a href="#DAY2" class="headerlink" title="DAY2"></a><code>DAY2</code></h3><h4 id="创建表"><a href="#创建表" class="headerlink" title="创建表"></a>创建表</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"># 创建表</span><br><span class="line"># create table table_name</span><br><span class="line"># (</span><br><span class="line"># 	filed1 datatype,</span><br><span class="line">#	filed2 datatype,</span><br><span class="line">#	filed3 datatype</span><br><span class="line"># )character set 字符集 collate 校对规则 engine 存储引擎</span><br><span class="line">#  filed：指定列名	   datatype：指定列类型（字段类型）</span><br><span class="line">#  character set：如不指定则为所在数据库字符集</span><br><span class="line">#  collate：如不指定则为所在数据库校对规则</span><br><span class="line"></span><br><span class="line"># 实操</span><br><span class="line">create table `user`(</span><br><span class="line">	id int,</span><br><span class="line">    `name` varchar(255),</span><br><span class="line">    `passward` varchar(255),</span><br><span class="line">    `birthday` date</span><br><span class="line">)character set utf8 collate utf8_general_ci engine innodb; </span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="Mysql常用数据类型"><a href="#Mysql常用数据类型" class="headerlink" title="Mysql常用数据类型"></a>Mysql常用数据类型</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># Mysql列类型就是Mysql的数据类型</span><br><span class="line"># 数值类型：</span><br><span class="line"># 整型：tinyint(1个字节)	smallint(2个字节)	mediumint(3个字节)	int(4个字节)	bigint(8个字节)</span><br><span class="line"># 小数类型：float(单精度 4个字节)	double(双精度 8个字节)	decimal[M,D](大小不确定，M代表长度，D代表小数位数)</span><br><span class="line"></span><br><span class="line"># 文本类型（字符串类型）</span><br><span class="line"># char(0-255)	varchar(0~65535)	text(0~2^16-1)	longtext(0~2^32-1)</span><br><span class="line"></span><br><span class="line"># 二进制数据类型</span><br><span class="line"># blob[0~2^16-1]	longblob[0~2^32-1]</span><br><span class="line"></span><br><span class="line"># 日期类型</span><br><span class="line"># date[日期 年月日] time[时间 时分秒]	datetime[年月日 时分秒 YYYY-MM-DD HH:MM:SS]	timestamp[时间戳]</span><br></pre></td></tr></table></figure>
-
-<p>在满足需求的情况下，尽量选择占用空间小的类型</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE t3(</span><br><span class="line">	id TINYINT</span><br><span class="line">);</span><br><span class="line"># INSERT INTO t3 VALUES(128); 错误：越界了，超过了tinyint范围。 </span><br><span class="line">INSERT INTO t3 VALUES(127);</span><br><span class="line"># 定义无符号的整数 指定unsigned</span><br><span class="line">CREATE TABLE t4(</span><br><span class="line">	id TINYINT UNSIGNED</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># BIT(M), M在1-64。显示按照bit。</span><br><span class="line">CREATE TABLE t5(</span><br><span class="line">	num BIT(8)</span><br><span class="line">);</span><br><span class="line">INSERT INTO t5 VALUES(255);</span><br><span class="line">SELECT * FROM t5;</span><br><span class="line"># 输出：11111111</span><br><span class="line">SELECT * FROM t5 WHERE num = 255;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># DECIMAL[M, D] </span><br><span class="line"># M是小数位数（精度）的总数，D是小数点（标度）后面的位数。</span><br><span class="line"># 如果D是0，则值没有小数点或分数部分，M最大是65，D最大是30。如果D被省略，则默认是0，如果M被省略，默认是10。</span><br><span class="line">CREATE TABLE t6(</span><br><span class="line">	num1 FLOAT,</span><br><span class="line">    num2 DOUBLE,</span><br><span class="line">    num3 DECIMAL(30, 20)</span><br><span class="line">);</span><br><span class="line">INSERT INTO t6 VALUES(88.123456789123456, 88.123456789123456, 88.123456789123456)</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># char(4) 这个4表示字符数（最大255），不是字节数，不管是中文还是英文都是放四个，按字符计算，定长，即使你插入&#x27;aa&#x27;，也会占用分配的4个字符的空间</span><br><span class="line"># varchar(4) 这个4表示字符数，是变长，如果你插入&#x27;aa&#x27;，实际占用空间并不是4个字符，而是实际占用的空间。</span><br><span class="line"># utf-8：一个字符占三个字节</span><br><span class="line">CREATE TABLE t11(</span><br><span class="line">	&#x27;name&#x27; CHAR(4)</span><br><span class="line">);</span><br><span class="line"># INSERT INTO t11 VALUES(&#x27;ABCDE&#x27;) 报错，太长</span><br><span class="line">INSERT INTO t11 VALUES(&#x27;ABCD&#x27;)</span><br><span class="line">INSERT INTO t11 VALUES(&#x27;你好&#x27;)</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># 日期类型 date datetime timestamp</span><br><span class="line">CREATE TABLE birthday11(</span><br><span class="line">	birthday DATE,</span><br><span class="line">    worktime DATETIME,</span><br><span class="line">    login_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP</span><br><span class="line">);</span><br><span class="line">INSERT INTO bithday11(birthday, worktime) VALUES(&#x27;2022-11-11&#x27;, &#x27;2022-11-11 10:10:10&#x27;);</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="创建表的课堂练习"><a href="#创建表的课堂练习" class="headerlink" title="创建表的课堂练习"></a>创建表的课堂练习</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE &#x27;emp&#x27;(</span><br><span class="line">	id INT,</span><br><span class="line">    &#x27;name&#x27; VARCHAR(32),</span><br><span class="line">    sex CHAR(1),</span><br><span class="line">    birthday DATE,</span><br><span class="line">    entry_date DATETIME,</span><br><span class="line">    job VARCHAR(32),</span><br><span class="line">    saraly DOUBLE,</span><br><span class="line">    &#x27;resume&#x27; TEXT</span><br><span class="line">) CHARSET utf8 COLLATE utf8_bin ENGINE INNODB;</span><br><span class="line">INSERT INTO &#x27;emp&#x27; VALUES(</span><br><span class="line">	100, &#x27;小妖怪&#x27;, &#x27;男&#x27;, &#x27;2000-11-11&#x27;, &#x27;巡山的&#x27;, 3000, &#x27;大王叫我来巡山&#x27;</span><br><span class="line">);</span><br><span class="line">SELECT * FROM &#x27;emp&#x27;;</span><br><span class="line"></span><br><span class="line"># 增加列</span><br><span class="line">ALTER TABLE emp ADD image VARCHAR(32) NOT NULL DEFAULT &#x27;&#x27; AFTER RESUME</span><br><span class="line"></span><br><span class="line"># 显示表结构</span><br><span class="line">DESC emp</span><br><span class="line"></span><br><span class="line"># 修改job长度</span><br><span class="line">ALTER TABLE emp MODIFY job VARCHAR(60) NOT NULL DEFAULT &#x27;&#x27;</span><br><span class="line"></span><br><span class="line"># 删除列</span><br><span class="line">ALTER TABLE emp DROP sex</span><br><span class="line"></span><br><span class="line"># 修改表名</span><br><span class="line">RENAME TABLE emp TO employee</span><br><span class="line"></span><br><span class="line"># 修改表的字符集</span><br><span class="line">ALTER TABLE employee CHARACTER SET utf8</span><br><span class="line"></span><br><span class="line"># 修改列名</span><br><span class="line">ALTER TABLE employee CHANGE &#x27;name&#x27; user_name VARCHAR(64) NOT NULL DEFAULT &#x27;&#x27;</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="数据库CRUD语句"><a href="#数据库CRUD语句" class="headerlink" title="数据库CRUD语句"></a>数据库CRUD语句</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"># 使用INSERT语句向表中插入数据</span><br><span class="line">CREATE TABLE &#x27;goods&#x27;(</span><br><span class="line">	id INT,</span><br><span class="line">    goods_name VARCHAR(10),</span><br><span class="line">    price DOUBLE</span><br><span class="line">);</span><br><span class="line">INSERT INTO &#x27;goods&#x27; (id, goods_name, price) VALUES (10, &#x27;华为手机&#x27;, 2000);</span><br><span class="line">INSERT INTO &#x27;goods&#x27; (id, goods_name, price) VALUES (20, &#x27;苹果手机&#x27;, 20000);</span><br><span class="line"></span><br><span class="line"># INSERT语句的细节</span><br><span class="line">-- 插入的数据应与字段的数据类型相同，比如把&#x27;abc&#x27;添加到int类型会错误。</span><br><span class="line">-- 数据的长度应在列的规定范围内，不能将一个长度为80的字符串加入到长度为40的列中。</span><br><span class="line">-- 在VALUES中列出的数据位置必须与被加入的列的排列位置相对应。</span><br><span class="line">-- 字符和日期类型应包含在单引号中</span><br><span class="line">-- 列可以插入空值，前提是该字段允许为空（没有NOT NULL）</span><br><span class="line">-- INSERT INTO TABLE_NAME (列名) VALUES (),(),()，添加多条数据一次性</span><br><span class="line">-- 如果是给表中的所有字段添加数据，(id, goods_name, price)这个可以省略</span><br><span class="line">-- 默认值的使用，当不给某个字段赋值时，如果有默认值就会添加，否则报错。</span><br><span class="line">-- 如果我们希望指定某个列的默认值，可以在创建表时指定。</span><br><span class="line">CREATE TABLE &#x27;goods2&#x27;(</span><br><span class="line">	id INT,</span><br><span class="line">    goods_name VARCHAR(10),</span><br><span class="line">    price DOUBLE NOT NULL DEFAULT 100</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">-- 演示update语句</span><br><span class="line">-- employee是表名，salary是列名</span><br><span class="line">-- 将所有员工薪水修改为5000，如果没有带where条件，会修改所有的记录，因此要小心</span><br><span class="line">UPDATE employee SET salary = 5000 </span><br><span class="line">-- 将姓名为小妖怪的员工薪水修改为3000</span><br><span class="line">UPDATE employee SET salary = 3000 WHERE user_name = &#x27;小妖怪&#x27;</span><br><span class="line">-- 将老妖怪的薪水在原有基础上增加1000</span><br><span class="line">INSERT INTO employee VALUES(200, &#x27;老妖怪&#x27;, &#x27;1990-11-11&#x27;, &#x27;2000-11-11 10:10:10&#x27;, &#x27;捶背的&#x27;, 5000,  &#x27;给大王捶背的&#x27;);</span><br><span class="line">UPDATE employee SET salary = salary + 1000 WHERE user_name = &#x27;老妖怪&#x27;</span><br><span class="line">UPDATE employee SET salary = salary + 1000, job = &#x27;出主意的&#x27; WHERE user_name = &#x27;老妖怪&#x27;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">-- 演示delete语句</span><br><span class="line">-- 删除表中名称为‘老妖怪’的记录</span><br><span class="line">DELETE FROM employee WHERE user_name = &#x27;老妖怪&#x27;;</span><br><span class="line">-- 删除表中所有记录</span><br><span class="line">DELETE FROM employee</span><br><span class="line">-- DELETE删除不了一列的值，但可以使用UPDATE语句置为null</span><br><span class="line">UPDATE employee SET job = NULL WHERE user_name = &#x27;老妖怪&#x27;;</span><br><span class="line">-- 要删除这个表</span><br><span class="line">DROP TABLE employee</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line">-- select指定查询哪些列的数据</span><br><span class="line">-- *代表查询所有列</span><br><span class="line">-- from指定查询哪张表</span><br><span class="line">-- DISTINCT可选，指显示结果时，是否去掉重复数据</span><br><span class="line">CREATE TABLE student(</span><br><span class="line">	id INT NOT NULL DEFAULT 1,</span><br><span class="line">    NAME VARCHAR(20) NOT NULL DEFAULT &#x27;&#x27;,</span><br><span class="line">    chinese FLOAT NOT NULL DEFAULT 0.0,</span><br><span class="line">    english FLOAT NOT NULL DEFAULT 0.0,</span><br><span class="line">    math FLOAT NOT NULL DEFAULT 0.0</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">INSERT INTO student(id, NAME, chinese, english, math) VALUES(1, &#x27;韩顺平&#x27;, 89, 78, 90);</span><br><span class="line">INSERT INTO student(id, NAME, chinese, english, math) VALUES(2, &#x27;张飞&#x27;, 67, 98, 56);</span><br><span class="line">INSERT INTO student(id, NAME, chinese, english, math) VALUES(3, &#x27;宋江&#x27;, 87, 78, 77);</span><br><span class="line">INSERT INTO student(id, NAME, chinese, english, math) VALUES(4, &#x27;关羽&#x27;, 88, 98, 90);</span><br><span class="line">INSERT INTO student(id, NAME, chinese, english, math) VALUES(5, &#x27;赵云&#x27;, 82, 84, 67);</span><br><span class="line">INSERT INTO student(id, NAME, chinese, english, math) VALUES(6, &#x27;欧阳锋&#x27;, 55, 85, 45);</span><br><span class="line">INSERT INTO student(id, NAME, chinese, english, math) VALUES(7, &#x27;黄蓉&#x27;, 75, 65, 30);</span><br><span class="line"></span><br><span class="line">SELECT * FROM student;</span><br><span class="line"></span><br><span class="line">-- 查寻表中所有学生的信息</span><br><span class="line">SELECT * FROM student;</span><br><span class="line"></span><br><span class="line">-- 查询表中所有学生的姓名和对应的英语成绩</span><br><span class="line">SELECT &#x27;NAME&#x27;, english FROM student;</span><br><span class="line"></span><br><span class="line">-- 过滤表中重复数据distinct</span><br><span class="line">-- 要查询的记录每个字段都相同，才会去重</span><br><span class="line">SELECT DISTINCT english FROM student;</span><br><span class="line"></span><br><span class="line">-- 统计每个学生的总分</span><br><span class="line">SELECT &#x27;NAME&#x27;, (chinese + english + math) FROM student;</span><br><span class="line"></span><br><span class="line">-- 在所有学生总分加10分</span><br><span class="line">SELECT &#x27;NAME&#x27;, (chinese + english + math + 10) FROM student;</span><br><span class="line"></span><br><span class="line">-- 使用别名表示学生分数</span><br><span class="line">SELECT &#x27;NAME&#x27;, (chinese + english + math + 10) AS total_score FROM student;</span><br><span class="line">SELECT &#x27;NAME&#x27; AS &#x27;名字&#x27;, (chinese + english + math + 10) AS total_score FROM student;</span><br><span class="line"></span><br><span class="line">-- 查询姓名为赵云的学生成绩</span><br><span class="line">SELECT * FROM student WHERE &#x27;NAME&#x27; = &#x27;赵云&#x27;;</span><br><span class="line"></span><br><span class="line">-- 查询英语成绩大于90分的同学</span><br><span class="line">SELECT * FROM student WHERE english &gt; 90;</span><br><span class="line"></span><br><span class="line">-- 查询总分大于200分的所有同学</span><br><span class="line">SELECT * FROM student WHERE (chinese + english + math) &gt; 200;</span><br><span class="line"></span><br><span class="line">-- 查询math大于60并且id大于4的学生成绩</span><br><span class="line">SELECT * FROM student WHERE math &gt; 60 AND id &gt; 4;</span><br><span class="line"></span><br><span class="line">-- 查询英语成绩大于语文成绩的同学</span><br><span class="line">SELECT * FROM student WHERE english &gt; chinese;</span><br><span class="line"></span><br><span class="line">-- 查询总分大于200分并且数学成绩小于语文成绩的姓韩的学生</span><br><span class="line">-- 韩% 表示名字以韩开头的就可以</span><br><span class="line">SELECT * FROM student WHERE (chinese + english + math) &gt; 200 AND </span><br><span class="line">						  math &lt; chinese AND &#x27;NAME&#x27; LIKE &#x27;韩%&#x27;;</span><br><span class="line">						  </span><br><span class="line">-- 查询英语分数在80-90之间的同学</span><br><span class="line">SELECT * FROM student WHERE english &gt;= 80 AND english &lt;= 90;</span><br><span class="line">SELECT * FROM student WHERE english BETWWWN 80 AND 90; -- BETWEEN AND 是闭区间</span><br><span class="line"></span><br><span class="line">-- 查询数学分数为89，90，91的同学</span><br><span class="line">SELECT * FROM student WHERE math = 89 OR math = 90 OR math = 91;</span><br><span class="line">SELECT * FROM student WHERE math IN (89, 90, 91);</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://zcl0219.github.io/2023/08/27/Linux-%E9%AB%98%E6%80%A7%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%99%A8-%E7%AC%AC%E4%BA%94%E7%AB%A0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="GGBond">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-      <meta itemprop="description" content="Doing the tough things sets winners apart from losers">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Hexo">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/08/27/Linux-%E9%AB%98%E6%80%A7%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%99%A8-%E7%AC%AC%E4%BA%94%E7%AB%A0/" class="post-title-link" itemprop="url">Linux 高性能服务器--第五章</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2023-08-27 12:45:48" itemprop="dateCreated datePublished" datetime="2023-08-27T12:45:48+08:00">2023-08-27</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-11-09 02:52:29" itemprop="dateModified" datetime="2023-11-09T02:52:29+08:00">2023-11-09</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h4 id="5-1-1-判断主机是小端字节序还是大端字节序"><a href="#5-1-1-判断主机是小端字节序还是大端字节序" class="headerlink" title="5.1.1 判断主机是小端字节序还是大端字节序"></a>5.1.1 判断主机是小端字节序还是大端字节序</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">byteOrder</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">union</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">short</span> value;</span><br><span class="line">        <span class="type">char</span> union_bytes[<span class="built_in">sizeof</span>(<span class="type">short</span>)];</span><br><span class="line">    &#125;test;</span><br><span class="line">    </span><br><span class="line">    test.value = <span class="number">0x0102</span>;</span><br><span class="line">    <span class="keyword">if</span>(test.union_bytes[<span class="number">0</span>] == <span class="number">1</span> &amp;&amp; test.union_bytes[<span class="number">1</span>] == <span class="number">2</span>)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;大端字节序\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(test.union_bytes[<span class="number">0</span>] == <span class="number">2</span> &amp;&amp; test.union_bytes[<span class="number">1</span>] == <span class="number">1</span>)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;小端字节序\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;不清楚\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">byteOrder</span>();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="5-1-3专用socket地址"><a href="#5-1-3专用socket地址" class="headerlink" title="5.1.3专用socket地址"></a>5.1.3专用<code>socket</code>地址</h4><p><code>TCP/IP</code>协议族有<code>sockaddr_in</code>和<code>sockaddr_in6</code>两个专用<code>socket</code>地址结构体，他们分别用于<code>IPv4</code>和<code>IPv6</code>，这里我只介绍<code>sockaddr_in</code>。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">sockaddr_in</span>&#123;</span><br><span class="line">    <span class="type">sa_family_t</span> sin_family;  <span class="comment">// 地址族：AF_INET</span></span><br><span class="line">    <span class="type">u_int16_t</span> sin_port;	<span class="comment">// 端口号：要用网络字节序表示</span></span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">in_addr</span> sin_addr;	<span class="comment">// IPv4地址结构体</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">in_addr</span>&#123;</span><br><span class="line">    <span class="type">u_int32_t</span> s_addr;	<span class="comment">// 要用网络字节序表示</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>注意：所有专用<code>socket</code>地址类型的变量在实际使用时都需要转换为通用<code>socket</code>地址类型<code>sockaddr</code>（强制转换即可），因为所有<code>socket</code>编程接口使用的地址参数的类型都是<code>sockaddr</code>。</p>
-<h4 id="5-1-4IP地址转换函数"><a href="#5-1-4IP地址转换函数" class="headerlink" title="5.1.4IP地址转换函数"></a>5.1.4<code>IP</code>地址转换函数</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;arpa/inet.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">inet_pton</span><span class="params">(<span class="type">int</span> af, <span class="type">const</span> <span class="type">char</span> *src, <span class="type">void</span> *dst)</span></span>;	<span class="comment">// 用于将字符串表示的IP地址转换为用网络字节序整数表示的IP地址</span></span><br><span class="line"><span class="function"><span class="type">const</span> <span class="type">char</span> *<span class="title">inet_ntop</span><span class="params">(<span class="type">int</span> af, <span class="type">const</span> <span class="type">void</span> *src, <span class="type">char</span> *dst, <span class="type">socklen_t</span> cnt)</span></span>;	<span class="comment">// 最后一个参数指定目标存储单元的大小，这两个宏可以帮我们指定</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">inet_pton成功时返回1，失败时返回0并设置errno</span></span><br><span class="line"><span class="comment">inet_ntop成功时返回目标存储单元的地址，失败返回NULL并设置errno</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;netinet/in.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> INET_ADDRSTRLEN 16</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> INET6_ADDRSTRLEN 64</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="5-2创建socket"><a href="#5-2创建socket" class="headerlink" title="5.2创建socket"></a>5.2创建socket</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sys/socket.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">socket</span><span class="params">(<span class="type">int</span> domain, <span class="type">int</span> type, <span class="type">int</span> protocol)</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="comment">/*</span></span></span><br><span class="line"><span class="comment"><span class="function">domain一般为PF_INET(IPv4)，或者PF_INET6(IPv6)</span></span></span><br><span class="line"><span class="comment"><span class="function">type参数指定服务类型，主要有SOCK_STREAM和SOCK_UGRAM</span></span></span><br><span class="line"><span class="comment"><span class="function">*/</span> </span></span><br></pre></td></tr></table></figure>
-
-<p>socket系统调用成功时返回一个socket文件描述符，失败返回-1并设置errno</p>
-<h4 id="5-3命名socket"><a href="#5-3命名socket" class="headerlink" title="5.3命名socket"></a>5.3命名socket</h4><p>创建socket时，我们给它指定了地址族，但是并未指定使用该地址族中的哪个具体socket地址。将一个socket与socket地址绑定称为给socket命名。在服务器程序中，我们通常需要命名socket，<strong>因为只有命名后客户端才知道该如何连接它</strong>。客户端通常不需要命名socket，而是采用匿名方式，也就是使用操作系统自动分配的socket地址。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sys/socket.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">bind</span><span class="params">(<span class="type">int</span> sockfd, <span class="type">const</span> <span class="keyword">struct</span> sockaddr* my_addr, <span class="type">socklen_t</span> addrlen)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">bind将my_addr所指的socket地址分配给未命名的socket文件描述符，addrlen参数指出该socket地址的长度</span></span><br><span class="line"><span class="comment">bind成功时返回0，失败时返回-1并设置errno，其中两种常见的errno是：EACCES和EADDRINUSE。</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="5-4监听socket"><a href="#5-4监听socket" class="headerlink" title="5.4监听socket"></a>5.4监听socket</h4><p>socket被命名之后，还不能立即接收客户端连接，我们需要使用如下系统调用来创建一个监听队列以存放待处理的客户连接</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sys/socket.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">listen</span><span class="params">(<span class="type">int</span> sockfd, <span class="type">int</span> backlog)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">sockfd参数指定被监听的socket，backlog参数提示内核监听队列的最大长度。监听队列的长度如果超过backlog，服务器将不受理新的客户端连接，客户端也将收到ECONNREFUSED错误信息。（实际上最多可以接收backlog + 1个客户端连接）</span></span><br><span class="line"><span class="comment">listen成功时返回0，失败时返回-1并设置errno。</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
-
-<p>下面我们编写一个程序测试一下</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sys/socket.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;netinet/in.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;arpa/inet.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;signal.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;assert.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">basename使用示例：</span></span><br><span class="line"><span class="comment">`basename()` 是一个常用于处理文件路径和程序参数的库函数。</span></span><br><span class="line"><span class="comment">它的主要目的是从一个给定的路径中提取基础名（base name），也就是最后一部分的名称，不包含任何前导的目录。</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">来自 `&lt;libgen.h&gt;`（或在某些系统中是 `&lt;string.h&gt;` 或 `&lt;strings.h&gt;`），`basename()` 函数的原型如下：</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">char *basename(char *path);</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">让我们看一些使用 `basename()` 的例子：</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">1. 输入 `/home/user/documents/file.txt` 返回 `file.txt`</span></span><br><span class="line"><span class="comment">2. 输入 `/home/user/documents/folder/` 返回 `folder`</span></span><br><span class="line"><span class="comment">3. 输入 `/home/user/documents/` 返回 `documents`</span></span><br><span class="line"><span class="comment">4. 输入 `file.txt` 返回 `file.txt`</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">在给出的代码示例中：</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">printf(&quot;usage: %s ip_address port_num backlog\n&quot;, basename(argv[0]));</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">`argv[0]` 通常是程序的名称，包括它被执行时的完整路径。</span></span><br><span class="line"><span class="comment">使用 `basename()` 函数，你可以仅提取程序的实际名称，而不包括其路径，这在显示帮助或错误消息时特别有用。</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">举个例子，假设程序的完整路径是 `/home/user/my_program`，那么 `basename(argv[0])` 就会返回 `my_program`。这样，上述的 `printf` 语句将输出：</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">usage: my_program ip_address port_num backlog</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">需要注意的是，`basename()` 函数可能会修改其参数，也可能返回一个指向静态存储区的指针。</span></span><br><span class="line"><span class="comment">因此，如果原始路径字符串不应被修改，那么在调用 `basename()` 之前，最好先复制这个字符串。</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="type">static</span> <span class="type">bool</span> stop = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">static</span> <span class="type">void</span> <span class="title function_">term_handler</span><span class="params">(<span class="type">int</span> sig)</span>&#123;</span><br><span class="line">    stop = <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span> *argv[])</span>&#123;</span><br><span class="line">    signal(SIGTERM, term_handler);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(argc &lt;= <span class="number">3</span>)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;usage: %s ip_address port_num backlog\n&quot;</span>, basename(argv[<span class="number">0</span>]));</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="type">char</span> *ip = argv[<span class="number">1</span>];</span><br><span class="line">    <span class="type">int</span> port = atoi(argv[<span class="number">2</span>]);</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> sockfd = socket(PF_INET, SOCK_STREAM, <span class="number">0</span>);</span><br><span class="line">    assert(sockfd != <span class="number">-1</span>);</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> sign = <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">sockaddr_in</span> <span class="title">server_addr</span>;</span></span><br><span class="line">    server_addr.sin_family = PF_INET;</span><br><span class="line">    server_addr.sin_port = htons(port);</span><br><span class="line">    inet_pton(PF_INET, ip, &amp;server_addr.sin_addr);</span><br><span class="line"></span><br><span class="line">    sign = bind(sockfd, (<span class="keyword">struct</span> sockaddr*)&amp;server_addr, <span class="keyword">sizeof</span>(server_addr));</span><br><span class="line">    assert(sign != <span class="number">-1</span>);</span><br><span class="line"></span><br><span class="line">    sign = listen(sockfd, <span class="number">5</span>);</span><br><span class="line">    assert(sign != <span class="number">-1</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(!stop)&#123;</span><br><span class="line">        sleep(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    close(sockfd);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">结果忘记截图了，大家可以自己试一下，具体步骤</span></span><br><span class="line"><span class="comment">./test 172.30.78.145 8000 5</span></span><br><span class="line"><span class="comment">另开终端多次	telnet 172.30.78.145 8000</span></span><br><span class="line"><span class="comment">netstat -nt | grep 8000</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
-
-<p>这个命令组合使用了两个命令：<code>netstat</code> 和 <code>grep</code>，并通过管道（<code>|</code>）将第一个命令的输出作为第二个命令的输入。我会为你逐步解释它：</p>
-<ol>
-<li><p><strong><code>netstat -nt</code></strong>:</p>
-<ul>
-<li><code>netstat</code>: 这是一个命令行工具，用于显示网络状态，包括网络连接、路由表、接口统计等。</li>
-<li><code>-n</code>: 表示以数字形式显示地址和端口号，而不是尝试解析它们的名称。</li>
-</ul>
-</li>
-</ol>
-<ul>
-<li><code>-t</code>: 仅显示TCP连接。</li>
-</ul>
-<p>因此，<code>netstat -nt</code> 的输出会列出系统上所有活动的TCP连接，同时显示它们的源和目标IP地址以及端口号，并直接显示数字而不进行名称解析。</p>
-<ol start="2">
-<li><strong><code>|</code></strong>:</li>
-</ol>
-<ul>
-<li>这是一个管道操作符，用于将前一个命令的输出作为后一个命令的输入。</li>
-</ul>
-<ol start="3">
-<li><p><strong><code>grep 8000</code></strong>:</p>
-<ul>
-<li><code>grep</code>: 是一个强大的文本搜索工具，用于搜索匹配的字符串。</li>
-<li><code>8000</code>: 是你想在 <code>netstat</code> 的输出中搜索的字符串。</li>
-</ul>
-<p>这个命令会从 <code>netstat</code> 的输出中筛选出所有包含 “8000” 的行，这通常意味着你正在查找与端口 <code>8000</code> 相关的所有活动连接。</p>
-</li>
-</ol>
-<p>综上所述，<code>netstat -nt | grep 8000</code> 会显示所有在端口 <code>8000</code> 上的活动TCP连接。</p>
-<h4 id="5-5接受连接"><a href="#5-5接受连接" class="headerlink" title="5.5接受连接"></a>5.5接受连接</h4><p>代码：接受一个异常的连接</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;libgen.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sys/socket.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;netinet/in.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;arpa/inet.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;assert.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span>* argv[])</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(argc &lt;= <span class="number">2</span>)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;运行程序，需输入这三个参数：%s, ip_address, port_num\n&quot;</span>, <span class="built_in">basename</span>(argv[<span class="number">0</span>]));</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="type">const</span> <span class="type">char</span>* ip = argv[<span class="number">1</span>];</span><br><span class="line">    <span class="type">int</span> port = <span class="built_in">atoi</span>(argv[<span class="number">2</span>]);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">sockaddr_in</span> address;</span><br><span class="line">    address.sin_family = AF_INET;</span><br><span class="line">    <span class="built_in">inet_pton</span>(AF_INET, ip, &amp;address.sin_addr);</span><br><span class="line">    address.sin_port = <span class="built_in">ntohs</span>(port);</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> sock = <span class="built_in">socket</span>(AF_INET, SOCK_STREAM, <span class="number">0</span>);</span><br><span class="line">    <span class="built_in">assert</span>(sock &gt;= <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> ret = <span class="built_in">bind</span>(sock, (<span class="keyword">struct</span> sockaddr*)&amp;address, <span class="built_in">sizeof</span>(address));</span><br><span class="line">    <span class="built_in">assert</span>(ret != <span class="number">-1</span>);</span><br><span class="line"></span><br><span class="line">    ret = <span class="built_in">listen</span>(sock, <span class="number">5</span>);</span><br><span class="line">    <span class="built_in">assert</span>(ret != <span class="number">-1</span>);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">sleep</span>(<span class="number">20</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">sockaddr_in</span> client;</span><br><span class="line">    <span class="type">socklen_t</span> client_len = <span class="built_in">sizeof</span>(client);</span><br><span class="line">    <span class="type">int</span> connfd = <span class="built_in">accept</span>(sock, (<span class="keyword">struct</span> sockaddr*)&amp;client, &amp;client_len);</span><br><span class="line">    <span class="keyword">if</span>(connfd &lt; <span class="number">0</span>)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;errno is: %d\n&quot;</span>, errno);</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="type">char</span> remote[INET_ADDRSTRLEN];</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;connected with ip: %s and port: %d\n&quot;</span>, <span class="built_in">inet_ntop</span>(AF_INET, &amp;client.sin_addr, remote, client_len),</span><br><span class="line">                <span class="built_in">ntohs</span>(client.sin_port));</span><br><span class="line">        <span class="built_in">close</span>(connfd);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">close</span>(sock);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>1、第一次运行报错，<code>undefined reference to main</code>，这种情况一般有三种可能：</p>
-<ul>
-<li>没有定义main函数</li>
-<li>main函数的main拼写错误</li>
-<li>刚写的代码忘记保存了</li>
-</ul>
-<p>2、<code>accept</code>函数是阻塞的，上述代码即服务器端运行的时候，会阻塞在<code>accept</code>处，一旦客户端请求建立连接，服务器立马终止程序。注意<code>accept</code>只是从<code>listen</code>监听队列中取出连接，它不会理会客户端处于什么状态。</p>
-<p>3、一直在思考<code>select/poll/epoll</code>这些有什么用。首先因为listen是有监听队列的，劣势就在于只能一个个处理，并且同时接入的连接数有限。比如队列长度为5，处理完一个，再建立下一个连接，这样如果某一个连接处理很长时间一直阻塞在那里，就导致后面的新请求连接建立超时。很直观的想法是<code>fork</code>新进程或者创建新线程来处理新连接，每来一个连接我就创建一个来跟他对接。这样资源消耗太大。因此就有了<code>select/poll/epoll</code>，先把连接建立起来并放进文件描述符，最后从这里面寻找哪些发生了可读可写事件，也避免了因为读写事件造成的阻塞（没有数据到来就阻塞了）。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" title="Next page" aria-label="Next page" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -1176,7 +1080,7 @@
 
   <div class="copyright">
     &copy; 
-    <span itemprop="copyrightYear">2024</span>
+    <span itemprop="copyrightYear">2025</span>
     <span class="with-love">
       <i class="fa fa-heart"></i>
     </span>

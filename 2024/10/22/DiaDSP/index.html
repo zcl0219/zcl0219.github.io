@@ -27,7 +27,7 @@
 <meta property="og:description" content="Differentially Private Distributed Optimization via State and Direction Perturbation in Multiagent Systems">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-10-22T13:38:57.000Z">
-<meta property="article:modified_time" content="2024-10-27T08:54:22.521Z">
+<meta property="article:modified_time" content="2024-10-27T11:06:54.954Z">
 <meta property="article:author" content="GGBond">
 <meta property="article:tag" content="Distributed Optimization Algorithm">
 <meta name="twitter:card" content="summary">
@@ -145,7 +145,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Differentially-Private-Distributed-Optimization-via-State-and-Direction-Perturbation-in-Multiagent-Systems"><span class="nav-number">1.</span> <span class="nav-text">Differentially Private Distributed Optimization via State and Direction Perturbation in Multiagent Systems</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Source"><span class="nav-number">1.1.</span> <span class="nav-text">Source</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Prerequisite-Knowledge"><span class="nav-number">1.2.</span> <span class="nav-text">Prerequisite Knowledge</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Abstract"><span class="nav-number">1.3.</span> <span class="nav-text">Abstract</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Introduction"><span class="nav-number">1.4.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Problem-Formulation"><span class="nav-number">1.5.</span> <span class="nav-text">Problem Formulation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DiaDSP-Algorithm"><span class="nav-number">1.6.</span> <span class="nav-text">DiaDSP Algorithm</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Differentially-Private-Distributed-Optimization-via-State-and-Direction-Perturbation-in-Multiagent-Systems"><span class="nav-number">1.</span> <span class="nav-text">Differentially Private Distributed Optimization via State and Direction Perturbation in Multiagent Systems</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Source"><span class="nav-number">1.1.</span> <span class="nav-text">Source</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Prerequisite-Knowledge"><span class="nav-number">1.2.</span> <span class="nav-text">Prerequisite Knowledge</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Abstract"><span class="nav-number">1.3.</span> <span class="nav-text">Abstract</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Introduction"><span class="nav-number">1.4.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Problem-Formulation"><span class="nav-number">1.5.</span> <span class="nav-text">Problem Formulation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DiaDSP-Algorithm"><span class="nav-number">1.6.</span> <span class="nav-text">DiaDSP Algorithm</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Convergence-Analysis-of-DiaDSP"><span class="nav-number">1.7.</span> <span class="nav-text">Convergence Analysis of DiaDSP</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -160,7 +160,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">27</span>
+          <span class="site-state-item-count">29</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -234,7 +234,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-10-27 16:54:22" itemprop="dateModified" datetime="2024-10-27T16:54:22+08:00">2024-10-27</time>
+      <time title="Modified: 2024-10-27 19:06:54" itemprop="dateModified" datetime="2024-10-27T19:06:54+08:00">2024-10-27</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -293,11 +293,10 @@
 <h4 id="DiaDSP-Algorithm"><a href="#DiaDSP-Algorithm" class="headerlink" title="DiaDSP Algorithm"></a>DiaDSP Algorithm</h4><p>A. Motivation: An Impossibility Result</p>
 <p>Summary: The result shows that the convergence and differential privacy cannot be guaranteed simultaneously for any global exact DO algorithm.</p>
 <p>Proof of Proposition 1 (convergence ($\surd$))</p>
-<p>$\mathbf{x}^{(l)}(k) \rightarrow$ the convergence point by $\mathbf{x}_{l}^{\infty}$. Hence, there is $\delta^{<em>} &gt; 0$, satisfying $\big| g(\mathbf{x}_{1}^{</em>}, \mathbf{0}) - g(\mathbf{x}_{2}^{<em>}, \mathbf{0})\big|_{\textit{F}}.$ We set an upper threshold $\frac{\delta^{</em>}}{3}$. Therefore, there exists $k_{\delta^{<em>}}^(l) &gt; 0$ such that $\big| \mathbf{z}^{l}(k) - g(\mathbf{x}_{l}^{</em>}, \mathbf{0})\big| &lt; \frac{\delta^{<em>}}{3}.$<br>$$|z^{(1)}(k) - z^{(2)}(k)| \geq |g(x_i^</em>, 0) - g(x_2^<em>, 0)| - |g(x_i^</em>, 0) - z^{(1)}(k)| - |g(x_2^<em>, 0) - z^{(2)}(k)|.$$<br>$$|a + b + c| \geq |b| - |a| - |c|.$$<br>$$a = z^{(1)}(k) - g(x_i^</em>, 0), \quad b = g(x_i^<em>, 0) - g(x_2^</em>, 0), \quad c = g(x_2^<em>, 0) - z^{(2)}(k).$$<br>$$|z^{(1)}(k) - z^{(2)}(k)| \geq |g(x_i^</em>, 0) - g(x_2^<em>, 0)| - |z^{(1)}(k) - g(x_i^</em>, 0)| - |g(x_2^<em>, 0) - z^{(2)}(k)|.$$<br>$$|z^{(1)}(k) - z^{(2)}(k)| \geq |g(x_i^</em>, 0) - g(x_2^<em>, 0)| - \frac{\delta^</em>}{3}.$$</p>
+<p>$\mathbf{x}^{(l)}(k) \rightarrow$ the convergence point by $\mathbf{x}_{l}^{\infty}$. Hence, there is $\delta^{*} &gt; 0$, satisfying $\big| g(\mathbf{x}_{1}^{*}, \mathbf{0}) - g(\mathbf{x}_{2}^{*}, \mathbf{0})\big|_{\textit{F}}$ We set an upper threshold $\frac{\delta^{*}}{3}$. Therefore, there exists $k_{\delta^{*}}^{(l)} &gt; 0$ such that $\big| \mathbf{z}^{l}(k) - g(\mathbf{x}_{l}^{*}, \mathbf{0})\big| &lt; \frac{\delta^{*}}{3}.$<br>$$\big| z^{(1)}(k) - z^{(2)}(k)| \geq |g(x_1^{*}, 0) - g(x_2^{*}, 0)| - |g(x_1^{*}, 0) - z^{(1)}(k)| - |g(x_2^{*}, 0) - z^{(2)}(k)\big|.$$<br>$$|a + b + c| \geq |b| - |a| - |c|.$$<br>$$a = z^{(1)}(k) - g(x_1^{*}, 0), \quad b = g(x_1^{*}, 0) - g(x_2^{*}, 0), \quad c = g(x_2^{*}, 0) - z^{(2)}(k).$$<br>$$|z^{(1)}(k) - z^{(2)}(k)| \geq |g(x_1^{*}, 0) - g(x_2^{*}, 0)| - |z^{(1)}(k) - g(x_1^{*}, 0)| - |g(x_2^{*}, 0) - z^{(2)}(k)|.$$<br>$$|z^{(1)}(k) - z^{(2)}(k)| \geq |g(x_i^{*}, 0) - g(x_2^{*}, 0)| - \frac{2\delta^{*}}{3}.$$</p>
 <p>B. Development of DiaDSP</p>
 <p>We employ the combine-then-adapt strategy for each agent $i$, which is expressed as $$x_{i}(k+1) = \sum_{j=1}^{n} a_{ij} x_{j}(k) - \alpha_{i} y_{i}(k).$$ This formula is analogous to the parameter update mechanism in neural networks. $x_i(k)$ can be considered as the transition between different states. $y_i(k)$  is regarded as the gradient of the cost function. Therefore, $y_i(k)$ is supposed to have the same direction as $\sum_{i=1}^{n} \nabla f_i(x_i(k)).$ One advantage of adopting the GT method is that the iterations $$x_{i}(k+1) = \sum_{j=1}^{n} a_{ij} x_{j}(k) - \alpha_{i} y_{i}(k).$$ and $$y_i(k+1) = \sum_{j=1}^{n} a_{ij} y_j(k) + \nabla f_i(x_i(k+1)) - \nabla f_i(x_i(k)).$$ share the same network and we do not need to generate another network for the GT iteration. The reason is that they have the same input dimension and both update around the gradient of the cost function with respect to $f_i(x_i(k))$.</p>
-<p>Convergence Analysis of DiaDSP</p>
-<p>This section mainly include three key points:</p>
+<h4 id="Convergence-Analysis-of-DiaDSP"><a href="#Convergence-Analysis-of-DiaDSP" class="headerlink" title="Convergence Analysis of DiaDSP"></a>Convergence Analysis of DiaDSP</h4><p>This section mainly include three key points:</p>
 <ol>
 <li>Analyze the convergence of DiaDSP</li>
 <li>Prove the R-linear convergence of DiaDSP</li>
@@ -352,6 +351,9 @@
                 </a>
             </div>
             <div class="post-nav-item">
+                <a href="/2024/10/30/DRL-Algorithms/" rel="next" title="DRL Algorithms">
+                  DRL Algorithms <i class="fa fa-angle-right"></i>
+                </a>
             </div>
           </div>
     </footer>
@@ -371,7 +373,7 @@
 
   <div class="copyright">
     &copy; 
-    <span itemprop="copyrightYear">2024</span>
+    <span itemprop="copyrightYear">2025</span>
     <span class="with-love">
       <i class="fa fa-heart"></i>
     </span>
