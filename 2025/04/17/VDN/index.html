@@ -19,15 +19,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"zcl0219.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":null,"show_result":true},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="Doing the tough things sets winners apart from losers">
+    <meta name="description" content="用于协作式多智能体学习的价值分解网络摘要我们研究了具有单个联合奖励信号的协作式多智能体强化学习问题。这类学习问题很困难，因为通常有很大的动作和观察组合空间。在完全集中式和去中心化的方法中，我们发现了虚假奖励的问题和一种我们称之为 “惰性代理” 问题的现象，这是由于部分可观察性而出现的。我们通过使用一种新的价值分解网络架构来训练单个代理来解决这些问题，该架构学习将团队价值函数分解为代理价值函数。我们">
 <meta property="og:type" content="article">
 <meta property="og:title" content="VDN">
 <meta property="og:url" content="http://zcl0219.github.io/2025/04/17/VDN/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Doing the tough things sets winners apart from losers">
+<meta property="og:description" content="用于协作式多智能体学习的价值分解网络摘要我们研究了具有单个联合奖励信号的协作式多智能体强化学习问题。这类学习问题很困难，因为通常有很大的动作和观察组合空间。在完全集中式和去中心化的方法中，我们发现了虚假奖励的问题和一种我们称之为 “惰性代理” 问题的现象，这是由于部分可观察性而出现的。我们通过使用一种新的价值分解网络架构来训练单个代理来解决这些问题，该架构学习将团队价值函数分解为代理价值函数。我们">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2025-04-16T17:21:22.000Z">
-<meta property="article:modified_time" content="2025-04-16T17:21:22.310Z">
+<meta property="article:modified_time" content="2025-04-16T18:10:39.060Z">
 <meta property="article:author" content="GGBond">
 <meta name="twitter:card" content="summary">
 
@@ -131,7 +131,7 @@
   
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           Table of Contents
@@ -144,6 +144,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%A8%E4%BA%8E%E5%8D%8F%E4%BD%9C%E5%BC%8F%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93%E5%AD%A6%E4%B9%A0%E7%9A%84%E4%BB%B7%E5%80%BC%E5%88%86%E8%A7%A3%E7%BD%91%E7%BB%9C"><span class="nav-number">1.</span> <span class="nav-text">用于协作式多智能体学习的价值分解网络</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%91%98%E8%A6%81"><span class="nav-number">1.1.</span> <span class="nav-text">摘要</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%95%E8%A8%80"><span class="nav-number">1.2.</span> <span class="nav-text">引言</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -224,8 +225,9 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
+      
 
-      <time title="Created: 2025-04-17 01:21:22" itemprop="dateCreated datePublished" datetime="2025-04-17T01:21:22+08:00">2025-04-17</time>
+      <time title="Created: 2025-04-17 01:21:22 / Modified: 02:10:39" itemprop="dateCreated datePublished" datetime="2025-04-17T01:21:22+08:00">2025-04-17</time>
     </span>
 
   
@@ -237,7 +239,22 @@
     
     
     
-    <div class="post-body" itemprop="articleBody">
+    <div class="post-body" itemprop="articleBody"><h2 id="用于协作式多智能体学习的价值分解网络"><a href="#用于协作式多智能体学习的价值分解网络" class="headerlink" title="用于协作式多智能体学习的价值分解网络"></a>用于协作式多智能体学习的价值分解网络</h2><h3 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h3><p>我们研究了具有单个联合奖励信号的协作式多智能体强化学习问题。这类学习问题很困难，因为通常有很大的动作和观察组合空间。在完全集中式和去中心化的方法中，我们发现了虚假奖励的问题和一种我们称之为 “惰性代理” 问题的现象，这是由于部分可观察性而出现的。我们通过使用一种新的价值分解网络架构来训练单个代理来解决这些问题，该架构学习将团队价值函数分解为代理价值函数。我们在一系列部分可观察的多智能体领域进行了实验评估，并表明学习这种价值分解会带来卓越的结果，特别是当与权重共享、角色信息和信息通道相结合时。</p>
+<hr>
+<p><sup><a href="#fn_什么是单个联合奖励信号的协作式多智能体强化学习问题" id="reffn_什么是单个联合奖励信号的协作式多智能体强化学习问题">什么是单个联合奖励信号的协作式多智能体强化学习问题</a></sup>: </p>
+<p>首先，协作式多智能体强化学习（Cooperative MARL）是指多个智能体共同合作完成一个任务，他们的目标一致，共享奖励或各自有奖励，但这里提到的是单个联合奖励信号，所以应该是所有智能体共享同一个奖励。那单个联合奖励信号是什么意思呢？可能是指所有智能体的行为共同影响一个全局奖励，比如团队胜利或任务完成。比如足球游戏里的多个球员，进球了大家都有同样的奖励，被进球了都扣分。这种情况下，每个智能体的行为都会影响整个团队的奖励，但每个智能体可能需要自己学习策略，或者有集中式的训练。接下来需要解释协作式MARL的基本概念，然后结合单个联合奖励来展开。可能需要比较一下其他情况，比如每个智能体有独立奖励的情况，或者竞争式MARL。然后说明这种单个联合奖励带来的挑战和常见解决方法。挑战可能包括信用分配问题，因为所有智能体共享同一个奖励，难以确定每个个体的贡献。比如在团队游戏中，某个关键动作可能由某个智能体做出，但奖励是大家共享的，其他智能体如何知道该动作的重要性？这时候可能需要某种方法来分配信用，比如COMA算法中的反事实基线，或者VDN、QMIX这类值分解的方法。另外，还需要提到环境的部分可观测性，每个智能体可能只能看到局部信息，这会影响决策。还有策略的协调问题，如何让多个智能体的策略在分散执行时保持一致，可能需要集中式训练、分散式执行的框架。常见的方法可能包括值分解网络（VDN, QMIX），这些方法通过分解联合Q值到个体Q值，从而在训练时利用全局信息，执行时每个智能体根据自己的Q值行动。还有Actor-Critic方法，如MADDPG，虽然每个智能体有自己的策略，但Critic可能会用到全局信息进行训练。另外，可能需要提到信用分配的具体技术，比如差异奖励（Difference Rewards），即每个智能体的奖励基于其贡献与全局奖励的关系，或者利用反事实基线来评估某个智能体是否存在时的奖励差异。总结的话，单个联合奖励的协作式MARL问题需要解决信用分配、环境复杂性、策略协调等问题，常用方法有值分解、集中训练分散执行、信用分配技术等。这样用户应该能理解这个问题的定义、挑战和解决思路了。</p>
+<hr>
+<h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><p>我们考虑合作式多智能体强化学习（MARL）问题[，, , ]，其中多个学习智能体需要共同优化随时间累积的单一奖励信号——即<strong>团队奖励</strong>。每个智能体只能访问自身的“局部”观测信息，并负责从其自身的动作集中选择动作。协作式MARL问题出现在诸如协调自动驾驶车辆和/或交通信号系统、优化由多个交互组件组成的工厂生产效率等应用中。更广泛地说，随着AI智能体的普及，它们必须学会协作以实现共同目标。</p>
+<p>尽管某些实际应用可能需要局部自治，但原则上合作式MARL问题可以通过<strong>集中式</strong>方法处理，即将问题简化为单智能体强化学习（RL），通过拼接观测空间和组合动作空间进行学习。然而，我们证明集中式方法在相对简单的协作式MARL问题上始终失败。我们设计了一个简单实验：集中式方法会学习到低效的策略，仅有一个智能体活跃，而另一个变得“懒惰”。这是因为当一个智能体学习到有用策略时，第二个智能体因探索行为可能妨碍前者并导致团队奖励下降，从而被抑制学习。</p>
+<p>另一种方法是训练<strong>独立学习者</strong>以优化团队奖励。然而，由于每个智能体的环境动态会随着其他智能体行为的变化而改变，每个智能体实际上面临非稳态学习问题[]。此外，由于单个智能体的视角是部分可观测的，它们可能接收到来自队友（未被观测的）行为的虚假奖励信号。这种无法解释自身观测奖励的缺陷使得朴素独立RL通常无法成功：例如[]表明，独立Q学习器无法区分队友的探索与环境本身的随机性，甚至无法解决一个看似简单的2智能体、无状态、3×3动作的问题。而一般的Dec-POMDP问题已被证明是难解的[, ]。尽管本文聚焦于双智能体协作，但需注意独立学习者和集中式方法的问题会随智能体数量增加而恶化，因为此时大多数奖励与个体无关，而集中式方法的动作空间会指数级膨胀。</p>
+<p>改进独立学习者的方法之一是设计更直接关联个体观测的局部奖励函数。然而，即使在单智能体场景中，奖励塑形也极为困难，仅有一小类塑形奖励函数能保证与真实目标的最优性一致[, ]。本文旨在探索更通用的自主解决方案，即通过学习分解团队价值函数。</p>
+<p>我们提出一种新型的<strong>可学习加性价值分解</strong>方法，通过对个体智能体的价值函数进行线性组合。具体而言，价值分解网络（VDN）旨在通过反向传播团队Q值的梯度到表示个体价值函数的深度神经网络中，从而从团队奖励信号中学习最优的线性价值分解。这种加性分解的动机是避免独立学习者中出现的虚假奖励信号。每个智能体隐式学习到的价值函数仅依赖于局部观测，因此更易训练。该方法还缓解了[]中强调的独立学习的协调问题，因为它在训练时以集中方式学习，而部署时智能体可独立运行。</p>
+<p>此外，我们结合权重共享、角色信息和信息通道等近期被证明可提升样本效率与降低内存需求的技术[, , ]，对所提出的智能体进行增强。但本文的核心比较集中在三种架构：基于个体的价值分解、独立学习者和集中式方法。我们在一系列新颖的双智能体协作场景中对这些技术的组合进行了实验与基准测试。结果表明，价值分解方法在性能上显著优于集中式或完全独立的学习者，且结合附加技术后，其表现更是大幅领先。</p>
+<hr>
+<p><sup><a href="#fn_备注" id="reffn_备注">备注</a></sup>: </p>
+<p>集中式学习的缺点是随着智能体数量的增加，动作空间指数级增长；<br>独立式学习的缺点是每个智能体面临的是非稳态环境，学习不稳定还会影响其他智能体的学习；<br>因此，本文推出了一种可学习加性价值分解方法。换句话说就是如何将团队奖励（团队Q值）进行合理分解</p>
+<hr>
+
     </div>
 
     
