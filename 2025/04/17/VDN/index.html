@@ -27,7 +27,7 @@
 <meta property="og:description" content="用于协作式多智能体学习的价值分解网络摘要我们研究了具有单个联合奖励信号的协作式多智能体强化学习问题。这类学习问题很困难，因为通常有很大的动作和观察组合空间。在完全集中式和去中心化的方法中，我们发现了虚假奖励的问题和一种我们称之为 “惰性代理” 问题的现象，这是由于部分可观察性而出现的。我们通过使用一种新的价值分解网络架构来训练单个代理来解决这些问题，该架构学习将团队价值函数分解为代理价值函数。我们">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2025-04-16T17:21:22.000Z">
-<meta property="article:modified_time" content="2025-04-16T18:10:39.060Z">
+<meta property="article:modified_time" content="2025-05-07T16:23:00.918Z">
 <meta property="article:author" content="GGBond">
 <meta name="twitter:card" content="summary">
 
@@ -144,7 +144,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%A8%E4%BA%8E%E5%8D%8F%E4%BD%9C%E5%BC%8F%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93%E5%AD%A6%E4%B9%A0%E7%9A%84%E4%BB%B7%E5%80%BC%E5%88%86%E8%A7%A3%E7%BD%91%E7%BB%9C"><span class="nav-number">1.</span> <span class="nav-text">用于协作式多智能体学习的价值分解网络</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%91%98%E8%A6%81"><span class="nav-number">1.1.</span> <span class="nav-text">摘要</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%95%E8%A8%80"><span class="nav-number">1.2.</span> <span class="nav-text">引言</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%A8%E4%BA%8E%E5%8D%8F%E4%BD%9C%E5%BC%8F%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93%E5%AD%A6%E4%B9%A0%E7%9A%84%E4%BB%B7%E5%80%BC%E5%88%86%E8%A7%A3%E7%BD%91%E7%BB%9C"><span class="nav-number">1.</span> <span class="nav-text">用于协作式多智能体学习的价值分解网络</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%91%98%E8%A6%81"><span class="nav-number">1.1.</span> <span class="nav-text">摘要</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%95%E8%A8%80"><span class="nav-number">1.2.</span> <span class="nav-text">引言</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.3 多智能体强化学习</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83%E6%A6%82%E5%BF%B5%E8%A7%A3%E9%87%8A"><span class="nav-number">1.3.</span> <span class="nav-text">核心概念解释</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E9%94%AE%E5%8C%BA%E5%88%AB"><span class="nav-number">1.4.</span> <span class="nav-text">关键区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E9%99%85%E6%84%8F%E4%B9%89"><span class="nav-number">1.5.</span> <span class="nav-text">实际意义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E6%B7%B1%E5%BA%A6%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%EF%BC%88Deep-RL%EF%BC%89%E6%9E%B6%E6%9E%84%E7%94%A8%E4%BA%8E%E5%90%88%E4%BD%9C%E5%9E%8B%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%EF%BC%88Coop-MARL%EF%BC%89"><span class="nav-number">1.6.</span> <span class="nav-text">三、深度强化学习（Deep-RL）架构用于合作型多智能体强化学习（Coop-MARL）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#VDN%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="nav-number">1.7.</span> <span class="nav-text">VDN代码实现</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -159,7 +159,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-count">33</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -225,9 +225,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2025-04-17 01:21:22 / Modified: 02:10:39" itemprop="dateCreated datePublished" datetime="2025-04-17T01:21:22+08:00">2025-04-17</time>
+      <time title="Created: 2025-04-17 01:21:22" itemprop="dateCreated datePublished" datetime="2025-04-17T01:21:22+08:00">2025-04-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2025-05-08 00:23:00" itemprop="dateModified" datetime="2025-05-08T00:23:00+08:00">2025-05-08</time>
     </span>
 
   
@@ -246,6 +252,7 @@
 <hr>
 <h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><p>我们考虑合作式多智能体强化学习（MARL）问题[，, , ]，其中多个学习智能体需要共同优化随时间累积的单一奖励信号——即<strong>团队奖励</strong>。每个智能体只能访问自身的“局部”观测信息，并负责从其自身的动作集中选择动作。协作式MARL问题出现在诸如协调自动驾驶车辆和/或交通信号系统、优化由多个交互组件组成的工厂生产效率等应用中。更广泛地说，随着AI智能体的普及，它们必须学会协作以实现共同目标。</p>
 <p>尽管某些实际应用可能需要局部自治，但原则上合作式MARL问题可以通过<strong>集中式</strong>方法处理，即将问题简化为单智能体强化学习（RL），通过拼接观测空间和组合动作空间进行学习。然而，我们证明集中式方法在相对简单的协作式MARL问题上始终失败。我们设计了一个简单实验：集中式方法会学习到低效的策略，仅有一个智能体活跃，而另一个变得“懒惰”。这是因为当一个智能体学习到有用策略时，第二个智能体因探索行为可能妨碍前者并导致团队奖励下降，从而被抑制学习。</p>
+<p><sup><a href="#fn_" id="reffn_"></a></sup>: </p>
 <p>另一种方法是训练<strong>独立学习者</strong>以优化团队奖励。然而，由于每个智能体的环境动态会随着其他智能体行为的变化而改变，每个智能体实际上面临非稳态学习问题[]。此外，由于单个智能体的视角是部分可观测的，它们可能接收到来自队友（未被观测的）行为的虚假奖励信号。这种无法解释自身观测奖励的缺陷使得朴素独立RL通常无法成功：例如[]表明，独立Q学习器无法区分队友的探索与环境本身的随机性，甚至无法解决一个看似简单的2智能体、无状态、3×3动作的问题。而一般的Dec-POMDP问题已被证明是难解的[, ]。尽管本文聚焦于双智能体协作，但需注意独立学习者和集中式方法的问题会随智能体数量增加而恶化，因为此时大多数奖励与个体无关，而集中式方法的动作空间会指数级膨胀。</p>
 <p>改进独立学习者的方法之一是设计更直接关联个体观测的局部奖励函数。然而，即使在单智能体场景中，奖励塑形也极为困难，仅有一小类塑形奖励函数能保证与真实目标的最优性一致[, ]。本文旨在探索更通用的自主解决方案，即通过学习分解团队价值函数。</p>
 <p>我们提出一种新型的<strong>可学习加性价值分解</strong>方法，通过对个体智能体的价值函数进行线性组合。具体而言，价值分解网络（VDN）旨在通过反向传播团队Q值的梯度到表示个体价值函数的深度神经网络中，从而从团队奖励信号中学习最优的线性价值分解。这种加性分解的动机是避免独立学习者中出现的虚假奖励信号。每个智能体隐式学习到的价值函数仅依赖于局部观测，因此更易训练。该方法还缓解了[]中强调的独立学习的协调问题，因为它在训练时以集中方式学习，而部署时智能体可独立运行。</p>
@@ -254,6 +261,78 @@
 <p><sup><a href="#fn_备注" id="reffn_备注">备注</a></sup>: </p>
 <p>集中式学习的缺点是随着智能体数量的增加，动作空间指数级增长；<br>独立式学习的缺点是每个智能体面临的是非稳态环境，学习不稳定还会影响其他智能体的学习；<br>因此，本文推出了一种可学习加性价值分解方法。换句话说就是如何将团队奖励（团队Q值）进行合理分解</p>
 <hr>
+<h4 id="2-3-多智能体强化学习"><a href="#2-3-多智能体强化学习" class="headerlink" title="2.3 多智能体强化学习"></a>2.3 多智能体强化学习</h4><p>如果我们将(\bar{h} := (h^1, h^2, …, h^d))定义为智能体历史记录的元组（其中每个(h^i)表示第(i)个智能体的历史），则联合策略通常是一个映射(\pi : \mathcal{H}^d \to \mathcal{P}(\mathcal{A}^d))。此映射基于所有智能体的联合历史(\bar{h})，输出联合动作空间(\mathcal{A}^d)上的概率分布。  </p>
+<p>不过，我们特别关注一类特殊的策略：对于任意历史(\bar{h})，其输出的分布(\pi(\bar{h}))在(\mathcal{P}(\mathcal{A})^d)中具有<strong>独立分量</strong>。即，每个智能体的动作分布仅依赖于联合历史(\bar{h})，但各智能体的动作选择在概率上是相互独立的。因此，这类策略可表示为(\pi : \mathcal{H}^d \to \mathcal{P}(\mathcal{A})^d)。  </p>
+<p>唯一的例外是使用最朴素的集中式智能体（即<strong>联合动作学习者</strong>）时，此时策略直接操作组合动作空间（(\mathcal{A}^d)），输出的分布属于(\mathcal{P}(\mathcal{A}^d))。  </p>
+<hr>
+<p><sup><a href="#fn_备注" id="reffn_备注">备注</a></sup>: </p>
+<p>这段文字定义了多智能体强化学习（MARL）中的联合策略，并比较了两种不同的策略形式：</p>
+<h3 id="核心概念解释"><a href="#核心概念解释" class="headerlink" title="核心概念解释"></a>核心概念解释</h3><ol>
+<li><p><strong>智能体历史元组</strong>：<br>用(\bar{h} := (h^1, h^2, …, h^d))表示所有智能体的历史记录集合，其中(h^i)是第(i)个智能体的历史（包含其观测和动作序列）。</p>
+</li>
+<li><p><strong>联合策略的一般形式</strong>：<br>联合策略通常定义为映射(\pi : \mathcal{H}^d \to \mathcal{P}(\mathcal{A}^d))，即基于所有智能体的联合历史(\bar{h})，输出一个联合动作空间(\mathcal{A}^d)上的概率分布。  </p>
+<ul>
+<li>(\mathcal{H}^d)：所有智能体历史记录的联合空间。  </li>
+<li>(\mathcal{P}(\mathcal{A}^d))：所有可能的联合动作的概率分布集合。  </li>
+</ul>
+</li>
+<li><p><strong>独立分量的联合策略</strong>：<br>作者特别考虑一种特殊形式：对于任何联合历史(\bar{h})，策略输出的分布(\pi(\bar{h}))在(\mathcal{P}(\mathcal{A})^d)中具有<strong>独立分量</strong>。这意味着：  </p>
+<ul>
+<li>每个智能体的动作选择仅依赖于联合历史(\bar{h})，但动作之间的概率分布是独立的。  </li>
+<li>数学上可分解为(\pi(\bar{h}) = (\pi^1(\bar{h}), \pi^2(\bar{h}), …, \pi^d(\bar{h})))，其中每个(\pi^i(\bar{h}) \in \mathcal{P}(\mathcal{A}))表示第(i)个智能体的局部策略。  </li>
+<li><strong>优势</strong>：避免了组合动作空间的复杂性，同时仍能利用全局历史信息进行决策。</li>
+</ul>
+</li>
+<li><p><strong>例外：集中式联合动作学习者</strong>：<br>当使用“最朴素的集中式智能体”时，策略直接操作组合动作空间（combinatorial action space），即联合动作学习者（joint action learners）。  </p>
+<ul>
+<li>此时，策略输出的分布(\pi(\bar{h}))属于(\mathcal{P}(\mathcal{A}^d))，需考虑所有智能体动作的联合分布，而非独立分量。  </li>
+<li><strong>问题</strong>：动作空间维度随智能体数量(d)指数增长（(\mathcal{A}^d)），导致计算和训练复杂度极高。</li>
+</ul>
+</li>
+</ol>
+<h3 id="关键区别"><a href="#关键区别" class="headerlink" title="关键区别"></a>关键区别</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th><strong>策略类型</strong></th>
+<th><strong>输入</strong></th>
+<th><strong>输出分布</strong></th>
+<th><strong>特点</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>独立分量联合策略</td>
+<td>联合历史(\bar{h})</td>
+<td>(\mathcal{P}(\mathcal{A})^d)</td>
+<td>动作分布独立，利用全局信息但保持动作解耦，复杂度线性增长（(d \times \</td>
+<td>\mathcal{A}\</td>
+<td>)）。</td>
+</tr>
+<tr>
+<td>集中式联合动作学习者</td>
+<td>联合历史(\bar{h})</td>
+<td>(\mathcal{P}(\mathcal{A}^d))</td>
+<td>动作分布耦合，需建模联合动作，复杂度指数增长（(\</td>
+<td>\mathcal{A}\</td>
+<td>^d)），难以扩展。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="实际意义"><a href="#实际意义" class="headerlink" title="实际意义"></a>实际意义</h3><ul>
+<li><strong>独立分量策略</strong>：适用于需要平衡全局协调与计算效率的场景，例如价值分解网络（VDN）等算法，通过共享观测历史但独立选择动作，缓解组合爆炸问题。  </li>
+<li><strong>集中式联合动作学习者</strong>：尽管理论上能直接优化全局最优策略，但因动作空间过大，仅适用于智能体数量极少或动作空间极小的任务，实际应用受限。</li>
+</ul>
+<p>这一区分为后续讨论集中式方法在复杂任务中的失败（如动作空间爆炸、探索效率低）以及独立学习者或价值分解方法的优势奠定了基础。</p>
+<hr>
+<h3 id="三、深度强化学习（Deep-RL）架构用于合作型多智能体强化学习（Coop-MARL）"><a href="#三、深度强化学习（Deep-RL）架构用于合作型多智能体强化学习（Coop-MARL）" class="headerlink" title="三、深度强化学习（Deep-RL）架构用于合作型多智能体强化学习（Coop-MARL）"></a>三、深度强化学习（Deep-RL）架构用于合作型多智能体强化学习（Coop-MARL）</h3><p>减少可学习参数数量的一个方法是在代理之间共享某些网络权重。权重共享还引发了代理不变性的概念，这对于避免懒惰代理问题是有用的。</p>
+<hr>
+<p><sup><a href="#fn_备注" id="reffn_备注">备注</a></sup>: </p>
+<p>首先，提到“减少可学习参数数量的方法之一是共享智能体之间的某些网络权重”。这里的“可学习参数”指的是神经网络中的权重，共享权重意味着不同的智能体使用相同的权重参数，而不是每个智能体都有自己独立的参数。这样可以减少整体的参数数量，从而降低模型的复杂度和训练所需的计算资源。</p>
+<p>接下来，提到“权重共享还产生了智能体不变性的概念，这对避免懒惰智能体问题很有用”。“智能体不变性”应该是指通过共享权重，不同智能体在功能上变得相似或一致，从而避免某些智能体变得不活跃（即“懒惰智能体问题”）。</p>
+<hr>
+<h3 id="VDN代码实现"><a href="#VDN代码实现" class="headerlink" title="VDN代码实现"></a>VDN代码实现</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">VDN类由五个函数组成：init, learn, get_inputs, get_q_values, init_hidden, save_model;</span><br><span class="line">其中，初始化init包括：智能体数量，状态空间，观察空间，输入维度，动作空间，四种神经网络，是否使用GPU，是否加载已存在模型，初始化相同网络参数，初始化需要优化网络参数个数，初始化优化器，初始化隐藏元。</span><br><span class="line">输入维度不等于观察空间原因：当args.last_action为<span class="literal">True</span>时，输入中会加入上一个时间步的动作信息</span><br><span class="line">四种神经网络分别为：每个agent选择动作的网络，每个agent的目标网络，VDN累加Q值的网络，VDN目标网络</span><br><span class="line">网络参数优化器：注意网络参数优化器是针对哪些网络参数进行反向传递优化，这对于VDN算法的实现很重要</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -272,6 +351,9 @@
                 </a>
             </div>
             <div class="post-nav-item">
+                <a href="/2025/05/15/BYZANTINE-ROBUST-COOPERATIVE-MULTI-AGENT-REINFORCEMENT-LEARNING-AS-A-BAYESIAN-GAME/" rel="next" title="BYZANTINE ROBUST COOPERATIVE MULTI-AGENT REINFORCEMENT LEARNING AS A BAYESIAN GAME">
+                  BYZANTINE ROBUST COOPERATIVE MULTI-AGENT REINFORCEMENT LEARNING AS A BAYESIAN GAME <i class="fa fa-angle-right"></i>
+                </a>
             </div>
           </div>
     </footer>
