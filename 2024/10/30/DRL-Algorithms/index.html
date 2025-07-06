@@ -26,18 +26,18 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="在深度强化学习中，(\mathbb{E}_{S}[V(S, \theta)]) 表示对状态 (S) 的期望值。虽然 (S) 是状态，具体理解上可以这样考虑：  状态的分布：在强化学习中，状态 (S) 是随机变量，它遵循一个分布 (p(S))，该分布反映了状态在环境中的出现概率。这个分布可以是初始状态分布，也可以是策略执行时经过各个状态的访问分布。我们可以理解为期望值 (\mathbb{E}_{S}">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://zcl0219.github.io/2024/10/30/DRL-Algorithms/Users/zcl/AppData/Roaming/Typora/typora-user-images/image-20241030002933171.png">
-<meta property="og:image" content="http://zcl0219.github.io/2024/10/30/DRL-Algorithms/Users/zcl/AppData/Roaming/Typora/typora-user-images/image-20241030003652735.png">
-<meta property="og:image" content="http://zcl0219.github.io/2024/10/30/DRL-Algorithms/Users/zcl/AppData/Roaming/Typora/typora-user-images/image-20241030004813870.png">
-<meta property="og:image" content="http://zcl0219.github.io/2024/10/30/DRL-Algorithms/Users/zcl/AppData/Roaming/Typora/typora-user-images/image-20241030005237667.png">
-<meta property="og:image" content="http://zcl0219.github.io/2024/10/30/DRL-Algorithms/Users/zcl/AppData/Roaming/Typora/typora-user-images/image-20241030005401769.png">
-<meta property="og:image" content="http://zcl0219.github.io/2024/10/30/DRL-Algorithms/Users/zcl/AppData/Roaming/Typora/typora-user-images/image-20241030010211366.png">
-<meta property="og:image" content="http://zcl0219.github.io/2024/10/30/DRL-Algorithms/Users/zcl/AppData/Roaming/Typora/typora-user-images/image-20241030010802155.png">
+<meta property="og:image" content="c:\Users\zcl\AppData\Roaming\Typora\typora-user-images\image-20241030002933171.png">
+<meta property="og:image" content="c:\Users\zcl\AppData\Roaming\Typora\typora-user-images\image-20241030003652735.png">
+<meta property="og:image" content="c:\Users\zcl\AppData\Roaming\Typora\typora-user-images\image-20241030004813870.png">
+<meta property="og:image" content="c:\Users\zcl\AppData\Roaming\Typora\typora-user-images\image-20241030005237667.png">
+<meta property="og:image" content="c:\Users\zcl\AppData\Roaming\Typora\typora-user-images\image-20241030005401769.png">
+<meta property="og:image" content="c:\Users\zcl\AppData\Roaming\Typora\typora-user-images\image-20241030010211366.png">
+<meta property="og:image" content="c:\Users\zcl\AppData\Roaming\Typora\typora-user-images\image-20241030010802155.png">
 <meta property="article:published_time" content="2024-10-29T16:26:54.000Z">
-<meta property="article:modified_time" content="2024-10-29T17:20:24.879Z">
+<meta property="article:modified_time" content="2025-07-06T16:28:37.696Z">
 <meta property="article:author" content="GGBond">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://zcl0219.github.io/2024/10/30/DRL-Algorithms/Users/zcl/AppData/Roaming/Typora/typora-user-images/image-20241030002933171.png">
+<meta name="twitter:image" content="c:\Users\zcl\AppData\Roaming\Typora\typora-user-images\image-20241030002933171.png">
 
 
 <link rel="canonical" href="http://zcl0219.github.io/2024/10/30/DRL-Algorithms/">
@@ -232,9 +232,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2024-10-30 00:26:54 / Modified: 01:20:24" itemprop="dateCreated datePublished" datetime="2024-10-30T00:26:54+08:00">2024-10-30</time>
+      <time title="Created: 2024-10-30 00:26:54" itemprop="dateCreated datePublished" datetime="2024-10-30T00:26:54+08:00">2024-10-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2025-07-07 00:28:37" itemprop="dateModified" datetime="2025-07-07T00:28:37+08:00">2025-07-07</time>
     </span>
 
   
@@ -256,19 +262,20 @@
 </li>
 </ol>
 <p>综上，(\mathbb{E}_{S}[V(S, \theta)]) 是对状态空间中的每个状态价值的加权平均，权重来自状态的分布 (p(S))。这种方法在强化学习中帮助我们通过全局状态分布来评估价值函数，从而更有效地训练模型。</p>
+<span id="more"></span>
 <p>随机梯度是对期望的蒙特卡洛近似</p>
-<p><img src="Users\zcl\AppData\Roaming\Typora\typora-user-images\image-20241030002933171.png" alt="image-20241030002933171"></p>
+<p><img src="C:\Users\zcl\AppData\Roaming\Typora\typora-user-images\image-20241030002933171.png" alt="image-20241030002933171"></p>
 <p>通常来说，J(\theta)是一个很复杂的函数，而L(\theta | \theta_{old})是一个相对简单的函数</p>
 <p>构建L的方法多种多样，可以是J的二阶泰勒展开，也可以是J的蒙特卡洛近似</p>
 <p>要maximization，即相当于求解一个带置信域约束的最优化问题，求解速度没有梯度上升和随机梯度上升算法快</p>
 <p>但置信域算法强在比这两种算法表现稳定，哪怕最优化问题求解不是很准确。</p>
-<p><img src="Users\zcl\AppData\Roaming\Typora\typora-user-images\image-20241030003652735.png" alt="image-20241030003652735"></p>
+<p><img src="C:\Users\zcl\AppData\Roaming\Typora\typora-user-images\image-20241030003652735.png" alt="image-20241030003652735"></p>
 <p>J(\theta) = E_{S}[V_{\pi}(S)]中对S求期望，相当于消除了S，只剩下策略网络参数\theta</p>
-<p><img src="Users\zcl\AppData\Roaming\Typora\typora-user-images\image-20241030004813870.png" alt="image-20241030004813870"></p>
-<p><img src="Users\zcl\AppData\Roaming\Typora\typora-user-images\image-20241030005237667.png" alt="image-20241030005237667"></p>
-<p><img src="Users\zcl\AppData\Roaming\Typora\typora-user-images\image-20241030005401769.png" alt="image-20241030005401769"></p>
-<p><img src="Users\zcl\AppData\Roaming\Typora\typora-user-images\image-20241030010211366.png" alt="image-20241030010211366"></p>
-<p><img src="Users\zcl\AppData\Roaming\Typora\typora-user-images\image-20241030010802155.png" alt="image-20241030010802155"></p>
+<p><img src="C:\Users\zcl\AppData\Roaming\Typora\typora-user-images\image-20241030004813870.png" alt="image-20241030004813870"></p>
+<p><img src="C:\Users\zcl\AppData\Roaming\Typora\typora-user-images\image-20241030005237667.png" alt="image-20241030005237667"></p>
+<p><img src="C:\Users\zcl\AppData\Roaming\Typora\typora-user-images\image-20241030005401769.png" alt="image-20241030005401769"></p>
+<p><img src="C:\Users\zcl\AppData\Roaming\Typora\typora-user-images\image-20241030010211366.png" alt="image-20241030010211366"></p>
+<p><img src="C:\Users\zcl\AppData\Roaming\Typora\typora-user-images\image-20241030010802155.png" alt="image-20241030010802155"></p>
 <p>第四步需要内层循环求解最大化问题，第四步两个超参数，一个\delta，一个学习步长。</p>
 
     </div>

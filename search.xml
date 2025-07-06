@@ -1369,19 +1369,17 @@
   <entry>
     <title>Zookeeper</title>
     <url>/2023/10/22/Zookeeper/</url>
-    <content><![CDATA[<p>一、Zookeeper特点</p>
-<ol>
-<li>Zookeeper:一个领导者(Leader)，多个跟随者(Follower)组成的集群。<br>2)集群中只要有半数以上节点存活，Zookeeper集群就能正常服务。所以Zookeeper适合安装奇数台服务器。<br>3)全局数据一致:每个Server保存一份相同的数据副本， Client无论连接到哪个Server，数据都是一致的。<br>4)更新请求顺序执行，来自同一个Client的更新请求按其发送顺序依次执行。<br>5)数据更新原子性，一次数据更新要么成功，要么失败。<br>6)实时性，在一定时间范围内，Client能读到最新数据。</li>
-</ol>
+    <content><![CDATA[<p>一、Zookeeper特点<br>1) Zookeeper:一个领导者(Leader)，多个跟随者(Follower)组成的集群。<br>2)集群中只要有半数以上节点存活，Zookeeper集群就能正常服务。所以Zookeeper适合安装奇数台服务器。<br>3)全局数据一致:每个Server保存一份相同的数据副本， Client无论连接到哪个Server，数据都是一致的。<br>4)更新请求顺序执行，来自同一个Client的更新请求按其发送顺序依次执行。<br>5)数据更新原子性，一次数据更新要么成功，要么失败。<br>6)实时性，在一定时间范围内，Client能读到最新数据。</p>
+<span id="more"></span>
 <p>二、数据结构<br>ZooKeeper数据模型的结构与Unix文件系统很类似，整体上可以看作是一棵树，每个节点称做一个ZNode。每一个ZNode默认能够存储1MB 的数据，每个ZNode都可以通过其路径唯一标识。</p>
 <p>三、应用场景</p>
 <p>提供的服务包括：统一命名服务、统一配置管理、统一集群管理、服务器节点动态上下线、软负载均衡等。</p>
 <p>四、配置参数</p>
-<p>tickTime &#x3D; 2000：通信心跳时间，Zookeeper服务器与客户端心跳时间，单位毫秒</p>
-<p>initLimit &#x3D; 10：LF初始通信时限，10次心跳，也就是20s，Leader和Follower初始链接时限</p>
-<p>syncLimit &#x3D; 5：LF同步通信时限，两者之间的通信时间（5s）</p>
+<p>tickTime = 2000：通信心跳时间，Zookeeper服务器与客户端心跳时间，单位毫秒</p>
+<p>initLimit = 10：LF初始通信时限，10次心跳，也就是20s，Leader和Follower初始链接时限</p>
+<p>syncLimit = 5：LF同步通信时限，两者之间的通信时间（5s）</p>
 <p>dataDir：保存Zookeeper中的数据，可以修改</p>
-<p>clientPort &#x3D; 2181：客户端连接端口，通常不做修改</p>
+<p>clientPort = 2181：客户端连接端口，通常不做修改</p>
 ]]></content>
   </entry>
   <entry>
@@ -1691,10 +1689,9 @@
     <title>对象的优化</title>
     <url>/2023/10/22/%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%BC%98%E5%8C%96/</url>
     <content><![CDATA[<p>一、拷贝构造、赋值运算符重载的相关知识</p>
+<span id="more"></span>
 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Test</span>&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">Test</span>(<span class="type">int</span> a = <span class="number">10</span>): <span class="built_in">ma</span>(a) &#123; cout &lt;&lt; <span class="string">&quot;Test()&quot;</span> &lt;&lt; endl; &#125;</span><br><span class="line">    <span class="built_in">Test</span>(<span class="type">const</span> Test &amp;t): <span class="built_in">ma</span>(t.ma) &#123; cout &lt;&lt; <span class="string">&quot;Test(const Test&amp;)&quot;</span> &lt;&lt; endl; &#125;</span><br><span class="line">    Test&amp; <span class="keyword">operator</span>=(<span class="type">const</span> Test &amp;t)&#123;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;operator=&quot;</span> &lt;&lt; endl;</span><br><span class="line">        ma = t.ma;</span><br><span class="line">        <span class="keyword">return</span> *<span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    ~<span class="built_in">Test</span>() &#123; cout &lt;&lt; <span class="string">&quot;~Test()&quot;</span> &lt;&lt; endl; &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="type">int</span> ma;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    Test t1;</span><br><span class="line">    <span class="function">Test <span class="title">t2</span><span class="params">(t1)</span></span>;</span><br><span class="line">    Test t3 = t1;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//Test(20)显式生成临时对象 生存周期：所在的语句</span></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    c++编译器对于对象构造的优化：</span></span><br><span class="line"><span class="comment">    用临时对象生成新对象的时候，临时对象就不产生了，直接构造新对象就可以了。</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    Test t4 = <span class="built_in">Test</span>(<span class="number">20</span>); <span class="comment">// Test t4(20)没有区别的!</span></span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;-----------------&quot;</span> &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    t4 = t2; <span class="comment">// t4已经存在，这是赋值</span></span><br><span class="line">    t4 = <span class="built_in">Test</span>(<span class="number">30</span>); <span class="comment">// t4.operator=(const Test &amp;t)</span></span><br><span class="line">    t4 = (Test)<span class="number">30</span>; <span class="comment">// int -&gt; Test,强制转换编译器会看有没有合适的构造函数</span></span><br><span class="line">    t4 = <span class="number">30</span>; <span class="comment">// 隐式生成临时对象 隐式类型转换，注意如果30换成一个char类型变量，那就不行了，因为没有对应的构造	  函数。</span></span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;-----------------&quot;</span> &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    Test *p = &amp;<span class="built_in">Test</span>(<span class="number">40</span>); <span class="comment">// p指向的是一个已经析构的临时对象</span></span><br><span class="line">    <span class="type">const</span> Test &amp;ref = <span class="built_in">Test</span>(<span class="number">50</span>);</span><br><span class="line">    <span class="comment">// 使用引用引用一个临时变量，临时变量的周期就变为了变量的生命周期</span></span><br><span class="line">    <span class="comment">// 自己思考为引用给变量起了一个别名，在引用的生命周期内，就可以继续访问这个临时变量了</span></span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;-----------------&quot;</span> &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Test</span>&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">Test</span>(<span class="type">int</span> a = <span class="number">5</span>, <span class="type">int</span> b = <span class="number">5</span>): <span class="built_in">ma</span>(a), <span class="built_in">mb</span>(b)&#123; </span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;Test(int, int)&quot;</span> &lt;&lt; endl; </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">Test</span>(<span class="type">const</span> Test &amp;src): <span class="built_in">ma</span>(src.ma), <span class="built_in">mb</span>(src.mb)&#123; </span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;Test(const Test&amp;)&quot;</span> &lt;&lt; endl; </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">void</span> <span class="keyword">operator</span>=(<span class="type">const</span> Test &amp;src)&#123;</span><br><span class="line">        ma = src.ma;</span><br><span class="line">        mb = src.mb;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;operator=&quot;</span> &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    ~<span class="built_in">Test</span>() &#123; cout &lt;&lt; <span class="string">&quot;~Test()&quot;</span> &lt;&lt; endl; &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="type">int</span> ma;</span><br><span class="line">    <span class="type">int</span> mb;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function">Test <span class="title">t1</span><span class="params">(<span class="number">10</span>, <span class="number">10</span>)</span></span>;  <span class="comment">//1. Test(int , int)</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="function">Test <span class="title">t2</span><span class="params">(<span class="number">20</span>, <span class="number">20</span>)</span></span>;  <span class="comment">//3. Test(int , int)</span></span><br><span class="line">    Test t3 = t2; <span class="comment">// 4.Test(const Test&amp;)</span></span><br><span class="line">    <span class="type">static</span> Test t4 = <span class="built_in">Test</span>(<span class="number">30</span>, <span class="number">30</span>); <span class="comment">//5. Test(int, int)</span></span><br><span class="line">    t2 = <span class="built_in">Test</span>(<span class="number">40</span>, <span class="number">40</span>); <span class="comment">//6.Test(int, int), operetor=, ~Test()</span></span><br><span class="line">    t2 = (Test)(<span class="number">50</span>, <span class="number">50</span>); <span class="comment">//7.Test(int, int), operetor=, ~Test()</span></span><br><span class="line">    t2 = <span class="number">60</span>; <span class="comment">//8.Test(int, int), operetor=, ~Test()</span></span><br><span class="line">    Test *p1 = <span class="keyword">new</span> <span class="built_in">Test</span>(<span class="number">70</span>, <span class="number">70</span>); <span class="comment">// 9.Test(int, int),堆上需要显式释放</span></span><br><span class="line">    Test *p2 = <span class="keyword">new</span> Test[<span class="number">2</span>]; <span class="comment">// 10.Test(int, int), Test(int, int)</span></span><br><span class="line">    Test *p3 = &amp;<span class="built_in">Test</span>(<span class="number">80</span>, <span class="number">80</span>); <span class="comment">//11.Test(int, int), ~Test()</span></span><br><span class="line">    <span class="type">const</span> Test &amp;p4 = <span class="built_in">Test</span>(<span class="number">90</span>, <span class="number">90</span>); <span class="comment">//12.Test(int, int)</span></span><br><span class="line">    <span class="keyword">delete</span> p1; <span class="comment">// 13.~Test()</span></span><br><span class="line">    <span class="keyword">delete</span> []p2; <span class="comment">// 14. ~Test(), ~Test()</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function">Test <span class="title">t5</span><span class="params">(<span class="number">100</span>, <span class="number">100</span>)</span></span>;  <span class="comment">//2. Test(int , int)</span></span><br><span class="line"><span class="comment">// 注意，t4的析构最晚，它在数据段，需要等程序结束。</span></span><br></pre></td></tr></table></figure>
-
 ]]></content>
   </entry>
   <entry>
@@ -2466,19 +2463,20 @@
 </li>
 </ol>
 <p>综上，(\mathbb{E}_{S}[V(S, \theta)]) 是对状态空间中的每个状态价值的加权平均，权重来自状态的分布 (p(S))。这种方法在强化学习中帮助我们通过全局状态分布来评估价值函数，从而更有效地训练模型。</p>
+<span id="more"></span>
 <p>随机梯度是对期望的蒙特卡洛近似</p>
-<p><img src="Users\zcl\AppData\Roaming\Typora\typora-user-images\image-20241030002933171.png" alt="image-20241030002933171"></p>
+<p><img src="C:\Users\zcl\AppData\Roaming\Typora\typora-user-images\image-20241030002933171.png" alt="image-20241030002933171"></p>
 <p>通常来说，J(\theta)是一个很复杂的函数，而L(\theta | \theta_{old})是一个相对简单的函数</p>
 <p>构建L的方法多种多样，可以是J的二阶泰勒展开，也可以是J的蒙特卡洛近似</p>
 <p>要maximization，即相当于求解一个带置信域约束的最优化问题，求解速度没有梯度上升和随机梯度上升算法快</p>
 <p>但置信域算法强在比这两种算法表现稳定，哪怕最优化问题求解不是很准确。</p>
-<p><img src="Users\zcl\AppData\Roaming\Typora\typora-user-images\image-20241030003652735.png" alt="image-20241030003652735"></p>
+<p><img src="C:\Users\zcl\AppData\Roaming\Typora\typora-user-images\image-20241030003652735.png" alt="image-20241030003652735"></p>
 <p>J(\theta) = E_{S}[V_{\pi}(S)]中对S求期望，相当于消除了S，只剩下策略网络参数\theta</p>
-<p><img src="Users\zcl\AppData\Roaming\Typora\typora-user-images\image-20241030004813870.png" alt="image-20241030004813870"></p>
-<p><img src="Users\zcl\AppData\Roaming\Typora\typora-user-images\image-20241030005237667.png" alt="image-20241030005237667"></p>
-<p><img src="Users\zcl\AppData\Roaming\Typora\typora-user-images\image-20241030005401769.png" alt="image-20241030005401769"></p>
-<p><img src="Users\zcl\AppData\Roaming\Typora\typora-user-images\image-20241030010211366.png" alt="image-20241030010211366"></p>
-<p><img src="Users\zcl\AppData\Roaming\Typora\typora-user-images\image-20241030010802155.png" alt="image-20241030010802155"></p>
+<p><img src="C:\Users\zcl\AppData\Roaming\Typora\typora-user-images\image-20241030004813870.png" alt="image-20241030004813870"></p>
+<p><img src="C:\Users\zcl\AppData\Roaming\Typora\typora-user-images\image-20241030005237667.png" alt="image-20241030005237667"></p>
+<p><img src="C:\Users\zcl\AppData\Roaming\Typora\typora-user-images\image-20241030005401769.png" alt="image-20241030005401769"></p>
+<p><img src="C:\Users\zcl\AppData\Roaming\Typora\typora-user-images\image-20241030010211366.png" alt="image-20241030010211366"></p>
+<p><img src="C:\Users\zcl\AppData\Roaming\Typora\typora-user-images\image-20241030010802155.png" alt="image-20241030010802155"></p>
 <p>第四步需要内层循环求解最大化问题，第四步两个超参数，一个\delta，一个学习步长。</p>
 ]]></content>
   </entry>
@@ -2486,6 +2484,7 @@
     <title>强化学习综述</title>
     <url>/2025/04/16/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%BB%BC%E8%BF%B0/</url>
     <content><![CDATA[<h2 id="多智能体强化学习通信方法综述"><a href="#多智能体强化学习通信方法综述" class="headerlink" title="多智能体强化学习通信方法综述"></a>多智能体强化学习通信方法综述</h2><h3 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h3><p>通信是协调多个智能体行为、拓宽它们对环境的认识以及支持它们协作的有效机制。在多智能体深度强化学习（MADRL）领域，智能体可以通过通信来提高整体学习性能并实现其目标。智能体可以与所有智能体或特定智能体组通信，或者根据特定约束条件进行通信。随着 MADRL 通信（Comm-MADRL）研究工作的不断增多，目前缺乏一种系统性和结构化的方法来区分和分类现有的 Comm-MADRL 方法。在本文中，我们回顾了 Comm-MADRL 领域的最新研究成果，并考虑了在设计和开发多智能体强化学习系统中可能发挥作用的通信的各个方面。考虑到这些方面，我们提出了 9 个维度，沿着这些维度可以对 Comm-MADRL 方法进行分析、开发和比较。通过将现有工作投射到多维空间中，我们发现了一些有趣的趋势。 我们还通过探索可能性的组合，提出了一些设计未来 Comm-MADRL 系统的创新方向。</p>
+<span id="more"></span>
 <h3 id="1-引言"><a href="#1-引言" class="headerlink" title="1. 引言"></a>1. 引言</h3><p>许多现实场景，如自动驾驶<sup>[1]</sup>、传感器网络[2]、机器人[3]和游戏[4, 5]，都可以建模为多智能体系统。这些多智能体系统可以通过多智能体强化学习（MARL）技术进行设计和开发，以学习单个智能体的行为，这些行为可以是合作，竞争，或者它们的混合体。由于智能体通常分布在环境中，它们只能访问局部观察而不是环境的完整状态，因此在多智能体强化学习（MARL）中，部分可观测性成为一个基本假设[6-8]。此外，MARL 还面临着非平稳问题[9]，因为每个智能体都面临着受其他智能体变化和适应策略影响的动态环境。通信被视为解决 MARL 中部分可观测性和非平稳问题的关键手段。智能体可以交流个人信息，例如观察、意图、经验或派生特征，从而对环境有更全面的了解，这反过来又使他们能够做出明智的决策[9, 10]。</p>
 <p>由于深度学习[11]及其在强化学习[12]中的应用最近的成功，多智能体深度强化学习（MADRL）近年来取得了巨大成就，其中智能体可以处理高维数据，并在大状态和动作空间中具有泛化能力[7, 8]。我们注意到，大量研究工作集中在具有通信的学习任务上，这些任务旨在通过通信和共享信息来学习解决特定领域的任务，如导航、交通和视频游戏。据我们所知，目前还没有涵盖多智能体深度强化学习（Comm-MADRL）中关于具有通信的学习任务最新工作的综述文献。早期的综述考虑了通信在多智能体强化学习（MARL）中的作用，但将其视为预定义的，而不是学习主题[13-15]。大多数 Comm-MADRL 综述仅涵盖少量研究工作，没有提出一个精细的分类系统来比较和分析它们。在合作场景中，Hernandez-Leal 等人 [16] 使用学习通信来表示学习通信协议的领域，以促进智能体的合作。我们发现的唯一一份将一些早期工作分类到 Comm-MADRL 的综述来自 Gronauer 和 Diepold [17]，它基于区分消息是否被所有智能体、一组智能体或智能体网络接收。然而，Comm-MADRL 的其他方面，如消息类型和训练范式，对于通信至关重要，可以帮助描述现有的通信协议，却被忽略了。因此，关于具有通信的学习任务的近期综述中，所审查的论文相当有限，提出的分类过于狭窄，无法区分 Comm-MADRL 中的现有工作。另一方面，还有一个密切相关的研究领域，即涌现语言/通信，它也通过各种强化学习技术考虑通过学习通信。[18] 与 Comm-MADRL 不同，涌现语言研究的主要目标是学习一种符号语言。然而，涌现语言研究的一部分工作追求一个额外的目标，即利用可学习的符号语言来提高任务级别的性能。值得注意的是，这些研究成果尚未被现有 Comm-MADRL 综述所涵盖，但被纳入我们的调查，称为具有涌现语言的认知任务。总之，我们的调查在范围上与涌现语言的调查重叠（即在具有涌现语言的认知任务中），但我们的调查关注不同的主要目标（即实现特定领域的任务，而不是学习符号语言）。我们进一步在第 2.2 节中阐明具有通信和学习涌现语言的学习任务之间的区别。</p>
 <p>在我们的调查论文中，我们通过关注通信如何被利用来提高多智能体深度强化学习技术的性能，回顾了 Comm-MADRL 文献。具体来说，我们专注于可学习的通信协议，这些协议与强调通过深度强化学习技术开发动态和自适应通信的近期工作相一致，包括学习何时、如何以及与谁进行通信。通过对近期 Comm-MADRL 文献的全面回顾，我们提出了一种系统性和结构化的分类方法，旨在区分和分类各种 Comm-MADRL 方法。这种方法还将为新的 Comm-MADRL 系统的设计和进步提供指导。假设我们计划为当前领域任务开发一个 Comm-MADRL 系统。从何时、如何以及与谁进行通信的问题开始，系统可以从多个方面进行描述。智能体需要学习何时进行通信、与谁进行通信、传达什么信息、如何整合接收到的信息，最后，通过通信可以实现哪些学习目标。 我们提出了 9 个维度，对应于 Comm-MADRL 系统的独特方面：控制目标、通信约束、通信者类型、通信策略、传递消息、消息组合、内部整合、学习方法以及训练方案。这些维度构成了 Comm-MADRL 系统的骨架，可用于全面分析和深入了解设计的 Comm-MADRL 方法。通过将最近的 Comm-MADRL 方法映射到这个多维结构中，我们不仅提供了对该领域当前技术水平的洞察，还确定了设计未来 Comm-MADRL 系统的一些重要方向。</p>
@@ -2501,6 +2500,7 @@
     <title>VDN</title>
     <url>/2025/04/17/VDN/</url>
     <content><![CDATA[<h2 id="用于协作式多智能体学习的价值分解网络"><a href="#用于协作式多智能体学习的价值分解网络" class="headerlink" title="用于协作式多智能体学习的价值分解网络"></a>用于协作式多智能体学习的价值分解网络</h2><h3 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h3><p>我们研究了具有单个联合奖励信号的协作式多智能体强化学习问题。这类学习问题很困难，因为通常有很大的动作和观察组合空间。在完全集中式和去中心化的方法中，我们发现了虚假奖励的问题和一种我们称之为 “惰性代理” 问题的现象，这是由于部分可观察性而出现的。我们通过使用一种新的价值分解网络架构来训练单个代理来解决这些问题，该架构学习将团队价值函数分解为代理价值函数。我们在一系列部分可观察的多智能体领域进行了实验评估，并表明学习这种价值分解会带来卓越的结果，特别是当与权重共享、角色信息和信息通道相结合时。</p>
+<span id="more"></span>
 <hr>
 <p><sup><a href="#fn_什么是单个联合奖励信号的协作式多智能体强化学习问题" id="reffn_什么是单个联合奖励信号的协作式多智能体强化学习问题">什么是单个联合奖励信号的协作式多智能体强化学习问题</a></sup>: </p>
 <p>首先，协作式多智能体强化学习（Cooperative MARL）是指多个智能体共同合作完成一个任务，他们的目标一致，共享奖励或各自有奖励，但这里提到的是单个联合奖励信号，所以应该是所有智能体共享同一个奖励。那单个联合奖励信号是什么意思呢？可能是指所有智能体的行为共同影响一个全局奖励，比如团队胜利或任务完成。比如足球游戏里的多个球员，进球了大家都有同样的奖励，被进球了都扣分。这种情况下，每个智能体的行为都会影响整个团队的奖励，但每个智能体可能需要自己学习策略，或者有集中式的训练。接下来需要解释协作式MARL的基本概念，然后结合单个联合奖励来展开。可能需要比较一下其他情况，比如每个智能体有独立奖励的情况，或者竞争式MARL。然后说明这种单个联合奖励带来的挑战和常见解决方法。挑战可能包括信用分配问题，因为所有智能体共享同一个奖励，难以确定每个个体的贡献。比如在团队游戏中，某个关键动作可能由某个智能体做出，但奖励是大家共享的，其他智能体如何知道该动作的重要性？这时候可能需要某种方法来分配信用，比如COMA算法中的反事实基线，或者VDN、QMIX这类值分解的方法。另外，还需要提到环境的部分可观测性，每个智能体可能只能看到局部信息，这会影响决策。还有策略的协调问题，如何让多个智能体的策略在分散执行时保持一致，可能需要集中式训练、分散式执行的框架。常见的方法可能包括值分解网络（VDN, QMIX），这些方法通过分解联合Q值到个体Q值，从而在训练时利用全局信息，执行时每个智能体根据自己的Q值行动。还有Actor-Critic方法，如MADDPG，虽然每个智能体有自己的策略，但Critic可能会用到全局信息进行训练。另外，可能需要提到信用分配的具体技术，比如差异奖励（Difference Rewards），即每个智能体的奖励基于其贡献与全局奖励的关系，或者利用反事实基线来评估某个智能体是否存在时的奖励差异。总结的话，单个联合奖励的协作式MARL问题需要解决信用分配、环境复杂性、策略协调等问题，常用方法有值分解、集中训练分散执行、信用分配技术等。这样用户应该能理解这个问题的定义、挑战和解决思路了。</p>
@@ -2597,6 +2597,7 @@
 <blockquote id="fn_注释">
 <sup>注释</sup>. 不同类型的角色具有不同类型的行为模式，比如有的偏向于拆塔，有的偏向于生产资源等等。作者应该是考虑利用不同角色与之对应的行为模式建立关系<a href="#reffn_注释" title="Jump back to footnote [注释] in the text."> &#8617;</a>
 </blockquote>
+<span id="more"></span>
 <hr>
 <p>2、引入互信息最大化来形式化角色表示学习，推导出一个对比学习目标，并简洁地近似负样本的分布</p>
 <blockquote id="fn_注释">
@@ -2621,16 +2622,13 @@
   <entry>
     <title>Multi-Agent AI</title>
     <url>/2025/06/22/Multi-Agent-AI/</url>
-    <content><![CDATA[<ol>
-<li><p>引言</p>
-<p>q1：多智能体强化学习系统特点</p>
+    <content><![CDATA[<h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p><strong>多智能体强化学习系统特点</strong></p>
 <p>智能体数量非单个</p>
 <p>智能体之间存在一定联系：合作、对抗、合作+对抗（多智能体多动机）</p>
 <p>智能体不仅需要考虑到环境，还需要考虑到其他智能体的行动</p>
 <p>学习环境动态变化</p>
-</li>
-<li><p>博弈论</p>
-<p>minmax</p>
+<span id="more"></span>
+<h2 id="博弈论"><a href="#博弈论" class="headerlink" title="博弈论"></a>博弈论</h2><p>minmax</p>
 <p>nash equilibrium</p>
 <p><img src="png1.png" alt="1"></p>
 <p><img src="image-20250622215001166.png" alt="1-2"></p>
@@ -2650,12 +2648,12 @@
 <p><img src="image-20250622223222044.png" alt="1-10"></p>
 <p>n-玩家纳什均衡定义</p>
 <p>q2：是不是所有博弈情况都存在纳什均衡？</p>
-</li>
+<ol>
 <li><p>混合策略纳什均衡</p>
 <p><img src="image-20250622225345099.png" alt="1-11"></p>
 </li>
 </ol>
-<h2 id="2-1-重复博弈"><a href="#2-1-重复博弈" class="headerlink" title="2.1 重复博弈"></a>2.1 重复博弈</h2><p><img src="image-20250623201854412.png" alt="2-1"></p>
+<h2 id="博弈类型"><a href="#博弈类型" class="headerlink" title="博弈类型"></a>博弈类型</h2><h3 id="重复博弈"><a href="#重复博弈" class="headerlink" title="重复博弈"></a>重复博弈</h3><p><img src="image-20250623201854412.png" alt="2-1"></p>
 <ul>
 <li><p>为什么要研究重复博弈？</p>
 <p>生活中我们参与的许多战略互动都是持续进行的，比如，我们会与相同的人重复互动等。重复博弈理论提供了一个框架用以研究这种重复行为</p>
@@ -2745,7 +2743,7 @@
 <ul>
 <li>有限步惩罚策略与“以牙还牙”策略计算折扣因子边界值思想与冷酷触发策略计算类似，这里不再详细解释。</li>
 </ul>
-<h2 id="2-2-扩展形式博弈"><a href="#2-2-扩展形式博弈" class="headerlink" title="2.2 扩展形式博弈"></a>2.2 扩展形式博弈</h2><p><img src="image-20250623210315029.png" alt="2-13"></p>
+<h3 id="扩展形式博弈"><a href="#扩展形式博弈" class="headerlink" title="扩展形式博弈"></a>扩展形式博弈</h3><p><img src="image-20250623210315029.png" alt="2-13"></p>
 <ul>
 <li><p>上述内容对比了策略型博弈和扩展式博弈的核心区别，并定义了一种特定类型的扩展式博弈<strong>（多阶段可观测行动博弈）</strong>。以下是我对关键点的理解：</p>
 <ol>
@@ -2892,16 +2890,19 @@
 <li>玩家1选择L。</li>
 <li>玩家2选择RL策略（因此，当玩家1选L时，玩家2选R）。</li>
 <li>实际发生的行动路径：玩家1选L → 玩家2选R。</li>
-<li>对应收益：从收益矩阵中，行L、列RL的单元格为（2,3），即玩家1收益为2，玩家2收益为3。</li>
 </ul>
 </li>
-<li><h3 id="纳什均衡的定义"><a href="#纳什均衡的定义" class="headerlink" title="纳什均衡的定义"></a>纳什均衡的定义</h3><ul>
+<li><p>对应收益：从收益矩阵中，行L、列RL的单元格为（2,3），即玩家1收益为2，玩家2收益为3。</p>
+</li>
+<li><p><strong>纳什均衡的定义</strong></p>
+<ul>
 <li>纳什均衡要求：在给定其他玩家的策略下，没有任何一个玩家能通过单方面改变自己的策略而获得更高的收益。也就是说：</li>
 <li>玩家1的策略必须是对玩家2策略的最优响应（best response）。</li>
 <li>玩家2的策略必须是对玩家1策略的最优响应。<br>如果任何一个玩家有激励偏离当前策略，则该组合不是纳什均衡。</li>
 </ul>
 </li>
-<li><h3 id="为什么（L-RL）不是纳什均衡？"><a href="#为什么（L-RL）不是纳什均衡？" class="headerlink" title="为什么（L, RL）不是纳什均衡？"></a>为什么（L, RL）不是纳什均衡？</h3><p>在策略组合（L, RL）下，玩家1有激励单方面改变策略。具体分析如下：</p>
+<li><p><strong>为什么（L, RL）不是纳什均衡？</strong></p>
+<p>在策略组合（L, RL）下，玩家1有激励单方面改变策略。具体分析如下：</p>
 </li>
 </ul>
 <ol>
@@ -2940,7 +2941,8 @@
 </li>
 </ol>
 <ul>
-<li><h3 id="为什么PPT中列出的（R-RL）是纳什均衡，而（L-RL）不是？"><a href="#为什么PPT中列出的（R-RL）是纳什均衡，而（L-RL）不是？" class="headerlink" title="为什么PPT中列出的（R, RL）是纳什均衡，而（L, RL）不是？"></a>为什么PPT中列出的（R, RL）是纳什均衡，而（L, RL）不是？</h3><ul>
+<li><p><strong>为什么PPT中列出的（R, RL）是纳什均衡，而（L, RL）不是？</strong></p>
+<ul>
 <li><p><strong>（R, RL）是纳什均衡</strong>（如PPT所列）：</p>
 <ul>
 <li>玩家1选R，玩家2选RL（当玩家1选R时，玩家2选L）。</li>
@@ -2957,7 +2959,8 @@
 </li>
 </ul>
 </li>
-<li><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul>
+<li><p><strong>总结</strong></p>
+<ul>
 <li><strong>（L, RL）不是纳什均衡，因为玩家1可以通过单方面改变策略（从L到R）将收益从2提高到4。</strong> 给定玩家2的RL策略，玩家1选择L不是最优响应。</li>
 <li>这体现了纳什均衡的核心要求：每个玩家的策略必须是对其他玩家策略的最优响应。在扩展式博弈中，这种分析也揭示了为什么有些策略组合在标准式中看似可行，但因动态不一致而被排除（如这里玩家1的偏离激励）。</li>
 </ul>
@@ -2966,7 +2969,9 @@
 <p><img src="image-20250624003714695.png" alt="2-19"></p>
 <p>这张PPT探讨了进入博弈的均衡合理性，通过扩展式和标准式表示揭示了纳什均衡的局限性。以下是详细分析：</p>
 <hr>
-<h3 id="博弈结构与收益"><a href="#博弈结构与收益" class="headerlink" title="博弈结构与收益"></a>博弈结构与收益</h3><h4 id="扩展式表示（博弈树）："><a href="#扩展式表示（博弈树）：" class="headerlink" title="扩展式表示（博弈树）："></a>扩展式表示（博弈树）：</h4><ul>
+<p><strong>博弈结构与收益</strong></p>
+<p><strong>扩展式表示（博弈树）：</strong></p>
+<ul>
 <li><strong>玩家1（进入者）</strong>：先行动，选择：<ul>
 <li><strong>In</strong>（进入市场）</li>
 <li><strong>Out</strong>（不进入市场）→ 收益 (1,2)</li>
@@ -2978,7 +2983,8 @@
 </ul>
 </li>
 </ul>
-<h4 id="标准式表示（收益矩阵）："><a href="#标准式表示（收益矩阵）：" class="headerlink" title="标准式表示（收益矩阵）："></a>标准式表示（收益矩阵）：</h4><div class="table-container">
+<p><strong>标准式表示（收益矩阵）：</strong></p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -3002,7 +3008,8 @@
 </table>
 </div>
 <hr>
-<h3 id="纳什均衡分析"><a href="#纳什均衡分析" class="headerlink" title="纳什均衡分析"></a>纳什均衡分析</h3><ol>
+<p><strong>纳什均衡分析</strong></p>
+<ol>
 <li><p><strong>(In, A)</strong>：</p>
 <ul>
 <li>进入者收益：2（若改为Out，收益1&lt;2）→ <strong>无偏离激励</strong></li>
@@ -3017,7 +3024,9 @@
 </li>
 </ol>
 <hr>
-<h3 id="均衡合理性检验"><a href="#均衡合理性检验" class="headerlink" title="均衡合理性检验"></a>均衡合理性检验</h3><h4 id="为什么-Out-F-不合理？"><a href="#为什么-Out-F-不合理？" class="headerlink" title="为什么 (Out, F) 不合理？"></a>为什么 <strong>(Out, F)</strong> 不合理？</h4><p>尽管 <strong>(Out, F)</strong> 是纳什均衡，但它在动态博弈中<strong>不可信</strong>（缺乏子博弈精炼性）：</p>
+<p><strong>均衡合理性检验</strong></p>
+<p><strong>为什么 (Out, F)不合理？</strong></p>
+<p>尽管 <strong>(Out, F)</strong> 是纳什均衡，但它在动态博弈中<strong>不可信</strong>（缺乏子博弈精炼性）：</p>
 <ol>
 <li><p><strong>在位者的空威胁</strong>：</p>
 <ul>
@@ -3035,7 +3044,8 @@
 </ul>
 </li>
 </ol>
-<h4 id="逆向归纳验证："><a href="#逆向归纳验证：" class="headerlink" title="逆向归纳验证："></a>逆向归纳验证：</h4><ol>
+<p><strong>逆向归纳验证：</strong></p>
+<ol>
 <li>若进入者选 <strong>In</strong>，在位者在子博弈中：<ul>
 <li>选 <strong>A</strong> → 收益 <strong>1</strong></li>
 <li>选 <strong>F</strong> → 收益 <strong>0</strong><br>→ 最优选择是 <strong>A</strong>。</li>
@@ -3048,7 +3058,8 @@
 </li>
 </ol>
 <hr>
-<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><div class="table-container">
+<p><strong>结论</strong></p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -3123,7 +3134,7 @@
 <p><a href="https://zhuanlan.zhihu.com/p/199055190">https://zhuanlan.zhihu.com/p/199055190</a></p>
 </li>
 </ol>
-<h2 id="2-3-势博弈"><a href="#2-3-势博弈" class="headerlink" title="2.3 势博弈"></a>2.3 势博弈</h2><p><img src="image-20250624194410787.png" alt="2-21"></p>
+<h3 id="势博弈"><a href="#势博弈" class="headerlink" title="势博弈"></a>势博弈</h3><p><img src="image-20250624194410787.png" alt="2-21"></p>
 <ul>
 <li><strong>请注意，对于所有厂商 i 和所有 q−i&gt;0 的情况：</strong><ul>
 <li>ui(qi,q−i)−ui(qi′,q−i)&gt;0 <strong>当且仅当 (iff)</strong> Φ(qi,q−i)−Φ(qi′,q−i)&gt;0 ，此条件对于所有 qi,qi′&gt;0 均成立。</li>
@@ -3240,8 +3251,10 @@
 <p><img src="image-20250624201541524.png" alt="2-24"></p>
 <p>有限序数势博弈的结果是有限的，势函数会为每一个博弈策略赋予一个值，因此必然存在一个最大值，这个最大值就是纳什均衡点。</p>
 <p><img src="image-20250624202953517.png" alt="2-25"></p>
-<h4 id="1-核心结论"><a href="#1-核心结论" class="headerlink" title="1. 核心结论"></a>1. 核心结论</h4><p>结论是最后一条：当厂商 <code>i</code> 单方面将自己的产量从 <code>q&#39;_i</code> 变为 <code>q_i</code> 时，他<strong>个人利润的变化量</strong>，与我们构造的那个看起来很复杂的函数 <code>Φ*</code> 的<strong>变化量是完全相等的</strong>。这正是“精确势函数”的定义。</p>
-<h4 id="2-数学证明（为什么这个结论成立？）"><a href="#2-数学证明（为什么这个结论成立？）" class="headerlink" title="2. 数学证明（为什么这个结论成立？）"></a>2. 数学证明（为什么这个结论成立？）</h4><p><img src="image-20250624203148105.png" alt="2-26"></p>
+<p><strong>1. 核心结论</strong></p>
+<p>结论是最后一条：当厂商 <code>i</code> 单方面将自己的产量从 <code>q&#39;_i</code> 变为 <code>q_i</code> 时，他<strong>个人利润的变化量</strong>，与我们构造的那个看起来很复杂的函数 <code>Φ*</code> 的<strong>变化量是完全相等的</strong>。这正是“精确势函数”的定义。</p>
+<p><strong>2. 数学证明（为什么这个结论成立？）</strong></p>
+<p><img src="image-20250624203148105.png" alt="2-26"></p>
 <p>最后比较两个Δ即可</p>
 <p><img src="image-20250624204837963.png" alt="2-27"></p>
 <p><strong>标题：有限序数势博弈中的简单动态 (Simple Dynamics in Finite Ordinal Potential Games)</strong></p>
@@ -3254,17 +3267,20 @@
 <p>一条改进路径可以被认为是<strong>“短视参与者” (myopic players)</strong> 动态生成的结果。</p>
 <hr>
 <p>这张幻灯片将我们的视角从静态的“均衡分析”转向了动态的“演化过程分析”。它为我们描述“一个博弈是如何一步步演变的”提供了正式的语言。这对于理解系统如何达到稳定状态至关重要。</p>
-<h4 id="1-“路径”与“改进路径”的通俗解释"><a href="#1-“路径”与“改进路径”的通俗解释" class="headerlink" title="1. “路径”与“改进路径”的通俗解释"></a>1. “路径”与“改进路径”的通俗解释</h4><ul>
+<p><strong>1. “路径”与“改进路径”的通俗解释</strong></p>
+<ul>
 <li><strong>路径 (Path)</strong>：你可以把它想象成一盘棋的“棋谱”或一个游戏的“回合记录”。它记录了博弈状态是如何一步步变化的，其核心规则是<strong>“一次只动一个”</strong>。在 sk 这一步，只有一名参与者会改变他的行动，从而进入 sk+1 状态。这是一种分析动态过程的合理简化。</li>
 <li><strong>改进路径 (Improvement Path)</strong>：这是一种特殊的、由理性驱动的路径。它不仅记录了系统的演变，还说明了<strong>为什么</strong>会这样演变。每一步的发生，都是因为某个参与者发现“如果我单方面改变策略，我的收益会立刻增加”，于是他就这么做了。这完美地描述了那些只顾眼前利益的参与者的行为。</li>
 </ul>
-<h4 id="2-“短视参与者”-Myopic-Players-的概念"><a href="#2-“短视参与者”-Myopic-Players-的概念" class="headerlink" title="2. “短视参与者” (Myopic Players) 的概念"></a>2. “短视参与者” (Myopic Players) 的概念</h4><p>这是理解“改进路径”背后行为动机的关键。</p>
+<p><strong>2. “短视参与者” (Myopic Players) 的概念</strong></p>
+<p>这是理解“改进路径”背后行为动机的关键。</p>
 <ul>
 <li><strong>“短视”</strong>意味着参与者们并不深谋远虑，他们不会去预测对手的对手的反应。</li>
 <li>他们的决策逻辑非常简单：“在当前这个局面下，我有没有一个别的选择能让我马上赚得更多？”</li>
 <li>如果答案是“有”，那么某个参与者就会采取行动，从而推动整个系统沿着“改进路径”向前走一步。这个过程可以被看作是一系列“更优反应 (better response)”的链式反应。</li>
 </ul>
-<h4 id="3-为什么要在势博弈中讨论这个？（核心洞见）"><a href="#3-为什么要在势博弈中讨论这个？（核心洞见）" class="headerlink" title="3. 为什么要在势博弈中讨论这个？（核心洞见）"></a>3. 为什么要在势博弈中讨论这个？（核心洞见）</h4><p>定义这些概念的最终目的，是为了引出势博弈最强大的性质之一：<strong>动态收敛性</strong>。</p>
+<p><strong>3. 为什么要在势博弈中讨论这个？（核心洞见）</strong></p>
+<p>定义这些概念的最终目的，是为了引出势博弈最强大的性质之一：<strong>动态收敛性</strong>。</p>
 <p>我们可以设想一下：</p>
 <ol>
 <li><strong>在普通博弈中</strong>：一条“改进路径”可能会没完没了地走下去，甚至可能陷入一个循环（比如A动、B动、C动，结果又回到了A动之前的局面），永远无法达到一个稳定的纳什均衡。</li>
@@ -3298,31 +3314,35 @@
 </ul>
 <hr>
 <p>这张幻灯片介绍了一类在现实世界中应用极其广泛的博弈模型——<strong>网络拥堵博弈</strong>。这是理解交通堵塞、互联网数据包路由、供应链物流等众多问题的核心理论框架。</p>
-<h4 id="1-博弈的核心要素"><a href="#1-博弈的核心要素" class="headerlink" title="1. 博弈的核心要素"></a>1. 博弈的核心要素</h4><p>这个模型非常直观，它完美地捕捉了“拥堵”现象的本质：</p>
+<p><strong>1. 博弈的核心要素</strong></p>
+<p>这个模型非常直观，它完美地捕捉了“拥堵”现象的本质：</p>
 <ul>
 <li><strong>参与者 (Players)</strong>：n 个用户（比如，n 位司机）。</li>
 <li><strong>策略 (Strategies)</strong>：每个司机可以选择的路线（例如，从家 <code>sᵢ</code> 到公司 <code>tᵢ</code> 的不同路径）。</li>
 <li><strong>成本 (Cost)</strong>：每个司机在路上花费的时间，即“延迟”。</li>
 </ul>
 <p>这个博弈最关键、最有趣的地方在于成本（延迟）的计算方式。一条路（边 <code>e</code>）的延迟<code>fₑ</code><strong>不是一个固定的数，而是一个函数</strong>。它的值取决于有多少人同时在使用这条路。</p>
-<h4 id="2-博弈的内在冲突"><a href="#2-博弈的内在冲突" class="headerlink" title="2. 博弈的内在冲突"></a>2. 博弈的内在冲突</h4><p>每个司机都想自私地选择一条“最快”的路。但正是因为所有人都这么想，才导致了问题的产生：</p>
+<p><strong>2. 博弈的内在冲突</strong></p>
+<p>每个司机都想自私地选择一条“最快”的路。但正是因为所有人都这么想，才导致了问题的产生：</p>
 <ul>
 <li>如果有一条近路看起来最快，所有司机可能都会涌向这条路。</li>
 <li>结果，这条路变得极度拥堵，它的延迟函数 <code>fₑ(x)</code> 因为 <code>x</code>（用户数）变得很大而给出一个非常高的延迟值。</li>
 <li>这条所谓的“最快”的路，实际上可能比其他更长但无人问津的路要慢得多。</li>
 </ul>
 <p><strong>每个人的最优选择都依赖于其他所有人的选择</strong>。我的决策影响你的成本，你的决策也影响我的成本。这就是博弈的核心所在。</p>
-<h4 id="3-与“势博弈”的深刻联系（核心洞见）"><a href="#3-与“势博弈”的深刻联系（核心洞见）" class="headerlink" title="3. 与“势博弈”的深刻联系（核心洞见）"></a>3. 与“势博弈”的深刻联系（核心洞见）</h4><p>这个模型最惊人的特性是，<strong>网络拥堵博弈是“精确势博弈”的经典范例</strong>。这是由学者 Rosenthal 在1973年发现的里程碑式成果。</p>
+<p><strong>3. 与“势博弈”的深刻联系（核心洞见）</strong></p>
+<p>这个模型最惊人的特性是，<strong>网络拥堵博弈是“精确势博弈”的经典范例</strong>。这是由学者 Rosenthal 在1973年发现的里程碑式成果。</p>
 <p>存在一个全局的势函数 Φ（通常称为罗森塔尔势函数），它能够完美地刻画整个系统的动态。这个势函数的定义方式非常巧妙：</p>
 <p><img src="image-20250624211304691.png" alt="2-30"></p>
 <p>其中，xe 是当前选择了边 e 的总用户数。这个公式的含义是，把网络中每一条边的“从第1个用户到第 xe 个用户的延迟依次加起来”，然后再把所有边的这个值汇总。</p>
 <p>可以被严格证明：<strong>当任何一个用户 i 单方面改变自己的路径时，他个人延迟的变化量，与这个全局势函数 <code>Φ</code> 的变化量是完全相等的！</strong></p>
-<h4 id="4-重要推论"><a href="#4-重要推论" class="headerlink" title="4. 重要推论"></a>4. 重要推论</h4><p>既然拥堵博弈是精确势博弈，那么我们之前讨论过的所有优美性质就都可以应用在这里：</p>
+<p><strong>4. 重要推论</strong></p>
+<p>既然拥堵博弈是精确势博弈，那么我们之前讨论过的所有优美性质就都可以应用在这里：</p>
 <ol>
 <li><strong>均衡必然存在</strong>：任何一个网络拥堵博弈都<strong>至少存在一个纯策略纳什均衡</strong>。在交通模型里，这被称为“瓦德罗普均衡 (Wardrop equilibrium)”。这意味着，总会存在一种稳定的交通分配格局，在这种格局下，没有单个司机可以通过单方面改变路线来缩短自己的通勤时间。</li>
 <li><strong>动态必然收敛</strong>：如果司机们是“短视的”（例如，每天根据昨天的路况尝试寻找更快的路），这个不断调整、学习的过程<strong>必然会收敛到一个稳定的均衡状态</strong>，而不会永久地混乱或振荡下去。</li>
 </ol>
-<h2 id="3-1-零和博弈及纳什均衡计算"><a href="#3-1-零和博弈及纳什均衡计算" class="headerlink" title="3.1 零和博弈及纳什均衡计算"></a>3.1 零和博弈及纳什均衡计算</h2><p><img src="image-20250624232921182.png" alt="3-1"></p>
+<h2 id="纳什均衡求解"><a href="#纳什均衡求解" class="headerlink" title="纳什均衡求解"></a>纳什均衡求解</h2><h3 id="零和博弈及纳什均衡计算"><a href="#零和博弈及纳什均衡计算" class="headerlink" title="零和博弈及纳什均衡计算"></a>零和博弈及纳什均衡计算</h3><p><img src="image-20250624232921182.png" alt="3-1"></p>
 <p><strong>练习：斯塔克尔伯格双寡头模型 (Exercise: The Stackelberg model of Duopoly)</strong></p>
 <ul>
 <li>斯塔克尔伯格双寡头模型 (1934):<ul>
@@ -3340,11 +3360,13 @@
 <li>参与者们获得如下支付（利润）： u1(q1,q2)=q1P(q1+q2)−cq1=q1(a−q1−q2)+−cq1 u2(q1,q2)=q2P(q1+q2)−cq2=q2(a−q1−q2)+−cq2 其中单位成本 c&lt;a。</li>
 </ul>
 <p>斯塔克尔伯格模型是产业组织理论中一个基石性的模型。它与我们之前讨论的古诺模型（Cournot model）最大的不同在于，它将“同时行动”改为了<strong>“序贯行动” (Sequential Moves)</strong>，从而引入了<strong>先手优势 (First-mover Advantage)</strong> 的概念。</p>
-<h4 id="1-与古诺模型的根本区别"><a href="#1-与古诺模型的根本区别" class="headerlink" title="1. 与古诺模型的根本区别"></a>1. 与古诺模型的根本区别</h4><ul>
+<p><strong>1. 与古诺模型的根本区别</strong></p>
+<ul>
 <li><strong>古诺模型</strong>：两家厂商<strong>同时</strong>决定产量，谁也不知道对方会生产多少，是一个静态的、猜对手心思的博弈。</li>
 <li><strong>斯塔克尔伯格模型</strong>：两家厂商有明确的行动顺序。一家是“领导者”（先动），另一家是“跟随者”（后动）。领导者率先公布自己的产量，跟随者在<strong>观察到</strong>领导者的产量后再决定自己的最优产量。这是一个动态博弈。</li>
 </ul>
-<h4 id="2-如何求解？——-逆向归纳法-Backward-Induction"><a href="#2-如何求解？——-逆向归纳法-Backward-Induction" class="headerlink" title="2. 如何求解？—— 逆向归纳法 (Backward Induction)"></a>2. 如何求解？—— 逆向归纳法 (Backward Induction)</h4><p>对于这种有先后顺序的博弈，标准的解法是“逆向归纳”，即从后往前推。</p>
+<p><strong>2. 如何求解？—— 逆向归纳法 (Backward Induction)</strong></p>
+<p>对于这种有先后顺序的博弈，标准的解法是“逆向归纳”，即从后往前推。</p>
 <p><strong>第一步：求解跟随者（厂商2）的问题</strong></p>
 <p>我们先站在厂商2的角度。此时，厂商1的产量 q1 已经确定，是一个已知的数字。厂商2的目标是选择自己的产量 q2 来最大化自身利润 u2。</p>
 <p>q2max u2(q1,q2)=q2(a−q1−q2)−cq2</p>
@@ -3367,7 +3389,8 @@
 <p>将厂商1的最优产量代入厂商2的反应函数，得到厂商2的产量：</p>
 <p>q2∗=2a−c−q1∗=2a−c−(a−c)/2=2(a−c)/2=4a−c</p>
 <p><strong>斯塔克尔伯格均衡解为：(领导者产量 q1∗=2a−c， 跟随者产量 q2∗=4a−c)</strong></p>
-<h4 id="3-先手优势"><a href="#3-先手优势" class="headerlink" title="3. 先手优势"></a>3. 先手优势</h4><ul>
+<p><strong>3. 先手优势</strong></p>
+<ul>
 <li>在斯塔克尔伯格均衡中，领导者产量(2a−c)是跟随者(4a−c)的两倍。</li>
 <li>我们可以对比一下古诺均衡的结果：在古诺模型中，两家厂商的产量相同，均为 3a−c。</li>
 <li>比较可知：q1Stackelberg(2a−c)&gt;qCournot(3a−c)&gt;q2Stackelberg(4a−c)。</li>
@@ -3388,13 +3411,15 @@
 <p><strong>例如</strong>：石头剪刀布的价值是0；假设参与者2采取最优策略（以1/3的概率出每一种手势），参与者1能期望获得的最好结果是0的支付。</p>
 <hr>
 <p>这张幻灯片介绍了博弈论的奠基性概念之一——<strong>两人零和博弈</strong>，以及该领域第一个里程碑式的定理——冯·诺伊曼的<strong>极小化极大定理</strong>。</p>
-<h4 id="1-什么是零和博弈？"><a href="#1-什么是零和博弈？" class="headerlink" title="1. 什么是零和博弈？"></a>1. 什么是零和博弈？</h4><p>首先，零和博弈指的是在一个博弈中，所有参与者的收益（或亏损）加起来永远等于零。这意味着，<strong>一方的所得，必然是另一方的所失</strong>。这是一个纯粹冲突、完全竞争的模型，没有任何合作共赢的可能。经典的例子包括：</p>
+<p><strong>1. 什么是零和博弈？</strong></p>
+<p>首先，零和博弈指的是在一个博弈中，所有参与者的收益（或亏损）加起来永远等于零。这意味着，<strong>一方的所得，必然是另一方的所失</strong>。这是一个纯粹冲突、完全竞争的模型，没有任何合作共赢的可能。经典的例子包括：</p>
 <ul>
 <li><strong>棋类游戏</strong>：如象棋、围棋，一方赢就是另一方输。</li>
 <li><strong>石头剪刀布</strong>：一方赢一分，另一方就输一分。</li>
 <li><strong>竞技体育</strong>：大多数只有两方对阵的比赛。</li>
 </ul>
-<h4 id="2-“极小化极大”定理的通俗解释"><a href="#2-“极小化极大”定理的通俗解释" class="headerlink" title="2. “极小化极大”定理的通俗解释"></a>2. “极小化极大”定理的通俗解释</h4><p>这个定理解决了一个核心问题：在这样你死我活的纯冲突中，“理性”的策略是什么？冯·诺伊曼给出了一个天才的答案，其思考逻辑如下：</p>
+<p><strong>2. “极小化极大”定理的通俗解释</strong></p>
+<p>这个定理解决了一个核心问题：在这样你死我活的纯冲突中，“理性”的策略是什么？冯·诺伊曼给出了一个天才的答案，其思考逻辑如下：</p>
 <p><strong>从参与者1（P1）的角度（最大化最小值, Maximin）</strong>：</p>
 <ol>
 <li>P1必须假设P2是完全理性的，并且会尽一切努力损害P1的利益。</li>
@@ -3411,7 +3436,8 @@
 </ol>
 <p><strong>定理的“奇迹”</strong>：冯·诺伊曼证明，对于任何两人零和博弈，P1通过“最大化最小值”策略能保证得到的收益 <code>V</code>，与P2通过“极小化极大”策略能保证让P1得到的收益 <code>V</code>，是<strong>完全同一个数值</strong>！这个 <code>V</code> 就是该博弈的“价值”。</p>
 <p>这意味着，这类纯冲突博弈存在一个绝对理性的、稳定的解。双方的最佳策略将会在这个点上交汇。</p>
-<h4 id="3-混合策略的重要性"><a href="#3-混合策略的重要性" class="headerlink" title="3. 混合策略的重要性"></a>3. 混合策略的重要性</h4><p>这个定理的成立，往往需要<strong>混合策略</strong>的引入，即以一定的概率随机地选择不同的行动。</p>
+<p><strong>3. 混合策略的重要性</strong></p>
+<p>这个定理的成立，往往需要<strong>混合策略</strong>的引入，即以一定的概率随机地选择不同的行动。</p>
 <ul>
 <li>以“石头剪刀布”为例，如果你只出“石头”（一个纯策略），对手会立刻发现并一直出“布”来打败你。</li>
 <li>你唯一能保证自己不输的策略，就是完全随机地出招（石头、剪刀、布各1/3概率）。</li>
@@ -3428,7 +3454,8 @@
 <hr>
 <p>这张幻灯片提出了一个核心问题：对于一个没有纯策略均衡的博弈，我们如何具体计算出它的混合策略纳什均衡？</p>
 <p>下面是详细的计算步骤：</p>
-<h4 id="第一步：验证不存在纯策略纳什均衡"><a href="#第一步：验证不存在纯策略纳什均衡" class="headerlink" title="第一步：验证不存在纯策略纳什均衡"></a>第一步：验证不存在纯策略纳什均衡</h4><p>我们可以通过“划线法”或“最优反应法”来快速验证。</p>
+<p><strong>第一步：验证不存在纯策略纳什均衡</strong></p>
+<p>我们可以通过“划线法”或“最优反应法”来快速验证。</p>
 <ol>
 <li>如果参与者2选择“列1”，参与者1的最优选择是“行2”（因为收益 +3 &gt; -2）。</li>
 <li>如果参与者2选择“列2”，参与者1的最优选择是“行1”（因为收益 +3 &gt; -4）。</li>
@@ -3436,12 +3463,14 @@
 <li>如果参与者1选择“行2”，参与者2的最优选择是“列2”（因为收益 +4 &gt; -3）。</li>
 </ol>
 <p>我们发现，没有任何一个单元格是双方共同的最优选择，因此该博弈确实没有纯策略纳什均衡。</p>
-<h4 id="第二步：设定混合策略"><a href="#第二步：设定混合策略" class="headerlink" title="第二步：设定混合策略"></a>第二步：设定混合策略</h4><p>在混合策略均衡中，核心思想是<strong>“无差异原则” (Indifference Principle)</strong>：每个参与者选择自己的混合策略（即概率），目的是让<strong>对方</strong>在自己的几个纯策略选择之间感到<strong>无所谓/无差异</strong>（即期望收益完全相等）。</p>
+<p><strong>第二步：设定混合策略</strong></p>
+<p>在混合策略均衡中，核心思想是<strong>“无差异原则” (Indifference Principle)</strong>：每个参与者选择自己的混合策略（即概率），目的是让<strong>对方</strong>在自己的几个纯策略选择之间感到<strong>无所谓/无差异</strong>（即期望收益完全相等）。</p>
 <ul>
 <li>我们假设<strong>参与者1</strong>以概率 <strong>p</strong> 选择“行1”，以概率 <strong>(1-p)</strong> 选择“行2”。</li>
 <li>我们假设<strong>参与者2</strong>以概率 <strong>q</strong> 选择“列1”，以概率 <strong>(1-q)</strong> 选择“列2”。</li>
 </ul>
-<h4 id="第三步：计算参与者1的混合策略-p"><a href="#第三步：计算参与者1的混合策略-p" class="headerlink" title="第三步：计算参与者1的混合策略 p"></a>第三步：计算参与者1的混合策略 p</h4><p>为了让<strong>参与者2</strong>感到无差异，参与者2选择“列1”的期望收益必须等于他选择“列2”的期望收益。</p>
+<p><strong>第三步：计算参与者1的混合策略 p</strong></p>
+<p>为了让<strong>参与者2</strong>感到无差异，参与者2选择“列1”的期望收益必须等于他选择“列2”的期望收益。</p>
 <ul>
 <li>参与者2选择“列1”的期望收益 E(列1) = p<em>(+2)+(1−p)</em>(−3)</li>
 <li>参与者2选择“列2”的期望收益 E(列2) = p<em>(−3)+(1−p)</em>(+4)</li>
@@ -3449,7 +3478,8 @@
 <p>令 E(列1) = E(列2):</p>
 <p>可得p=7/12</p>
 <p>所以，参与者1的最优策略是：以 7/12 的概率选择“行1”，以 5/12 的概率选择“行2”。</p>
-<h4 id="第四步：计算参与者2的混合策略-q"><a href="#第四步：计算参与者2的混合策略-q" class="headerlink" title="第四步：计算参与者2的混合策略 q"></a>第四步：计算参与者2的混合策略 q</h4><p>同样，为了让<strong>参与者1</strong>感到无差异，参与者1选择“行1”的期望收益必须等于他选择“行2”的期望收益。</p>
+<p><strong>第四步：计算参与者2的混合策略 q</strong></p>
+<p>同样，为了让<strong>参与者1</strong>感到无差异，参与者1选择“行1”的期望收益必须等于他选择“行2”的期望收益。</p>
 <ul>
 <li>参与者1选择“行1”的期望收益 E(行1) = q<em>(−2)+(1−q)</em>(+3)</li>
 <li>参与者1选择“行2”的期望收益 E(行2) = q<em>(+3)+(1−q)</em>(−4)</li>
@@ -3457,7 +3487,8 @@
 <p>令 E(行1) = E(行2):</p>
 <p>q=7/12</p>
 <p>所以，参与者2的最优策略是：以 7/12 的概率选择“列1”，以 5/12 的概率选择“列2”。</p>
-<h4 id="第五步：结论与博弈的价值"><a href="#第五步：结论与博弈的价值" class="headerlink" title="第五步：结论与博弈的价值"></a>第五步：结论与博弈的价值</h4><ol>
+<p><strong>第五步：结论与博弈的价值</strong></p>
+<ol>
 <li><p><strong>混合策略纳什均衡</strong>：该博弈的唯一纳什均衡是：参与者1采取混合策略 ( 7/12 ,5/12)，参与者2采取混合策略 (7/12 ,5/12)。</p>
 </li>
 <li><p>博弈的价值 (Value of the Game)：在均衡状态下，参与者1的期望收益是多少？我们可以把 q = 7/12 代入 E(行1) 的公式中计算：</p>
@@ -3469,7 +3500,8 @@
 <p>简单来说，<strong>让对方“无差异”并不是我们的最终目的，而是我们为了实现自身利益最大化，所必须达到的一个“结果”或“条件”。</strong></p>
 <p>这是一种非常高明的策略思想，我们可以从三个层面来理解它：</p>
 <hr>
-<h3 id="1-核心思想：消除对方的确定性最优解"><a href="#1-核心思想：消除对方的确定性最优解" class="headerlink" title="1. 核心思想：消除对方的确定性最优解"></a>1. 核心思想：消除对方的确定性最优解</h3><p>在一个博弈中，如果你采取的策略让你的对手有一个明确的、唯一的“最优选择”，那你就输了一半。因为：</p>
+<p><strong>1. 核心思想：消除对方的确定性最优解</strong></p>
+<p>在一个博弈中，如果你采取的策略让你的对手有一个明确的、唯一的“最优选择”，那你就输了一半。因为：</p>
 <ol>
 <li>一个理性的对手，一定会采取那个对他来说最优的选择。</li>
 <li>这样一来，对手的行动就变得<strong>完全可以预测</strong>了。</li>
@@ -3479,7 +3511,8 @@
 <p>这个矛盾循环说明，一个稳定的均衡状态，不应该让任何一方有“唯一的、确定的”最优解。而要做到这一点，你唯一的方法就是调整自己的策略组合（即概率 <code>p</code>），直到你的对手觉得“选A或选B，反正期望收益都一样，我无所谓了”。</p>
 <p><strong>当你让对手“无所谓”时，你就消除了他行动的确定性，他才不得不也用一种随机的方式来对抗你。这才是对自己最有利的局面。</strong></p>
 <hr>
-<h3 id="2-反向思考：如果不让对方无差异会怎样？"><a href="#2-反向思考：如果不让对方无差异会怎样？" class="headerlink" title="2. 反向思考：如果不让对方无差异会怎样？"></a>2. 反向思考：如果不让对方无差异会怎样？</h3><p>我们用上一张幻灯片的例子来思考：</p>
+<p><strong>2. 反向思考：如果不让对方无差异会怎样？</strong></p>
+<p>我们用上一张幻灯片的例子来思考：</p>
 <ul>
 <li>你的策略是：以概率 <code>p</code> 出“行1”，概率 <code>(1-p)</code> 出“行2”。</li>
 <li>假设你选择的 <code>p</code> 没有让对手无差异，而是让对手觉得<strong>“出‘列1’比出‘列2’的期望收益更高”</strong>。</li>
@@ -3492,7 +3525,8 @@
 <p><strong>结论</strong>：你最初那个让对手“有差异”的策略 <code>p</code>，最终导致了你自己也想改变策略。这就说明，那个初始状态<strong>根本不稳定</strong>，因此<strong>不是纳什均衡</strong>。</p>
 <p>唯一的稳定状态，就是你选择的概率 <code>p</code>，正好让对手觉得“出‘列1’和出‘列2’没差”，他没有理由偏向任何一方，所以他才愿意继续以一定概率 <code>q</code> 来混合他的策略。</p>
 <hr>
-<h3 id="3-一个直观的例子：点球大战"><a href="#3-一个直观的例子：点球大战" class="headerlink" title="3. 一个直观的例子：点球大战"></a>3. 一个直观的例子：点球大战</h3><p>想象一下足球比赛中的点球大战：</p>
+<p><strong>3. 一个直观的例子：点球大战</strong></p>
+<p>想象一下足球比赛中的点球大战：</p>
 <ul>
 <li><strong>你的角色</strong>：踢球手。你可以选择踢左边或右边。</li>
 <li><strong>对手的角色</strong>：守门员。他可以选择扑左边或右边。</li>
@@ -3511,9 +3545,10 @@
 <li><strong>为了最终能在一个充满不确定性的稳定均衡中，保障自己获得最大化的期望收益。</strong></li>
 </ul>
 <p>所以，“让对方无差异”是<strong>你</strong>实现最优策略的<strong>必要条件</strong>，而不是你的目的本身。</p>
-<h2 id="3-2-极大极小博弈"><a href="#3-2-极大极小博弈" class="headerlink" title="3.2 极大极小博弈"></a>3.2 极大极小博弈</h2><p><img src="image-20250625213116525.png" alt="3-4"></p>
+<h3 id="极大极小博弈"><a href="#极大极小博弈" class="headerlink" title="极大极小博弈"></a>极大极小博弈</h3><p><img src="image-20250625213116525.png" alt="3-4"></p>
 <p>这张幻灯片用一个政治竞选的例子，构建了一个经典的两人零和博弈。它给出了问题设定，但没有给出解。核心任务就是根据这些信息，计算出这场博弈的均衡解以及博弈的价值。</p>
-<h4 id="第一步：检查是否存在纯策略均衡"><a href="#第一步：检查是否存在纯策略均衡" class="headerlink" title="第一步：检查是否存在纯策略均衡"></a>第一步：检查是否存在纯策略均衡</h4><p>我们首先检查是否存在一个稳定的单元格，使得任何一方都不想单方面改变策略。</p>
+<p><strong>第一步：检查是否存在纯策略均衡</strong></p>
+<p>我们首先检查是否存在一个稳定的单元格，使得任何一方都不想单方面改变策略。</p>
 <ol>
 <li>如果列玩家（候选人2）选择“道德”，行玩家（候选人1）会选择“经济”（因为收益3 &gt; -2）。</li>
 <li>如果列玩家选择“减税”，行玩家会选择“社会”（因为收益1 &gt; -1）。</li>
@@ -3521,7 +3556,8 @@
 <li>如果行玩家选择“社会”，列玩家会选择“道德”（因为收益2 &gt; -1）。</li>
 </ol>
 <p>我们发现，不存在任何一个稳定的策略组合。例如，在（经济, 道德）这个组合，行玩家很满意，但列玩家会想换到“减税”策略以获得更好的收益。因此，<strong>该博弈没有纯策略纳什均衡</strong>。我们必须寻找混合策略均衡。</p>
-<h4 id="第二步：计算混合策略纳什均衡"><a href="#第二步：计算混合策略纳什均衡" class="headerlink" title="第二步：计算混合策略纳什均衡"></a>第二步：计算混合策略纳什均衡</h4><p>我们将使用<strong>无差异原则</strong>来求解。</p>
+<p><strong>第二步：计算混合策略纳什均衡</strong></p>
+<p>我们将使用<strong>无差异原则</strong>来求解。</p>
 <ul>
 <li>设行玩家（候选人1）以概率 <strong>x</strong> 选择“经济”，以概率 <strong>(1-x)</strong> 选择“社会”。</li>
 <li>设列玩家（候选人2）以概率 <strong>y</strong> 选择“道德”，以概率 <strong>(1-y)</strong> 选择“减税”。</li>
@@ -3533,386 +3569,329 @@
 <li>列玩家选择“减税”的期望收益 = x⋅(1)+(1−x)⋅(−1)</li>
 </ul>
 <p>令二者相等：</p>
-<script type="math/tex; mode=display">-3x + 2 - 2x =  - 1 + x$$$$2 - 5x = 2x - 1$$$$3 = 7x$$x=73
-
-所以，**候选人1的最优策略**是：以 **3/7** 的概率主打“经济”议题，以 **4/7** 的概率主打“社会”议题。
-
-**B. 计算列玩家的策略 y**
-
-同样，列玩家需要选择一个概率 `y`，使得行玩家对于选择“经济”还是“社会”感到**无差异**。
-
-- 行玩家选择“经济”的期望收益 = y⋅(3)+(1−y)⋅(−1)
-- 行玩家选择“社会”的期望收益 = y⋅(−2)+(1−y)⋅(1)
-
-令二者相等：
-
-$$3y - 1 + y = -2y + 1 - y$$$$4y - 1 = 1 - 3y$$$$7y = 2$$y=72
-
-所以，**候选人2的最优策略**是：以 **2/7** 的概率主打“道德”议题，以 **5/7** 的概率主打“减税”议题。
-
-#### 第三步：计算博弈的价值
-
-博弈的价值（Value）就是指在双方都采取最优策略时，行玩家的期望收益。我们可以将 y = 2/7 代入行玩家的任一期望收益公式：
-
-V=3y−1+y=4y−1=4⋅(72)−1=78−1=71
-
-#### 结论
-
-- **纳什均衡**：该博弈的唯一纳什均衡是，候选人1采取混合策略 (73,74)，候选人2采取混合策略 (72,75)。这意味着两位候选人都应该以特定的概率随机选择自己的竞选焦点，让对手无法预测。
-- **博弈价值**：该博弈对行玩家（候选人1）的价值是 **+1/7**。在竞选这个议题上，如果双方都采取最理性的策略，**候选人1平均可以期望净赚 1/7 百万（约14万）的选民**。这表明在这个特定的战略矩阵中，候选人1拥有微弱的优势。
-
-![3-5](image-20250625214139041.png)
-
-备注：下面这段话有提到“这代表了**列玩家的理性反应**。由于这是一个零和博弈，列玩家的目标是让行玩家的收益尽可能小。”，结合上面一张PPT的最后一个恒等式，可知，由于这是零和博弈，行玩家收益最少等价于列玩家收益最大。
-
-------
-
-
-
-这张幻灯片从一个更形式化、更根本的角度，展示了作为“领导者”（被迫先宣布策略的一方）应该如何思考，并将这个问题转化为了一个标准的数学优化问题。最终，它揭示了一个关于零和博弈的深刻结论。
-
-#### 1. Maximin 公式解读：“在最坏的情况里做到最好”
-
-幻灯片给出的第一个公式 
-
-maxmin(3x1−2x2,−x1+x2)
-
- 是“最大化最小值 (Maximin)”思想的完美数学体现。我们来拆解它：
-
-- **内部的两个表达式**：
-  - 3x1−2x2：这是当列玩家选择“道德”时，行玩家的期望收益。
-  - −x1+x2：这是当列玩家选择“减税”时，行玩家的期望收益。
-- **min(...) 部分**：这代表了**列玩家的理性反应**。由于这是一个零和博弈，列玩家的目标是让行玩家的收益尽可能小。所以，当行玩家宣布了一个策略 (x1,x2) 后，列玩家会审视这两个可能的收益，并选择那个能让行玩家收益**更小 (min)** 的策略来应对。这代表了行玩家在宣布策略 (x1,x2) 后，所能得到的**最坏结果保证**。
-- **max(...) 部分**：这代表了**行玩家的决策**。行玩家知道对手会这样针对他。所以，他在选择自己的策略 (x1,x2) 时，目标就是让这个“最坏的结果保证”变得尽可能好。也就是要**最大化 (max)** 那个最小的收益。
-
-这整个公式的逻辑就是：“我（行玩家）要选择一个策略 (x1,x2)，来最大化‘在我宣布这个策略后，对手尽最大努力打压我，我能得到的那个保底收益’”。
-
-#### 2. 线性规划的转换：从博弈论到标准数学优化
-
-Max-min 问题在数学上直接求解不方便，但可以非常巧妙地转化为一个标准的**线性规划 (Linear Programming, LP)** 问题。
-
-- 我们引入一个新变量 `z`，让它代表那个“保底收益”。
-- 我们的目标是 `最大化 z`。
-- 约束条件是什么？`z` 必须小于等于所有可能的结果。所以：
-  - z≤3x1−2x2  (保底收益不能超过对手选“道德”时我的收益)
-  - z≤−x1+x2  (保底收益不能超过对手选“减税”时我的收益)
-- 再加上概率本身的基本约束 x1+x2=1 和 x1,x2≥0。
-
-这样，我们就把一个博弈问题，变成了一个可以用标准算法（如单纯形法）求解的数学问题。
-
-#### 3. 最终结论：结果与之前完全相同！
-
-幻灯片最后指出，解这个线性规划得到的结果是 x1=3/7，x2=4/7，并且最优的保底收益 z=1/7。
-
-这正是我们之前用“无差异原则”为**同时博弈**计算出的**纳什均衡解**和**博弈价值 V**！
-
-为什么会这样？
-
-这并非巧合，而是冯·诺伊曼极小化极大定理 (Minimax Theorem) 的直接体现。该定理的核心是：
-
-Maximin=Minimax
-
-- 我们这张幻灯片求解的“领导者-跟随者”问题，正是行玩家的 **Maximin（最大化最小值）** 问题。
-- 我们之前求解的“同时博弈”问题，得到的是**Minimax（极小化极大值）** 均衡解。
-
-这个定理保证了，在任何两人零和博弈中，这两个值是相等的。这意味着，**在两人零和博弈中，不存在先手优势或后手优势**。你提前公布策略，虽然给了对方信息，但你也可以利用这一点来选择一个最稳妥的策略；对方虽然能看到你的策略，但也只能在你设定的框架内做出反应。最终双方的力量会完美抵消，达到同一个均衡结果。
-
-## 3.3 纳什均衡的线性规划解法
-
-![3-6](image-20250625215726625.png)
-
-这张幻灯片介绍了一个在线性规划乃至整个优化理论中，都极具美感和威力的核心概念——**对偶性**。它揭示了每个优化问题都存在一个“影子问题”或“镜像问题”，而理解这个镜像能为我们提供关于原问题全新的、深刻的洞察。
-
-#### 1. 什么是对偶性？一个直观的例子
-
-要理解对偶，与其陷入复杂的数学转换，不如看一个经济学例子：
-
-- **原问题 (Primal Problem)**：
-  - 想象你是一家工厂的老板，你要决定生产多少桌子和椅子，来**最大化你的总利润**。
-  - 你面临一些**约束**：你拥有的木材、劳动力、设备时间都是有限的。
-  - 这就是一个典型的线性规划问题：最大化一个目标（利润），同时满足一系列约束（资源）。
-- **对偶问题 (Dual Problem)**：
-  - 现在，想象一个商人想来收购你所有的资源（木材、劳动力、设备）。他想**最小化他的收购总成本**。
-  - 但他面临一个**约束**：他为每种资源开出的“影子价格”组合，必须能让你觉得“卖掉资源比我自己生产产品更划算”。例如，生产一张桌子需要消耗的资源，他打包收购的价格，必须不能低于你自己生产这张桌子能获得的利润。
-  - 这个商人的问题——在一定约束下最小化成本——就是你那个最大化利润问题的“对偶问题”。
-
-#### 2. 对偶性的“魔力”：原问题与对偶问题的关系
-
-对偶理论中有两个核心定理，它们揭示了原问题和对偶问题之间的奇妙关系：
-
-1. **弱对偶定理 (Weak Duality)**：对偶问题的最优解，永远是原问题最优解的一个“界限”。在上面的例子里，就是说：商人收购资源的**最小成本**，必然**大于等于**工厂老板自己生产的**最大利润**。这很直观，因为如果收购成本低于你的利润，你肯定不会卖。
-
-2. 强对偶定理 (Strong Duality)：在绝大多数情况下，这个“大于等于”实际上是**“完全等于”**！也就是说：
-
-   工厂能实现的最大利润=商人收购资源的最小成本
-
-   这是一个非常深刻的结论。它意味着，你资源的内在价值，恰好等于你能用它们创造的最大利润。对偶问题中的变量（资源的“影子价格”），精确地量化了每一种稀缺资源的边际价值。
-
-#### 3. 对偶性与“零和博弈”的惊人联系
-
-现在，我们可以把这个概念带回我们之前讨论的博弈论了。这正是引入对偶概念的关键所在。
-
-- 在前几张幻灯片中，我们把**行玩家**的问题构建成了一个线性规划：**最大化**他的保底收益 `V`。这可以看作是我们的**原问题 (Primal)**。
-- 那么，**列玩家**的问题是什么？列玩家的目标是**最小化**行玩家能获得的最大收益 `W`。我们同样可以把列玩家的这个问题也构建成一个线性规划。
-- **最关键的结论是**：**列玩家的“最小化极大值”线性规划问题，恰好就是行玩家“最大化最小值”线性规划问题的对偶问题！**
-
-因此，线性规划的“强对偶定理”（最大值 = 最小值），在零和博弈的语境下，就直接变成了冯·诺伊曼的“极小化极大定理”！
-
-max(行玩家的保底收益)=min(列玩家的最大损失)Maximin=Minimax
-
-**总结**：对偶性不仅是线性规划的强大工具，它还为博弈论的基石——极小化极大定理——提供了最坚实的数学证明。它优美地揭示了，一个参与者的最大化问题和其对手的最小化问题，实际上是同一个数学结构的两个不同侧面，如同一枚硬币的两面，其价值必然相等。
-
-![3-7](image-20250625220404379.png)
-
-线性规划对偶性实例。
-
-![3-8](image-20250625220536283.png)
-
-弱对偶性和强对偶性
-
-## 3.4 线性互补问题
-
-![3-9](image-20250625222636285.png)
-
-**标题：计算两人一般和博弈的纳什均衡 (Computing Nash equilibria of two-player, general-sum games)**
-
-- 不幸的是，寻找一个两人**一般和博弈 (general-sum game)** 的纳什均衡，**无法**被构建成一个线性规划问题。
-  - — 两名参与者的利益不再是***完全\*对立的 (completely opposed)**。
-  - — 然而，我们仍然可以将我们的问题表述为某种优化问题。
-
-------
-
-这张幻灯片标志着一个重要的转折点。从“零和博弈”进入了更普遍、也更复杂的“一般和博弈”（或称“非零和博弈”）的世界。幻灯片的核心信息是：之前强大而高效的线性规划（LP）工具，在这里失效了。
-
-#### 1. 什么是一般和博弈？
-
-一般和博弈指的是，在任何一个结果下，所有参与者的收益之和**不一定为零**。这意味着博弈的结果可以是双赢、双输，或者一方赢多、一方输少。参与者的关系不再是“你死我活”的纯粹冲突，而是**冲突与合作并存**。
-
-- 经典例子1：囚徒困境
-
-  如果两个囚犯都背叛对方，他们可能各判5年（总收益-10）。如果他们都保持沉默，可能各判1年（总收益-2）。这是一个双输的“负和”博弈。
-
-- 经典例子2：性别大战 (Battle of the Sexes)
-
-  一对情侣都想待在一起（合作），但一人想看歌剧，另一人想看球赛（冲突）。如果他们去同一个地方，双方都能获得高收益（比如（5,2）或（2,5）），总收益为7。如果去不同地方，则两人都很不开心（0,0），总收益为0。这是一个“正和”博弈。
-
-#### 2. 为什么线性规划会失效？—— 对偶性的崩塌
-
-这是理解这张幻灯片最关键的地方。线性规划之所以能在零和博弈中大显神威，是因为其背后优美的“对偶性”，而这种对偶性源于双方利益的**完全对立**。
-
-- **在零和博弈中**：
-  - 行玩家的目标是：最大化自己的收益 `u₁`。
-  - 列玩家的目标是：最大化自己的收益 `u₂`。
-  - 由于 `u₂ = -u₁`，所以列玩家“最大化`u₂`”就**等价于**“最小化`u₁`”。
-  - 因此，行玩家的“最大化最小值 (Maximin)”问题和列玩家的“最小化极大值 (Minimax)”问题，形成了一对完美的数学**对偶**。它们就像一枚硬币的两面，可以用同一个线性规划框架来解决。
-- **在一般和博弈中**：
-  - `u₂` 不再等于 `-u₁`。
-  - 列玩家的目标——最大化他自己的 `u₂`——与行玩家的收益 `u₁` **没有直接的、负相关的关系**。
-  - 列玩家不再是处心积虑地要让行玩家的收益最小化，他只关心自己的收益。
-  - 这样一来，那种“我之所得即你之所失”的完美对偶关系就**彻底崩塌**了。我们无法再构建出一个单一的线性规划问题来同时描述双方的决策并找到那个共同的解。
-
-#### 3. 那问题变成了什么？
-
-虽然不能用线性规划，但寻找纳什均衡依然是一个数学优化问题，只是变得更复杂了。
-
-- 寻找两人一般和博弈的纳什均衡，在数学上等价于求解一个**线性互补问题 (Linear Complementarity Problem, LCP)**。这是一个比线性规划更复杂的数学结构。
-- 从计算复杂性的角度看，求解两人零和博弈是“容易”的（属于 **P** 问题），而求解两人一般和博弈则被证明是**PPAD-完全 (PPAD-complete)** 问题。这通常被认为是一个“更难”的计算等级，意味着找到解需要更复杂的算法，计算效率也更低。
-
-**总结**：从“零和”到“一般和”的转变，是博弈论中一次巨大的复杂性飞跃。它让我们失去了线性规划这个简洁高效的工具，迫使我们进入一个更困难的计算领域。这也反过来凸显了两人零和博弈及其“极小化极大定理”在理论上的简洁与优美。
-
-![3-10](image-20250625223646101.png)
-
-**标题：计算两人一般和博弈的纳什均衡**
-
-- 我们首先考虑一个**内部的 (inner)** 或**完全混合的 (totally mixed)** 纳什均衡 (X∗,Y∗)，即对于所有的 i 和 j，都有 xi∗>0 以及 yj∗>0（所有的纯策略都以正概率被使用）。
-
-- 让 ai 表示行玩家的支付矩阵A的各行，让 bj 表示列玩家的支付矩阵B的各列。
-
-- 利用“**在一个纳什均衡策略的支持集(support)中，所有纯策略都产生相同的支付**”这一事实，并且该支付大于或等于支持集之外的策略的支付，我们得到：
-
-  - aiy∗=aky∗,i,k=1,2,…,m.
-
-  - (x∗)Tbj=(x∗)Tbk,j,k=1,2,…,n.
-
-    (注：此处公式经过订正以符合标准表达)
-
-    (绿色文字) 假设每个纯策略都以正概率被使用。
-
-- 上述构成了一个可以被高效求解的线性方程组。
-
-#### **下图内容**
-
-- 然而，“每个策略都以正概率被使用”的假设是有限制性的。大多数博弈并不拥有完全混合的纳什均衡；对于它们而言：
-
-- 我们计算一个有限两人博弈的所有纳什均衡：
-
-  一个混合策略组合 (x∗,y∗) 是一个具有支持集 S1,S2 的纳什均衡，当且仅当：
-
-  - u=aiy∗,∀i∈S1 （对于支持集内的策略i，收益都等于均衡收益u）
-  - u≥aiy∗,∀i∈/S1 （对于支持集外的策略i，收益不高于u）
-  - v=(x∗)Tbj,∀j∈S2 （对于支持集内的策略j，收益都等于均衡收益v）
-  - v≥(x∗)Tbj,∀j∈/S2 （对于支持集外的策略j，收益不高于v）
-  - xi∗=0,∀i∈/S1, yj∗=0,∀j∈/S2  （u, v 是NE中的收益值）
-
-- 要让上述过程可行，我们需要找到正确的**支持集 (supports)**。我们需要遍历所有可能的支持集组合。由于存在 2n+2m 种不同的支持集，这会导致算法具有指数级的复杂度。
-
-- **备注 (Remark)**：计算有限博弈的纳什均衡的**计算复杂度**，就在于**找到正确的支持集**。
-
-------
-
-这两张幻灯片讲述了一个关于“求解一般和博弈”的完整故事：从一个理想化的、简单的特例，到一个普遍的、困难的现实。
-
-#### 1. 理想情况：完全混合均衡（上图）
-
-幻灯片的上半部分描绘了一种“完美”的均衡状态，即**完全混合均衡**。在这种均衡里，每一个参与者都认为对手的所有可选策略都值得提防，因此自己的最优策略是给自己的每一个选项都分配一个**大于零**的概率。
-
-- 为什么这种情况简单？
-
-  因为它使得“无差异原则”可以应用到所有策略上。为了让对手混合他的所有策略，你必须让你的对手在选择他的任何一个策略时，期望收益都完全相等。
-
-- 如何求解？
-
-  这就产生了一个完整的线性方程组（m-1个关于行玩家收益的等式，n-1个关于列玩家收益的等式，再加上两个概率和为1的等式）。这是一个标准的、可以用我们熟悉的方法高效求解的数学问题。
-
-然而，这种所有策略都被用上的“雨露均沾”式的均衡，在现实中非常罕见。
-
-#### 2. 现实情况：寻找“支持集”（下图）
-
-幻灯片的下半部分指出了残酷的现实：在绝大多数博弈中，通常都会有一些策略是“劣势策略”或“糟糕的选项”，一个理性的玩家是永远不会使用它们的（即使用概率为0）。
-
-- **支持集 (Support)**：在一个混合策略中，那些**真正以正概率被使用的纯策略的集合**，被称为这个混合策略的“支持集”。
-- **核心困难**：求解的关键困难在于，我们**事先并不知道**最终的均衡解中，到底哪些策略会是“优势策略”（在支持集里），哪些是“劣势策略”（在支持集外）。
-
-这就引出了一个计算上的巨大难题，我喜欢称之为**“寻找嫌疑人”的困境**：
-
-- **无差异原则**就像一个完美的“审讯工具”，只要你把正确的“嫌疑人”（支持集里的策略）找来，它就能告诉你每个人的详细“作案手法”（混合策略的精确概率）。
-- **但问题是**，你不知道谁是真正的“嫌疑人”。你面对着所有可能的策略，不知道该把哪些策略纳入“无差异”的审讯中。
-
-#### 3. “暴力搜索”算法及其指数级复杂度
-
-理论上，我们可以用一种“暴力”的方法来找到所有均衡：
-
-1. **猜测**：我们先猜一个可能的支持集组合。例如，“我猜行玩家只会用策略1和3，而列玩家只会用策略2和4”。
-2. **求解**：基于这个猜测，我们建立一个只包含这些策略的线性方程组（即只让这些策略满足无差异原则）并求解。
-3. **验证**：检查解出的结果是否是一个合法的纳什均衡。这包括两部分：
-   - 解出的概率值是否都在0和1之间？
-   - 对于那些我们**没猜**的“局外”策略，它们的期望收益是否真的**不优于**我们算出的均衡收益？（这是最关键的验证，确保没人想把局外策略拉进局内）。
-4. **重复**：如果验证失败，就回到第一步，换一种支持集的猜测，然后重复整个过程，直到遍历完**所有可能的支持集组合**。
-
-这个方法的致命缺陷在于，支持集的组合数量是**指数级增长**的。如果一个博弈双方各有20个策略，那么可能的支持集组合数量会是一个天文数字。这就是幻灯片所说的“指数级复杂度”。
-
-**总结**：寻找一般和博弈的纳什均衡，其计算上的困难**不在于解方程**，而在于**找到应该用哪些策略来列方程**。这个“寻找正确支持集”的组合搜索过程，是该问题计算复杂度（PPAD-complete）的根源，也使其与可以通过线性规划轻松求解的两人零和博弈产生了本质的区别。
-
-## 7.1 多智能体强化学习介绍及基本概念
-
-![7-1](image-20250630205121221.png)
-
-这张幻灯片指出了从单智能体学习（比如我们熟知的AlphaGo下围棋的早期版本）迈向多智能体学习（比如王者荣耀或星际争霸中的AI）时，所遇到的一个根本性的、质的困难。
-
-#### 1. 核心困难：移动的靶心 (The Moving-Target Problem)
-
-- **在单智能体学习中**：环境是**静止的**或有固定规律的。一个智能体（比如一个机器人）学习走路，它只需要掌握如何应对地板、墙壁等物理规律即可。这个“游戏规则”是不会变的。
-- **在多智能体学习中**：情况发生了根本变化。对于任何一个智能体（我们称之为“我”）来说，**其他的智能体也是环境的一部分**。但问题是，这些“其他的智能体”本身也在学习、在进化、在改变他们的策略。
-  - **一个生动的例子**：你学习如何开车上班最快。如果只有你一个人在学习，而其他人的路线每天都固定不变，这就是一个简单的单智能体问题。但现实是，成千上万的司机（其他智能体）每天也都在尝试新的路线来优化他们自己的通勤时间。你今天发现的“最优路线”，明天可能因为有几百个和你一样的人也发现了它而变得极度拥堵。
-  - 你试图瞄准的那个“最优策略”的靶心，因为他人的学习而**不断地移动**。这就是多智能体学习的核心困难，学术上称为**“环境的非平稳性” (Non-stationarity)**。
-
-#### 2. 为什么简单的Q学习会失效？
-
-标准的单智能体强化学习算法（如Q学习）之所以能成功，是因为它们依赖于一个基本假设：**马尔可夫决策过程 (MDP)**，即环境是平稳的。这意味着，在同一个状态（State）下，采取同一个动作（Action），得到的奖励（Reward）和状态转移的概率应该是基本一致的。
-
-但在多智能体环境中，这个假设被彻底打破了：
-
-- **今天**：在路口（状态S），你选择直行（动作A），因为其他人都选择了右转，所以一路畅通，你获得了很高的奖励。你的Q表格会更新，认为`(S, A)`是个好选择。
-- **明天**：在同一个路口（状态S），你根据昨天的经验再次选择直行（动作A）。但昨天和你一样选择直行的其他智能体也获得了高奖励，所以今天他们也选择直行。结果造成了交通堵塞，你得到了一个很低的奖励。你的Q表格又必须更新，认为`(S, A)`是个坏选择。
-
-你的Q值会这样剧烈地来回震荡，可能永远无法收敛到一个稳定的策略，因为一个动作的“好”与“坏”不再是固定的，而是完全取决于其他智能体当前正在执行的策略。
-
-#### 3. 与博弈论的联系
-
-这个学习过程中的“不稳定”问题，正是我们在前面博弈论部分看到的“均衡”问题的动态体现。
-
-- 多智能体学习的目标，往往就是让这群智能体通过学习和试错，最终能够收敛到整个博弈的**纳什均衡**。
-- 幻灯片中的螺旋图可以这样理解：中心点是博弈的纳什均衡点。这条螺旋线代表了所有智能体的联合策略随着时间演变的轨迹。如果学习算法设计得好（例如，在**势博弈**中），这条轨迹就会像图中一样稳定地**收敛**到中心。
-- 如果算法设计不当或者博弈本身就很“恶劣”（比如“石头剪刀布”），那么学习过程可能永远无法收敛，只会在策略空间中不停地“绕圈子”。
-
-**总结**：多智能体学习的困难在于，每个智能体的学习过程都会改变其他智能体的学习环境，形成一个复杂且动态的“移动靶心”问题。简单地将单智能体算法直接套用，会因环境的“非平稳性”而失效。因此，现代多智能体学习研究的核心，就是设计出能够在这种动态博弈中稳定地学习、并最终收敛到纳什均衡等合理状态的算法。
-
-![7-2](image-20250630205734872.png)
-
-我们可以通过两个关键问题来区分这些模型：
-
-1. **有几个决策者（智能体）？** 一个还是多个？
-2. **有多少种情况（状态）？** 一种还是多种？
-
-#### 1. 马尔可夫决策过程 (MDPs): 单人探索世界
-
-- **特征**：**一个**智能体，**多个**状态。
-- **核心问题**：一个独立的决策者，在一个可以变化的环境中，如何学习一系列的动作以最大化其长期回报。
-- **通俗例子**：一个机器人学习走迷宫。机器人是**唯一的智能体**，迷宫中不同的位置就是**不同的状态**。机器人需要学习在每个位置（状态）下，应该朝哪个方向走（动作），才能最快找到出口（最大化回报）。
-- **地位**：这是现代**单智能体强化学习 (Single-Agent Reinforcement Learning)** 的数学基石。我们熟知的AlphaGo下棋，本质上也可以看作是在一个极度复杂的MDP中寻找最优策略。
-
-#### 2. 重复博弈 (Repeated Games): 多人重复同一场游戏
-
-- **特征**：**多个**智能体，**一个**状态。
-- **核心问题**：多个决策者，反复地玩**同一个**博弈。
-- **通俗例子**：两家寡头公司，每个月都要决定自己的产品定价。每个月的定价博弈，其本身的收益矩阵都是一样的，所以可以看作是**单一状态**。但因为博弈是**重复**的，今天的决策会影响声誉，从而影响对手明天的决策。这就引入了如“以牙还牙 (Tit-for-Tat)”这样的动态策略。我们之前讨论的各种矩阵博弈（如囚徒困境、零和博弈），如果将它们连续玩很多次，就构成了重复博弈。
-
-#### 3. 随机博弈 / 马尔可夫博弈 (Stochastic/Markov Games): 多人探索动态世界
-
-- **特征**：**多个**智能体，**多个**状态。
-- **核心问题**：多个决策者在一个动态变化的环境中共同决策，他们的联合行动会共同决定环境如何进入下一个状态。
-- **通俗例子**：一场足球比赛。场上有**多个智能体**（双方队员）。球和所有队员在场上的位置，共同构成了一个**状态**。当大家做出动作（跑动、传球、射门）后，场上的局面会变成一个**新的状态**。在每个不同的状态下，球员们面临的“局部博弈”也是不同的。
-- **地位**：这是最普适、最复杂的模型，它构成了**多智能体强化学习 (Multi-Agent Reinforcement Learning, MARL)** 的理论基础。
-
-总结与联系：
-
-这张图清晰地告诉我们，随机博弈是“集大成者”，它统一了另外两个模型：
-
-- 当随机博弈的智能体数量减少到1个时，它就退化成了**MDP**。
-- 当随机博弈的状态数量减少到1个时，它就退化成了**重复博弈**。
-
-这与我们上一张幻灯片讨论的**“多智能体学习的困难”**完美地衔接了起来。我们所说的“环境的非平稳性”，正是因为我们身处**随机博弈**的框架中：对于“我”这个智能体而言，环境之所以看起来在不停变化，是因为环境的下一个状态不仅取决于我的行动，还取决于其他所有智能体的行动，而他们本身也在学习和改变。
-
-![7-3](image-20250630214131295.png)
-
-这张幻灯片提出了一个非常经典的任务：为任意一个 2x2 零和博弈找到通用的解法，即用矩阵中的参数 a,b,c,d 来表达博弈的价值和双方的最优策略。
-
-我们将遵循幻灯片给出的两步计划来完成这个推导。
-
-#### 步骤一：检验纯策略均衡（鞍点）
-
-一个纯策略纳什均衡（在零和博弈中也称为“鞍点”）存在的条件是：**某一个收益值，既是其所在行的最小值，又是其所在列的最大值**。
-
-我们可以通过比较行玩家的“最大化最小值（Maximin）”和列玩家的“最小化极大值（Minimax）”来判断：
-
-- 行玩家的保底收益（最大最小值）: max(min(a,b),min(d,c))
-- 列玩家的保底收益（最小极大值）: min(max(a,d),max(b,c))
-
-如果这两个值相等，则存在纯策略均衡，该值就是博弈的价值。例如，如果 `a <= b` 并且 `a >= d`，那么 `a` 就是一个鞍点，（行1，列1）就是纯策略纳什均衡。
-
-#### 步骤二：求解混合策略均衡（假设不存在鞍点）
-
-如果不存在鞍点，那么双方的最优策略必然是混合策略。我们将使用**无差异原则**来求解。
-
-- **策略设定**:
-
-  - 行玩家以概率 **p** 选择“行1”，以概率 **(1-p)** 选择“行2”。
-  - 列玩家以概率 **q** 选择“列1”，以概率 **(1-q)** 选择“列2”。
-
-- 推导行玩家的策略 p:
-
-  行玩家选择 p 的目的是让列玩家在“列1”和“列2”之间感到无差异。
-
-  - 列玩家选择“列1”的期望收益（注意，要用列玩家的收益矩阵`-A`）：p(−a)+(1−p)(−d)
-
-  - 列玩家选择“列2”的期望收益：p(−b)+(1−p)(−c)
-
-    令二者相等：
-
-    $$-ap - d(1-p) = -bp - c(1-p)$$$$-ap - d + dp = -bp - c + cp$$$$d - c = p(a - d - b + c) = p((a+c) - (b+d))</script><pre><code>解得行玩家的最优概率 p：
-
-p∗=(a+c)−(b+d)d−c
-</code></pre><ul>
+<div style="display:none">
+    $$-3x + 2 - 2x =  - 1 + x$$$$2 - 5x = 2x - 1$$$$3 = 7x$$x=73
+</div>
+
+<p>所以，<strong>候选人1的最优策略</strong>是：以 <strong>3/7</strong> 的概率主打“经济”议题，以 <strong>4/7</strong> 的概率主打“社会”议题。</p>
+<p><strong>B. 计算列玩家的策略 y</strong></p>
+<p>同样，列玩家需要选择一个概率 <code>y</code>，使得行玩家对于选择“经济”还是“社会”感到<strong>无差异</strong>。</p>
+<ul>
+<li>行玩家选择“经济”的期望收益 = y⋅(3)+(1−y)⋅(−1)</li>
+<li>行玩家选择“社会”的期望收益 = y⋅(−2)+(1−y)⋅(1)</li>
+</ul>
+<p>令二者相等：</p>
+<div style="display:none">$$3y - 1 + y = -2y + 1 - y$$$$4y - 1 = 1 - 3y$$$$7y = 2$$y=72
+    </div>
+
+<p>所以，<strong>候选人2的最优策略</strong>是：以 <strong>2/7</strong> 的概率主打“道德”议题，以 <strong>5/7</strong> 的概率主打“减税”议题。</p>
+<p><strong>第三步：计算博弈的价值</strong></p>
+<p>博弈的价值（Value）就是指在双方都采取最优策略时，行玩家的期望收益。我们可以将 y = 2/7 代入行玩家的任一期望收益公式：</p>
+<p>V=3y−1+y=4y−1=4⋅(72)−1=78−1=71</p>
+<p><strong>结论</strong></p>
+<ul>
+<li><strong>纳什均衡</strong>：该博弈的唯一纳什均衡是，候选人1采取混合策略 (73,74)，候选人2采取混合策略 (72,75)。这意味着两位候选人都应该以特定的概率随机选择自己的竞选焦点，让对手无法预测。</li>
+<li><strong>博弈价值</strong>：该博弈对行玩家（候选人1）的价值是 <strong>+1/7</strong>。在竞选这个议题上，如果双方都采取最理性的策略，<strong>候选人1平均可以期望净赚 1/7 百万（约14万）的选民</strong>。这表明在这个特定的战略矩阵中，候选人1拥有微弱的优势。</li>
+</ul>
+<p><img src="image-20250625214139041.png" alt="3-5"></p>
+<p>备注：下面这段话有提到“这代表了<strong>列玩家的理性反应</strong>。由于这是一个零和博弈，列玩家的目标是让行玩家的收益尽可能小。”，结合上面一张PPT的最后一个恒等式，可知，由于这是零和博弈，行玩家收益最少等价于列玩家收益最大。</p>
+<hr>
+<p>这张幻灯片从一个更形式化、更根本的角度，展示了作为“领导者”（被迫先宣布策略的一方）应该如何思考，并将这个问题转化为了一个标准的数学优化问题。最终，它揭示了一个关于零和博弈的深刻结论。</p>
+<p><strong>1. Maximin 公式解读：“在最坏的情况里做到最好”</strong></p>
+<p>幻灯片给出的第一个公式 </p>
+<p>maxmin(3x1−2x2,−x1+x2)</p>
+<p> 是“最大化最小值 (Maximin)”思想的完美数学体现。我们来拆解它：</p>
+<ul>
+<li><strong>内部的两个表达式</strong>：<ul>
+<li>3x1−2x2：这是当列玩家选择“道德”时，行玩家的期望收益。</li>
+<li>−x1+x2：这是当列玩家选择“减税”时，行玩家的期望收益。</li>
+</ul>
+</li>
+<li><strong>min(…) 部分</strong>：这代表了<strong>列玩家的理性反应</strong>。由于这是一个零和博弈，列玩家的目标是让行玩家的收益尽可能小。所以，当行玩家宣布了一个策略 (x1,x2) 后，列玩家会审视这两个可能的收益，并选择那个能让行玩家收益<strong>更小 (min)</strong> 的策略来应对。这代表了行玩家在宣布策略 (x1,x2) 后，所能得到的<strong>最坏结果保证</strong>。</li>
+<li><strong>max(…) 部分</strong>：这代表了<strong>行玩家的决策</strong>。行玩家知道对手会这样针对他。所以，他在选择自己的策略 (x1,x2) 时，目标就是让这个“最坏的结果保证”变得尽可能好。也就是要<strong>最大化 (max)</strong> 那个最小的收益。</li>
+</ul>
+<p>这整个公式的逻辑就是：“我（行玩家）要选择一个策略 (x1,x2)，来最大化‘在我宣布这个策略后，对手尽最大努力打压我，我能得到的那个保底收益’”。</p>
+<p><strong>2. 线性规划的转换：从博弈论到标准数学优化</strong></p>
+<p>Max-min 问题在数学上直接求解不方便，但可以非常巧妙地转化为一个标准的<strong>线性规划 (Linear Programming, LP)</strong> 问题。</p>
+<ul>
+<li>我们引入一个新变量 <code>z</code>，让它代表那个“保底收益”。</li>
+<li>我们的目标是 <code>最大化 z</code>。</li>
+<li>约束条件是什么？<code>z</code> 必须小于等于所有可能的结果。所以：<ul>
+<li>z≤3x1−2x2  (保底收益不能超过对手选“道德”时我的收益)</li>
+<li>z≤−x1+x2  (保底收益不能超过对手选“减税”时我的收益)</li>
+</ul>
+</li>
+<li>再加上概率本身的基本约束 x1+x2=1 和 x1,x2≥0。</li>
+</ul>
+<p>这样，我们就把一个博弈问题，变成了一个可以用标准算法（如单纯形法）求解的数学问题。</p>
+<p><strong>3. 最终结论：结果与之前完全相同！</strong></p>
+<p>幻灯片最后指出，解这个线性规划得到的结果是 x1=3/7，x2=4/7，并且最优的保底收益 z=1/7。</p>
+<p>这正是我们之前用“无差异原则”为<strong>同时博弈</strong>计算出的<strong>纳什均衡解</strong>和<strong>博弈价值 V</strong>！</p>
+<p>为什么会这样？</p>
+<p>这并非巧合，而是冯·诺伊曼极小化极大定理 (Minimax Theorem) 的直接体现。该定理的核心是：</p>
+<p>Maximin=Minimax</p>
+<ul>
+<li>我们这张幻灯片求解的“领导者-跟随者”问题，正是行玩家的 <strong>Maximin（最大化最小值）</strong> 问题。</li>
+<li>我们之前求解的“同时博弈”问题，得到的是<strong>Minimax（极小化极大值）</strong> 均衡解。</li>
+</ul>
+<p>这个定理保证了，在任何两人零和博弈中，这两个值是相等的。这意味着，<strong>在两人零和博弈中，不存在先手优势或后手优势</strong>。你提前公布策略，虽然给了对方信息，但你也可以利用这一点来选择一个最稳妥的策略；对方虽然能看到你的策略，但也只能在你设定的框架内做出反应。最终双方的力量会完美抵消，达到同一个均衡结果。</p>
+<h3 id="纳什均衡的线性规划解法"><a href="#纳什均衡的线性规划解法" class="headerlink" title="纳什均衡的线性规划解法"></a>纳什均衡的线性规划解法</h3><p><img src="image-20250625215726625.png" alt="3-6"></p>
+<p>这张幻灯片介绍了一个在线性规划乃至整个优化理论中，都极具美感和威力的核心概念——<strong>对偶性</strong>。它揭示了每个优化问题都存在一个“影子问题”或“镜像问题”，而理解这个镜像能为我们提供关于原问题全新的、深刻的洞察。</p>
+<p><strong>1. 什么是对偶性？一个直观的例子</strong></p>
+<p>要理解对偶，与其陷入复杂的数学转换，不如看一个经济学例子：</p>
+<ul>
+<li><strong>原问题 (Primal Problem)</strong>：<ul>
+<li>想象你是一家工厂的老板，你要决定生产多少桌子和椅子，来<strong>最大化你的总利润</strong>。</li>
+<li>你面临一些<strong>约束</strong>：你拥有的木材、劳动力、设备时间都是有限的。</li>
+<li>这就是一个典型的线性规划问题：最大化一个目标（利润），同时满足一系列约束（资源）。</li>
+</ul>
+</li>
+<li><strong>对偶问题 (Dual Problem)</strong>：<ul>
+<li>现在，想象一个商人想来收购你所有的资源（木材、劳动力、设备）。他想<strong>最小化他的收购总成本</strong>。</li>
+<li>但他面临一个<strong>约束</strong>：他为每种资源开出的“影子价格”组合，必须能让你觉得“卖掉资源比我自己生产产品更划算”。例如，生产一张桌子需要消耗的资源，他打包收购的价格，必须不能低于你自己生产这张桌子能获得的利润。</li>
+<li>这个商人的问题——在一定约束下最小化成本——就是你那个最大化利润问题的“对偶问题”。</li>
+</ul>
+</li>
+</ul>
+<p><strong>2. 对偶性的“魔力”：原问题与对偶问题的关系</strong></p>
+<p>对偶理论中有两个核心定理，它们揭示了原问题和对偶问题之间的奇妙关系：</p>
+<ol>
+<li><p><strong>弱对偶定理 (Weak Duality)</strong>：对偶问题的最优解，永远是原问题最优解的一个“界限”。在上面的例子里，就是说：商人收购资源的<strong>最小成本</strong>，必然<strong>大于等于</strong>工厂老板自己生产的<strong>最大利润</strong>。这很直观，因为如果收购成本低于你的利润，你肯定不会卖。</p>
+</li>
+<li><p>强对偶定理 (Strong Duality)：在绝大多数情况下，这个“大于等于”实际上是<strong>“完全等于”</strong>！也就是说：</p>
+<p>工厂能实现的最大利润=商人收购资源的最小成本</p>
+<p>这是一个非常深刻的结论。它意味着，你资源的内在价值，恰好等于你能用它们创造的最大利润。对偶问题中的变量（资源的“影子价格”），精确地量化了每一种稀缺资源的边际价值。</p>
+</li>
+</ol>
+<p><strong>3. 对偶性与“零和博弈”的惊人联系</strong></p>
+<p>现在，我们可以把这个概念带回我们之前讨论的博弈论了。这正是引入对偶概念的关键所在。</p>
+<ul>
+<li>在前几张幻灯片中，我们把<strong>行玩家</strong>的问题构建成了一个线性规划：<strong>最大化</strong>他的保底收益 <code>V</code>。这可以看作是我们的<strong>原问题 (Primal)</strong>。</li>
+<li>那么，<strong>列玩家</strong>的问题是什么？列玩家的目标是<strong>最小化</strong>行玩家能获得的最大收益 <code>W</code>。我们同样可以把列玩家的这个问题也构建成一个线性规划。</li>
+<li><strong>最关键的结论是</strong>：<strong>列玩家的“最小化极大值”线性规划问题，恰好就是行玩家“最大化最小值”线性规划问题的对偶问题！</strong></li>
+</ul>
+<p>因此，线性规划的“强对偶定理”（最大值 = 最小值），在零和博弈的语境下，就直接变成了冯·诺伊曼的“极小化极大定理”！</p>
+<p>max(行玩家的保底收益)=min(列玩家的最大损失)Maximin=Minimax</p>
+<p><strong>总结</strong>：对偶性不仅是线性规划的强大工具，它还为博弈论的基石——极小化极大定理——提供了最坚实的数学证明。它优美地揭示了，一个参与者的最大化问题和其对手的最小化问题，实际上是同一个数学结构的两个不同侧面，如同一枚硬币的两面，其价值必然相等。</p>
+<p><img src="image-20250625220404379.png" alt="3-7"></p>
+<p>线性规划对偶性实例。</p>
+<p><img src="image-20250625220536283.png" alt="3-8"></p>
+<p>弱对偶性和强对偶性</p>
+<h3 id="线性互补问题"><a href="#线性互补问题" class="headerlink" title="线性互补问题"></a>线性互补问题</h3><p><img src="image-20250625222636285.png" alt="3-9"></p>
+<p><strong>标题：计算两人一般和博弈的纳什均衡 (Computing Nash equilibria of two-player, general-sum games)</strong></p>
+<ul>
+<li>不幸的是，寻找一个两人<strong>一般和博弈 (general-sum game)</strong> 的纳什均衡，<strong>无法</strong>被构建成一个线性规划问题。<ul>
+<li>— 两名参与者的利益不再是<strong><em>完全\</em>对立的 (completely opposed)</strong>。</li>
+<li>— 然而，我们仍然可以将我们的问题表述为某种优化问题。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>这张幻灯片标志着一个重要的转折点。从“零和博弈”进入了更普遍、也更复杂的“一般和博弈”（或称“非零和博弈”）的世界。幻灯片的核心信息是：之前强大而高效的线性规划（LP）工具，在这里失效了。</p>
+<p><strong>1. 什么是一般和博弈？</strong></p>
+<p>一般和博弈指的是，在任何一个结果下，所有参与者的收益之和<strong>不一定为零</strong>。这意味着博弈的结果可以是双赢、双输，或者一方赢多、一方输少。参与者的关系不再是“你死我活”的纯粹冲突，而是<strong>冲突与合作并存</strong>。</p>
+<ul>
+<li><p>经典例子1：囚徒困境</p>
+<p>如果两个囚犯都背叛对方，他们可能各判5年（总收益-10）。如果他们都保持沉默，可能各判1年（总收益-2）。这是一个双输的“负和”博弈。</p>
+</li>
+<li><p>经典例子2：性别大战 (Battle of the Sexes)</p>
+<p>一对情侣都想待在一起（合作），但一人想看歌剧，另一人想看球赛（冲突）。如果他们去同一个地方，双方都能获得高收益（比如（5,2）或（2,5）），总收益为7。如果去不同地方，则两人都很不开心（0,0），总收益为0。这是一个“正和”博弈。</p>
+</li>
+</ul>
+<p><strong>2. 为什么线性规划会失效？—— 对偶性的崩塌</strong></p>
+<p>这是理解这张幻灯片最关键的地方。线性规划之所以能在零和博弈中大显神威，是因为其背后优美的“对偶性”，而这种对偶性源于双方利益的<strong>完全对立</strong>。</p>
+<ul>
+<li><strong>在零和博弈中</strong>：<ul>
+<li>行玩家的目标是：最大化自己的收益 <code>u₁</code>。</li>
+<li>列玩家的目标是：最大化自己的收益 <code>u₂</code>。</li>
+<li>由于 <code>u₂ = -u₁</code>，所以列玩家“最大化<code>u₂</code>”就<strong>等价于</strong>“最小化<code>u₁</code>”。</li>
+<li>因此，行玩家的“最大化最小值 (Maximin)”问题和列玩家的“最小化极大值 (Minimax)”问题，形成了一对完美的数学<strong>对偶</strong>。它们就像一枚硬币的两面，可以用同一个线性规划框架来解决。</li>
+</ul>
+</li>
+<li><strong>在一般和博弈中</strong>：<ul>
+<li><code>u₂</code> 不再等于 <code>-u₁</code>。</li>
+<li>列玩家的目标——最大化他自己的 <code>u₂</code>——与行玩家的收益 <code>u₁</code> <strong>没有直接的、负相关的关系</strong>。</li>
+<li>列玩家不再是处心积虑地要让行玩家的收益最小化，他只关心自己的收益。</li>
+<li>这样一来，那种“我之所得即你之所失”的完美对偶关系就<strong>彻底崩塌</strong>了。我们无法再构建出一个单一的线性规划问题来同时描述双方的决策并找到那个共同的解。</li>
+</ul>
+</li>
+</ul>
+<p><strong>3. 那问题变成了什么？</strong></p>
+<p>虽然不能用线性规划，但寻找纳什均衡依然是一个数学优化问题，只是变得更复杂了。</p>
+<ul>
+<li>寻找两人一般和博弈的纳什均衡，在数学上等价于求解一个<strong>线性互补问题 (Linear Complementarity Problem, LCP)</strong>。这是一个比线性规划更复杂的数学结构。</li>
+<li>从计算复杂性的角度看，求解两人零和博弈是“容易”的（属于 <strong>P</strong> 问题），而求解两人一般和博弈则被证明是<strong>PPAD-完全 (PPAD-complete)</strong> 问题。这通常被认为是一个“更难”的计算等级，意味着找到解需要更复杂的算法，计算效率也更低。</li>
+</ul>
+<p><strong>总结</strong>：从“零和”到“一般和”的转变，是博弈论中一次巨大的复杂性飞跃。它让我们失去了线性规划这个简洁高效的工具，迫使我们进入一个更困难的计算领域。这也反过来凸显了两人零和博弈及其“极小化极大定理”在理论上的简洁与优美。</p>
+<p><img src="image-20250625223646101.png" alt="3-10"></p>
+<p><strong>标题：计算两人一般和博弈的纳什均衡</strong></p>
+<ul>
+<li><p>我们首先考虑一个<strong>内部的 (inner)</strong> 或<strong>完全混合的 (totally mixed)</strong> 纳什均衡 (X∗,Y∗)，即对于所有的 i 和 j，都有 xi∗&gt;0 以及 yj∗&gt;0（所有的纯策略都以正概率被使用）。</p>
+</li>
+<li><p>让 ai 表示行玩家的支付矩阵A的各行，让 bj 表示列玩家的支付矩阵B的各列。</p>
+</li>
+<li><p>利用“<strong>在一个纳什均衡策略的支持集(support)中，所有纯策略都产生相同的支付</strong>”这一事实，并且该支付大于或等于支持集之外的策略的支付，我们得到：</p>
+<ul>
+<li><p>aiy∗=aky∗,i,k=1,2,…,m.</p>
+</li>
+<li><p>(x∗)Tbj=(x∗)Tbk,j,k=1,2,…,n.</p>
+<p>(注：此处公式经过订正以符合标准表达)</p>
+<p>(绿色文字) 假设每个纯策略都以正概率被使用。</p>
+</li>
+</ul>
+</li>
+<li><p>上述构成了一个可以被高效求解的线性方程组。</p>
+</li>
+</ul>
+<p><strong>下图内容</strong></p>
+<ul>
+<li><p>然而，“每个策略都以正概率被使用”的假设是有限制性的。大多数博弈并不拥有完全混合的纳什均衡；对于它们而言：</p>
+</li>
+<li><p>我们计算一个有限两人博弈的所有纳什均衡：</p>
+<p>一个混合策略组合 (x∗,y∗) 是一个具有支持集 S1,S2 的纳什均衡，当且仅当：</p>
+<ul>
+<li>u=aiy∗,∀i∈S1 （对于支持集内的策略i，收益都等于均衡收益u）</li>
+<li>u≥aiy∗,∀i∈/S1 （对于支持集外的策略i，收益不高于u）</li>
+<li>v=(x∗)Tbj,∀j∈S2 （对于支持集内的策略j，收益都等于均衡收益v）</li>
+<li>v≥(x∗)Tbj,∀j∈/S2 （对于支持集外的策略j，收益不高于v）</li>
+<li>xi∗=0,∀i∈/S1, yj∗=0,∀j∈/S2  （u, v 是NE中的收益值）</li>
+</ul>
+</li>
+<li><p>要让上述过程可行，我们需要找到正确的<strong>支持集 (supports)</strong>。我们需要遍历所有可能的支持集组合。由于存在 2n+2m 种不同的支持集，这会导致算法具有指数级的复杂度。</p>
+</li>
+<li><p><strong>备注 (Remark)</strong>：计算有限博弈的纳什均衡的<strong>计算复杂度</strong>，就在于<strong>找到正确的支持集</strong>。</p>
+</li>
+</ul>
+<hr>
+<p>这两张幻灯片讲述了一个关于“求解一般和博弈”的完整故事：从一个理想化的、简单的特例，到一个普遍的、困难的现实。</p>
+<p><strong>1. 理想情况：完全混合均衡（上图）</strong></p>
+<p>幻灯片的上半部分描绘了一种“完美”的均衡状态，即<strong>完全混合均衡</strong>。在这种均衡里，每一个参与者都认为对手的所有可选策略都值得提防，因此自己的最优策略是给自己的每一个选项都分配一个<strong>大于零</strong>的概率。</p>
+<ul>
+<li><p>为什么这种情况简单？</p>
+<p>因为它使得“无差异原则”可以应用到所有策略上。为了让对手混合他的所有策略，你必须让你的对手在选择他的任何一个策略时，期望收益都完全相等。</p>
+</li>
+<li><p>如何求解？</p>
+<p>这就产生了一个完整的线性方程组（m-1个关于行玩家收益的等式，n-1个关于列玩家收益的等式，再加上两个概率和为1的等式）。这是一个标准的、可以用我们熟悉的方法高效求解的数学问题。</p>
+</li>
+</ul>
+<p>然而，这种所有策略都被用上的“雨露均沾”式的均衡，在现实中非常罕见。</p>
+<p><strong>2. 现实情况：寻找“支持集”（下图）</strong></p>
+<p>幻灯片的下半部分指出了残酷的现实：在绝大多数博弈中，通常都会有一些策略是“劣势策略”或“糟糕的选项”，一个理性的玩家是永远不会使用它们的（即使用概率为0）。</p>
+<ul>
+<li><strong>支持集 (Support)</strong>：在一个混合策略中，那些<strong>真正以正概率被使用的纯策略的集合</strong>，被称为这个混合策略的“支持集”。</li>
+<li><strong>核心困难</strong>：求解的关键困难在于，我们<strong>事先并不知道</strong>最终的均衡解中，到底哪些策略会是“优势策略”（在支持集里），哪些是“劣势策略”（在支持集外）。</li>
+</ul>
+<p>这就引出了一个计算上的巨大难题，我喜欢称之为<strong>“寻找嫌疑人”的困境</strong>：</p>
+<ul>
+<li><strong>无差异原则</strong>就像一个完美的“审讯工具”，只要你把正确的“嫌疑人”（支持集里的策略）找来，它就能告诉你每个人的详细“作案手法”（混合策略的精确概率）。</li>
+<li><strong>但问题是</strong>，你不知道谁是真正的“嫌疑人”。你面对着所有可能的策略，不知道该把哪些策略纳入“无差异”的审讯中。</li>
+</ul>
+<p><strong>3. “暴力搜索”算法及其指数级复杂度</strong></p>
+<p>理论上，我们可以用一种“暴力”的方法来找到所有均衡：</p>
+<ol>
+<li><strong>猜测</strong>：我们先猜一个可能的支持集组合。例如，“我猜行玩家只会用策略1和3，而列玩家只会用策略2和4”。</li>
+<li><strong>求解</strong>：基于这个猜测，我们建立一个只包含这些策略的线性方程组（即只让这些策略满足无差异原则）并求解。</li>
+<li><strong>验证</strong>：检查解出的结果是否是一个合法的纳什均衡。这包括两部分：<ul>
+<li>解出的概率值是否都在0和1之间？</li>
+<li>对于那些我们<strong>没猜</strong>的“局外”策略，它们的期望收益是否真的<strong>不优于</strong>我们算出的均衡收益？（这是最关键的验证，确保没人想把局外策略拉进局内）。</li>
+</ul>
+</li>
+<li><strong>重复</strong>：如果验证失败，就回到第一步，换一种支持集的猜测，然后重复整个过程，直到遍历完<strong>所有可能的支持集组合</strong>。</li>
+</ol>
+<p>这个方法的致命缺陷在于，支持集的组合数量是<strong>指数级增长</strong>的。如果一个博弈双方各有20个策略，那么可能的支持集组合数量会是一个天文数字。这就是幻灯片所说的“指数级复杂度”。</p>
+<p><strong>总结</strong>：寻找一般和博弈的纳什均衡，其计算上的困难<strong>不在于解方程</strong>，而在于<strong>找到应该用哪些策略来列方程</strong>。这个“寻找正确支持集”的组合搜索过程，是该问题计算复杂度（PPAD-complete）的根源，也使其与可以通过线性规划轻松求解的两人零和博弈产生了本质的区别。</p>
+<h2 id="多智能体强化学习"><a href="#多智能体强化学习" class="headerlink" title="多智能体强化学习"></a>多智能体强化学习</h2><h3 id="7-1-多智能体强化学习介绍及基本概念"><a href="#7-1-多智能体强化学习介绍及基本概念" class="headerlink" title="7.1 多智能体强化学习介绍及基本概念"></a>7.1 多智能体强化学习介绍及基本概念</h3><p><img src="image-20250630205121221.png" alt="7-1"></p>
+<p>这张幻灯片指出了从单智能体学习（比如我们熟知的AlphaGo下围棋的早期版本）迈向多智能体学习（比如王者荣耀或星际争霸中的AI）时，所遇到的一个根本性的、质的困难。</p>
+<p><strong>1. 核心困难：移动的靶心 (The Moving-Target Problem)</strong></p>
+<ul>
+<li><strong>在单智能体学习中</strong>：环境是<strong>静止的</strong>或有固定规律的。一个智能体（比如一个机器人）学习走路，它只需要掌握如何应对地板、墙壁等物理规律即可。这个“游戏规则”是不会变的。</li>
+<li><strong>在多智能体学习中</strong>：情况发生了根本变化。对于任何一个智能体（我们称之为“我”）来说，<strong>其他的智能体也是环境的一部分</strong>。但问题是，这些“其他的智能体”本身也在学习、在进化、在改变他们的策略。<ul>
+<li><strong>一个生动的例子</strong>：你学习如何开车上班最快。如果只有你一个人在学习，而其他人的路线每天都固定不变，这就是一个简单的单智能体问题。但现实是，成千上万的司机（其他智能体）每天也都在尝试新的路线来优化他们自己的通勤时间。你今天发现的“最优路线”，明天可能因为有几百个和你一样的人也发现了它而变得极度拥堵。</li>
+<li>你试图瞄准的那个“最优策略”的靶心，因为他人的学习而<strong>不断地移动</strong>。这就是多智能体学习的核心困难，学术上称为<strong>“环境的非平稳性” (Non-stationarity)</strong>。</li>
+</ul>
+</li>
+</ul>
+<p><strong>2. 为什么简单的Q学习会失效？</strong></p>
+<p>标准的单智能体强化学习算法（如Q学习）之所以能成功，是因为它们依赖于一个基本假设：<strong>马尔可夫决策过程 (MDP)</strong>，即环境是平稳的。这意味着，在同一个状态（State）下，采取同一个动作（Action），得到的奖励（Reward）和状态转移的概率应该是基本一致的。</p>
+<p>但在多智能体环境中，这个假设被彻底打破了：</p>
+<ul>
+<li><strong>今天</strong>：在路口（状态S），你选择直行（动作A），因为其他人都选择了右转，所以一路畅通，你获得了很高的奖励。你的Q表格会更新，认为<code>(S, A)</code>是个好选择。</li>
+<li><strong>明天</strong>：在同一个路口（状态S），你根据昨天的经验再次选择直行（动作A）。但昨天和你一样选择直行的其他智能体也获得了高奖励，所以今天他们也选择直行。结果造成了交通堵塞，你得到了一个很低的奖励。你的Q表格又必须更新，认为<code>(S, A)</code>是个坏选择。</li>
+</ul>
+<p>你的Q值会这样剧烈地来回震荡，可能永远无法收敛到一个稳定的策略，因为一个动作的“好”与“坏”不再是固定的，而是完全取决于其他智能体当前正在执行的策略。</p>
+<p><strong>3. 与博弈论的联系</strong></p>
+<p>这个学习过程中的“不稳定”问题，正是我们在前面博弈论部分看到的“均衡”问题的动态体现。</p>
+<ul>
+<li>多智能体学习的目标，往往就是让这群智能体通过学习和试错，最终能够收敛到整个博弈的<strong>纳什均衡</strong>。</li>
+<li>幻灯片中的螺旋图可以这样理解：中心点是博弈的纳什均衡点。这条螺旋线代表了所有智能体的联合策略随着时间演变的轨迹。如果学习算法设计得好（例如，在<strong>势博弈</strong>中），这条轨迹就会像图中一样稳定地<strong>收敛</strong>到中心。</li>
+<li>如果算法设计不当或者博弈本身就很“恶劣”（比如“石头剪刀布”），那么学习过程可能永远无法收敛，只会在策略空间中不停地“绕圈子”。</li>
+</ul>
+<p><strong>总结</strong>：多智能体学习的困难在于，每个智能体的学习过程都会改变其他智能体的学习环境，形成一个复杂且动态的“移动靶心”问题。简单地将单智能体算法直接套用，会因环境的“非平稳性”而失效。因此，现代多智能体学习研究的核心，就是设计出能够在这种动态博弈中稳定地学习、并最终收敛到纳什均衡等合理状态的算法。</p>
+<p><img src="image-20250630205734872.png" alt="7-2"></p>
+<p>我们可以通过两个关键问题来区分这些模型：</p>
+<ol>
+<li><strong>有几个决策者（智能体）？</strong> 一个还是多个？</li>
+<li><strong>有多少种情况（状态）？</strong> 一种还是多种？</li>
+</ol>
+<p><strong>1. 马尔可夫决策过程 (MDPs): 单人探索世界</strong></p>
+<ul>
+<li><strong>特征</strong>：<strong>一个</strong>智能体，<strong>多个</strong>状态。</li>
+<li><strong>核心问题</strong>：一个独立的决策者，在一个可以变化的环境中，如何学习一系列的动作以最大化其长期回报。</li>
+<li><strong>通俗例子</strong>：一个机器人学习走迷宫。机器人是<strong>唯一的智能体</strong>，迷宫中不同的位置就是<strong>不同的状态</strong>。机器人需要学习在每个位置（状态）下，应该朝哪个方向走（动作），才能最快找到出口（最大化回报）。</li>
+<li><strong>地位</strong>：这是现代<strong>单智能体强化学习 (Single-Agent Reinforcement Learning)</strong> 的数学基石。我们熟知的AlphaGo下棋，本质上也可以看作是在一个极度复杂的MDP中寻找最优策略。</li>
+</ul>
+<p><strong>2. 重复博弈 (Repeated Games): 多人重复同一场游戏</strong></p>
+<ul>
+<li><strong>特征</strong>：<strong>多个</strong>智能体，<strong>一个</strong>状态。</li>
+<li><strong>核心问题</strong>：多个决策者，反复地玩<strong>同一个</strong>博弈。</li>
+<li><strong>通俗例子</strong>：两家寡头公司，每个月都要决定自己的产品定价。每个月的定价博弈，其本身的收益矩阵都是一样的，所以可以看作是<strong>单一状态</strong>。但因为博弈是<strong>重复</strong>的，今天的决策会影响声誉，从而影响对手明天的决策。这就引入了如“以牙还牙 (Tit-for-Tat)”这样的动态策略。我们之前讨论的各种矩阵博弈（如囚徒困境、零和博弈），如果将它们连续玩很多次，就构成了重复博弈。</li>
+</ul>
+<p><strong>3. 随机博弈 / 马尔可夫博弈 (Stochastic/Markov Games): 多人探索动态世界</strong></p>
+<ul>
+<li><strong>特征</strong>：<strong>多个</strong>智能体，<strong>多个</strong>状态。</li>
+<li><strong>核心问题</strong>：多个决策者在一个动态变化的环境中共同决策，他们的联合行动会共同决定环境如何进入下一个状态。</li>
+<li><strong>通俗例子</strong>：一场足球比赛。场上有<strong>多个智能体</strong>（双方队员）。球和所有队员在场上的位置，共同构成了一个<strong>状态</strong>。当大家做出动作（跑动、传球、射门）后，场上的局面会变成一个<strong>新的状态</strong>。在每个不同的状态下，球员们面临的“局部博弈”也是不同的。</li>
+<li><strong>地位</strong>：这是最普适、最复杂的模型，它构成了<strong>多智能体强化学习 (Multi-Agent Reinforcement Learning, MARL)</strong> 的理论基础。</li>
+</ul>
+<p>总结与联系：</p>
+<p>这张图清晰地告诉我们，随机博弈是“集大成者”，它统一了另外两个模型：</p>
+<ul>
+<li>当随机博弈的智能体数量减少到1个时，它就退化成了<strong>MDP</strong>。</li>
+<li>当随机博弈的状态数量减少到1个时，它就退化成了<strong>重复博弈</strong>。</li>
+</ul>
+<p>这与我们上一张幻灯片讨论的<strong>“多智能体学习的困难”</strong>完美地衔接了起来。我们所说的“环境的非平稳性”，正是因为我们身处<strong>随机博弈</strong>的框架中：对于“我”这个智能体而言，环境之所以看起来在不停变化，是因为环境的下一个状态不仅取决于我的行动，还取决于其他所有智能体的行动，而他们本身也在学习和改变。</p>
+<p><img src="image-20250630214131295.png" alt="7-3"></p>
+<p>这张幻灯片提出了一个非常经典的任务：为任意一个 2x2 零和博弈找到通用的解法，即用矩阵中的参数 a,b,c,d 来表达博弈的价值和双方的最优策略。</p>
+<p>我们将遵循幻灯片给出的两步计划来完成这个推导。</p>
+<p><strong>步骤一：检验纯策略均衡（鞍点）</strong></p>
+<p>一个纯策略纳什均衡（在零和博弈中也称为“鞍点”）存在的条件是：<strong>某一个收益值，既是其所在行的最小值，又是其所在列的最大值</strong>。</p>
+<p>我们可以通过比较行玩家的“最大化最小值（Maximin）”和列玩家的“最小化极大值（Minimax）”来判断：</p>
+<ul>
+<li>行玩家的保底收益（最大最小值）: max(min(a,b),min(d,c))</li>
+<li>列玩家的保底收益（最小极大值）: min(max(a,d),max(b,c))</li>
+</ul>
+<p>如果这两个值相等，则存在纯策略均衡，该值就是博弈的价值。例如，如果 <code>a &lt;= b</code> 并且 <code>a &gt;= d</code>，那么 <code>a</code> 就是一个鞍点，（行1，列1）就是纯策略纳什均衡。</p>
+<p><strong>步骤二：求解混合策略均衡（假设不存在鞍点）</strong></p>
+<p>如果不存在鞍点，那么双方的最优策略必然是混合策略。我们将使用<strong>无差异原则</strong>来求解。</p>
+<ul>
+<li><p><strong>策略设定</strong>:</p>
+<ul>
+<li>行玩家以概率 <strong>p</strong> 选择“行1”，以概率 <strong>(1-p)</strong> 选择“行2”。</li>
+<li>列玩家以概率 <strong>q</strong> 选择“列1”，以概率 <strong>(1-q)</strong> 选择“列2”。</li>
+</ul>
+</li>
+<li><p>推导行玩家的策略 p:</p>
+<p>行玩家选择 p 的目的是让列玩家在“列1”和“列2”之间感到无差异。</p>
+<ul>
+<li><p>列玩家选择“列1”的期望收益（注意，要用列玩家的收益矩阵<code>-A</code>）：p(−a)+(1−p)(−d)</p>
+</li>
+<li><p>列玩家选择“列2”的期望收益：p(−b)+(1−p)(−c)</p>
+<p>令二者相等：</p>
+<script type="math/tex; mode=display">-ap - d(1-p) = -bp - c(1-p)$$$$-ap - d + dp = -bp - c + cp$$$$d - c = p(a - d - b + c) = p((a+c) - (b+d))</script><p>解得行玩家的最优概率 p：</p>
+<p>p∗=(a+c)−(b+d)d−c</p>
+</li>
+</ul>
+</li>
 <li><p>推导列玩家的策略 q:</p>
 <p>列玩家选择 q 的目的是让行玩家在“行1”和“行2”之间感到无差异。</p>
 <ul>
@@ -3926,7 +3905,8 @@ p∗=(a+c)−(b+d)d−c
 </ul>
 </li>
 </ul>
-<h4 id="推导博弈的价值-V"><a href="#推导博弈的价值-V" class="headerlink" title="推导博弈的价值 V"></a>推导博弈的价值 V</h4><p>博弈的价值 V 是在均衡状态下，行玩家的期望收益。我们可以将求得的 q* 代入行玩家的期望收益公式：</p>
+<p><strong>推导博弈的价值 V</strong></p>
+<p>博弈的价值 V 是在均衡状态下，行玩家的期望收益。我们可以将求得的 q* 代入行玩家的期望收益公式：</p>
 <p>V=aq∗+b(1−q∗)=q∗(a−b)+bV=(a+c)−(b+d)c−b(a−b)+b</p>
 <p>对上式进行通分并化简：</p>
 <p>V=(a+c)−(b+d)(c−b)(a−b)+b((a+c)−(b+d))</p>
@@ -3936,7 +3916,7 @@ V=(a+c)−(b+d)ac−bd
 
 ------
 
-### 最终通解
+**最终通解**
 
 对于一个不存在纯策略均衡的 2x2 零和博弈矩阵 A=(adbc)，其通解为：
 
@@ -3952,7 +3932,7 @@ V=(a+c)−(b+d)ac−bd
 
    V=(a+c)−(b+d)ac−bd
 
-### 为什么行玩家是最大化最小值，而不是最小化极大值？
+**为什么行玩家是最大化最小值，而不是最小化极大值？**
 
 问得特别好！这正是理解零和博弈中双方战略思想的精髓所在。
 
@@ -3963,7 +3943,7 @@ V=(a+c)−(b+d)ac−bd
 
 让我们一步一步地、站在**行玩家（Player 1）**的角度来思考他为什么必须是“最大化最小值 (Maximin)”。
 
-### 1. 行玩家的思考过程：“我如何为最坏的情况做准备？”
+**1. 行玩家的思考过程：“我如何为最坏的情况做准备？”**
 
 行玩家是一个理性的决策者，他想让自己赚得尽可能多。但他知道两件事：
 
@@ -3990,7 +3970,7 @@ V=(a+c)−(b+d)ac−bd
 
 ------
 
-### 2. 为什么“最小化极大值 (Minimax)”是对手的策略？
+**2. 为什么“最小化极大值 (Minimax)”是对手的策略？**
 
 现在我们换位思考，站到**列玩家（Player 2）**的角度。
 
@@ -4002,7 +3982,7 @@ V=(a+c)−(b+d)ac−bd
 
 整个过程串起来就是：他先找出每一列的**最大值 (Maximum)**，然后在这些最大值中，选择一个**最小值 (Minimum)**。这就是**最小化极大值 (Minimax)**。
 
-### 总结
+**总结**
 
 |          | **行玩家 (Player 1)**            | **列玩家 (Player 2)**                    |
 | -------- | -------------------------------- | ---------------------------------------- |
@@ -4016,7 +3996,7 @@ V=(a+c)−(b+d)ac−bd
 
 这张幻灯片介绍了“序贯决策”框架中那个最普适、最强大的模型——**随机博弈（或称马尔可夫博弈）**。它完美地将我们之前讨论过的“矩阵博弈”和“马尔可夫决策过程(MDP)”融合在了一起，是理解现代**多智能体强化学习 (MARL)** 的理论基石。
 
-#### 1. 集大成者：融合了博弈论与强化学习
+**1. 集大成者：融合了博弈论与强化学习**
 
 我们可以这样理解随机博弈的构成：
 
@@ -4025,7 +4005,7 @@ V=(a+c)−(b+d)ac−bd
 
 **随机博弈 = 多智能体的MDP = 随状态变化的重复博弈**
 
-#### 2. 图示解读：一场动态演变的博弈
+**2. 图示解读：一场动态演变的博弈**
 
 这张图非常直观地展示了随机博弈是如何运作的。我们可以把它想象成一场动态的冒险游戏：
 
@@ -4039,7 +4019,7 @@ V=(a+c)−(b+d)ac−bd
 
 这个过程会一直持续下去。
 
-#### 3. 参与者的目标：深谋远虑
+**3. 参与者的目标：深谋远虑**
 
 在一个随机博弈中，一个理性的参与者不会只盯着当前这一轮的得失。他的决策必须是**深谋远虑**的。
 
@@ -4060,11 +4040,11 @@ V=(a+c)−(b+d)ac−bd
 
 这张幻灯片通过一个“思想实验”，精准地指出了**多智能体学习（MARL）与单智能体学习（RL）的根本区别到底在哪里**。它告诉我们，多智能体问题的核心困难，并不在于“有多个会动的个体”，而在于“有多个会**学习和适应**的个体”。
 
-#### 1. 问题复杂性的根源：变化的“游戏规则”
+**1. 问题复杂性的根源：变化的“游戏规则”**
 
 我们之前讨论，多智能体学习之所以困难，是因为环境的“非平稳性”（Non-stationarity）。对于任何一个智能体“我”来说，其他的智能体都是环境的一部分。当其他智能体也在学习、也在改变他们的策略时，就相当于“我”所面对的游戏规则本身在不断变化，这让学习变得极为困难。
 
-#### 2. “固定策略”意味着什么？—— 从“对手”到“自然规律”
+**2. “固定策略”意味着什么？—— 从“对手”到“自然规律”**
 
 这张幻灯片提出的“固定其他所有人的策略”这个条件，是问题的关键。这意味着什么呢？让我们用一个生动的例子来说明：
 
@@ -4080,7 +4060,7 @@ V=(a+c)−(b+d)ac−bd
 
 其他司机不再是具有主观能动性的“对手”了，他们变成了城市交通中一个虽然是随机的、但却是稳定的、可预测的自然规律。
 
-#### 3. “马尔可夫化”：游戏规则被重新稳定下来
+**3. “马尔可夫化”：游戏规则被重新稳定下来**
 
 一旦其他人的策略被固定，整个系统对于“我”来说，就重新满足了**马尔可夫性质**。
 
@@ -4098,7 +4078,7 @@ V=(a+c)−(b+d)ac−bd
 
 这个问题的解取决于一个幻灯片上未给出但至关重要的参数——**折扣因子 γ (discount factor)**，它代表了厂商对未来收益的重视程度。
 
-#### 1. 分解两个“子博弈”
+**1. 分解两个“子博弈”**
 
 我们首先分析在每个状态下，只考虑当前一轮收益的“短视”均衡是什么。
 
@@ -4114,7 +4094,7 @@ V=(a+c)−(b+d)ac−bd
   - 对厂商2：如果厂商1选择“清洁”，厂商2会选“污染”(5>2)；如果厂商1选“污染”，厂商2还是会选“污染”(4>1)。**“污染”也是厂商2的占优策略**。
   - 因此，该状态下的短视纳什均衡也是 **(污染, 污染)**。这个选择的后果是，游戏将**100%留在状态2**，继续被征税。
 
-#### 2. 长期战略的困境：短视 vs. 远见
+**2. 长期战略的困境：短视 vs. 远见**
 
 分析完子博弈后，真正的战略困境浮现了。我们以厂商1在**状态1**的决策为例：
 
@@ -4123,7 +4103,7 @@ V=(a+c)−(b+d)ac−bd
 
 厂商会如何选择，完全取决于他们有多“远视”，即折扣因子 `γ` 有多大。
 
-#### 3. 可能存在的纳什均衡
+**3. 可能存在的纳什均衡**
 
 这个随机博弈可能存在多个纳什均衡。
 
@@ -4171,7 +4151,8 @@ V=(a+c)−(b+d)ac−bd
   $$G = \bordermatrix{ & \text{放弃} & \text{挑战} \cr \text{放弃} & 0 & 1 \cr \text{挑战} & 3 & -G^T }</script><p>  其中 -Gᵀ 代表角色互换后的游戏。（它的矩阵是G矩阵的转置的负数。）-Gᵀ的价值是G的价值的负数。</p>
 <hr>
 <p>这张幻灯片描述了一个非常有趣的<strong>递归博弈 (recursive game)</strong>，它是一种特殊的<strong>随机博弈 (stochastic game)</strong>。这个博弈只有两个状态：“P1是领导者”和“P2是领导者”。当出现 (挑战, 挑战) 的结果时，游戏就在这两个状态之间切换。</p>
-<h4 id="1-问题的核心：递归的价值"><a href="#1-问题的核心：递归的价值" class="headerlink" title="1. 问题的核心：递归的价值"></a>1. 问题的核心：递归的价值</h4><p>这个问题的精髓在于右下角的那个支付 <code>-Gᵀ</code>。</p>
+<p><strong>1. 问题的核心：递归的价值</strong></p>
+<p>这个问题的精髓在于右下角的那个支付 <code>-Gᵀ</code>。</p>
 <ul>
 <li><p>让我们设这个博弈对于<strong>当前的领导者</strong>来说，其<strong>价值 (Value)</strong> 为 <strong>V</strong>。</p>
 </li>
@@ -4186,18 +4167,20 @@ V=(a+c)−(b+d)ac−bd
 <p>G=(031−V)</p>
 </li>
 </ul>
-<h4 id="2-求解博弈价值-V"><a href="#2-求解博弈价值-V" class="headerlink" title="2. 求解博弈价值 V"></a>2. 求解博弈价值 V</h4><p>现在，问题转化为了：求解这个特殊矩阵的价值 V，并且这个价值 V 必须等于它自身。</p>
+<p><strong>2. 求解博弈价值 V</strong></p>
+<p>现在，问题转化为了：求解这个特殊矩阵的价值 V，并且这个价值 V 必须等于它自身。</p>
 <script type="math/tex; mode=display">V = \text{value} \begin{pmatrix} 0 & 1 \ 3 & -V \end{pmatrix}$$我们可以使用之前推导出的 2x2 零和博弈的通用价值公式：$$V = \frac{ac - bd}{(a+c) - (b+d)}$$其中，a=0, b=1, d=3, c=-V。代入公式：$$V = \frac{(0)(-V) - (1)(3)}{(0)+(-V) - (1)-(3)} = \frac{-3}{-V-4}$$现在我们得到了一个关于 V 的方程，求解它：
 
 $$V(-V - 4) = -3$$$$-V^2 - 4V = -3$$$$V^2 + 4V - 3 = 0</script><p>这是一个一元二次方程。使用求根公式 </p>
 <p>我们得到了两个可能的解：V1=7−2≈0.646 和 V2=−7−2≈−4.646。</p>
-<h4 id="3-选择正确的解"><a href="#3-选择正确的解" class="headerlink" title="3. 选择正确的解"></a>3. 选择正确的解</h4><p>哪个才是这个博弈真正的价值呢？</p>
+<p><strong>3. 选择正确的解</strong></p>
+<p>哪个才是这个博弈真正的价值呢？</p>
 <p>我们看领导者的支付矩阵，他有一个“放弃”的选项。如果他选择“放弃”，最坏的结果是对手选择“挑战”，此时他的收益是1。这意味着，领导者至少可以为自己保证一个非负的收益。因此，一个负数（比如-4.646）不可能是这个博弈的理性价值。</p>
 <p>所以，这个博弈对于领导者的价值是：根号7减去2</p>
 <p><img src="image-20250630224225904.png" alt="7-8"></p>
 <p>求解博弈G1和G2的价值：</p>
 <p><img src="image-20250630224137356.png" alt="7-9"></p>
-<h2 id="7-2-值迭代与策略迭代"><a href="#7-2-值迭代与策略迭代" class="headerlink" title="7.2 值迭代与策略迭代"></a>7.2 值迭代与策略迭代</h2><p><img src="image-20250701210516613.png" alt="7-10"></p>
+<h3 id="7-2-值迭代与策略迭代"><a href="#7-2-值迭代与策略迭代" class="headerlink" title="7.2 值迭代与策略迭代"></a>7.2 值迭代与策略迭代</h3><p><img src="image-20250701210516613.png" alt="7-10"></p>
 <p>1、学习随机博弈中状态值函数贝尔曼方程推导</p>
 <p>2、与单智能体MDP的关键区别</p>
 <p>这个公式虽然形式上与单智能体MDP的贝尔曼方程很像，但幻灯片的最后一点指出了两个根本性的区别，这也是多智能体问题复杂性的根源：</p>
@@ -4210,13 +4193,15 @@ $$V(-V - 4) = -3$$$$-V^2 - 4V = -3$$$$V^2 + 4V - 3 = 0</script><p>这是一个�
 </ol>
 <p><img src="image-20250701211212340.png" alt="7-11"></p>
 <p>这张幻灯片在重申了状态价值的定义之后，提出了一个关于它的非常重要的数学性质：<strong>有界性 (Boundedness)</strong>。这个性质是随机博弈能够被分析和求解的理论基础之一。</p>
-<h4 id="1-核心思想：无限过程，有限价值"><a href="#1-核心思想：无限过程，有限价值" class="headerlink" title="1. 核心思想：无限过程，有限价值"></a>1. 核心思想：无限过程，有限价值</h4><p>这条结论的核心思想是：尽管一个随机博弈的过程可能永远持续下去，但从任何一个状态开始，任何一个参与者能够获得的<strong>总的“折扣”价值都不是无限的，而是一个有限的、有上限的数值</strong>。</p>
+<p><strong>1. 核心思想：无限过程，有限价值</strong></p>
+<p>这条结论的核心思想是：尽管一个随机博弈的过程可能永远持续下去，但从任何一个状态开始，任何一个参与者能够获得的<strong>总的“折扣”价值都不是无限的，而是一个有限的、有上限的数值</strong>。</p>
 <p>幻灯片给出了这个上限的计算公式：1−γM。</p>
 <ul>
 <li><strong>M</strong>: 代表在整个游戏所有可能的情况下，任何参与者在<strong>单一一轮</strong>中所能获得的<strong>最大绝对收益</strong>。可以理解为这个游戏里“单次操作的最大奖励或最大惩罚（的绝对值）”。</li>
 <li><strong>γ (gamma)</strong>: 是我们熟悉的折扣因子（0 &lt; γ &lt; 1），代表了我们对未来收益的耐心程度。</li>
 </ul>
-<h4 id="2-这个上限公式是怎么来的？（几何级数）"><a href="#2-这个上限公式是怎么来的？（几何级数）" class="headerlink" title="2. 这个上限公式是怎么来的？（几何级数）"></a>2. 这个上限公式是怎么来的？（几何级数）</h4><p>这个公式的推导非常直观，它基于我们熟知的等比数列（几何级数）求和。</p>
+<p><strong>2. 这个上限公式是怎么来的？（几何级数）</strong></p>
+<p>这个公式的推导非常直观，它基于我们熟知的等比数列（几何级数）求和。</p>
 <ol>
 <li><p>根据定义，状态价值是所有未来折扣回报的总和：</p>
 <p>Viπ(s)=Eπ[r0+γr1+γ2r2+γ3r3+…]</p>
@@ -4235,14 +4220,16 @@ $$V(-V - 4) = -3$$$$-V^2 - 4V = -3$$$$V^2 + 4V - 3 = 0</script><p>这是一个�
 <p>Viπ(s)≤1−γM</p>
 </li>
 </ol>
-<h4 id="3-这个性质为什么重要？"><a href="#3-这个性质为什么重要？" class="headerlink" title="3. 这个性质为什么重要？"></a>3. 这个性质为什么重要？</h4><ol>
+<p><strong>3. 这个性质为什么重要？</strong></p>
+<ol>
 <li><strong>保证问题“有解”</strong>：这个有界性保证了我们要求解的状态价值函数是一个“行为良好”的函数，它的值不会发散到无穷大。这是所有后续分析和算法能够成立的数学前提。如果没有这个保证，我们可能都无法定义“最优策略”，因为所有策略的总回报都是无穷大，无法比较。</li>
 <li><strong>为算法提供基础</strong>：在很多求解随机博弈的算法（例如价值迭代）中，这个边界可以用于初始化价值函数，或者作为算法收敛性的一个判断依据。它确保了算法的计算过程会在一个有限的数值空间内进行，最终能够稳定下来。</li>
 </ol>
 <p><strong>总结</strong>：这张幻灯片的核心是告诉我们，尽管随机博弈的博弈过程可能是无限的，但其价值是有限的。这个有界性不仅为问题的“可解性”提供了理论保障，也为实际的计算算法奠定了基础。</p>
 <p><img src="image-20250701215722881.png" alt="7-12"></p>
 <p><img src="image-20250701215827727.png" alt="7-13"></p>
-<h4 id="结论与洞察"><a href="#结论与洞察" class="headerlink" title="结论与洞察"></a>结论与洞察</h4><p>这个例子深刻地揭示了<strong>短期利益与长期战略</strong>之间的权衡。</p>
+<p><strong>结论与洞察</strong></p>
+<p>这个例子深刻地揭示了<strong>短期利益与长期战略</strong>之间的权衡。</p>
 <ul>
 <li>从短期看，第1列对列玩家更有利（即时损失更小）。</li>
 <li>但从长期看，第1列有更高的概率让游戏继续下去，这意味着他未来要持续地向行玩家支付价值为<code>v</code>的收益。而第2列能更快地结束游戏，从而“止损”。</li>
@@ -4259,7 +4246,8 @@ $$V(-V - 4) = -3$$$$-V^2 - 4V = -3$$$$V^2 + 4V - 3 = 0</script><p>这是一个�
 </ul>
 <hr>
 <p>这张幻灯片深入探讨了“价值迭代”算法的<strong>性能保证</strong>。它告诉我们，夏普利不仅证明了价值迭代这个方法是<strong>可行</strong>的（即最终能找到正确答案），更证明了它是<strong>高效</strong>和<strong>可靠</strong>的。这使得价值迭代从一个理论上的概念，变成了一个可以在实践中应用的强大工具。</p>
-<h4 id="1-指数速率收敛：为什么说它“高效”？"><a href="#1-指数速率收敛：为什么说它“高效”？" class="headerlink" title="1. 指数速率收敛：为什么说它“高效”？"></a>1. 指数速率收敛：为什么说它“高效”？</h4><p>“指数速率收敛”听起来很抽象，但它的意思是，算法的精确度在每一步迭代后都会得到一个“质的飞跃”。</p>
+<p><strong>1. 指数速率收敛：为什么说它“高效”？</strong></p>
+<p>“指数速率收敛”听起来很抽象，但它的意思是，算法的精确度在每一步迭代后都会得到一个“质的飞跃”。</p>
 <ul>
 <li><strong>一个比喻</strong>：想象你在寻宝，宝藏在1公里外。有一个向导，你每走一步，他都会告诉你：“你现在离宝藏的距离，是你上一步距离的90%”。<ul>
 <li>你的误差（与宝藏的距离）在每一步都会乘以一个固定的因子（0.9）。</li>
@@ -4271,7 +4259,8 @@ $$V(-V - 4) = -3$$$$-V^2 - 4V = -3$$$$V^2 + 4V - 3 = 0</script><p>这是一个�
 </li>
 <li><strong>在价值迭代中</strong>：折扣因子 <code>γ</code> (一个小于1的数) 就扮演了这个“0.9”的角色。每迭代一次，我们估算的价值函数 vn(s) 与真实价值 v(s) 之间的最大误差，都会大致缩小一个 <code>γ</code> 倍。因为 <code>γ</code> 小于1，所以经过多次迭代后，误差会变得非常小，算法能很快地逼近真实解。这背后的数学原理是，夏普利证明了价值迭代的更新算子是一个<strong>压缩映射 (Contraction Mapping)</strong>。</li>
 </ul>
-<h4 id="2-误差边界：为什么说它“可靠”？"><a href="#2-误差边界：为什么说它“可靠”？" class="headerlink" title="2. 误差边界：为什么说它“可靠”？"></a>2. 误差边界：为什么说它“可靠”？</h4><p>第二点结论解决了一个非常实际的问题：“我怎么知道什么时候可以停止算法，并且保证我的答案足够精确了？”</p>
+<p><strong>2. 误差边界：为什么说它“可靠”？</strong></p>
+<p>第二点结论解决了一个非常实际的问题：“我怎么知道什么时候可以停止算法，并且保证我的答案足够精确了？”</p>
 <ul>
 <li><p><strong>面临的困境</strong>：我们希望我们的误差，即 <code>|我们的估算值 vₙ - 真实值 v*|</code>，小于一个我们能接受的阈值（比如0.001）。但问题是，我们并不知道那个神秘的“真实值 <code>v*</code>”到底是多少，所以无法直接计算这个误差。</p>
 </li>
@@ -4291,7 +4280,8 @@ $$V(-V - 4) = -3$$$$-V^2 - 4V = -3$$$$V^2 + 4V - 3 = 0</script><p>这是一个�
 <p><strong>总结</strong>：这张幻灯片从理论上为价值迭代算法的有效性提供了强有力的背书。<strong>指数速率收敛</strong>保证了它的计算速度，而<strong>实用的误差边界</strong>则为它在现实中的应用提供了可靠的停止准则，使其成为求解两人零和随机博弈的核心算法之一。</p>
 <p><img src="image-20250702005255997.png" alt="7-15"></p>
 <p><strong>为什么最小停止概率是0.5？</strong></p>
-<h3 id="1-“最小停止概率是0-5”的来源分析"><a href="#1-“最小停止概率是0-5”的来源分析" class="headerlink" title="1. “最小停止概率是0.5”的来源分析"></a>1. “最小停止概率是0.5”的来源分析</h3><p>这个结论来自于对 G₁ 和 G₂ 两个矩阵中所有单元格的<strong>“持续概率”</strong>的分析。</p>
+<p><strong>1. “最小停止概率是0.5”的来源分析</strong></p>
+<p>这个结论来自于对 G₁ 和 G₂ 两个矩阵中所有单元格的<strong>“持续概率”</strong>的分析。</p>
 <p>在一个随机博弈的支付单元格中，形如 <code>“即时回报 + 概率 × 未来价值”</code> 的结构，那个<strong>概率</strong>就代表了游戏<strong>继续下去的可能性</strong>。而<strong>“停止概率”</strong>则等于 <strong>1 - 继续概率</strong>。</p>
 <p>让我们来逐一检查两个矩阵中所有结果的“停止概率”：</p>
 <p>对于博弈 G₁:</p>
@@ -4313,7 +4303,8 @@ $$V(-V - 4) = -3$$$$-V^2 - 4V = -3$$$$V^2 + 4V - 3 = 0</script><p>这是一个�
 <p>现在，我们把所有计算出的停止概率放在一起：{ 0.7, 0.6, 0.5, 1 }。</p>
 <p>在所有这些可能性中，最小的那个值，就是 0.5。</p>
 <p>这就是“最小停止概率是0.5”这句话的直接来源。</p>
-<h3 id="2-这个数字为什么如此重要？"><a href="#2-这个数字为什么如此重要？" class="headerlink" title="2. 这个数字为什么如此重要？"></a>2. 这个数字为什么如此重要？</h3><p>这个“最小停止概率”反过来告诉了我们整个系统的<strong>“最大继续概率”</strong>。</p>
+<p><strong>2. 这个数字为什么如此重要？</strong></p>
+<p>这个“最小停止概率”反过来告诉了我们整个系统的<strong>“最大继续概率”</strong>。</p>
 <ul>
 <li>最小停止概率 = 0.5</li>
 <li>最大继续概率 = 1 - 最小停止概率 = 1 - 0.5 = 0.5</li>
