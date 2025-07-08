@@ -1,3 +1,4 @@
+http://zcl0219.github.io/2025/06/22/Multi-Agent-AI/
 http://zcl0219.github.io/about/index.html
 http://zcl0219.github.io/2023/10/22/%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%BC%98%E5%8C%96/
 http://zcl0219.github.io/2023/10/22/Zookeeper/
@@ -5,7 +6,6 @@ http://zcl0219.github.io/2024/10/30/DRL-Algorithms/
 http://zcl0219.github.io/2025/04/16/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%BB%BC%E8%BF%B0/
 http://zcl0219.github.io/2025/04/17/VDN/
 http://zcl0219.github.io/2025/05/15/ATTENTION-GUIDED-CONTRASTIVE-ROLE-REPRESENTATIONS-FOR-MULTI-AGENT-REINFORCEMENT-LEARNING/
-http://zcl0219.github.io/2025/06/22/Multi-Agent-AI/
 http://zcl0219.github.io/2025/05/15/BYZANTINE-ROBUST-COOPERATIVE-MULTI-AGENT-REINFORCEMENT-LEARNING-AS-A-BAYESIAN-GAME/
 http://zcl0219.github.io/2024/10/22/DiaDSP/
 http://zcl0219.github.io/2023/04/22/%E7%AC%AC%E4%BA%8C%E7%AF%87%E5%8D%9A%E5%AE%A2/
