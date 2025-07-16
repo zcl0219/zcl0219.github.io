@@ -55,7 +55,119 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
-<!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+<!-- hexo injector head_end end --><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
@@ -156,13 +268,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">33</span>
+          <span class="site-state-item-count">34</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -184,6 +296,100 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://zcl0219.github.io/2025/07/15/TRPO/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="GGBond">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+      <meta itemprop="description" content="Doing the tough things sets winners apart from losers">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Hexo">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/07/15/TRPO/" class="post-title-link" itemprop="url">TRPO</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2025-07-15 19:44:48" itemprop="dateCreated datePublished" datetime="2025-07-15T19:44:48+08:00">2025-07-15</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2025-07-17 02:53:46" itemprop="dateModified" datetime="2025-07-17T02:53:46+08:00">2025-07-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/DRL-Algorithms/" itemprop="url" rel="index"><span itemprop="name">DRL Algorithms</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="一背景知识">一、背景知识</h2>
+<p>在介绍TRPO算法之前，先问一个问题：TRPO是在什么背景下衍生出来的？为了回答这个问题，需要先介绍策略梯度思想（Policy
+Gradient，PG）。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2025/07/15/TRPO/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -229,7 +435,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-07-09 01:45:44" itemprop="dateModified" datetime="2025-07-09T01:45:44+08:00">2025-07-09</time>
+      <time title="Modified: 2025-07-09 13:55:03" itemprop="dateModified" datetime="2025-07-09T13:55:03+08:00">2025-07-09</time>
     </span>
 
   
@@ -242,7 +448,8 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p><strong>多智能体强化学习系统特点</strong></p>
+          <h2 id="引言">引言</h2>
+<p><strong>多智能体强化学习系统特点</strong></p>
 <p>智能体数量非单个</p>
 <p>智能体之间存在一定联系：合作、对抗、合作+对抗（多智能体多动机）</p>
 <p>智能体不仅需要考虑到环境，还需要考虑到其他智能体的行动</p>
@@ -329,10 +536,9 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>摘要：<br>1、受角色与智能体行为模式之间相关性的启发，我们提出了一种名为 Attention-guided COntrastive Role representation learning for MARL（ACORM）的新型框架</p>
-<blockquote id="fn_注释">
-<sup>注释</sup>. 不同类型的角色具有不同类型的行为模式，比如有的偏向于拆塔，有的偏向于生产资源等等。作者应该是考虑利用不同角色与之对应的行为模式建立关系<a href="#reffn_注释" title="Jump back to footnote [注释] in the text."> &#8617;</a>
-</blockquote>
+          <p>摘要： 1、受角色与智能体行为模式之间相关性的启发，我们提出了一种名为
+Attention-guided COntrastive Role representation learning for
+MARL（ACORM）的新型框架</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2025/05/15/ATTENTION-GUIDED-CONTRASTIVE-ROLE-REPRESENTATIONS-FOR-MULTI-AGENT-REINFORCEMENT-LEARNING/#more" rel="contents">
@@ -409,7 +615,8 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>本片文章主要是依据历史经验来判断出干扰者，目标是合作方在最坏对抗干扰下，寻求最优策略<br>\begin{equation} \label{eq:ex_ante_equilibrium}<br>(\pi_{<em>}^{EA}(\cdot|H), \hat{\pi}_{</em>}^{EA}(\cdot|H, \theta)) \in \arg \max_{\pi(\cdot|H)} \mathbb{E}_{p(\theta)} \left[ \min_{\hat{\pi}(\cdot|H, \theta)} V_{\theta}(s) \right]<br>\end{equation}</p>
+          <p>本片文章主要是依据历史经验来判断出干扰者，目标是合作方在最坏对抗干扰下，寻求最优策略
+</p>
 
       
     </div>
@@ -485,7 +692,11 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h2 id="用于协作式多智能体学习的价值分解网络"><a href="#用于协作式多智能体学习的价值分解网络" class="headerlink" title="用于协作式多智能体学习的价值分解网络"></a>用于协作式多智能体学习的价值分解网络</h2><h3 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h3><p>我们研究了具有单个联合奖励信号的协作式多智能体强化学习问题。这类学习问题很困难，因为通常有很大的动作和观察组合空间。在完全集中式和去中心化的方法中，我们发现了虚假奖励的问题和一种我们称之为 “惰性代理” 问题的现象，这是由于部分可观察性而出现的。我们通过使用一种新的价值分解网络架构来训练单个代理来解决这些问题，该架构学习将团队价值函数分解为代理价值函数。我们在一系列部分可观察的多智能体领域进行了实验评估，并表明学习这种价值分解会带来卓越的结果，特别是当与权重共享、角色信息和信息通道相结合时。</p>
+          <h2 id="用于协作式多智能体学习的价值分解网络">用于协作式多智能体学习的价值分解网络</h2>
+<h3 id="摘要">摘要</h3>
+<p>我们研究了具有单个联合奖励信号的协作式多智能体强化学习问题。这类学习问题很困难，因为通常有很大的动作和观察组合空间。在完全集中式和去中心化的方法中，我们发现了虚假奖励的问题和一种我们称之为
+“惰性代理”
+问题的现象，这是由于部分可观察性而出现的。我们通过使用一种新的价值分解网络架构来训练单个代理来解决这些问题，该架构学习将团队价值函数分解为代理价值函数。我们在一系列部分可观察的多智能体领域进行了实验评估，并表明学习这种价值分解会带来卓越的结果，特别是当与权重共享、角色信息和信息通道相结合时。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2025/04/17/VDN/#more" rel="contents">
@@ -568,7 +779,17 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h2 id="多智能体强化学习通信方法综述"><a href="#多智能体强化学习通信方法综述" class="headerlink" title="多智能体强化学习通信方法综述"></a>多智能体强化学习通信方法综述</h2><h3 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h3><p>通信是协调多个智能体行为、拓宽它们对环境的认识以及支持它们协作的有效机制。在多智能体深度强化学习（MADRL）领域，智能体可以通过通信来提高整体学习性能并实现其目标。智能体可以与所有智能体或特定智能体组通信，或者根据特定约束条件进行通信。随着 MADRL 通信（Comm-MADRL）研究工作的不断增多，目前缺乏一种系统性和结构化的方法来区分和分类现有的 Comm-MADRL 方法。在本文中，我们回顾了 Comm-MADRL 领域的最新研究成果，并考虑了在设计和开发多智能体强化学习系统中可能发挥作用的通信的各个方面。考虑到这些方面，我们提出了 9 个维度，沿着这些维度可以对 Comm-MADRL 方法进行分析、开发和比较。通过将现有工作投射到多维空间中，我们发现了一些有趣的趋势。 我们还通过探索可能性的组合，提出了一些设计未来 Comm-MADRL 系统的创新方向。</p>
+          <h2 id="多智能体强化学习通信方法综述">多智能体强化学习通信方法综述</h2>
+<h3 id="摘要">摘要</h3>
+<p>通信是协调多个智能体行为、拓宽它们对环境的认识以及支持它们协作的有效机制。在多智能体深度强化学习（MADRL）领域，智能体可以通过通信来提高整体学习性能并实现其目标。智能体可以与所有智能体或特定智能体组通信，或者根据特定约束条件进行通信。随着
+MADRL
+通信（Comm-MADRL）研究工作的不断增多，目前缺乏一种系统性和结构化的方法来区分和分类现有的
+Comm-MADRL 方法。在本文中，我们回顾了 Comm-MADRL
+领域的最新研究成果，并考虑了在设计和开发多智能体强化学习系统中可能发挥作用的通信的各个方面。考虑到这些方面，我们提出了
+9 个维度，沿着这些维度可以对 Comm-MADRL
+方法进行分析、开发和比较。通过将现有工作投射到多维空间中，我们发现了一些有趣的趋势。
+我们还通过探索可能性的组合，提出了一些设计未来 Comm-MADRL
+系统的创新方向。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2025/04/16/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%BB%BC%E8%BF%B0/#more" rel="contents">
@@ -651,16 +872,24 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>在深度强化学习中，(\mathbb{E}_{S}[V(S, \theta)]) 表示对状态 (S) 的期望值。虽然 (S) 是状态，具体理解上可以这样考虑：</p>
-<ol>
-<li><p><strong>状态的分布</strong>：在强化学习中，状态 (S) 是随机变量，它遵循一个分布 (p(S))，该分布反映了状态在环境中的出现概率。这个分布可以是初始状态分布，也可以是策略执行时经过各个状态的访问分布。我们可以理解为期望值 (\mathbb{E}_{S}[V(S, \theta)]) 是对状态分布 (p(S)) 的加权平均。</p>
-</li>
-<li><p><strong>求期望的含义</strong>：当我们求 (\mathbb{E}_{S}[V(S, \theta)]) 时，实际上是在所有可能的状态上计算一个加权平均值，即把每个状态的价值函数 (V(S, \theta)) 按其出现的概率 (p(S)) 来进行加权。这种期望值通常用于估计模型在整个状态空间上的表现。</p>
-</li>
-<li><p><strong>样本估计</strong>：在实际中，这种期望值可以通过采样实现，比如通过从 (p(S)) 中采样得到一系列状态 (\{S_i\})，然后计算这些状态上 (V(S, \theta)) 的平均值来逼近 (\mathbb{E}_{S}[V(S, \theta)])。</p>
-</li>
+          <p>在深度强化学习中，(_{S}[V(S, )]) 表示对状态 (S) 的期望值。虽然 (S)
+是状态，具体理解上可以这样考虑：</p>
+<ol type="1">
+<li><p><strong>状态的分布</strong>：在强化学习中，状态 (S)
+是随机变量，它遵循一个分布
+(p(S))，该分布反映了状态在环境中的出现概率。这个分布可以是初始状态分布，也可以是策略执行时经过各个状态的访问分布。我们可以理解为期望值
+(_{S}[V(S, )]) 是对状态分布 (p(S)) 的加权平均。</p></li>
+<li><p><strong>求期望的含义</strong>：当我们求 (_{S}[V(S, )])
+时，实际上是在所有可能的状态上计算一个加权平均值，即把每个状态的价值函数
+(V(S, )) 按其出现的概率 (p(S))
+来进行加权。这种期望值通常用于估计模型在整个状态空间上的表现。</p></li>
+<li><p><strong>样本估计</strong>：在实际中，这种期望值可以通过采样实现，比如通过从
+(p(S)) 中采样得到一系列状态 ({S_i})，然后计算这些状态上 (V(S, ))
+的平均值来逼近 (_{S}[V(S, )])。</p></li>
 </ol>
-<p>综上，(\mathbb{E}_{S}[V(S, \theta)]) 是对状态空间中的每个状态价值的加权平均，权重来自状态的分布 (p(S))。这种方法在强化学习中帮助我们通过全局状态分布来评估价值函数，从而更有效地训练模型。</p>
+<p>综上，(_{S}[V(S, )])
+是对状态空间中的每个状态价值的加权平均，权重来自状态的分布
+(p(S))。这种方法在强化学习中帮助我们通过全局状态分布来评估价值函数，从而更有效地训练模型。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2024/10/30/DRL-Algorithms/#more" rel="contents">
@@ -752,7 +981,9 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h3 id="Differentially-Private-Distributed-Optimization-via-State-and-Direction-Perturbation-in-Multiagent-Systems"><a href="#Differentially-Private-Distributed-Optimization-via-State-and-Direction-Perturbation-in-Multiagent-Systems" class="headerlink" title="Differentially Private Distributed Optimization via State and Direction Perturbation in Multiagent Systems"></a>Differentially Private Distributed Optimization via State and Direction Perturbation in Multiagent Systems</h3>
+          <h3 id="differentially-private-distributed-optimization-via-state-and-direction-perturbation-in-multiagent-systems">Differentially
+Private Distributed Optimization via State and Direction Perturbation in
+Multiagent Systems</h3>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2024/10/22/DiaDSP/#more" rel="contents">
@@ -836,7 +1067,7 @@
     
     <div class="post-body" itemprop="articleBody">
           <p>2023-11-10</p>
-<p>并查集：<a target="_blank" rel="noopener" href="https://blog.csdn.net/YSJ367635984/article/details/113504723">https://blog.csdn.net/YSJ367635984/article/details/113504723</a></p>
+<p>并查集：https://blog.csdn.net/YSJ367635984/article/details/113504723</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2023/11/10/%E7%AE%97%E6%B3%95/#more" rel="contents">
@@ -919,93 +1150,17 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>一、Zookeeper特点<br>1) Zookeeper:一个领导者(Leader)，多个跟随者(Follower)组成的集群。<br>2)集群中只要有半数以上节点存活，Zookeeper集群就能正常服务。所以Zookeeper适合安装奇数台服务器。<br>3)全局数据一致:每个Server保存一份相同的数据副本， Client无论连接到哪个Server，数据都是一致的。<br>4)更新请求顺序执行，来自同一个Client的更新请求按其发送顺序依次执行。<br>5)数据更新原子性，一次数据更新要么成功，要么失败。<br>6)实时性，在一定时间范围内，Client能读到最新数据。</p>
+          <p>一、Zookeeper特点 1)
+Zookeeper:一个领导者(Leader)，多个跟随者(Follower)组成的集群。
+2)集群中只要有半数以上节点存活，Zookeeper集群就能正常服务。所以Zookeeper适合安装奇数台服务器。
+3)全局数据一致:每个Server保存一份相同的数据副本，
+Client无论连接到哪个Server，数据都是一致的。
+4)更新请求顺序执行，来自同一个Client的更新请求按其发送顺序依次执行。
+5)数据更新原子性，一次数据更新要么成功，要么失败。
+6)实时性，在一定时间范围内，Client能读到最新数据。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2023/10/22/Zookeeper/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://zcl0219.github.io/2023/10/22/%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%BC%98%E5%8C%96/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="GGBond">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-      <meta itemprop="description" content="Doing the tough things sets winners apart from losers">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Hexo">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/10/22/%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%BC%98%E5%8C%96/" class="post-title-link" itemprop="url">对象的优化</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2023-10-22 16:31:53" itemprop="dateCreated datePublished" datetime="2023-10-22T16:31:53+08:00">2023-10-22</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-07-07 00:29:21" itemprop="dateModified" datetime="2025-07-07T00:29:21+08:00">2025-07-07</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>一、拷贝构造、赋值运算符重载的相关知识</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2023/10/22/%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%BC%98%E5%8C%96/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -1089,7 +1244,7 @@
 
   
 
-  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"cdn":"https://cdn.jsdelivr.net/npm/mathjax@2.7.8/MathJax.js?config=TeX-AMS-MML_HTMLorMML","tags":"none","src":"custom_mathjax_source","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"mhchem":false,"cdn":"https://cdn.jsdelivr.net/npm/mathjax@2.7.8/MathJax.js?config=TeX-AMS-MML_HTMLorMML","src":"custom_mathjax_source","js":{"url":"//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"}}</script>
 <script src="/js/third-party/math/mathjax.js"></script>
 
 

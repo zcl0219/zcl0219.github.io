@@ -156,13 +156,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">33</span>
+          <span class="site-state-item-count">34</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -184,6 +184,199 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://zcl0219.github.io/2023/04/27/%E7%AC%AC%E4%B8%89%E7%AF%87%E5%8D%9A%E5%AE%A2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="GGBond">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+      <meta itemprop="description" content="Doing the tough things sets winners apart from losers">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Hexo">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/04/27/%E7%AC%AC%E4%B8%89%E7%AF%87%E5%8D%9A%E5%AE%A2/" class="post-title-link" itemprop="url">第三篇博客</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2023-04-27 23:38:05 / Modified: 23:43:40" itemprop="dateCreated datePublished" datetime="2023-04-27T23:38:05+08:00">2023-04-27</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="赋值运算符为什么必须定义为成员函数">赋值运算符为什么必须定义为成员函数</h2>
+<p>在C++中，赋值运算符（=）通常需要被定义为类的成员函数，而不能是友元函数或非成员函数。这是因为以下几个原因：</p>
+<ol type="1">
+<li><p>语法限制：在C++中，某些运算符（如赋值运算符、下标运算符、函数调用运算符等）只能作为成员函数来重载，而不能作为非成员函数。这是C++语言本身的规定，设计者这样规定是为了让这些运算符的行为更接近其内建类型的原生行为。</p></li>
+<li><p>保持语义一致性：赋值运算符用于将一个对象的值赋给另一个对象。将赋值运算符定义为成员函数，有助于保持与内建类型的赋值操作一致的语义。此外，成员函数可以访问类的私有成员，这使得赋值操作可以在内部完成，而无需暴露类的实现细节。</p></li>
+<li><p>自动处理自赋值情况：当赋值运算符被定义为成员函数时，如果发生自赋值（如a
+=
+a），编译器可以更容易地识别这种情况并进行优化。如果将赋值运算符定义为非成员函数，处理自赋值情况可能会更加困难。</p></li>
+<li><p>提供默认赋值运算符：如果在类中没有显式地定义赋值运算符，编译器会自动生成一个默认的赋值运算符。这个默认的赋值运算符会执行逐成员（逐个数据成员）的赋值操作。默认的赋值运算符是一个成员函数，可以满足大多数场景的需求。如果你需要自定义赋值运算符，定义成员函数是最直接的方式。</p></li>
+</ol>
+<p>总之，将赋值运算符定义为成员函数，有助于保持与内建类型的赋值操作一致的语义，简化自赋值情况的处理，并允许访问类的私有成员。这些原因使得赋值运算符作为成员函数更加合适。</p>
+<h2 id="给出定义成成员函数和非成员函数的例子以及如果是编译器自动生成的默认赋值是怎么赋值的都给出例子">给出定义成成员函数和非成员函数的例子，以及如果是编译器自动生成的，默认赋值是怎么赋值的，都给出例子</h2>
+<p>首先，我们给出一个成员函数和非成员函数的简单示例。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 类定义</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyClass</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="type">int</span> x;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 成员函数</span></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">memberFunction</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        x = <span class="number">42</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 非成员函数</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">nonMemberFunction</span><span class="params">(MyClass&amp; obj)</span> </span>&#123;</span><br><span class="line">    obj.x = <span class="number">42</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    MyClass obj;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 调用成员函数</span></span><br><span class="line">    obj.<span class="built_in">memberFunction</span>();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 调用非成员函数</span></span><br><span class="line">    <span class="built_in">nonMemberFunction</span>(obj);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这个示例展示了如何使用成员函数和非成员函数来操作类的公共数据成员。请注意，这个示例没有涉及运算符重载，只是展示了成员函数和非成员函数的基本概念。</p>
+<p>接下来，我们讨论编译器自动生成的默认赋值运算符。当你没有为类显式定义赋值运算符时，编译器会生成一个默认的赋值运算符。默认赋值运算符会执行逐成员赋值，即逐个拷贝源对象的数据成员到目标对象。这里有一个示例：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Point</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="type">int</span> x;</span><br><span class="line">    <span class="type">int</span> y;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Point p1;</span><br><span class="line">    p1.x = <span class="number">3</span>;</span><br><span class="line">    p1.y = <span class="number">4</span>;</span><br><span class="line"></span><br><span class="line">    Point p2;</span><br><span class="line">    p2.x = <span class="number">0</span>;</span><br><span class="line">    p2.y = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 使用编译器生成的默认赋值运算符</span></span><br><span class="line">    p2 = p1;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 输出结果：3, 4</span></span><br><span class="line">    std::cout &lt;&lt; p2.x &lt;&lt; <span class="string">&quot;, &quot;</span> &lt;&lt; p2.y &lt;&lt; std::endl;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在这个示例中，我们没有为<code>Point</code>类显式定义赋值运算符。然而，当我们执行<code>p2 = p1</code>时，编译器生成的默认赋值运算符会被调用。默认赋值运算符会将<code>p1</code>的数据成员逐个拷贝到<code>p2</code>，所以在赋值操作之后，<code>p2.x</code>和<code>p2.y</code>分别是3和4。</p>
+<h2 id="如果把myclass类里的x定义成private那么非成员函数传入的obj的x还能被赋值吗你能详细展开讲讲这些问题吗">如果把MyClass类里的x定义成private，那么非成员函数传入的obj的x还能被赋值吗，你能详细展开讲讲这些问题吗</h2>
+<p>如果将<code>MyClass</code>类中的数据成员<code>x</code>定义为<code>private</code>，则非成员函数将无法直接访问和修改它。以下是修改后的类定义和示例：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 类定义</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyClass</span> &#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="type">int</span> x;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">// 成员函数</span></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">memberFunction</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        x = <span class="number">42</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 提供一个访问x的接口</span></span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">getX</span><span class="params">()</span> <span class="type">const</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> x;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 提供一个修改x的接口</span></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">setX</span><span class="params">(<span class="type">int</span> newX)</span> </span>&#123;</span><br><span class="line">        x = newX;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 非成员函数</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">nonMemberFunction</span><span class="params">(MyClass&amp; obj)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// obj.x = 42; // 错误！无法访问私有成员</span></span><br><span class="line">    obj.<span class="built_in">setX</span>(<span class="number">42</span>); <span class="comment">// 使用公共接口修改x</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    MyClass obj;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 调用成员函数</span></span><br><span class="line">    obj.<span class="built_in">memberFunction</span>();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 调用非成员函数</span></span><br><span class="line">    <span class="built_in">nonMemberFunction</span>(obj);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>由于<code>x</code>现在是私有成员，我们不能在类外部直接访问它。这种情况下，我们需要为<code>MyClass</code>提供公共接口（如<code>getX()</code>和<code>setX()</code>），以便在类外部获取和修改<code>x</code>的值。在这个示例中，我们在<code>nonMemberFunction()</code>中使用了<code>setX()</code>方法来修改<code>x</code>的值，而不是直接访问私有成员。</p>
+<p>私有成员的主要目的是封装和隐藏类的实现细节。这样，你可以更自由地修改类的内部实现，而不影响使用该类的代码。通过将数据成员设置为私有并提供公共接口，你可以控制类外部对数据成员的访问和修改，从而确保类的正确使用和数据的完整性。</p>
+<h3 id="obj.x-42-错误无法访问私有成员-obj.setx42-使用公共接口修改x-这个意思是虽然不能直接对x进行修改但obj仍然有x这个属性那么obj的x属性值是多少呢obj不是拥有它吗我的理解有误吗">/
+obj.x = 42; // 错误！无法访问私有成员 obj.setX(42); // 使用公共接口修改x
+这个意思是：虽然不能直接对x进行修改，但obj仍然有x这个属性，那么obj的x属性值是多少呢？obj不是拥有它吗？我的理解有误吗</h3>
+<p>是的，你的理解是正确的。<code>MyClass</code>对象<code>obj</code>仍然具有数据成员<code>x</code>，但是由于<code>x</code>是私有的，所以在类的外部不能直接访问或修改它。这就是封装的概念。尽管<code>x</code>是私有的，但它仍然是<code>MyClass</code>对象的一部分。这意味着当你创建一个<code>MyClass</code>对象时，<code>x</code>也会作为对象的一部分被创建。</p>
+<p>在上述示例中，当我们创建<code>MyClass</code>对象<code>obj</code>时，<code>x</code>的初始值是未定义的（因为我们没有为<code>x</code>提供初始值）。在调用<code>obj.memberFunction()</code>后，<code>x</code>的值被设置为42。然后，当我们调用<code>nonMemberFunction(obj)</code>时，我们不能直接访问<code>x</code>，但可以通过公共接口<code>setX()</code>来修改<code>x</code>的值。这里，我们再次将<code>x</code>的值设置为42。</p>
+<p>所以，在<code>nonMemberFunction()</code>执行之后，<code>obj</code>的<code>x</code>属性值仍然是42。虽然我们不能直接访问<code>x</code>，但通过公共接口<code>getX()</code>，我们可以获取<code>x</code>的值。例如：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">std::cout &lt;&lt; <span class="string">&quot;obj.x = &quot;</span> &lt;&lt; obj.<span class="built_in">getX</span>() &lt;&lt; std::endl; <span class="comment">// 输出：obj.x = 42</span></span><br></pre></td></tr></table></figure>
+<p>总之，<code>obj</code>确实拥有私有成员<code>x</code>，但在类的外部不能直接访问或修改它。为了在类外部操作<code>x</code>，我们需要使用类提供的公共接口。</p>
+<h2 id="此外成员函数可以访问类的私有成员这使得赋值操作可以在内部完成而无需暴露类的实现细节如果不是成员函数就会暴露细节吗给个例子">此外，成员函数可以访问类的私有成员，这使得赋值操作可以在内部完成，而无需暴露类的实现细节。如果不是成员函数就会暴露细节吗？给个例子</h2>
+<p>当赋值操作涉及类的私有成员时，使用成员函数可以确保不会暴露类的实现细节。如果尝试使用非成员函数来实现赋值操作，我们需要提供访问私有成员的接口，这可能会破坏封装。让我们用一个例子来说明这个问题。</p>
+<p>首先，考虑以下<code>MyClass</code>定义：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MyClass</span> &#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="type">int</span> x;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">MyClass</span>(<span class="type">int</span> initialX) : <span class="built_in">x</span>(initialX) &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 成员赋值运算符</span></span><br><span class="line">    MyClass&amp; <span class="keyword">operator</span>=(<span class="type">const</span> MyClass&amp; other) &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span> == &amp;other) &#123;</span><br><span class="line">            <span class="keyword">return</span> *<span class="keyword">this</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        x = other.x; <span class="comment">// 可以直接访问私有成员</span></span><br><span class="line">        <span class="keyword">return</span> *<span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">getX</span><span class="params">()</span> <span class="type">const</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> x;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>在这个例子中，我们定义了一个成员赋值运算符。因为这是一个成员函数，所以它可以直接访问<code>other</code>对象的私有成员<code>x</code>。这样，我们不需要提供额外的接口来访问<code>x</code>，可以保持封装。</p>
+<p>现在，假设我们尝试使用非成员函数来实现赋值操作：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MyClass</span> &#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="type">int</span> x;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">MyClass</span>(<span class="type">int</span> initialX) : <span class="built_in">x</span>(initialX) &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 提供访问x的接口</span></span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">getX</span><span class="params">()</span> <span class="type">const</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> x;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 提供修改x的接口</span></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">setX</span><span class="params">(<span class="type">int</span> newX)</span> </span>&#123;</span><br><span class="line">        x = newX;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 非成员赋值运算符</span></span><br><span class="line">MyClass&amp; <span class="keyword">operator</span>=(MyClass&amp; lhs, <span class="type">const</span> MyClass&amp; rhs) &#123;</span><br><span class="line">    <span class="keyword">if</span> (&amp;lhs == &amp;rhs) &#123;</span><br><span class="line">        <span class="keyword">return</span> lhs;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 无法直接访问私有成员，需要使用公共接口</span></span><br><span class="line">    lhs.<span class="built_in">setX</span>(rhs.<span class="built_in">getX</span>());</span><br><span class="line">    <span class="keyword">return</span> lhs;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在这个例子中，我们试图使用非成员函数实现赋值运算符。然而，由于非成员函数无法直接访问私有成员，我们必须提供公共接口<code>getX()</code>和<code>setX()</code>来访问和修改<code>x</code>。这暴露了类的实现细节，并可能破坏封装。</p>
+<p>需要注意的是，这个例子中的非成员赋值运算符尝试重载等号运算符（=），然而，实际上在C++中赋值运算符（=）必须被定义为类的成员函数，不能作为非成员函数。这个例子只是用来说明如果使用非成员函数来实现类似赋值操作的情况，可能会导致封装的破坏。</p>
+<h2 id="类似拷贝构造函数对于某些类合成拷贝赋值运算符用来禁止该类型对象的赋值这句话如何理解">类似拷贝构造函数，对于某些类，合成拷贝赋值运算符用来禁止该类型对象的赋值，这句话如何理解</h2>
+<p>这句话的意思是，对于某些类，编译器生成的合成拷贝赋值运算符可能不适用，或者类的设计者希望禁止对象之间的赋值操作。在这种情况下，合成拷贝赋值运算符会被显式地删除或声明为私有，从而阻止用户对该类的对象执行赋值操作。</p>
+<p>当类中包含不可复制的资源（如文件句柄、互斥锁等）或类的实例应该保持唯一时（如单例模式），通常需要禁止类的对象之间的赋值操作。让我们通过一个例子来说明这个概念。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">NonCopyableResource</span> &#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="comment">// 私有拷贝构造函数</span></span><br><span class="line">    <span class="built_in">NonCopyableResource</span>(<span class="type">const</span> NonCopyableResource&amp;);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 私有拷贝赋值运算符</span></span><br><span class="line">    NonCopyableResource&amp; <span class="keyword">operator</span>=(<span class="type">const</span> NonCopyableResource&amp;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">NonCopyableResource</span>() &#123;&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>在这个例子中，我们定义了一个<code>NonCopyableResource</code>类，它具有私有的拷贝构造函数和拷贝赋值运算符。因为这两个函数是私有的，所以在类的外部不能使用它们。这样，我们就阻止了该类对象之间的拷贝和赋值操作。</p>
+<p>从C++11开始，我们可以更明确地禁止拷贝构造函数和拷贝赋值运算符，方法是将它们声明为<code>= delete</code>：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">NonCopyableResource</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">NonCopyableResource</span>() &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 删除拷贝构造函数</span></span><br><span class="line">    <span class="built_in">NonCopyableResource</span>(<span class="type">const</span> NonCopyableResource&amp;) = <span class="keyword">delete</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 删除拷贝赋值运算符</span></span><br><span class="line">    NonCopyableResource&amp; <span class="keyword">operator</span>=(<span class="type">const</span> NonCopyableResource&amp;) = <span class="keyword">delete</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>这种方法更清晰地表明了拷贝构造函数和拷贝赋值运算符是被禁止的。当试图对这个类的对象执行拷贝或赋值操作时，编译器会报错。</p>
+<p>总之，当类的对象不应该被复制或赋值时，可以通过将拷贝构造函数和拷贝赋值运算符声明为私有或删除它们来禁止这些操作。这样可以确保类的对象在程序中具有正确的行为。</p>
+<h2 id="如果拷贝赋值运算符不是出于禁止拷贝的目的他会将右侧运算对象的每个非static成员赋予左侧运算对象的对应成员为啥static不能赋值过去是因为他的存储位置吗">如果拷贝赋值运算符不是出于禁止拷贝的目的，他会将右侧运算对象的每个非static成员赋予左侧运算对象的对应成员，为啥static不能赋值过去，是因为他的存储位置吗</h2>
+<p>是的，你的理解是正确的。当拷贝赋值运算符执行时，它会将右侧运算对象的每个非static成员逐一赋值给左侧运算对象的对应成员。static成员变量的赋值不涉及到拷贝赋值运算符，因为它们不属于类的单个实例。</p>
+<p>static成员变量属于类本身，而不是类的对象。它们在内存中的存储位置与类的实例对象不同。实际上，所有类的实例共享同一个static成员变量。因此，当你修改一个类实例的static成员变量时，这个修改会影响所有类实例。这就是为什么在拷贝赋值操作中，不需要拷贝static成员变量的原因。</p>
+<p>以下是一个简单的示例：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyClass</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="type">int</span> nonStaticMember;</span><br><span class="line">    <span class="type">static</span> <span class="type">int</span> staticMember;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">MyClass</span>(<span class="type">int</span> nonStaticValue) : <span class="built_in">nonStaticMember</span>(nonStaticValue) &#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 初始化static成员变量</span></span><br><span class="line"><span class="type">int</span> MyClass::staticMember = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="function">MyClass <span class="title">obj1</span><span class="params">(<span class="number">10</span>)</span></span>;</span><br><span class="line">    <span class="function">MyClass <span class="title">obj2</span><span class="params">(<span class="number">20</span>)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 修改static成员变量</span></span><br><span class="line">    MyClass::staticMember = <span class="number">42</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 拷贝赋值操作</span></span><br><span class="line">    obj1 = obj2;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 输出结果：20, 42</span></span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;obj1: &quot;</span> &lt;&lt; obj1.nonStaticMember &lt;&lt; <span class="string">&quot;, &quot;</span> &lt;&lt; MyClass::staticMember &lt;&lt; std::endl;</span><br><span class="line">    <span class="comment">// 输出结果：20, 42</span></span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;obj2: &quot;</span> &lt;&lt; obj2.nonStaticMember &lt;&lt; <span class="string">&quot;, &quot;</span> &lt;&lt; MyClass::staticMember &lt;&lt; std::endl;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在这个示例中，<code>MyClass</code>具有一个非static成员变量<code>nonStaticMember</code>和一个static成员变量<code>staticMember</code>。当我们执行拷贝赋值操作<code>obj1 = obj2</code>时，只有<code>nonStaticMember</code>被拷贝，而<code>staticMember</code>保持不变。这是因为<code>staticMember</code>属于类本身，而不是类的实例。</p>
+<h2 id="哪些情况下指针所指的对象会随着指针的销毁而销毁哪些情况下不会指针指向的对象没了指针就没了吗">哪些情况下指针所指的对象会随着指针的销毁而销毁，哪些情况下不会？指针指向的对象没了，指针就没了吗？</h2>
+<p>指针和指针所指向的对象是两个不同的概念。指针是一种变量，它存储了对象在内存中的地址。当指针被销毁时，它所指向的对象不会自动销毁。同样，当指针所指向的对象被销毁时，指针本身也不会自动销毁。它们的生命周期是独立的。</p>
+<ol type="1">
+<li><p>指针所指向的对象会随着指针的销毁而销毁的情况：
+实际上，没有这样的情况。当指针被销毁时，它所指向的对象不会自动销毁。只有当你显式地销毁指针所指向的对象时，对象才会被销毁。</p></li>
+<li><p>指针指向的对象没了，指针就没了吗？
+不是这样的。当指针所指向的对象被销毁时，指针本身不会自动销毁。指针仍然存在，但它现在指向的是一个已经销毁的对象，也就是所谓的悬空指针（dangling
+pointer）。在这种情况下，访问该悬空指针可能导致未定义行为，因为它可能指向无效的内存区域。</p></li>
+</ol>
+<p>以下是一个例子：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span>* p = <span class="keyword">new</span> <span class="built_in">int</span>(<span class="number">42</span>); <span class="comment">// 动态分配内存，p指向该内存区域</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">delete</span> p; <span class="comment">// 销毁p所指向的对象，释放内存</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// p没有被销毁，但现在是一个悬空指针，因为它指向的对象已经被销毁</span></span><br><span class="line">    <span class="comment">// 访问p可能导致未定义行为</span></span><br><span class="line">    <span class="comment">// std::cout &lt;&lt; *p &lt;&lt; std::endl; // 不安全！不要这样做</span></span><br><span class="line"></span><br><span class="line">    p = <span class="literal">nullptr</span>; <span class="comment">// 将悬空指针设置为nullptr，避免未定义行为</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>为了避免未定义行为，当销毁指针所指向的对象后，通常将指针设置为<code>nullptr</code>。这样，即使指针没有被销毁，也不会指向一个无效的内存区域。</p>
+<h2 id="hasptrconst-hasptr-rhs-this-i-rhs.i-this-ps-rhs.ps-和下面这个-hasptrconst-hasptr-rhs-this-i-rhs.i-ps-new-stringrhs.ps-从拷贝构造函数的实现意义层面来说有区别吗是不是都是拷贝了ps指向的对象而不是拷贝ps本身">HasPtr(const
+HasPtr&amp; rhs) { this-&gt;i = rhs.i; this-&gt;ps = &amp;(<em>rhs.ps);
+} 和下面这个 HasPtr(const HasPtr&amp; rhs) { this-&gt;i = rhs.i; ps =
+new string(</em>rhs.ps); }
+从拷贝构造函数的实现意义层面来说，有区别吗？是不是都是拷贝了ps指向的对象，而不是拷贝ps本身</h2>
+<p>这两个拷贝构造函数的实现在语义层面上有很大的区别。</p>
+<p>第一个拷贝构造函数： <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">HasPtr</span>(<span class="type">const</span> HasPtr&amp; rhs) &#123;</span><br><span class="line">    <span class="keyword">this</span>-&gt;i = rhs.i;</span><br><span class="line">    <span class="keyword">this</span>-&gt;ps = &amp;(*rhs.ps);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+这个拷贝构造函数的实现仅仅是将<code>rhs</code>对象的<code>ps</code>成员的地址赋值给当前对象的<code>ps</code>成员。这意味着，两个<code>HasPtr</code>对象的<code>ps</code>成员指向同一个<code>string</code>对象。在这种情况下，我们说这是一种浅拷贝（shallow
+copy）。浅拷贝可能导致资源管理问题，如在析构函数中释放同一个对象两次。</p>
+<p>第二个拷贝构造函数： <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">HasPtr</span>(<span class="type">const</span> HasPtr&amp; rhs) &#123;</span><br><span class="line">    <span class="keyword">this</span>-&gt;i = rhs.i;</span><br><span class="line">    ps = <span class="keyword">new</span> <span class="built_in">string</span>(*rhs.ps);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+这个拷贝构造函数的实现不仅将<code>rhs</code>对象的<code>ps</code>成员的值复制给当前对象的<code>ps</code>成员，还为当前对象的<code>ps</code>成员创建了一个新的<code>string</code>对象。这样，两个<code>HasPtr</code>对象的<code>ps</code>成员指向两个不同的、相互独立的<code>string</code>对象。在这种情况下，我们说这是一种深拷贝（deep
+copy）。深拷贝通常可以避免资源管理问题，因为每个对象都有自己独立的资源副本。</p>
+<p>所以，从拷贝构造函数的实现意义层面来说，这两个实现有很大的区别。第一个实现是浅拷贝，可能导致资源管理问题；而第二个实现是深拷贝，可以避免这些问题。在实际编程中，根据具体需求选择合适的拷贝策略是很重要的。</p>
+<h2 id="include-class-hasptr-public-hasptrconst-stdstring-s-stdstring-psnew-stdstrings-i0-hasptrconst-hasptr-rhs-this-i-rhs.i-this-ps-rhs.ps-hasptr-delete-ps-private-stdstring-ps-int-i-hasptr-fhasptr-hp-hasptr-ret-hp-return-ret-int-main-hasptr-phello-world-fp-hasptr-qp-return-0-这里我有一个疑问f函数的返回值是hasptr类型为什么我在main函数里调用f不需要使用hasptr类型的对象来接受它的返回值呢">#include
+<iostream> class HasPtr { public: HasPtr(const std::string &amp;s =
+std::string()): ps(new std::string(s)), i(0) {} /<em>HasPtr(const
+HasPtr&amp; rhs) { this-&gt;i = rhs.i; this-&gt;ps = &amp;(</em>rhs.ps);
+}<em>/ ~HasPtr() { delete ps; } private: std::string</em> ps; int i; };
+HasPtr f(HasPtr hp) { HasPtr ret = hp; return ret; } int main() { HasPtr
+p(“hello world”); f(p); HasPtr q(p); return 0; }
+这里我有一个疑问，f函数的返回值是HasPtr类型，为什么我在main函数里调用f不需要使用HasPtr类型的对象来接受它的返回值呢</iostream></h2>
+<p>在这个例子中，当你调用<code>f(p)</code>时，即使没有为<code>f</code>函数的返回值指定一个<code>HasPtr</code>类型的对象来接收它，C++编译器仍然会处理这种情况。在没有指定接收返回值的情况下，编译器会创建一个临时<code>HasPtr</code>对象，用于接收<code>f</code>函数的返回值。这个临时对象会在表达式结束后立即销毁。</p>
+<p>这就是为什么你不需要显式地使用一个<code>HasPtr</code>对象来接收<code>f</code>函数的返回值。然而，为了避免潜在的性能损失和资源浪费，通常建议你在调用返回对象的函数时指定一个接收返回值的变量。例如：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="function">HasPtr <span class="title">p</span><span class="params">(<span class="string">&quot;hello world&quot;</span>)</span></span>;</span><br><span class="line">    HasPtr r = <span class="built_in">f</span>(p);  <span class="comment">// 使用HasPtr对象r来接收f函数的返回值</span></span><br><span class="line">    <span class="function">HasPtr <span class="title">q</span><span class="params">(p)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样，你可以避免创建和销毁临时对象，从而提高程序的性能。</p>
+<h2 id="为什么需要拷贝操作的类也需要赋值操作反之亦然这句话是什么意思">为什么需要拷贝操作的类也需要赋值操作，反之亦然，这句话是什么意思</h2>
+<p>这句话的意思是，当你为一个类实现拷贝操作（拷贝构造函数）时，通常也需要实现赋值操作（拷贝赋值运算符），反之亦然。这是因为拷贝操作和赋值操作通常在语义上是相似的，而且在实际使用中经常会一起出现。实现一个而不实现另一个可能导致类的行为不一致或不完整。</p>
+<p>拷贝构造函数和拷贝赋值运算符的主要区别在于它们的用途：</p>
+<ol type="1">
+<li>拷贝构造函数（Copy
+Constructor）：当创建一个新对象并用另一个已存在的对象初始化它时，会调用拷贝构造函数。典型的情况包括：将一个对象作为参数传递给函数、从函数返回一个对象、初始化列表等。</li>
+</ol>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MyClass obj1;</span><br><span class="line"><span class="function">MyClass <span class="title">obj2</span><span class="params">(obj1)</span></span>;  <span class="comment">// 调用拷贝构造函数</span></span><br></pre></td></tr></table></figure>
+<ol start="2" type="1">
+<li>拷贝赋值运算符（Copy Assignment
+Operator）：当两个已经存在的对象之间进行赋值操作时，会调用拷贝赋值运算符。</li>
+</ol>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">MyClass obj1;</span><br><span class="line">MyClass obj2;</span><br><span class="line">obj2 = obj1;  <span class="comment">// 调用拷贝赋值运算符</span></span><br></pre></td></tr></table></figure>
+<p>在许多情况下，拷贝构造函数和拷贝赋值运算符需要执行相似的操作（如深拷贝）。实现两者可以确保类在各种情况下都能正确地处理拷贝和赋值操作。这就是为什么“需要拷贝操作的类也需要赋值操作，反之亦然”的原因。如果仅实现其中之一，可能会导致类在某些情况下无法正确地执行拷贝或赋值操作，从而引发问题。</p>
+<p>当然可以。让我们通过一个简单的示例来说明仅实现拷贝构造函数而不实现拷贝赋值运算符可能导致的问题：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyClass</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">MyClass</span>(<span class="type">const</span> std::string&amp; s) : <span class="built_in">data</span>(<span class="keyword">new</span> std::<span class="built_in">string</span>(s)) &#123;&#125;</span><br><span class="line">    <span class="built_in">MyClass</span>(<span class="type">const</span> MyClass&amp; other) : <span class="built_in">data</span>(<span class="keyword">new</span> std::<span class="built_in">string</span>(*other.data)) &#123;&#125; <span class="comment">// 拷贝构造函数实现了深拷贝</span></span><br><span class="line">    ~<span class="built_in">MyClass</span>() &#123; <span class="keyword">delete</span> data; &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    std::string* data;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="function">MyClass <span class="title">obj1</span><span class="params">(<span class="string">&quot;hello&quot;</span>)</span></span>;</span><br><span class="line">    <span class="function">MyClass <span class="title">obj2</span><span class="params">(<span class="string">&quot;world&quot;</span>)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function">MyClass <span class="title">obj3</span><span class="params">(obj1)</span></span>; <span class="comment">// 使用拷贝构造函数，执行正确</span></span><br><span class="line"></span><br><span class="line">    obj2 = obj1; <span class="comment">// 这里使用默认的拷贝赋值运算符，执行浅拷贝</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在这个示例中，我们实现了<code>MyClass</code>的拷贝构造函数，它执行深拷贝。但是，我们没有实现拷贝赋值运算符。因此，在赋值操作（如<code>obj2 = obj1;</code>）时，编译器会生成一个默认的拷贝赋值运算符，该运算符执行浅拷贝。</p>
+<p>问题出现在这个默认的拷贝赋值运算符上。因为它执行浅拷贝，<code>obj2</code>和<code>obj1</code>的<code>data</code>成员将指向同一个<code>std::string</code>对象。当<code>main</code>函数结束时，<code>obj1</code>和<code>obj2</code>的析构函数都将被调用，它们都会尝试删除同一个<code>std::string</code>对象。这将导致未定义行为，可能会导致程序崩溃。</p>
+<p>如果我们为<code>MyClass</code>同时实现拷贝构造函数和拷贝赋值运算符，并确保它们都执行深拷贝，就可以避免这个问题：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MyClass</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">// ... 其他成员函数 ...</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 拷贝赋值运算符实现了深拷贝</span></span><br><span class="line">    MyClass&amp; <span class="keyword">operator</span>=(<span class="type">const</span> MyClass&amp; other) &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span> == &amp;other) &#123;</span><br><span class="line">            <span class="keyword">return</span> *<span class="keyword">this</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        std::string* newData = <span class="keyword">new</span> std::<span class="built_in">string</span>(*other.data);</span><br><span class="line">        <span class="keyword">delete</span> data;</span><br><span class="line">        data = newData;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> *<span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    std::string* data;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>现在，无论是使用拷贝构造函数还是拷贝赋值运算符，<code>MyClass</code>对象都将正确地执行深拷贝，从而避免了资源管理问题。</p>
+<h2 id="你这个例子并没有解释为什么二者需要同时定义啊比如第一个程序我不执行赋值对拷贝构造也没影响啊">你这个例子并没有解释为什么二者需要同时定义啊，比如第一个程序，我不执行赋值对拷贝构造也没影响啊</h2>
+<p>抱歉，我的示例可能没有充分解释为什么两者需要同时定义。请允许我通过另一个例子来解释这个问题。</p>
+<p>假设你有一个类，它表示一个动态分配的二维数组，如下所示：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Matrix</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">Matrix</span>(<span class="type">int</span> rows, <span class="type">int</span> cols)</span><br><span class="line">        : <span class="built_in">rows</span>(rows), <span class="built_in">cols</span>(cols), <span class="built_in">data</span>(<span class="keyword">new</span> <span class="type">int</span>[rows * cols]) &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">Matrix</span>(<span class="type">const</span> Matrix&amp; other)</span><br><span class="line">        : <span class="built_in">rows</span>(other.rows), <span class="built_in">cols</span>(other.cols), <span class="built_in">data</span>(<span class="keyword">new</span> <span class="type">int</span>[rows * cols]) &#123;</span><br><span class="line">        std::<span class="built_in">copy</span>(other.data, other.data + rows * cols, data);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    ~<span class="built_in">Matrix</span>() &#123; <span class="keyword">delete</span>[] data; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// ... 其他成员函数 ...</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="type">int</span> rows, cols;</span><br><span class="line">    <span class="type">int</span>* data;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>在这个例子中，我们实现了<code>Matrix</code>的拷贝构造函数，它执行深拷贝。然而，我们没有实现拷贝赋值运算符。因此，编译器会生成一个默认的拷贝赋值运算符，执行浅拷贝。</p>
+<p>现在，假设你需要执行以下操作：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Matrix <span class="title">m1</span><span class="params">(<span class="number">2</span>, <span class="number">2</span>)</span></span>;</span><br><span class="line"><span class="function">Matrix <span class="title">m2</span><span class="params">(<span class="number">3</span>, <span class="number">3</span>)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 假设有一个函数，它需要一个Matrix对象作为参数，并返回一个Matrix对象</span></span><br><span class="line">Matrix result = <span class="built_in">some_function</span>(m1);</span><br><span class="line"></span><br><span class="line">m2 = result; <span class="comment">// 使用默认的拷贝赋值运算符</span></span><br></pre></td></tr></table></figure>
+<p>在这个例子中，我们创建了两个<code>Matrix</code>对象，它们具有不同的尺寸。然后我们调用一个函数<code>some_function</code>，它返回一个<code>Matrix</code>对象。接下来，我们将<code>result</code>对象赋值给<code>m2</code>。这里，编译器会使用默认的拷贝赋值运算符，它执行浅拷贝。</p>
+<p>问题在于，默认的拷贝赋值运算符无法处理不同尺寸的矩阵。由于它执行浅拷贝，<code>m2</code>的<code>data</code>指针将简单地指向<code>result</code>的<code>data</code>，而不会调整其大小。这将导致错误的行为，因为<code>m2</code>现在引用了一个与其原始大小不匹配的数组。此外，原始<code>m2</code>的<code>data</code>指针已经丢失，导致内存泄漏。</p>
+<p>为了解决这个问题，我们需要同时实现拷贝构造函数和拷贝赋值运算符，以确保它们都执行深拷贝，并正确处理不同尺寸的矩阵。例如：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Matrix</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">// ... 其他成员函数 ...</span></span><br><span class="line"></span><br><span class="line">    Matrix&amp; <span class="keyword">operator</span>=(<span class="type">const</span> Matrix&amp; other) &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span> == &amp;other) &#123;</span><br><span class="line">            <span class="keyword">return</span> *<span class="keyword">this</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span>* newData = <span class="keyword">new</span> <span class="type">int</span>[other.rows * other.cols];</span><br><span class="line">        std::<span class="built_in">copy</span>(other.data, other.data + other.rows * other.cols, newData);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">delete</span>[] data;</span><br><span class="line">        data = newData;</span><br><span class="line">        rows = other.rows;</span><br><span class="line">        cols = other.cols;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> *<span class="keyword">this</span>;</span><br><span class="line">   </span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -242,21 +435,20 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h2 id="服务端—客户端通信大致流程"><a href="#服务端—客户端通信大致流程" class="headerlink" title="服务端—客户端通信大致流程"></a>服务端—客户端通信大致流程</h2><ul>
+          <h2 id="服务端客户端通信大致流程">服务端—客户端通信大致流程</h2>
+<ul>
 <li><p>服务端创建一个监听套接字（对创建的监听套接字进行判断，是否创建成功，返回非负整数则代表创建成功，返回-1代表创建失败），调用函数<code>socket()</code>。在<code>linux</code>系统中一切皆文件，每个文件都有一个整数类型的文件描述符。<code>socket()</code>也是一个文件，也有文件描述符。使用<code>socket()</code>函数创建套接字以后，返回值就是一个int类型的文件描述符。</p>
 <p>在<code>linux</code>下使用<code>&lt;sys/socket.h&gt;</code>头文件中<code>socket()</code>函数来创建套接字，函数原型为：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">socket</span><span class="params">(<span class="type">int</span> af, <span class="type">int</span> type, <span class="type">int</span> protocol)</span></span>;</span><br></pre></td></tr></table></figure>
-
 <p>其中，第一个参数<code>af</code>为地址族<code>（Address Family）</code>，也就是<code>IP</code>地址类型，常用的<code>IP</code>地址类型有<code>AF_INET</code>和<code>AF_INET6</code>。<code>AF</code>是<code>”Address Family“</code>的简写，<code>INET</code>是<code>”Internet“</code>的简写。<code>AF_INET</code>表示<code>IPv4</code>地址，例如<code>127.0.0.1</code>；<code>AF_INET6</code>表示<code>IPv6</code>地址，例如<code>1030::C9B4:FF12:48AA:1A2B</code>。<code>127.0.0.1</code>是一个特殊的<code>IP</code>地址，表示本机地址。</p>
-<p>第二个参数<code>type</code>为数据传输方式&#x2F;套接字类型，常用的有<code>SOCK_STREAM</code>（流格式套接字&#x2F;面向连接的套接字）和<code>SOCK_DGRAM</code>（数据报套接字&#x2F;无连接的套接字）。</p>
-<p>第三个参数<code>protocol</code>表示传输协议，常用的有<code>IPPROTO_TCP</code>和<code>IPPTOTO_UDP</code>，即所谓的：<code>TCP</code>和<code>UDP</code>。</p>
-</li>
+<p>第二个参数<code>type</code>为数据传输方式/套接字类型，常用的有<code>SOCK_STREAM</code>（流格式套接字/面向连接的套接字）和<code>SOCK_DGRAM</code>（数据报套接字/无连接的套接字）。</p>
+<p>第三个参数<code>protocol</code>表示传输协议，常用的有<code>IPPROTO_TCP</code>和<code>IPPTOTO_UDP</code>，即所谓的：<code>TCP</code>和<code>UDP</code>。</p></li>
 </ul>
 <p>我们经常会看见别人程序里创建套接字如下所示：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> listenfd = <span class="built_in">socket</span>(AF_INET, SOCK_STREAM, <span class="number">0</span>);</span><br><span class="line"><span class="type">int</span> listenfd = <span class="built_in">socket</span>(AF_INET, SOCK_DGRAM, <span class="number">0</span>);</span><br></pre></td></tr></table></figure>
-
 <p>很多人可能会好奇为什么第三个参数会设置为0？其实既满足<code>IP</code>地址类型为：<code>AF_INET</code>又满足套接字类型为：<code>SOCK_STREAM/SOCK_DGRAM</code>的只有<code>TCP/UDP</code>，系统会自动推演出来应该使用什么协议，此时则可以将<code>protocol</code>设置为0。</p>
-<h5 id="lt-semaphore-h-gt-头文件"><a href="#lt-semaphore-h-gt-头文件" class="headerlink" title="&lt;semaphore.h&gt;头文件"></a>&lt;semaphore.h&gt;头文件</h5><p>&lt;semphore.h&gt;头文件是POSIX标准中定义的一个头文件，用于提供信号量的函数和数据类型。</p>
+<h5 id="semaphore.h头文件">&lt;semaphore.h&gt;头文件</h5>
+<p>&lt;semphore.h&gt;头文件是POSIX标准中定义的一个头文件，用于提供信号量的函数和数据类型。</p>
 <p>信号量是一种用于提供不同进程或线程之间进行同步或者互斥的简单抽象。通常，信号量被用来限制对特定资源的访问，这在多线程和多进程环境中非常有用。</p>
 <p>在<code>&lt;semaphore.h&gt;</code>头文件中，定义了以下的函数：</p>
 <ul>
@@ -270,8 +462,10 @@
 <li><code>sem_trywait()</code>：尝试减少信号量的值，如果信号量的值为0，则立即返回错误，而不会阻塞</li>
 <li><code>sem_getvalue()</code>：获取信号量的当前值</li>
 </ul>
-<h5 id="为什么要转换为sockaddr"><a href="#为什么要转换为sockaddr" class="headerlink" title="为什么要转换为sockaddr"></a>为什么要转换为<code>sockaddr</code></h5><p>所有专用<code>socket</code>地址（以及<code>sockaddr_storage</code>）类型的变量在实际使用时都需要转换为通用<code>socket</code>地址类型<code>sockaddr</code>（强制转换即可），因为所有<code>socket</code>编程接口使用的地址参数的类型都是<code>sockaddr</code>。</p>
-<h5 id="网络服务中的三种端口：知名端口、注册端口、动态或私有端口"><a href="#网络服务中的三种端口：知名端口、注册端口、动态或私有端口" class="headerlink" title="网络服务中的三种端口：知名端口、注册端口、动态或私有端口"></a>网络服务中的三种端口：知名端口、注册端口、动态或私有端口</h5><p>服务端口（<code>Service Port</code>）是计算机网络中，网络服务使用的网络端口。这些端口通常被分为三个范围：知名端口、注册端口和动态或私有端口。</p>
+<h5 id="为什么要转换为sockaddr">为什么要转换为<code>sockaddr</code></h5>
+<p>所有专用<code>socket</code>地址（以及<code>sockaddr_storage</code>）类型的变量在实际使用时都需要转换为通用<code>socket</code>地址类型<code>sockaddr</code>（强制转换即可），因为所有<code>socket</code>编程接口使用的地址参数的类型都是<code>sockaddr</code>。</p>
+<h5 id="网络服务中的三种端口知名端口注册端口动态或私有端口">网络服务中的三种端口：知名端口、注册端口、动态或私有端口</h5>
+<p>服务端口（<code>Service Port</code>）是计算机网络中，网络服务使用的网络端口。这些端口通常被分为三个范围：知名端口、注册端口和动态或私有端口。</p>
 <p>知名端口（<code>Well-Known Ports</code>）是从0到1023的端口号。它们通常被系统进程或者管理员级别的进程使用。这些端口通常关联到一些广泛使用的网络服务，例如：</p>
 <ul>
 <li><code>HTTP</code>：端口80</li>
@@ -286,41 +480,44 @@
 </ul>
 <p>由于这些服务广泛地被用于许多网络应用，所以这些端口号被称为“知名端口”。这些端口的分配和维护由互联网号码分配局（<code>Internet Assigned Numbers Authority</code>，简称<code>IANA</code>）进行。</p>
 <p>需要注意的是，除了这些知名端口，其他的端口也可以被任何应用程序使用，只要它们具备了适当的权限和配置。对于某些特定的应用程序，开发者可能会选择在1024-49151的范围内选择一个注册端口（<code>Registered Ports</code>），或者在49152–65535的范围内选择一个动态或私有端口（<code>Dynamic or Private Ports</code>）。</p>
-<h5 id="signal函数"><a href="#signal函数" class="headerlink" title="signal函数"></a><code>signal</code>函数</h5><p>在网络编程中，<code>signal</code>函数是一个非常重要的函数，它被用于设置处理特定信号的函数。</p>
-<p>信号（<code>signal</code>）是一种在 <code>Unix</code> 系统（包括 <code>Linux</code>）中用于进程间通信的方式。它类似于一个异步的中断，当一个进程接收到一个信号时，操作系统会暂停该进程的正常执行流程，并去执行与该信号关联的处理函数。</p>
+<h5 id="signal函数"><code>signal</code>函数</h5>
+<p>在网络编程中，<code>signal</code>函数是一个非常重要的函数，它被用于设置处理特定信号的函数。</p>
+<p>信号（<code>signal</code>）是一种在 <code>Unix</code> 系统（包括
+<code>Linux</code>）中用于进程间通信的方式。它类似于一个异步的中断，当一个进程接收到一个信号时，操作系统会暂停该进程的正常执行流程，并去执行与该信号关联的处理函数。</p>
 <p><code>signal</code>函数的原型如下：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;signal.h&gt;</span></span></span><br><span class="line"><span class="type">void</span> (*signal(<span class="type">int</span> signum, <span class="type">void</span> (*handler)(<span class="type">int</span>)))(<span class="type">int</span>);</span><br></pre></td></tr></table></figure>
-
 <p>这个函数接收两个参数：</p>
-<ol>
-<li><p><code>signum</code>：这是一个整数，表示信号的类型。例如，<code>SIGINT</code>表示中断信号（通常是用户按下了<code>Ctrl+C</code>），<code>SIGABRT</code>表示一个异常条件，等等。</p>
-</li>
-<li><p><code>handler</code>：这是一个函数指针，指向用于处理这个信号的函数。处理函数的原型应该为<code>void func(int)</code>，也就是说，它应该是一个接收整数参数并且没有返回值的函数。你可以提供自己的处理函数，也可以使用两个预定义的值：<code>SIG_IGN</code>表示忽略这个信号，<code>SIG_DFL</code>表示使用系统默认的处理方式。</p>
-</li>
+<ol type="1">
+<li><p><code>signum</code>：这是一个整数，表示信号的类型。例如，<code>SIGINT</code>表示中断信号（通常是用户按下了<code>Ctrl+C</code>），<code>SIGABRT</code>表示一个异常条件，等等。</p></li>
+<li><p><code>handler</code>：这是一个函数指针，指向用于处理这个信号的函数。处理函数的原型应该为<code>void func(int)</code>，也就是说，它应该是一个接收整数参数并且没有返回值的函数。你可以提供自己的处理函数，也可以使用两个预定义的值：<code>SIG_IGN</code>表示忽略这个信号，<code>SIG_DFL</code>表示使用系统默认的处理方式。</p></li>
 </ol>
 <p><code>signal</code>函数的返回值是一个函数指针，它指向之前设置的处理函数（如果有的话）。如果函数执行失败，那么返回的将是<code>SIG_ERR</code>。</p>
-<p>需要注意的是，<code>signal</code>函数并不是 <code>POSIX</code> 标准的一部分，不同的系统可能会有不同的行为。在进行跨平台编程时，通常建议使用<code>sigaction</code>函数代替<code>signal</code>，因为<code>sigaction</code>提供了更多的控制选项，并且它的行为在不同的系统上更加一致。</p>
+<p>需要注意的是，<code>signal</code>函数并不是 <code>POSIX</code>
+标准的一部分，不同的系统可能会有不同的行为。在进行跨平台编程时，通常建议使用<code>sigaction</code>函数代替<code>signal</code>，因为<code>sigaction</code>提供了更多的控制选项，并且它的行为在不同的系统上更加一致。</p>
 <p><code>SIGINT</code>、<code>SIGABRT</code>等都是预定义的宏，这些宏在<code>signal.h</code>或者其他相关的头文件中定义，它们的值是整数。例如，在许多系统中，<code>SIGINT</code>的值是2，但这个值并不是在所有系统中都一样。</p>
 <p>这些宏名（例如<code>SIGINT</code>）只是为了在代码中更好地表示不同的信号，使得代码更易于理解。实际上，当我们在代码中写<code>SIGINT</code>时，编译器会将其替换为对应的整数值。</p>
 <p>所以，当我们调用<code>signal(SIGINT, handler)</code>时，我们实际上是在说：“我想将处理<code>SIGINT</code>信号的函数设置为<code>handler</code>。”这里的<code>SIGINT</code>在被编译器处理后，就是一个整数值，代表了中断信号。</p>
-<h5 id="telnet命令"><a href="#telnet命令" class="headerlink" title="telnet命令"></a><code>telnet</code>命令</h5><p><code>telnet</code>是一个网络协议和一个用于在互联网或局域网上执行此协议的命令行工具。它基于文本，主要用于远程管理网络设备和运行服务器端应用。然而，请注意，由于<code>telnet</code>不提供任何加密的方式，所以任何通过<code>telnet</code>发送的数据，包括密码，都是明文的，因此它已经被认为是不安全的，并且在许多新的系统和设备中已经被<code>SSH（Secure Shell）</code>所取代。</p>
+<h5 id="telnet命令"><code>telnet</code>命令</h5>
+<p><code>telnet</code>是一个网络协议和一个用于在互联网或局域网上执行此协议的命令行工具。它基于文本，主要用于远程管理网络设备和运行服务器端应用。然而，请注意，由于<code>telnet</code>不提供任何加密的方式，所以任何通过<code>telnet</code>发送的数据，包括密码，都是明文的，因此它已经被认为是不安全的，并且在许多新的系统和设备中已经被<code>SSH（Secure Shell）</code>所取代。</p>
 <p>基本的<code>telnet</code>命令的语法如下：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">telnet [host] [port]</span><br></pre></td></tr></table></figure>
-
 <p>参数解释：</p>
 <ul>
-<li><p><code>host</code>：这是你想要连接的远程主机的IP地址或主机名。例如，如果你想要连接到位于<code>192.168.1.1</code>的主机，你可以输入<code>telnet 192.168.1.1</code>。</p>
-</li>
-<li><p><code>port</code>：这是你想要连接到的远程服务的端口号。这个参数是可选的，如果你不提供，<code>telnet</code>会默认连接到端口23，这是Telnet协议的标准端口。例如，如果你想要测试一个位于<code>192.168.1.1</code>的主机的80端口（通常是HTTP服务器），你可以输入<code>telnet 192.168.1.1 80</code>。</p>
-</li>
+<li><p><code>host</code>：这是你想要连接的远程主机的IP地址或主机名。例如，如果你想要连接到位于<code>192.168.1.1</code>的主机，你可以输入<code>telnet 192.168.1.1</code>。</p></li>
+<li><p><code>port</code>：这是你想要连接到的远程服务的端口号。这个参数是可选的，如果你不提供，<code>telnet</code>会默认连接到端口23，这是Telnet协议的标准端口。例如，如果你想要测试一个位于<code>192.168.1.1</code>的主机的80端口（通常是HTTP服务器），你可以输入<code>telnet 192.168.1.1 80</code>。</p></li>
 </ul>
 <p>在<code>telnet</code>连接建立之后，你可以输入任何文本并按Enter键发送。当你想要断开连接时，你可以输入特殊的<code>telnet</code>命令，这通常是<code>Ctrl+]</code>（输入<code>Ctrl</code>和<code>]</code>键），然后输入<code>quit</code>。</p>
-<h4 id="webServer服务器整体描述"><a href="#webServer服务器整体描述" class="headerlink" title="webServer服务器整体描述"></a>webServer服务器整体描述</h4><p>本项目主要目的就是对浏览器的链接请求进行处理并给予相应响应。对于请求的处理，系统整体运行流程为：主线程对I&#x2F;O进行监听，获取I&#x2F;O请求后把请求放入请求队列，等待工作线程处理。工作线程对于请求的处理（HTTP报文的解析）主要采用状态机思想来解析HTTP报文的解析。</p>
-<h4 id="多路I-x2F-O复用"><a href="#多路I-x2F-O复用" class="headerlink" title="多路I&#x2F;O复用"></a>多路I&#x2F;O复用</h4><p>多路 I&#x2F;O 复用的基本概念是，一个进程使用一个线程来监控多个文件描述符（通常是套接字描述符），当其中任何一个文件描述符准备好进行读或写操作时，该线程就可以进行相应的处理。这样，一个线程就可以同时处理多个 I&#x2F;O 事件，提高了系统的并发性。常用的多路 I&#x2F;O 复用的系统调用有 <code>select</code>、<code>poll</code>、<code>epoll</code>。</p>
-<h4 id="select"><a href="#select" class="headerlink" title="select"></a>select</h4><p><code>select</code>是Unix&#x2F;Linux系统下的一种I&#x2F;O多路复用机制。它允许应用程序监视多个文件描述符，等待一个或多个描述符成为就绪状态，以进行I&#x2F;O操作（例如读或写）。这是一种异步I&#x2F;O模型，因为你不需要阻塞等待单个I&#x2F;O操作的完成。</p>
+<h4 id="webserver服务器整体描述">webServer服务器整体描述</h4>
+<p>本项目主要目的就是对浏览器的链接请求进行处理并给予相应响应。对于请求的处理，系统整体运行流程为：主线程对I/O进行监听，获取I/O请求后把请求放入请求队列，等待工作线程处理。工作线程对于请求的处理（HTTP报文的解析）主要采用状态机思想来解析HTTP报文的解析。</p>
+<h4 id="多路io复用">多路I/O复用</h4>
+<p>多路 I/O
+复用的基本概念是，一个进程使用一个线程来监控多个文件描述符（通常是套接字描述符），当其中任何一个文件描述符准备好进行读或写操作时，该线程就可以进行相应的处理。这样，一个线程就可以同时处理多个
+I/O 事件，提高了系统的并发性。常用的多路 I/O 复用的系统调用有
+<code>select</code>、<code>poll</code>、<code>epoll</code>。</p>
+<h4 id="select">select</h4>
+<p><code>select</code>是Unix/Linux系统下的一种I/O多路复用机制。它允许应用程序监视多个文件描述符，等待一个或多个描述符成为就绪状态，以进行I/O操作（例如读或写）。这是一种异步I/O模型，因为你不需要阻塞等待单个I/O操作的完成。</p>
 <p><code>select</code>的函数原型如下：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sys/select.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">select</span><span class="params">(<span class="type">int</span> nfds, fd_set *readfds, fd_set *writefds, fd_set *exceptfds, <span class="keyword">struct</span> timeval *timeout)</span>;</span><br></pre></td></tr></table></figure>
-
 <p>参数解释：</p>
 <ul>
 <li><code>nfds</code>：需要监视的文件描述符数量，通常设置为所监视文件描述符中的最大值加1。</li>
@@ -333,70 +530,75 @@
 <p><code>fd_set</code>是一种数据结构，用于存储文件描述符集合。你可以使用以下的宏来操作这个集合：</p>
 <ul>
 <li><code>FD_ZERO(fd_set *fdset)</code>: 清除一个文件描述符集合。</li>
-<li><code>FD_SET(int fd, fd_set *fdset)</code>: 添加一个新的文件描述符到集合中。</li>
-<li><code>FD_CLR(int fd, fd_set *fdset)</code>: 从集合中移除一个文件描述符。</li>
-<li><code>FD_ISSET(int fd, fd_set *fdset)</code>: 检查集合中的一个文件描述符是否就绪。</li>
+<li><code>FD_SET(int fd, fd_set *fdset)</code>:
+添加一个新的文件描述符到集合中。</li>
+<li><code>FD_CLR(int fd, fd_set *fdset)</code>:
+从集合中移除一个文件描述符。</li>
+<li><code>FD_ISSET(int fd, fd_set *fdset)</code>:
+检查集合中的一个文件描述符是否就绪。</li>
 </ul>
 <p>注意，在调用<code>select</code>函数后，这些集合会被修改，只包含那些状态发生变化（即准备好进行读或写操作）的文件描述符。因此，如果你想要在一个循环中重复使用<code>select</code>，你需要在每次调用<code>select</code>前重新设置这些集合。</p>
-<p>虽然<code>select</code>在一些场景下非常有用，但是它有一些已知的限制，例如最大的文件描述符数量（通常是1024），以及处理大量文件描述符时的效率问题。在这些情况下，你可能需要使用其他的I&#x2F;O多路复用机制，例如<code>poll</code>或<code>epoll</code>。</p>
-<h5 id="tip：这是一种异步I-x2F-O模型，因为你不需要阻塞等待单个I-x2F-O操作的完成。"><a href="#tip：这是一种异步I-x2F-O模型，因为你不需要阻塞等待单个I-x2F-O操作的完成。" class="headerlink" title="tip：这是一种异步I&#x2F;O模型，因为你不需要阻塞等待单个I&#x2F;O操作的完成。"></a>tip：这是一种异步I&#x2F;O模型，因为你不需要阻塞等待单个I&#x2F;O操作的完成。</h5><p>当我们说一个I&#x2F;O操作是“阻塞”的，这意味着执行这个操作的线程或进程在操作完成之前会被挂起。例如，如果你在一个阻塞的套接字上执行读操作，而这个套接字当前并没有接收到任何数据，那么执行读操作的线程就会被挂起，直到有数据到达。在这个过程中，线程不能做任何其他的事情。</p>
-<p>相反，“非阻塞”的I&#x2F;O操作意味着即使操作不能立即完成，执行这个操作的线程或进程也不会被挂起。例如，如果你在一个非阻塞的套接字上执行读操作，而这个套接字当前并没有接收到任何数据，那么读操作会立即返回一个错误，而线程可以继续做其他的事情。</p>
-<p>I&#x2F;O多路复用（例如select、poll或epoll）提供了一种异步的I&#x2F;O模型。在这个模型中，你可以同时监视多个文件描述符，并在任何一个描述符准备好进行I&#x2F;O操作时得到通知。这样，你就可以在等待I&#x2F;O操作的同时做其他的事情，或者同时处理多个I&#x2F;O操作。这就是为什么我们说这是一个“异步”的模型：你不需要为每个I&#x2F;O操作分别阻塞等待。</p>
+<p>虽然<code>select</code>在一些场景下非常有用，但是它有一些已知的限制，例如最大的文件描述符数量（通常是1024），以及处理大量文件描述符时的效率问题。在这些情况下，你可能需要使用其他的I/O多路复用机制，例如<code>poll</code>或<code>epoll</code>。</p>
+<h5 id="tip这是一种异步io模型因为你不需要阻塞等待单个io操作的完成">tip：这是一种异步I/O模型，因为你不需要阻塞等待单个I/O操作的完成。</h5>
+<p>当我们说一个I/O操作是“阻塞”的，这意味着执行这个操作的线程或进程在操作完成之前会被挂起。例如，如果你在一个阻塞的套接字上执行读操作，而这个套接字当前并没有接收到任何数据，那么执行读操作的线程就会被挂起，直到有数据到达。在这个过程中，线程不能做任何其他的事情。</p>
+<p>相反，“非阻塞”的I/O操作意味着即使操作不能立即完成，执行这个操作的线程或进程也不会被挂起。例如，如果你在一个非阻塞的套接字上执行读操作，而这个套接字当前并没有接收到任何数据，那么读操作会立即返回一个错误，而线程可以继续做其他的事情。</p>
+<p>I/O多路复用（例如select、poll或epoll）提供了一种异步的I/O模型。在这个模型中，你可以同时监视多个文件描述符，并在任何一个描述符准备好进行I/O操作时得到通知。这样，你就可以在等待I/O操作的同时做其他的事情，或者同时处理多个I/O操作。这就是为什么我们说这是一个“异步”的模型：你不需要为每个I/O操作分别阻塞等待。</p>
 <p>例如，在上述select的例子中，服务器可以同时处理多个客户端的请求。当任何一个客户端的套接字准备好进行读操作（即有数据到达）时，select函数就会返回，然后服务器可以读取这个套接字上的数据。在这个过程中，服务器并不需要为每个客户端分别阻塞等待。</p>
 <p>通俗解释一下：</p>
 <p>你想从你家到县城去，阻塞方式是：你去车站等车，等车期间你哪也不能去，就干等到车来；非阻塞方式，你在家等车，这期间你想干啥就干啥，等车来了，司机会滴喇叭，跟你说快上车。</p>
-<h4 id="让我们通过一个简单的服务器代码示例来进一步理解select的使用。这个示例是一个TCP回显服务器，它使用select来同时处理多个客户端的连接和请求。"><a href="#让我们通过一个简单的服务器代码示例来进一步理解select的使用。这个示例是一个TCP回显服务器，它使用select来同时处理多个客户端的连接和请求。" class="headerlink" title="让我们通过一个简单的服务器代码示例来进一步理解select的使用。这个示例是一个TCP回显服务器，它使用select来同时处理多个客户端的连接和请求。"></a>让我们通过一个简单的服务器代码示例来进一步理解<code>select</code>的使用。这个示例是一个TCP回显服务器，它使用<code>select</code>来同时处理多个客户端的连接和请求。</h4><p>这是一个非常基础的示例，它没有处理一些可能的错误情况，例如文件描述符耗尽，以及<code>select</code>的最大文件描述符限制。</p>
+<h4 id="让我们通过一个简单的服务器代码示例来进一步理解select的使用这个示例是一个tcp回显服务器它使用select来同时处理多个客户端的连接和请求">让我们通过一个简单的服务器代码示例来进一步理解<code>select</code>的使用。这个示例是一个TCP回显服务器，它使用<code>select</code>来同时处理多个客户端的连接和请求。</h4>
+<p>这是一个非常基础的示例，它没有处理一些可能的错误情况，例如文件描述符耗尽，以及<code>select</code>的最大文件描述符限制。</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sys/socket.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;netinet/in.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;unistd.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MAX_CLIENTS 10</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> BUFFER_SIZE 1024</span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">int</span> listen_fd = socket(AF_INET, SOCK_STREAM, <span class="number">0</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">sockaddr_in</span> <span class="title">server_addr</span>;</span></span><br><span class="line">    <span class="built_in">memset</span>(&amp;server_addr, <span class="number">0</span>, <span class="keyword">sizeof</span>(server_addr));</span><br><span class="line">    server_addr.sin_family = AF_INET;</span><br><span class="line">    server_addr.sin_port = htons(<span class="number">8080</span>);</span><br><span class="line">    server_addr.sin_addr.s_addr = htonl(INADDR_ANY);</span><br><span class="line"></span><br><span class="line">    bind(listen_fd, (<span class="keyword">struct</span> sockaddr*)&amp;server_addr, <span class="keyword">sizeof</span>(server_addr));</span><br><span class="line"></span><br><span class="line">    listen(listen_fd, MAX_CLIENTS);</span><br><span class="line"></span><br><span class="line">    fd_set read_fds;</span><br><span class="line">    <span class="type">int</span> max_fd = listen_fd;</span><br><span class="line">    <span class="type">int</span> clients[MAX_CLIENTS] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (<span class="number">1</span>) &#123;</span><br><span class="line">        FD_ZERO(&amp;read_fds);</span><br><span class="line">        FD_SET(listen_fd, &amp;read_fds);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; MAX_CLIENTS; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (clients[i] &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                FD_SET(clients[i], &amp;read_fds);</span><br><span class="line">                <span class="keyword">if</span> (clients[i] &gt; max_fd) &#123;</span><br><span class="line">                    max_fd = clients[i];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        select(max_fd + <span class="number">1</span>, &amp;read_fds, <span class="literal">NULL</span>, <span class="literal">NULL</span>, <span class="literal">NULL</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (FD_ISSET(listen_fd, &amp;read_fds)) &#123;</span><br><span class="line">            <span class="type">int</span> client_fd = accept(listen_fd, <span class="literal">NULL</span>, <span class="literal">NULL</span>);</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; MAX_CLIENTS; i++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (clients[i] == <span class="number">0</span>) &#123;</span><br><span class="line">                    clients[i] = client_fd;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; MAX_CLIENTS; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (clients[i] &gt; <span class="number">0</span> &amp;&amp; FD_ISSET(clients[i], &amp;read_fds)) &#123;</span><br><span class="line">                <span class="type">char</span> buffer[BUFFER_SIZE];</span><br><span class="line">                <span class="type">int</span> len = read(clients[i], buffer, BUFFER_SIZE - <span class="number">1</span>);</span><br><span class="line">                <span class="keyword">if</span> (len &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                    buffer[len] = <span class="string">&#x27;\0&#x27;</span>;</span><br><span class="line">                    <span class="built_in">printf</span>(<span class="string">&quot;Received from client: %s\n&quot;</span>, buffer);</span><br><span class="line">                    write(clients[i], buffer, len);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    close(clients[i]);</span><br><span class="line">                    clients[i] = <span class="number">0</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>这个程序首先创建一个监听套接字，然后进入一个无限循环，在循环中调用<code>select</code>函数等待新的连接或者已连接的客户端的请求。每次循环都会重新设置文件描述符集合，添加监听套接字以及所有已连接的客户端的套接字。</p>
 <p>如果<code>select</code>函数返回并指示监听套接字已经准备好（有新的连接请求），程序就接受新的连接，并把新的客户端套接字添加到客户端数组中。</p>
 <p>如果<code>select</code>函数返回并指示某个客户端套接字已经准备好（有新的数据到达），程序就</p>
 <p>读取这个套接字上的数据，然后回显（即原样返回）这些数据。如果读取操作返回0或负值（表示连接已经关闭或出错），程序就关闭这个套接字，并把它从客户端数组中移除。</p>
-<p>这个示例展示了如何使用<code>select</code>处理多个客户端的连接和请求。然而在实际的程序中，你需要处理更多的问题，例如<code>select</code>的最大文件描述符限制，以及文件描述符耗尽的问题。在处理大量连接时，你可能需要考虑使用其他的I&#x2F;O多路复用技术，例如<code>poll</code>或<code>epoll</code>。</p>
-<h5 id="max-fd到底有啥作用呢？select函数第一个参数我为啥感觉没啥作用呢？"><a href="#max-fd到底有啥作用呢？select函数第一个参数我为啥感觉没啥作用呢？" class="headerlink" title="max_fd到底有啥作用呢？select函数第一个参数我为啥感觉没啥作用呢？"></a>max_fd到底有啥作用呢？select函数第一个参数我为啥感觉没啥作用呢？</h5><p><code>select</code>函数的第一个参数，即<code>nfds</code>，表示需要监视的文件描述符的范围，它的值应该是所有文件描述符中最大的那个加1。</p>
+<p>这个示例展示了如何使用<code>select</code>处理多个客户端的连接和请求。然而在实际的程序中，你需要处理更多的问题，例如<code>select</code>的最大文件描述符限制，以及文件描述符耗尽的问题。在处理大量连接时，你可能需要考虑使用其他的I/O多路复用技术，例如<code>poll</code>或<code>epoll</code>。</p>
+<h5 id="max_fd到底有啥作用呢select函数第一个参数我为啥感觉没啥作用呢">max_fd到底有啥作用呢？select函数第一个参数我为啥感觉没啥作用呢？</h5>
+<p><code>select</code>函数的第一个参数，即<code>nfds</code>，表示需要监视的文件描述符的范围，它的值应该是所有文件描述符中最大的那个加1。</p>
 <p>为什么需要最大文件描述符呢？</p>
-<p>原因是<code>select</code>函数在内部实现时会遍历所有的文件描述符，从0到<code>nfds - 1</code>。**<code>select</code>函数将检查这个范围内的每一个文件描述符，看看它是否在<code>readfds</code>、<code>writefds</code>或<code>exceptfds</code>集合中，并且它的状态是否发生了变化（即是否准备好进行读、写或者是否有异常）**。</p>
+<p>原因是<code>select</code>函数在内部实现时会遍历所有的文件描述符，从0到<code>nfds - 1</code>。<strong><code>select</code>函数将检查这个范围内的每一个文件描述符，看看它是否在<code>readfds</code>、<code>writefds</code>或<code>exceptfds</code>集合中，并且它的状态是否发生了变化（即是否准备好进行读、写或者是否有异常）</strong>。</p>
 <p>实际上，<code>select</code>不关心文件描述符是否连续，它只是检查你指定的范围内的每一个文件描述符。因此，如果你的程序中最大的文件描述符是10，那么你就应该把<code>nfds</code>设为11，即使你的程序并没有使用文件描述符0到9。</p>
 <p>在设置<code>nfds</code>时，使用最大文件描述符加1是一个优化的选择。如果你把<code>nfds</code>设得过大，<code>select</code>函数就会浪费时间去检查那些并不存在的文件描述符。反之，如果你把<code>nfds</code>设得过小，<code>select</code>函数就会忽略那些超出范围的文件描述符，即使它们在<code>readfds</code>、<code>writefds</code>或<code>exceptfds</code>集合中，并且状态发生了变化。</p>
 <p>因此，<code>max_fd</code>在这里的作用就是帮助我们正确地设置<code>select</code>函数的<code>nfds</code>参数，以便让<code>select</code>函数高效地监视我们关心的所有文件描述符。</p>
-<h5 id="代码里面貌似自始至终也没体现select函数的作用，因为连select函数的返回值都没用上，就好比现在select现在监听1-2-3-4-5-6这6个文件描述符，假设5准备就绪了，我怎么知道5准备就绪了呢，在你的代码貌似并没有体现出来"><a href="#代码里面貌似自始至终也没体现select函数的作用，因为连select函数的返回值都没用上，就好比现在select现在监听1-2-3-4-5-6这6个文件描述符，假设5准备就绪了，我怎么知道5准备就绪了呢，在你的代码貌似并没有体现出来" class="headerlink" title="代码里面貌似自始至终也没体现select函数的作用，因为连select函数的返回值都没用上，就好比现在select现在监听1 2 3 4 5 6这6个文件描述符，假设5准备就绪了，我怎么知道5准备就绪了呢，在你的代码貌似并没有体现出来"></a>代码里面貌似自始至终也没体现select函数的作用，因为连select函数的返回值都没用上，就好比现在select现在监听1 2 3 4 5 6这6个文件描述符，假设5准备就绪了，我怎么知道5准备就绪了呢，在你的代码貌似并没有体现出来</h5><p>实际上，当<code>select</code>函数返回后，我们可以通过检查<code>read_fds</code>集合来确定哪些文件描述符已经准备就绪。</p>
+<h5 id="代码里面貌似自始至终也没体现select函数的作用因为连select函数的返回值都没用上就好比现在select现在监听1-2-3-4-5-6这6个文件描述符假设5准备就绪了我怎么知道5准备就绪了呢在你的代码貌似并没有体现出来">代码里面貌似自始至终也没体现select函数的作用，因为连select函数的返回值都没用上，就好比现在select现在监听1
+2 3 4 5
+6这6个文件描述符，假设5准备就绪了，我怎么知道5准备就绪了呢，在你的代码貌似并没有体现出来</h5>
+<p>实际上，当<code>select</code>函数返回后，我们可以通过检查<code>read_fds</code>集合来确定哪些文件描述符已经准备就绪。</p>
 <p>具体来说，如果<code>FD_ISSET(fd, &amp;read_fds)</code>为真，那么就表示<code>fd</code>已经准备好进行读操作。在我的示例代码中，这个检查分别在处理监听套接字和客户端套接字时进行。</p>
 <p>如果<code>select</code>函数指示监听套接字已经准备好（有新的连接请求），那么我们就接受新的连接：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (FD_ISSET(listen_fd, &amp;read_fds)) &#123;</span><br><span class="line">    <span class="type">int</span> client_fd = accept(listen_fd, <span class="literal">NULL</span>, <span class="literal">NULL</span>);</span><br><span class="line">    <span class="comment">// 添加新的客户端到 clients 数组...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>如果<code>select</code>函数指示某个客户端套接字已经准备好（有新的数据到达），那么我们就读取这个套接字上的数据：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; MAX_CLIENTS; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (clients[i] &gt; <span class="number">0</span> &amp;&amp; FD_ISSET(clients[i], &amp;read_fds)) &#123;</span><br><span class="line">        <span class="type">char</span> buffer[BUFFER_SIZE];</span><br><span class="line">        <span class="type">int</span> len = read(clients[i], buffer, BUFFER_SIZE - <span class="number">1</span>);</span><br><span class="line">        <span class="comment">// 处理读取到的数据...</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>这个示例代码的目的是展示<code>select</code>函数如何用于处理多个连接和请求。在实际的应用中，你可能还需要处理更多的情况，例如写就绪和异常，以及<code>select</code>函数的返回值（表示已经准备就绪的文件描述符的数量）。</p>
-<h4 id="poll"><a href="#poll" class="headerlink" title="poll"></a>poll</h4><p>有了select的基础，理解poll起来就方便一点啦。<code>poll</code>函数是另一种I&#x2F;O多路复用的技术。与<code>select</code>相比，它的主要优点是没有文件描述符的数量限制，而且API使用起来可能更加直观。<code>poll</code>函数使用一个<code>pollfd</code>结构体数组，其中每个结构体都包含一个文件描述符和一些标志位，表示我们对哪些事件感兴趣（例如POLLIN表示我们对读事件感兴趣）。</p>
+<h4 id="poll">poll</h4>
+<p>有了select的基础，理解poll起来就方便一点啦。<code>poll</code>函数是另一种I/O多路复用的技术。与<code>select</code>相比，它的主要优点是没有文件描述符的数量限制，而且API使用起来可能更加直观。<code>poll</code>函数使用一个<code>pollfd</code>结构体数组，其中每个结构体都包含一个文件描述符和一些标志位，表示我们对哪些事件感兴趣（例如POLLIN表示我们对读事件感兴趣）。</p>
 <p>下面是一个简单的使用<code>poll</code>的服务器代码示例：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sys/socket.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;netinet/in.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;poll.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MAX_CLIENTS 1024</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> BUFFER_SIZE 1024</span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">int</span> listen_fd = socket(AF_INET, SOCK_STREAM, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">sockaddr_in</span> <span class="title">servaddr</span>;</span></span><br><span class="line">    <span class="built_in">memset</span>(&amp;servaddr, <span class="number">0</span>, <span class="keyword">sizeof</span>(servaddr));</span><br><span class="line">    servaddr.sin_family = AF_INET;</span><br><span class="line">    servaddr.sin_addr.s_addr = htonl(INADDR_ANY);</span><br><span class="line">    servaddr.sin_port = htons(<span class="number">12345</span>);</span><br><span class="line"></span><br><span class="line">    bind(listen_fd, (<span class="keyword">struct</span> sockaddr*)&amp;servaddr, <span class="keyword">sizeof</span>(servaddr));</span><br><span class="line"></span><br><span class="line">    listen(listen_fd, <span class="number">10</span>);</span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">pollfd</span> <span class="title">clients</span>[<span class="title">MAX_CLIENTS</span>];</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; MAX_CLIENTS; i++) &#123;</span><br><span class="line">        clients[i].fd = <span class="number">-1</span>; <span class="comment">// -1表示该位置没有使用</span></span><br><span class="line">        clients[i].events = POLLIN; <span class="comment">// 对读事件感兴趣</span></span><br><span class="line">    &#125;</span><br><span class="line">    clients[<span class="number">0</span>].fd = listen_fd; <span class="comment">// 监听套接字始终在clients[0]的位置</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (<span class="number">1</span>) &#123;</span><br><span class="line">        <span class="type">int</span> nready = poll(clients, MAX_CLIENTS, <span class="number">-1</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (clients[<span class="number">0</span>].revents &amp; POLLIN) &#123;</span><br><span class="line">            <span class="comment">// 监听套接字准备好了，表示有新的连接请求</span></span><br><span class="line">            <span class="type">int</span> client_fd = accept(listen_fd, <span class="literal">NULL</span>, <span class="literal">NULL</span>);</span><br><span class="line">            <span class="comment">// 将新的连接添加到clients数组中</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt; MAX_CLIENTS; i++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (clients[i].fd &lt; <span class="number">0</span>) &#123;</span><br><span class="line">                    clients[i].fd = client_fd;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt; MAX_CLIENTS; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (clients[i].fd &lt; <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (clients[i].revents &amp; (POLLIN | POLLERR)) &#123;</span><br><span class="line">                <span class="comment">// 客户端套接字准备好了，表示有数据可以读取</span></span><br><span class="line">                <span class="type">char</span> buffer[BUFFER_SIZE];</span><br><span class="line">                <span class="type">int</span> len = read(clients[i].fd, buffer, BUFFER_SIZE - <span class="number">1</span>);</span><br><span class="line">                <span class="keyword">if</span> (len &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">                    <span class="comment">// 连接已经关闭或出错，将该客户端从数组中移除</span></span><br><span class="line">                    close(clients[i].fd);</span><br><span class="line">                    clients[i].fd = <span class="number">-1</span>;</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="comment">// 将接收到的数据回显给客户端</span></span><br><span class="line">                    write(clients[i].fd, buffer, len);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>在这个示例中，服务器使用<code>poll</code>函数同时监视所有连接的客户端套接字。每次当<code>poll</code>函数返回时，服务器会检查哪些套接字已经准备好进行I&#x2F;O操作，并相应地处理它们。</p>
-<h5 id="clients-0-revents-amp-POLLIN这个代表啥意思"><a href="#clients-0-revents-amp-POLLIN这个代表啥意思" class="headerlink" title="clients[0].revents &amp; POLLIN这个代表啥意思"></a>clients[0].revents &amp; POLLIN这个代表啥意思</h5><p>这是在检查<code>poll</code>函数返回后哪些文件描述符发生了事件。</p>
+<p>在这个示例中，服务器使用<code>poll</code>函数同时监视所有连接的客户端套接字。每次当<code>poll</code>函数返回时，服务器会检查哪些套接字已经准备好进行I/O操作，并相应地处理它们。</p>
+<h5 id="clients0.revents-pollin这个代表啥意思">clients[0].revents &amp;
+POLLIN这个代表啥意思</h5>
+<p>这是在检查<code>poll</code>函数返回后哪些文件描述符发生了事件。</p>
 <p><code>clients[0].revents &amp; POLLIN</code>这个表达式使用了位运算符<code>&amp;</code>来检查<code>revents</code>字段的某个特定位（在这个例子中是<code>POLLIN</code>位）是否被设置。如果结果非零，那么说明<code>POLLIN</code>事件发生了，也就是说对应的文件描述符已经准备好进行读操作。</p>
 <p>这里的<code>POLLIN</code>是一个常量，表示可以从文件描述符中读取数据。<code>revents</code>字段则是<code>poll</code>函数返回后设置的，表示在调用<code>poll</code>函数期间，哪些事件发生了。</p>
 <p>如果<code>clients[0].revents &amp; POLLIN</code>为真，那么就表示监听套接字已经准备好，我们可以从这个套接字上接受新的连接。</p>
-<h5 id="这个能不能给出一个实例，不太理解"><a href="#这个能不能给出一个实例，不太理解" class="headerlink" title="这个能不能给出一个实例，不太理解"></a>这个能不能给出一个实例，不太理解</h5><p>当然可以，让我们试着用一个简单的例子来理解这个概念。</p>
+<h5 id="这个能不能给出一个实例不太理解">这个能不能给出一个实例，不太理解</h5>
+<p>当然可以，让我们试着用一个简单的例子来理解这个概念。</p>
 <p>首先，我们要知道<code>POLLIN</code>和<code>revents</code>都是整型（int）变量，也就是说，它们都可以表示为二进制数。</p>
 <p>假设<code>POLLIN</code>的值是4，也就是二进制的<code>100</code>，而<code>revents</code>的值是5，也就是二进制的<code>101</code>。</p>
 <p>我们用<code>&amp;</code>（位运算符AND）来对这两个值进行操作，得到的结果是<code>100</code>，也就是4，非零值。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">  POLLIN:  100 (二进制)</span><br><span class="line">  revents: 101 (二进制)</span><br><span class="line">----------------------</span><br><span class="line">  结果:    100 (二进制) = 4 (十进制)</span><br></pre></td></tr></table></figure>
-
 <p>这个结果是非零的，所以<code>if (clients[0].revents &amp; POLLIN)</code>的判断结果是真。这就表示<code>revents</code>的<code>POLLIN</code>位被设置了，也就是说，对应的文件描述符已经准备好进行读操作了。</p>
 <p>如果<code>revents</code>的值是2（二进制<code>010</code>），那么结果就是零：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">  POLLIN:  100 (二进制)</span><br><span class="line">  revents: 010 (二进制)</span><br><span class="line">----------------------</span><br><span class="line">  结果:    000 (二进制) = 0 (十进制)</span><br></pre></td></tr></table></figure>
-
 <p>这个结果是零，所以<code>if (clients[0].revents &amp; POLLIN)</code>的判断结果是假。这就表示<code>revents</code>的<code>POLLIN</code>位没有被设置，也就是说，对应的文件描述符还没有准备好进行读操作。</p>
 <p>所以，这个表达式就是在检查<code>revents</code>是否表示文件描述符已经准备好进行读操作。</p>
-<h5 id="recv函数"><a href="#recv函数" class="headerlink" title="recv函数"></a><code>recv</code>函数</h5><p>在<code>socket</code>编程中，<code>recv</code>函数的返回值有以下三种情况：</p>
-<ol>
-<li><p>当<code>recv</code>函数返回0时，表示连接已经关闭，也就是说，另一端已经执行了<code>close</code>操作。</p>
-</li>
-<li><p>当<code>recv</code>函数返回-1时，表示接收数据时发生了错误，你可以通过检查全局变量<code>errno</code>来确定具体的错误类型。在非阻塞模式下，如果没有可读取的数据，<code>recv</code>函数也会返回-1，并且<code>errno</code>会被设置为<code>EAGAIN</code>或者<code>EWOULDBLOCK</code>。</p>
-</li>
-<li><p>如果返回值大于0，表示成功接收到了数据。</p>
-</li>
+<h5 id="recv函数"><code>recv</code>函数</h5>
+<p>在<code>socket</code>编程中，<code>recv</code>函数的返回值有以下三种情况：</p>
+<ol type="1">
+<li><p>当<code>recv</code>函数返回0时，表示连接已经关闭，也就是说，另一端已经执行了<code>close</code>操作。</p></li>
+<li><p>当<code>recv</code>函数返回-1时，表示接收数据时发生了错误，你可以通过检查全局变量<code>errno</code>来确定具体的错误类型。在非阻塞模式下，如果没有可读取的数据，<code>recv</code>函数也会返回-1，并且<code>errno</code>会被设置为<code>EAGAIN</code>或者<code>EWOULDBLOCK</code>。</p></li>
+<li><p>如果返回值大于0，表示成功接收到了数据。</p></li>
 </ol>
 <p>在你给出的代码中，<code>if (ret &lt;= 0)</code>这个判断语句实际上就是在处理以上的前两种情况。也就是说，如果连接已经关闭，或者在接收数据时发生了错误，就关闭<code>socket</code>。</p>
 <p>在你的例子中，<code>ret=0</code>实际上并不是代表LT模式下未响应此事件，而是表示对端关闭了连接。因此，关闭这个<code>socket</code>是合理的，因为这个连接已经没有用了。即使接收缓冲区里还有未读取的数据，这些数据也无法被发送到已经关闭的对端，所以就没有必要保持这个<code>socket</code>打开了。</p>
@@ -484,116 +686,175 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h2 id="对象的副本"><a href="#对象的副本" class="headerlink" title="对象的副本"></a>对象的副本</h2><p>在 C++ 中，一个对象的副本是指创建了原始对象的一个拷贝，这个拷贝具有与原始对象相同的属性和状态。换句话说，副本是源对象的一个独立副本，它们的值相同，但是<code>它们在内存中占用不同的空间</code>。</p>
+          <h2 id="对象的副本">对象的副本</h2>
+<p>在 C++
+中，一个对象的副本是指创建了原始对象的一个拷贝，这个拷贝具有与原始对象相同的属性和状态。换句话说，副本是源对象的一个独立副本，它们的值相同，但是<code>它们在内存中占用不同的空间</code>。</p>
 <p>创建对象副本的过程通常称为拷贝构造。当我们创建一个新对象时，如果使用另一个已经存在的对象作为模板，那么新对象就是原始对象的一个副本。通常，这会涉及调用拷贝构造函数。</p>
 <p>以下是一个简单的示例：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyClass</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="type">int</span> x;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">MyClass</span>(<span class="type">int</span> a) : <span class="built_in">x</span>(a) &#123;&#125; <span class="comment">// 构造函数</span></span><br><span class="line">    <span class="built_in">MyClass</span>(<span class="type">const</span> MyClass&amp; other) : <span class="built_in">x</span>(other.x) &#123;&#125; <span class="comment">// 拷贝构造函数</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="function">MyClass <span class="title">obj1</span><span class="params">(<span class="number">10</span>)</span></span>; <span class="comment">// 使用构造函数创建一个对象</span></span><br><span class="line">    <span class="function">MyClass <span class="title">obj2</span><span class="params">(obj1)</span></span>; <span class="comment">// 使用拷贝构造函数创建 obj1 的一个副本</span></span><br><span class="line"></span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;obj1.x = &quot;</span> &lt;&lt; obj1.x &lt;&lt; std::endl; <span class="comment">// 输出：obj1.x = 10</span></span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;obj2.x = &quot;</span> &lt;&lt; obj2.x &lt;&lt; std::endl; <span class="comment">// 输出：obj2.x = 10</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>在这个示例中，我们有一个名为 <code>MyClass</code> 的类，它具有一个整数成员变量 <code>x</code>。我们为 <code>MyClass</code> 提供了一个构造函数和一个拷贝构造函数。在 <code>main</code> 函数中，我们首先使用构造函数创建了一个名为 <code>obj1</code> 的对象，然后使用拷贝构造函数创建了 <code>obj1</code> 的一个副本，名为 <code>obj2</code>。<code>obj2</code> 是 <code>obj1</code> 的副本，因为它具有与 <code>obj1</code> 相同的属性（在这种情况下，是 <code>x</code> 的值）。</p>
-<p>请注意，尽管 <code>obj1</code> 和 <code>obj2</code> 具有相同的值，但它们在内存中是独立的。这意味着更改其中一个对象的状态不会影响另一个对象。</p>
-<h2 id="拷贝构造函数通常不应该是explicit的"><a href="#拷贝构造函数通常不应该是explicit的" class="headerlink" title="拷贝构造函数通常不应该是explicit的"></a>拷贝构造函数通常不应该是explicit的</h2><p>在 C++ 中，<code>explicit</code> 关键字用于指定构造函数或类型转换操作不应该进行隐式类型转换。换句话说，<code>explicit</code> 可以防止在需要显式构造的情况下发生隐式类型转换。</p>
-<p>当我们说 “拷贝构造函数通常不应该是 <code>explicit</code> 的” 时，意味着拷贝构造函数应该允许隐式类型转换，以方便编译器在需要时自动执行拷贝构造。</p>
+<p>在这个示例中，我们有一个名为 <code>MyClass</code>
+的类，它具有一个整数成员变量 <code>x</code>。我们为 <code>MyClass</code>
+提供了一个构造函数和一个拷贝构造函数。在 <code>main</code>
+函数中，我们首先使用构造函数创建了一个名为 <code>obj1</code>
+的对象，然后使用拷贝构造函数创建了 <code>obj1</code> 的一个副本，名为
+<code>obj2</code>。<code>obj2</code> 是 <code>obj1</code>
+的副本，因为它具有与 <code>obj1</code> 相同的属性（在这种情况下，是
+<code>x</code> 的值）。</p>
+<p>请注意，尽管 <code>obj1</code> 和 <code>obj2</code>
+具有相同的值，但它们在内存中是独立的。这意味着更改其中一个对象的状态不会影响另一个对象。</p>
+<h2 id="拷贝构造函数通常不应该是explicit的">拷贝构造函数通常不应该是explicit的</h2>
+<p>在 C++ 中，<code>explicit</code>
+关键字用于指定构造函数或类型转换操作不应该进行隐式类型转换。换句话说，<code>explicit</code>
+可以防止在需要显式构造的情况下发生隐式类型转换。</p>
+<p>当我们说 “拷贝构造函数通常不应该是 <code>explicit</code> 的”
+时，意味着拷贝构造函数应该允许隐式类型转换，以方便编译器在需要时自动执行拷贝构造。</p>
 <p>拷贝构造函数允许隐式转换的原因是因为它们在很多情况下被编译器隐式调用，例如：</p>
-<ol>
+<ol type="1">
 <li>将一个对象作为函数参数传递时。</li>
 <li>从函数返回一个对象时。</li>
 <li>使用赋值运算符初始化一个对象时。</li>
 </ol>
-<p>在这些情况下，如果拷贝构造函数被声明为 <code>explicit</code>，则可能会导致编译错误，因为编译器不能隐式调用拷贝构造函数。</p>
-<p>以下是一个例子，说明为什么拷贝构造函数不应该是 <code>explicit</code> 的：</p>
+<p>在这些情况下，如果拷贝构造函数被声明为
+<code>explicit</code>，则可能会导致编译错误，因为编译器不能隐式调用拷贝构造函数。</p>
+<p>以下是一个例子，说明为什么拷贝构造函数不应该是 <code>explicit</code>
+的：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MyClass</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="type">int</span> x;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">MyClass</span>(<span class="type">int</span> a) : <span class="built_in">x</span>(a) &#123;&#125; <span class="comment">// 构造函数</span></span><br><span class="line">    <span class="function"><span class="keyword">explicit</span> <span class="title">MyClass</span><span class="params">(<span class="type">const</span> MyClass&amp; other)</span> : x(other.x) &#123;</span>&#125; <span class="comment">// explicit 拷贝构造函数（不推荐）</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">some_function</span><span class="params">(MyClass obj)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// ... do something ...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="function">MyClass <span class="title">obj1</span><span class="params">(<span class="number">10</span>)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 下面这行代码会导致编译错误，因为拷贝构造函数是 explicit 的，编译器不能隐式调用它。</span></span><br><span class="line">    <span class="built_in">some_function</span>(obj1);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>在这个示例中，我们将拷贝构造函数声明为 <code>explicit</code>，这导致了编译错误。当我们尝试将 <code>obj1</code> 传递给 <code>some_function</code> 时，编译器无法隐式调用拷贝构造函数，因此会报错。为了避免这种情况，拷贝构造函数通常应该允许隐式类型转换，不应该被声明为 <code>explicit</code>。</p>
-<h3 id="如果不想上面这个报错，也不去掉explicit，应该怎么做"><a href="#如果不想上面这个报错，也不去掉explicit，应该怎么做" class="headerlink" title="如果不想上面这个报错，也不去掉explicit，应该怎么做"></a>如果不想上面这个报错，也不去掉explicit，应该怎么做</h3><p>如果您希望保留 <code>explicit</code> 关键字并避免编译错误，您需要显式地调用拷贝构造函数。在这种情况下，可以使用以下方法：</p>
-<ol>
-<li>使用花括号 <code>&#123;&#125;</code> 或圆括号 <code>()</code> 显式地创建一个临时对象并传递给 <code>some_function</code>。</li>
+<p>在这个示例中，我们将拷贝构造函数声明为
+<code>explicit</code>，这导致了编译错误。当我们尝试将 <code>obj1</code>
+传递给 <code>some_function</code>
+时，编译器无法隐式调用拷贝构造函数，因此会报错。为了避免这种情况，拷贝构造函数通常应该允许隐式类型转换，不应该被声明为
+<code>explicit</code>。</p>
+<h3 id="如果不想上面这个报错也不去掉explicit应该怎么做">如果不想上面这个报错，也不去掉explicit，应该怎么做</h3>
+<p>如果您希望保留 <code>explicit</code>
+关键字并避免编译错误，您需要显式地调用拷贝构造函数。在这种情况下，可以使用以下方法：</p>
+<ol type="1">
+<li>使用花括号 <code>&#123;&#125;</code> 或圆括号 <code>()</code>
+显式地创建一个临时对象并传递给 <code>some_function</code>。</li>
 <li>使用 <code>static_cast</code> 来显式地创建一个副本。</li>
 </ol>
 <p>以下是两种方法的示例：</p>
-<p>方法 1：使用花括号 <code>&#123;&#125;</code> 或圆括号 <code>()</code> 显式地创建一个临时对象。</p>
+<p>方法 1：使用花括号 <code>&#123;&#125;</code> 或圆括号 <code>()</code>
+显式地创建一个临时对象。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="function">MyClass <span class="title">obj1</span><span class="params">(<span class="number">10</span>)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 使用花括号显式地调用拷贝构造函数</span></span><br><span class="line">    <span class="built_in">some_function</span>(MyClass&#123;obj1&#125;);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 或者，使用圆括号显式地调用拷贝构造函数</span></span><br><span class="line">    <span class="built_in">some_function</span>(<span class="built_in">MyClass</span>(obj1));</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>方法 2：使用 <code>static_cast</code> 来显式地创建一个副本。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="function">MyClass <span class="title">obj1</span><span class="params">(<span class="number">10</span>)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 使用 static_cast 显式地调用拷贝构造函数</span></span><br><span class="line">    <span class="built_in">some_function</span>(<span class="built_in">static_cast</span>&lt;MyClass&gt;(obj1));</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>在这些示例中，我们显式地调用了拷贝构造函数，因此编译器不再需要隐式地调用它。这使得代码能够正常编译和运行，尽管拷贝构造函数被声明为 <code>explicit</code>。</p>
-<h4 id="static-cast"><a href="#static-cast" class="headerlink" title="static_cast"></a><code>static_cast</code></h4><p><code>static_cast</code> 是 C++ 中一种用于执行编译时类型转换的操作符。它可以在相关类型之间进行转换，例如将指针或引用的类型从基类转换为派生类，将枚举类型转换为整数，或在数值类型（如 int、float、double 等）之间进行转换。与 C 风格的强制类型转换相比，<code>static_cast</code> 提供了更严格的类型检查，因此更安全。</p>
+<p>在这些示例中，我们显式地调用了拷贝构造函数，因此编译器不再需要隐式地调用它。这使得代码能够正常编译和运行，尽管拷贝构造函数被声明为
+<code>explicit</code>。</p>
+<h4 id="static_cast"><code>static_cast</code></h4>
+<p><code>static_cast</code> 是 C++
+中一种用于执行编译时类型转换的操作符。它可以在相关类型之间进行转换，例如将指针或引用的类型从基类转换为派生类，将枚举类型转换为整数，或在数值类型（如
+int、float、double 等）之间进行转换。与 C
+风格的强制类型转换相比，<code>static_cast</code>
+提供了更严格的类型检查，因此更安全。</p>
 <p>以下是使用 <code>static_cast</code> 的一些示例：</p>
-<ol>
+<ol type="1">
 <li>在数值类型之间进行转换：</li>
 </ol>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> i = <span class="number">42</span>;</span><br><span class="line">    <span class="type">double</span> d = <span class="built_in">static_cast</span>&lt;<span class="type">double</span>&gt;(i); <span class="comment">// 将 int 类型转换为 double 类型</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
+<ol start="2" type="1">
 <li>将枚举类型转换为整数：</li>
 </ol>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> <span class="title class_">Color</span> &#123; RED, GREEN, BLUE &#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Color c = RED;</span><br><span class="line">    <span class="type">int</span> color_code = <span class="built_in">static_cast</span>&lt;<span class="type">int</span>&gt;(c); <span class="comment">// 将枚举类型转换为 int 类型</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ol start="3">
+<ol start="3" type="1">
 <li>在类层次结构中进行向上转换（从派生类到基类）：</li>
 </ol>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Base</span> &#123;&#125;;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Derived</span> : <span class="keyword">public</span> Base &#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Derived *derived_ptr = <span class="keyword">new</span> <span class="built_in">Derived</span>();</span><br><span class="line">    Base *base_ptr = <span class="built_in">static_cast</span>&lt;Base*&gt;(derived_ptr); <span class="comment">// 将 Derived* 类型转换为 Base* 类型</span></span><br><span class="line">    <span class="keyword">delete</span> derived_ptr;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>需要注意的是，<code>static_cast</code> 不能转换无关的类型，例如将 <code>void*</code> 转换为其他类型的指针，或将非类类型转换为类类型。对于这些情况，可以使用其他类型的转换操作符，如 <code>reinterpret_cast</code> 或 <code>dynamic_cast</code>。注意：<code>double d = (int) i</code>即为C中的强制类型转换。</p>
-<h4 id="static-cast-提供了更严格的类型检查是如何体现的"><a href="#static-cast-提供了更严格的类型检查是如何体现的" class="headerlink" title="static_cast 提供了更严格的类型检查是如何体现的"></a>static_cast 提供了更严格的类型检查是如何体现的</h4><p><code>static_cast</code> 提供更严格类型检查的体现主要在于它在编译时执行类型检查，而不是在运行时。这意味着，如果类型转换不安全或不正确，编译器将在编译期间发出错误或警告，而不是在运行时导致未定义行为。</p>
+<p>需要注意的是，<code>static_cast</code> 不能转换无关的类型，例如将
+<code>void*</code>
+转换为其他类型的指针，或将非类类型转换为类类型。对于这些情况，可以使用其他类型的转换操作符，如
+<code>reinterpret_cast</code> 或
+<code>dynamic_cast</code>。注意：<code>double d = (int) i</code>即为C中的强制类型转换。</p>
+<h4 id="static_cast-提供了更严格的类型检查是如何体现的">static_cast
+提供了更严格的类型检查是如何体现的</h4>
+<p><code>static_cast</code>
+提供更严格类型检查的体现主要在于它在编译时执行类型检查，而不是在运行时。这意味着，如果类型转换不安全或不正确，编译器将在编译期间发出错误或警告，而不是在运行时导致未定义行为。</p>
 <p>以下是一些<code>static_cast</code>类型检查的例子：</p>
-<ol>
-<li><p>在数值类型之间进行转换时，<code>static_cast</code> 会检查转换是否合理。例如，将一个 <code>double</code> 转换为 <code>int</code> 会丢失小数部分，但这种转换仍然是明确的，因此编译器允许它。然而，如果转换可能导致数据损失或无法执行，编译器将发出警告或错误。</p>
-</li>
-<li><p>在类层次结构中进行向上转换（从派生类到基类）时，<code>static_cast</code> 会确保两个类之间存在继承关系。例如，将一个 <code>Derived*</code> 转换为 <code>Base*</code> 是允许的，前提是 <code>Derived</code> 类真正继承自 <code>Base</code> 类。如果这两个类没有继承关系，编译器将发出错误。</p>
-</li>
+<ol type="1">
+<li><p>在数值类型之间进行转换时，<code>static_cast</code>
+会检查转换是否合理。例如，将一个 <code>double</code> 转换为
+<code>int</code>
+会丢失小数部分，但这种转换仍然是明确的，因此编译器允许它。然而，如果转换可能导致数据损失或无法执行，编译器将发出警告或错误。</p></li>
+<li><p>在类层次结构中进行向上转换（从派生类到基类）时，<code>static_cast</code>
+会确保两个类之间存在继承关系。例如，将一个 <code>Derived*</code> 转换为
+<code>Base*</code> 是允许的，前提是 <code>Derived</code> 类真正继承自
+<code>Base</code>
+类。如果这两个类没有继承关系，编译器将发出错误。</p></li>
 </ol>
-<p>与 C 风格的强制类型转换相比，<code>static_cast</code> 更安全，因为 C 风格的强制类型转换不会进行类型检查。例如，您可以使用 C 风格的强制类型转换将一个 <code>float</code> 指针转换为一个 <code>int</code> 指针，尽管这样做可能导致未定义行为。使用 <code>static_cast</code> 进行此类转换会导致编译错误。</p>
-<p>总之，<code>static_cast</code> 在编译时进行类型检查，确保转换是明确的、安全的且合理的。这使得它比 C 风格的强制类型转换更安全。然而，应谨慎使用 <code>static_cast</code>，并且只在确信转换是安全的情况下使用，因为它仍然可能导致数据损失或其他问题，尤其是在数值类型转换和向下转换（从基类到派生类）时。在这些情况下，应考虑使用其他类型转换操作符，如 <code>dynamic_cast</code> 或 <code>reinterpret_cast</code>。</p>
-<h4 id="为什么输出color-code是0呢"><a href="#为什么输出color-code是0呢" class="headerlink" title="为什么输出color_code是0呢"></a>为什么输出color_code是0呢</h4><p>在您提供的代码示例中，<code>color_code</code> 的值为 0，因为 <code>Color</code> 枚举中的 <code>RED</code> 成员被隐式地赋予了整数值 0。C++ 中的枚举成员会从 0 开始递增地分配整数值，除非您明确地为它们指定其他值。因此，在这个例子中，<code>Color</code> 枚举成员的整数值如下：</p>
+<p>与 C 风格的强制类型转换相比，<code>static_cast</code> 更安全，因为 C
+风格的强制类型转换不会进行类型检查。例如，您可以使用 C
+风格的强制类型转换将一个 <code>float</code> 指针转换为一个
+<code>int</code> 指针，尽管这样做可能导致未定义行为。使用
+<code>static_cast</code> 进行此类转换会导致编译错误。</p>
+<p>总之，<code>static_cast</code>
+在编译时进行类型检查，确保转换是明确的、安全的且合理的。这使得它比 C
+风格的强制类型转换更安全。然而，应谨慎使用
+<code>static_cast</code>，并且只在确信转换是安全的情况下使用，因为它仍然可能导致数据损失或其他问题，尤其是在数值类型转换和向下转换（从基类到派生类）时。在这些情况下，应考虑使用其他类型转换操作符，如
+<code>dynamic_cast</code> 或 <code>reinterpret_cast</code>。</p>
+<h4 id="为什么输出color_code是0呢">为什么输出color_code是0呢</h4>
+<p>在您提供的代码示例中，<code>color_code</code> 的值为 0，因为
+<code>Color</code> 枚举中的 <code>RED</code> 成员被隐式地赋予了整数值
+0。C++ 中的枚举成员会从 0
+开始递增地分配整数值，除非您明确地为它们指定其他值。因此，在这个例子中，<code>Color</code>
+枚举成员的整数值如下：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> <span class="title class_">Color</span> &#123; RED, GREEN, BLUE &#125;;</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li><code>RED</code> 的值为 0</li>
 <li><code>GREEN</code> 的值为 1</li>
 <li><code>BLUE</code> 的值为 2</li>
 </ul>
-<p>当您将 <code>c</code> 赋值为 <code>RED</code> 并将其转换为 <code>int</code> 类型时，<code>color_code</code> 变量将接收整数值 0，因为这是 <code>RED</code> 枚举成员对应的值。这就是为什么 <code>color_code</code> 的输出值为 0 的原因。</p>
-<h4 id="如何赋值其他值呢"><a href="#如何赋值其他值呢" class="headerlink" title="如何赋值其他值呢"></a>如何赋值其他值呢</h4><p>在 C++ 中，您可以为枚举成员显式分配整数值。为此，只需在枚举成员后使用等号 (&#x3D;) 并指定所需的整数值。以下是一个示例，说明如何为 <code>Color</code> 枚举的成员分配自定义整数值：</p>
+<p>当您将 <code>c</code> 赋值为 <code>RED</code> 并将其转换为
+<code>int</code> 类型时，<code>color_code</code> 变量将接收整数值
+0，因为这是 <code>RED</code> 枚举成员对应的值。这就是为什么
+<code>color_code</code> 的输出值为 0 的原因。</p>
+<h4 id="如何赋值其他值呢">如何赋值其他值呢</h4>
+<p>在 C++
+中，您可以为枚举成员显式分配整数值。为此，只需在枚举成员后使用等号 (=)
+并指定所需的整数值。以下是一个示例，说明如何为 <code>Color</code>
+枚举的成员分配自定义整数值：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> <span class="title class_">Color</span> &#123; RED = <span class="number">3</span>, GREEN = <span class="number">7</span>, BLUE = <span class="number">10</span> &#125;;</span><br></pre></td></tr></table></figure>
-
-<p>在这个例子中，我们将 <code>RED</code> 的值设为 3，<code>GREEN</code> 的值设为 7，而 <code>BLUE</code> 的值设为 10。现在，当您将枚举成员转换为整数类型时，它们将具有这些显式分配的值。例如：</p>
+<p>在这个例子中，我们将 <code>RED</code> 的值设为 3，<code>GREEN</code>
+的值设为 7，而 <code>BLUE</code> 的值设为
+10。现在，当您将枚举成员转换为整数类型时，它们将具有这些显式分配的值。例如：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Color c = RED;</span><br><span class="line">    <span class="type">int</span> color_code = <span class="built_in">static_cast</span>&lt;<span class="type">int</span>&gt;(c); <span class="comment">// 将枚举类型转换为 int 类型</span></span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;Color code for RED: &quot;</span> &lt;&lt; color_code &lt;&lt; std::endl; <span class="comment">// 输出：Color code for RED: 3</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>在这个例子中，<code>color_code</code> 的值为 3，因为我们为 <code>RED</code> 枚举成员分配了整数值 3。</p>
-<h2 id="合成拷贝构造函数和拷贝构造函数有什么不同吗"><a href="#合成拷贝构造函数和拷贝构造函数有什么不同吗" class="headerlink" title="合成拷贝构造函数和拷贝构造函数有什么不同吗"></a>合成拷贝构造函数和拷贝构造函数有什么不同吗</h2><p>拷贝构造函数和合成拷贝构造函数的主要区别在于它们的来源和行为。拷贝构造函数是用户自定义的，而合成拷贝构造函数是编译器自动生成的。</p>
-<ol>
-<li>拷贝构造函数（User-defined copy constructor）：<br>当您在类中显式地定义一个拷贝构造函数时，就是创建了一个用户自定义的拷贝构造函数。这意味着您可以根据需要自定义拷贝行为。例如，您可能需要执行深拷贝以避免潜在的浅拷贝问题。自定义拷贝构造函数的例子如下：</li>
+<p>在这个例子中，<code>color_code</code> 的值为 3，因为我们为
+<code>RED</code> 枚举成员分配了整数值 3。</p>
+<h2 id="合成拷贝构造函数和拷贝构造函数有什么不同吗">合成拷贝构造函数和拷贝构造函数有什么不同吗</h2>
+<p>拷贝构造函数和合成拷贝构造函数的主要区别在于它们的来源和行为。拷贝构造函数是用户自定义的，而合成拷贝构造函数是编译器自动生成的。</p>
+<ol type="1">
+<li>拷贝构造函数（User-defined copy constructor）：
+当您在类中显式地定义一个拷贝构造函数时，就是创建了一个用户自定义的拷贝构造函数。这意味着您可以根据需要自定义拷贝行为。例如，您可能需要执行深拷贝以避免潜在的浅拷贝问题。自定义拷贝构造函数的例子如下：</li>
 </ol>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MyClass</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="type">int</span> *data;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">MyClass</span>(<span class="type">int</span> value) &#123;</span><br><span class="line">        data = <span class="keyword">new</span> <span class="built_in">int</span>(value);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 用户自定义的拷贝构造函数</span></span><br><span class="line">    <span class="built_in">MyClass</span>(<span class="type">const</span> MyClass &amp;other) &#123;</span><br><span class="line">        data = <span class="keyword">new</span> <span class="built_in">int</span>(*other.data); <span class="comment">// 深拷贝</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    ~<span class="built_in">MyClass</span>() &#123;</span><br><span class="line">        <span class="keyword">delete</span> data;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>合成拷贝构造函数（Synthesized copy constructor）：<br>当您没有在类中显式地定义拷贝构造函数时，编译器会自动生成一个合成拷贝构造函数。合成拷贝构造函数执行成员逐个拷贝，即：对于类类型的成员，调用其拷贝构造函数；对于内置类型的成员，直接进行值拷贝。需要注意的是，合成拷贝构造函数执行的是浅拷贝，这可能导致潜在的内存问题（例如，当类包含指针成员时）。</li>
+<ol start="2" type="1">
+<li>合成拷贝构造函数（Synthesized copy constructor）：
+当您没有在类中显式地定义拷贝构造函数时，编译器会自动生成一个合成拷贝构造函数。合成拷贝构造函数执行成员逐个拷贝，即：对于类类型的成员，调用其拷贝构造函数；对于内置类型的成员，直接进行值拷贝。需要注意的是，合成拷贝构造函数执行的是浅拷贝，这可能导致潜在的内存问题（例如，当类包含指针成员时）。</li>
 </ol>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MyClass</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="type">int</span> *data;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">MyClass</span>(<span class="type">int</span> value) &#123;</span><br><span class="line">        data = <span class="keyword">new</span> <span class="built_in">int</span>(value);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 编译器自动生成的合成拷贝构造函数</span></span><br><span class="line">    <span class="comment">// MyClass(const MyClass &amp;other) = default;</span></span><br><span class="line"></span><br><span class="line">    ~<span class="built_in">MyClass</span>() &#123;</span><br><span class="line">        <span class="keyword">delete</span> data;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
 <p>总之，拷贝构造函数和合成拷贝构造函数的主要区别在于：拷贝构造函数是用户自定义的，可以自定义拷贝行为；合成拷贝构造函数是编译器自动生成的，执行逐个成员的拷贝。如果类中没有显式地定义拷贝构造函数，编译器将自动生成一个合成拷贝构造函数。如果您需要自定义拷贝行为（例如执行深拷贝），则应在类中显式地定义拷贝构造函数。</p>
-<h2 id="拷贝初始化除了在使用-x3D-定义变量时会发生，还有什么情况下会发生"><a href="#拷贝初始化除了在使用-x3D-定义变量时会发生，还有什么情况下会发生" class="headerlink" title="拷贝初始化除了在使用&#x3D;定义变量时会发生，还有什么情况下会发生"></a>拷贝初始化除了在使用&#x3D;定义变量时会发生，还有什么情况下会发生</h2><p>拷贝初始化不仅在使用等号 <code>=</code> 定义变量时会发生，还会在以下几种情况下发生：</p>
-<ol>
-<li>作为函数参数传递对象时：<br>当将对象作为函数参数传递时，如果参数是按值传递的（即不是引用或指针），则会发生拷贝初始化。</li>
+<h2 id="拷贝初始化除了在使用定义变量时会发生还有什么情况下会发生">拷贝初始化除了在使用=定义变量时会发生，还有什么情况下会发生</h2>
+<p>拷贝初始化不仅在使用等号 <code>=</code>
+定义变量时会发生，还会在以下几种情况下发生：</p>
+<ol type="1">
+<li>作为函数参数传递对象时：
+当将对象作为函数参数传递时，如果参数是按值传递的（即不是引用或指针），则会发生拷贝初始化。</li>
 </ol>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">foo</span><span class="params">(MyClass obj)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    MyClass a;</span><br><span class="line">    <span class="built_in">foo</span>(a); <span class="comment">// 拷贝初始化：将 a 作为参数传递给函数 foo</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>从函数返回对象时：<br>当从函数返回一个对象时，会发生拷贝初始化。这通常涉及到返回值优化（RVO），在许多情况下，编译器会优化这个过程，避免不必要的拷贝。</li>
+<ol start="2" type="1">
+<li>从函数返回对象时：
+当从函数返回一个对象时，会发生拷贝初始化。这通常涉及到返回值优化（RVO），在许多情况下，编译器会优化这个过程，避免不必要的拷贝。</li>
 </ol>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">MyClass <span class="title">create_object</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    MyClass obj;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    <span class="keyword">return</span> obj; <span class="comment">// 拷贝初始化：从函数返回一个对象</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    MyClass b = <span class="built_in">create_object</span>(); <span class="comment">// 拷贝初始化：接收从函数返回的对象</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ol start="3">
-<li>使用花括号 <code>&#123;&#125;</code> 或圆括号 <code>()</code> 初始化对象时：<br>当用另一个对象初始化新对象时，如果使用花括号 <code>&#123;&#125;</code> 或圆括号 <code>()</code>，也会发生拷贝初始化。</li>
+<ol start="3" type="1">
+<li>使用花括号 <code>&#123;&#125;</code> 或圆括号 <code>()</code> 初始化对象时：
+当用另一个对象初始化新对象时，如果使用花括号 <code>&#123;&#125;</code> 或圆括号
+<code>()</code>，也会发生拷贝初始化。</li>
 </ol>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    MyClass c;</span><br><span class="line">    <span class="function">MyClass <span class="title">d</span><span class="params">(c)</span></span>; <span class="comment">// 拷贝初始化：使用圆括号初始化对象</span></span><br><span class="line">    MyClass e&#123;c&#125;; <span class="comment">// 拷贝初始化：使用花括号初始化对象</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ol start="4">
-<li>初始化列表中的成员初始化：<br>当在类的构造函数的初始化列表中初始化成员对象时，也会发生拷贝初始化。</li>
+<ol start="4" type="1">
+<li>初始化列表中的成员初始化：
+当在类的构造函数的初始化列表中初始化成员对象时，也会发生拷贝初始化。</li>
 </ol>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">AnotherClass</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    MyClass obj;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">AnotherClass</span>(<span class="type">const</span> MyClass &amp;other_obj) : <span class="built_in">obj</span>(other_obj) &#123;</span><br><span class="line">        <span class="comment">// 拷贝初始化：在初始化列表中初始化成员对象</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    MyClass f;</span><br><span class="line">    <span class="function">AnotherClass <span class="title">g</span><span class="params">(f)</span></span>; <span class="comment">// 拷贝初始化：将 f 传递给 AnotherClass 的构造函数</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>在以上各种情况下，都可能发生拷贝初始化。然而，需要注意的是，编译器通常会尽可能地优化这些拷贝操作，以提高程序的性能。</p>
 
       
@@ -664,19 +925,36 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h2 id="头文件保护符定义"><a href="#头文件保护符定义" class="headerlink" title="头文件保护符定义"></a>头文件保护符定义</h2><p>头文件保护符（Header guards）的主要作用是防止头文件在同一个编译单元中被多次包含。这可以避免因多次包含相同的头文件导致的编译错误，例如重复定义类、函数或变量。头文件保护符是通过使用预处理器指令 <code>#ifndef</code>、<code>#define</code> 和 <code>#endif</code> 实现的。</p>
-<p><code>#define</code>: 把一个名字设定为预处理变量，另外两个指令则分别检查某个指定的预处理变量是否定义；</p>
+          <h2 id="头文件保护符定义">头文件保护符定义</h2>
+<p>头文件保护符（Header
+guards）的主要作用是防止头文件在同一个编译单元中被多次包含。这可以避免因多次包含相同的头文件导致的编译错误，例如重复定义类、函数或变量。头文件保护符是通过使用预处理器指令
+<code>#ifndef</code>、<code>#define</code> 和 <code>#endif</code>
+实现的。</p>
+<p><code>#define</code>:
+把一个名字设定为预处理变量，另外两个指令则分别检查某个指定的预处理变量是否定义；</p>
 <p><code>#ifdef</code>: 当且仅当变量已定义时为真；</p>
 <p><code>#ifndef</code>: 当且仅当变量未定义时为真；</p>
-<p>注意：<code>ifdef</code> 和 <code>ifndef</code> 一旦检查结果为真，则执行后续程序直至遇到 <code>endif</code> 为止。</p>
-<h2 id="简单实例"><a href="#简单实例" class="headerlink" title="简单实例"></a>简单实例</h2><p>假设我们有一个名为 <code>my_class.h</code> 的头文件，其中定义了一个名为 <code>MyClass</code> 的类：</p>
+<p>注意：<code>ifdef</code> 和 <code>ifndef</code>
+一旦检查结果为真，则执行后续程序直至遇到 <code>endif</code> 为止。</p>
+<h2 id="简单实例">简单实例</h2>
+<p>假设我们有一个名为 <code>my_class.h</code>
+的头文件，其中定义了一个名为 <code>MyClass</code> 的类：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// my_class.h</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">ifndef</span> MY_CLASS_H</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MY_CLASS_H</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyClass</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">print_hello</span><span class="params">()</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span> <span class="comment">// MY_CLASS_H</span></span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>在这个头文件中，我们使用了头文件保护符。<code>#ifndef MY_CLASS_H</code> 检查一个名为 <code>MY_CLASS_H</code> 的宏是否已被定义。如果尚未定义，编译器会继续处理 <code>#define MY_CLASS_H</code>，将 <code>MY_CLASS_H</code> 定义为宏，并包含 <code>MyClass</code> 的定义。<code>#endif</code> 结束了这个条件编译块。</p>
-<p>现在，假设我们有一个名为 <code>main.cpp</code> 的源文件，它包含了 <code>my_class.h</code>：</p>
+<p>在这个头文件中，我们使用了头文件保护符。<code>#ifndef MY_CLASS_H</code>
+检查一个名为 <code>MY_CLASS_H</code>
+的宏是否已被定义。如果尚未定义，编译器会继续处理
+<code>#define MY_CLASS_H</code>，将 <code>MY_CLASS_H</code>
+定义为宏，并包含 <code>MyClass</code> 的定义。<code>#endif</code>
+结束了这个条件编译块。</p>
+<p>现在，假设我们有一个名为 <code>main.cpp</code> 的源文件，它包含了
+<code>my_class.h</code>：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// main.cpp</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;my_class.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;my_class.h&quot;</span> <span class="comment">// 这里再次包含了同一个头文件，但是没有问题，因为有头文件保护符</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    MyClass obj;</span><br><span class="line">    obj.<span class="built_in">print_hello</span>();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>在 <code>main.cpp</code> 中，我们包含了 <code>my_class.h</code> 头文件两次。如果没有头文件保护符，这将导致 <code>MyClass</code> 类被重复定义，从而引发编译错误。由于我们使用了头文件保护符，当第二次尝试包含 <code>my_class.h</code> 时，<code>MY_CLASS_H</code> 宏已经被定义，因此 <code>#ifndef MY_CLASS_H</code> 的条件为 false，<code>MyClass</code> 的定义不会再次被包含。</p>
+<p>在 <code>main.cpp</code> 中，我们包含了 <code>my_class.h</code>
+头文件两次。如果没有头文件保护符，这将导致 <code>MyClass</code>
+类被重复定义，从而引发编译错误。由于我们使用了头文件保护符，当第二次尝试包含
+<code>my_class.h</code> 时，<code>MY_CLASS_H</code> 宏已经被定义，因此
+<code>#ifndef MY_CLASS_H</code> 的条件为 false，<code>MyClass</code>
+的定义不会再次被包含。</p>
 <p>这个简单的例子展示了头文件保护符如何防止头文件在同一个编译单元中被多次包含，从而避免了编译错误。</p>
 
       
@@ -757,7 +1035,7 @@
 
   
 
-  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"cdn":"https://cdn.jsdelivr.net/npm/mathjax@2.7.8/MathJax.js?config=TeX-AMS-MML_HTMLorMML","tags":"none","src":"custom_mathjax_source","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"mhchem":false,"cdn":"https://cdn.jsdelivr.net/npm/mathjax@2.7.8/MathJax.js?config=TeX-AMS-MML_HTMLorMML","src":"custom_mathjax_source","js":{"url":"//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"}}</script>
 <script src="/js/third-party/math/mathjax.js"></script>
 
 

@@ -19,12 +19,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"zcl0219.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":null,"show_result":true},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="你知道c++三大特性吗？那你又是否清楚他们的特点呢？c++三大特性分别为：封装、继承和多态 封装：1、三个特点 结合性，即将属性（数据成员）和行为（成员函数）相结合 信息隐蔽性，利用接口机制隐蔽内部实现细节，只留下接口给外界调用 实现代码重用，在此举个例子解释所谓的实现代码重用： 例如，如果你需要在程序的多个地方进行文件读写操作，你可以创建一个名为FileHandler的类，将文件的打开、关闭、读">
+    <meta name="description" content="你知道c++三大特性吗？那你又是否清楚他们的特点呢？ c++三大特性分别为：封装、继承和多态 封装： 1、三个特点 结合性，即将属性（数据成员）和行为（成员函数）相结合 信息隐蔽性，利用接口机制隐蔽内部实现细节，只留下接口给外界调用 实现代码重用，在此举个例子解释所谓的实现代码重用： 例如，如果你需要在程序的多个地方进行文件读写操作，你可以创建一个名为FileHandler的类，将文件">
 <meta property="og:type" content="article">
 <meta property="og:title" content="八股文C++">
 <meta property="og:url" content="http://zcl0219.github.io/2023/05/12/%E5%85%AB%E8%82%A1%E6%96%87C/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="你知道c++三大特性吗？那你又是否清楚他们的特点呢？c++三大特性分别为：封装、继承和多态 封装：1、三个特点 结合性，即将属性（数据成员）和行为（成员函数）相结合 信息隐蔽性，利用接口机制隐蔽内部实现细节，只留下接口给外界调用 实现代码重用，在此举个例子解释所谓的实现代码重用： 例如，如果你需要在程序的多个地方进行文件读写操作，你可以创建一个名为FileHandler的类，将文件的打开、关闭、读">
+<meta property="og:description" content="你知道c++三大特性吗？那你又是否清楚他们的特点呢？ c++三大特性分别为：封装、继承和多态 封装： 1、三个特点 结合性，即将属性（数据成员）和行为（成员函数）相结合 信息隐蔽性，利用接口机制隐蔽内部实现细节，只留下接口给外界调用 实现代码重用，在此举个例子解释所谓的实现代码重用： 例如，如果你需要在程序的多个地方进行文件读写操作，你可以创建一个名为FileHandler的类，将文件">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-05-11T19:03:13.000Z">
 <meta property="article:modified_time" content="2023-06-06T10:36:57.047Z">
@@ -144,7 +144,10 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BD%A0%E7%9F%A5%E9%81%93c-%E4%B8%89%E5%A4%A7%E7%89%B9%E6%80%A7%E5%90%97%EF%BC%9F%E9%82%A3%E4%BD%A0%E5%8F%88%E6%98%AF%E5%90%A6%E6%B8%85%E6%A5%9A%E4%BB%96%E4%BB%AC%E7%9A%84%E7%89%B9%E7%82%B9%E5%91%A2%EF%BC%9F"><span class="nav-number">1.</span> <span class="nav-text">你知道c++三大特性吗？那你又是否清楚他们的特点呢？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E4%BD%93%E5%86%85%E9%83%A8%E5%A3%B0%E6%98%8E%E4%B8%80%E4%B8%AAstring%E5%8F%98%E9%87%8F%EF%BC%8C%E6%9C%AA%E8%BF%9B%E8%A1%8C%E5%88%9D%E5%A7%8B%E5%8C%96%EF%BC%8C%E4%BC%9A%E8%BF%9B%E8%A1%8C%E9%BB%98%E8%AE%A4%E5%88%9D%E5%A7%8B%E5%8C%96%E5%90%97%EF%BC%9F"><span class="nav-number">2.</span> <span class="nav-text">函数体内部声明一个string变量，未进行初始化，会进行默认初始化吗？</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#string%E5%B1%9E%E4%BA%8E%E5%86%85%E7%BD%AE%E7%B1%BB%E5%9E%8B%E5%90%97%EF%BC%9F"><span class="nav-number">2.1.</span> <span class="nav-text">string属于内置类型吗？</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#pragma-once%E7%9A%84%E4%BD%9C%E7%94%A8%E5%92%8C-ifndef%E4%B8%80%E6%A0%B7%E4%B9%88"><span class="nav-number">3.</span> <span class="nav-text">#pragma once的作用和#ifndef一样么</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#C-%E5%88%86%E7%A6%BB%E5%BC%8F%E7%BC%96%E8%AF%91"><span class="nav-number">4.</span> <span class="nav-text">C++分离式编译</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E5%8F%AF%E4%BB%A5%E5%90%8C%E6%97%B6%E7%94%A8const%E5%92%8Cstatic%E4%BF%AE%E9%A5%B0%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0%E3%80%82%E8%AF%A6%E7%BB%86%E8%A7%A3%E9%87%8A%E4%B8%80%E4%B8%8B"><span class="nav-number">5.</span> <span class="nav-text">为什么不可以同时用const和static修饰成员函数。详细解释一下</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%A6%82%E6%9E%9C%E4%B8%80%E4%B8%AA%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0%E8%A2%AB%E5%A3%B0%E6%98%8E%E4%B8%BA-const%EF%BC%8C%E9%82%A3%E4%B9%88%E5%AE%83%E5%B0%B1%E4%B8%8D%E8%83%BD%E4%BF%AE%E6%94%B9%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%BB%BB%E4%BD%95%E9%9D%9E%E9%9D%99%E6%80%81%E6%95%B0%E6%8D%AE%E6%88%90%E5%91%98%E6%88%96%E8%80%85%E8%B0%83%E7%94%A8%E4%BB%BB%E4%BD%95%E9%9D%9E-const-%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0%E3%80%82%E8%83%BD%E4%B8%BE%E4%B8%AA%E4%BE%8B%E5%AD%90%E5%90%97%EF%BC%9F%E8%A7%A3%E9%87%8A%E7%9A%84%E6%9B%B4%E9%80%9A%E4%BF%97%E4%B8%80%E7%82%B9"><span class="nav-number">5.1.</span> <span class="nav-text">如果一个成员函数被声明为 const，那么它就不能修改对象的任何非静态数据成员或者调用任何非 const 成员函数。能举个例子吗？解释的更通俗一点</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#static-%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0%E4%B8%8E%E7%B1%BB%E7%9A%84%E5%AF%B9%E8%B1%A1%E6%97%A0%E5%85%B3%EF%BC%8C%E4%B8%8D%E9%9C%80%E8%A6%81%E5%AF%B9%E8%B1%A1%E5%B0%B1%E5%8F%AF%E4%BB%A5%E8%B0%83%E7%94%A8%E3%80%82%E8%BF%99%E5%8F%A5%E8%AF%9D%E6%80%8E%E4%B9%88%E7%90%86%E8%A7%A3%E5%91%A2%EF%BC%9F%E4%B8%8D%E9%9C%80%E8%A6%81%E5%AF%B9%E8%B1%A1%E5%A6%82%E4%BD%95%E8%B0%83%E7%94%A8%E5%91%A2%EF%BC%9F%E7%9B%B4%E6%8E%A5%E4%BC%A0%E5%8F%82%E5%90%97%EF%BC%9F%E8%83%BD%E4%B8%BE%E4%B8%AA%E4%BE%8B%E5%AD%90%E5%90%97"><span class="nav-number">5.2.</span> <span class="nav-text">static 成员函数与类的对象无关，不需要对象就可以调用。这句话怎么理解呢？不需要对象如何调用呢？直接传参吗？能举个例子吗</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B7%B1%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B5%85%E6%8B%B7%E8%B4%9D"><span class="nav-number">6.</span> <span class="nav-text">深拷贝和浅拷贝</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%97%AE%E4%BA%86%E4%B8%80%E4%B8%AA%E5%BE%88%E6%84%9A%E8%A0%A2%E7%9A%84%E9%97%AE%E9%A2%98%EF%BC%9A%E6%88%91%E5%8F%91%E7%8E%B0%E5%9C%A8%E5%AE%9A%E4%B9%89%E4%B8%80%E4%B8%AA%E7%B1%BB%E7%9A%84%E6%97%B6%E5%80%99%EF%BC%8C%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E4%BC%9A%E5%AF%B9private%E9%87%8C%E7%9A%84%E7%B1%BB%E4%BC%BC%E4%BA%8Eint%EF%BC%8Cstring%E5%92%8C%E6%8C%87%E9%92%88%E7%AD%89%E7%B1%BB%E5%9E%8B%E6%98%BE%E5%BC%8F%E6%88%96%E9%9A%90%E5%BC%8F%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96%EF%BC%8C%E8%80%8C%E4%B8%80%E4%BA%9B%E5%87%BD%E6%95%B0%E5%8F%AA%E7%BB%99%E5%87%BA%E4%BA%86%E5%A3%B0%E6%98%8E%EF%BC%8C%E5%87%BD%E6%95%B0%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E7%94%A8%E7%BB%99%E5%87%BA%E5%AE%9A%E4%B9%89%EF%BC%9F"><span class="nav-number">7.</span> <span class="nav-text">问了一个很愚蠢的问题：我发现在定义一个类的时候，构造函数会对private里的类似于int，string和指针等类型显式或隐式的初始化，而一些函数只给出了声明，函数为什么不用给出定义？</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E7%BB%84%E4%B8%8D%E5%85%81%E8%AE%B8%E6%8B%B7%E8%B4%9D%E5%92%8C%E8%B5%8B%E5%80%BC"><span class="nav-number"></span> <span class="nav-text">数组不允许拷贝和赋值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%87%E5%87%86%E5%BA%93%E5%87%BD%E6%95%B0begin-%E5%92%8Cend"><span class="nav-number"></span> <span class="nav-text">标准库函数begin()和end()</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AAvector%E5%AE%B9%E5%99%A8%E5%AD%98%E6%94%BEstring%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%AF%B9%E8%B1%A1"><span class="nav-number">1.</span> <span class="nav-text">创建一个vector容器存放string类型的对象</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%88%91%E5%86%B3%E5%AE%9A%E5%85%88%E5%AE%9E%E7%8E%B0StrVec%E7%B1%BB%E7%9A%84%E6%8B%B7%E8%B4%9D%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0"><span class="nav-number">2.</span> <span class="nav-text">我决定先实现StrVec类的拷贝构造函数</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%94%E5%9B%9E%E7%B1%BB%E5%9E%8B-%E5%87%BD%E6%95%B0%E5%90%8D-%E5%BD%A2%E5%8F%82%E5%88%97%E8%A1%A8-const-%E5%87%BD%E6%95%B0%E4%BD%93%EF%BC%8C%E8%AF%B7%E9%97%AE%E8%BF%99%E4%B8%AAconst%E4%BD%9C%E7%94%A8%E6%98%AF%E4%BB%80%E4%B9%88"><span class="nav-number"></span> <span class="nav-text">返回类型+函数名+形参列表+const+函数体，请问这个const作用是什么</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%B8%B8%E9%87%8F%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0%E5%8F%AF%E4%BB%A5%E5%9C%A8%E5%B8%B8%E9%87%8F%E5%AF%B9%E8%B1%A1%E4%B8%8A%E8%B0%83%E7%94%A8%EF%BC%8C%E9%9D%9E%E5%B8%B8%E9%87%8F%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0%E5%88%99%E4%B8%8D%E8%83%BD%E3%80%82%E8%BF%99%E5%8F%A5%E8%AF%9D%E7%9A%84%E6%84%8F%E6%80%9D%E6%98%AF%E5%B8%B8%E9%87%8F%E5%AF%B9%E8%B1%A1%E4%B8%8D%E8%83%BD%E8%B0%83%E7%94%A8%E9%9D%9E%E5%B8%B8%E9%87%8F%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0%EF%BC%9F"><span class="nav-number">1.</span> <span class="nav-text">常量成员函数可以在常量对象上调用，非常量成员函数则不能。这句话的意思是常量对象不能调用非常量成员函数？</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B0%81%E8%A3%85%E5%AE%9A%E4%B9%89"><span class="nav-number"></span> <span class="nav-text">封装定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%8B%E5%85%83"><span class="nav-number"></span> <span class="nav-text">友元</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%B3%E5%80%BC%E5%BC%95%E7%94%A8"><span class="nav-number"></span> <span class="nav-text">右值引用</span></a></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BD%A0%E7%9F%A5%E9%81%93c%E4%B8%89%E5%A4%A7%E7%89%B9%E6%80%A7%E5%90%97%E9%82%A3%E4%BD%A0%E5%8F%88%E6%98%AF%E5%90%A6%E6%B8%85%E6%A5%9A%E4%BB%96%E4%BB%AC%E7%9A%84%E7%89%B9%E7%82%B9%E5%91%A2"><span class="nav-number">1.</span> <span class="nav-text">你知道c++三大特性吗？那你又是否清楚他们的特点呢？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E4%BD%93%E5%86%85%E9%83%A8%E5%A3%B0%E6%98%8E%E4%B8%80%E4%B8%AAstring%E5%8F%98%E9%87%8F%E6%9C%AA%E8%BF%9B%E8%A1%8C%E5%88%9D%E5%A7%8B%E5%8C%96%E4%BC%9A%E8%BF%9B%E8%A1%8C%E9%BB%98%E8%AE%A4%E5%88%9D%E5%A7%8B%E5%8C%96%E5%90%97"><span class="nav-number">2.</span> <span class="nav-text">函数体内部声明一个string变量，未进行初始化，会进行默认初始化吗？</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#string%E5%B1%9E%E4%BA%8E%E5%86%85%E7%BD%AE%E7%B1%BB%E5%9E%8B%E5%90%97"><span class="nav-number">2.1.</span> <span class="nav-text">string属于内置类型吗？</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#pragma-once%E7%9A%84%E4%BD%9C%E7%94%A8%E5%92%8Cifndef%E4%B8%80%E6%A0%B7%E4%B9%88"><span class="nav-number">3.</span> <span class="nav-text">#pragma once的作用和#ifndef一样么</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#c%E5%88%86%E7%A6%BB%E5%BC%8F%E7%BC%96%E8%AF%91"><span class="nav-number">4.</span> <span class="nav-text">C++分离式编译</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E5%8F%AF%E4%BB%A5%E5%90%8C%E6%97%B6%E7%94%A8const%E5%92%8Cstatic%E4%BF%AE%E9%A5%B0%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0%E8%AF%A6%E7%BB%86%E8%A7%A3%E9%87%8A%E4%B8%80%E4%B8%8B"><span class="nav-number">5.</span> <span class="nav-text">为什么不可以同时用const和static修饰成员函数。详细解释一下</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%A6%82%E6%9E%9C%E4%B8%80%E4%B8%AA%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0%E8%A2%AB%E5%A3%B0%E6%98%8E%E4%B8%BA-const%E9%82%A3%E4%B9%88%E5%AE%83%E5%B0%B1%E4%B8%8D%E8%83%BD%E4%BF%AE%E6%94%B9%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%BB%BB%E4%BD%95%E9%9D%9E%E9%9D%99%E6%80%81%E6%95%B0%E6%8D%AE%E6%88%90%E5%91%98%E6%88%96%E8%80%85%E8%B0%83%E7%94%A8%E4%BB%BB%E4%BD%95%E9%9D%9E-const-%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0%E8%83%BD%E4%B8%BE%E4%B8%AA%E4%BE%8B%E5%AD%90%E5%90%97%E8%A7%A3%E9%87%8A%E7%9A%84%E6%9B%B4%E9%80%9A%E4%BF%97%E4%B8%80%E7%82%B9"><span class="nav-number">5.1.</span> <span class="nav-text">如果一个成员函数被声明为
+const，那么它就不能修改对象的任何非静态数据成员或者调用任何非 const
+成员函数。能举个例子吗？解释的更通俗一点</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#static-%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0%E4%B8%8E%E7%B1%BB%E7%9A%84%E5%AF%B9%E8%B1%A1%E6%97%A0%E5%85%B3%E4%B8%8D%E9%9C%80%E8%A6%81%E5%AF%B9%E8%B1%A1%E5%B0%B1%E5%8F%AF%E4%BB%A5%E8%B0%83%E7%94%A8%E8%BF%99%E5%8F%A5%E8%AF%9D%E6%80%8E%E4%B9%88%E7%90%86%E8%A7%A3%E5%91%A2%E4%B8%8D%E9%9C%80%E8%A6%81%E5%AF%B9%E8%B1%A1%E5%A6%82%E4%BD%95%E8%B0%83%E7%94%A8%E5%91%A2%E7%9B%B4%E6%8E%A5%E4%BC%A0%E5%8F%82%E5%90%97%E8%83%BD%E4%B8%BE%E4%B8%AA%E4%BE%8B%E5%AD%90%E5%90%97"><span class="nav-number">5.2.</span> <span class="nav-text">static
+成员函数与类的对象无关，不需要对象就可以调用。这句话怎么理解呢？不需要对象如何调用呢？直接传参吗？能举个例子吗</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B7%B1%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B5%85%E6%8B%B7%E8%B4%9D"><span class="nav-number">6.</span> <span class="nav-text">深拷贝和浅拷贝</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%97%AE%E4%BA%86%E4%B8%80%E4%B8%AA%E5%BE%88%E6%84%9A%E8%A0%A2%E7%9A%84%E9%97%AE%E9%A2%98%E6%88%91%E5%8F%91%E7%8E%B0%E5%9C%A8%E5%AE%9A%E4%B9%89%E4%B8%80%E4%B8%AA%E7%B1%BB%E7%9A%84%E6%97%B6%E5%80%99%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E4%BC%9A%E5%AF%B9private%E9%87%8C%E7%9A%84%E7%B1%BB%E4%BC%BC%E4%BA%8Eintstring%E5%92%8C%E6%8C%87%E9%92%88%E7%AD%89%E7%B1%BB%E5%9E%8B%E6%98%BE%E5%BC%8F%E6%88%96%E9%9A%90%E5%BC%8F%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96%E8%80%8C%E4%B8%80%E4%BA%9B%E5%87%BD%E6%95%B0%E5%8F%AA%E7%BB%99%E5%87%BA%E4%BA%86%E5%A3%B0%E6%98%8E%E5%87%BD%E6%95%B0%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E7%94%A8%E7%BB%99%E5%87%BA%E5%AE%9A%E4%B9%89"><span class="nav-number">7.</span> <span class="nav-text">问了一个很愚蠢的问题：我发现在定义一个类的时候，构造函数会对private里的类似于int，string和指针等类型显式或隐式的初始化，而一些函数只给出了声明，函数为什么不用给出定义？</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E7%BB%84%E4%B8%8D%E5%85%81%E8%AE%B8%E6%8B%B7%E8%B4%9D%E5%92%8C%E8%B5%8B%E5%80%BC"><span class="nav-number"></span> <span class="nav-text">数组不允许拷贝和赋值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%87%E5%87%86%E5%BA%93%E5%87%BD%E6%95%B0begin%E5%92%8Cend"><span class="nav-number"></span> <span class="nav-text">标准库函数begin()和end()</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AAvector%E5%AE%B9%E5%99%A8%E5%AD%98%E6%94%BEstring%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%AF%B9%E8%B1%A1"><span class="nav-number">1.</span> <span class="nav-text">创建一个vector容器存放string类型的对象</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%88%91%E5%86%B3%E5%AE%9A%E5%85%88%E5%AE%9E%E7%8E%B0strvec%E7%B1%BB%E7%9A%84%E6%8B%B7%E8%B4%9D%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0"><span class="nav-number">2.</span> <span class="nav-text">我决定先实现StrVec类的拷贝构造函数</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%94%E5%9B%9E%E7%B1%BB%E5%9E%8B%E5%87%BD%E6%95%B0%E5%90%8D%E5%BD%A2%E5%8F%82%E5%88%97%E8%A1%A8const%E5%87%BD%E6%95%B0%E4%BD%93%E8%AF%B7%E9%97%AE%E8%BF%99%E4%B8%AAconst%E4%BD%9C%E7%94%A8%E6%98%AF%E4%BB%80%E4%B9%88"><span class="nav-number"></span> <span class="nav-text">返回类型+函数名+形参列表+const+函数体，请问这个const作用是什么</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%B8%B8%E9%87%8F%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0%E5%8F%AF%E4%BB%A5%E5%9C%A8%E5%B8%B8%E9%87%8F%E5%AF%B9%E8%B1%A1%E4%B8%8A%E8%B0%83%E7%94%A8%E9%9D%9E%E5%B8%B8%E9%87%8F%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0%E5%88%99%E4%B8%8D%E8%83%BD%E8%BF%99%E5%8F%A5%E8%AF%9D%E7%9A%84%E6%84%8F%E6%80%9D%E6%98%AF%E5%B8%B8%E9%87%8F%E5%AF%B9%E8%B1%A1%E4%B8%8D%E8%83%BD%E8%B0%83%E7%94%A8%E9%9D%9E%E5%B8%B8%E9%87%8F%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0"><span class="nav-number">1.</span> <span class="nav-text">常量成员函数可以在常量对象上调用，非常量成员函数则不能。这句话的意思是常量对象不能调用非常量成员函数？</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B0%81%E8%A3%85%E5%AE%9A%E4%B9%89"><span class="nav-number"></span> <span class="nav-text">封装定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%8B%E5%85%83"><span class="nav-number"></span> <span class="nav-text">友元</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%B3%E5%80%BC%E5%BC%95%E7%94%A8"><span class="nav-number"></span> <span class="nav-text">右值引用</span></a></div>
         </div>
         <!--/noindex-->
 
@@ -159,13 +162,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">33</span>
+          <span class="site-state-item-count">34</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -245,8 +248,9 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h5 id="你知道c-三大特性吗？那你又是否清楚他们的特点呢？"><a href="#你知道c-三大特性吗？那你又是否清楚他们的特点呢？" class="headerlink" title="你知道c++三大特性吗？那你又是否清楚他们的特点呢？"></a>你知道c++三大特性吗？那你又是否清楚他们的特点呢？</h5><p>c++三大特性分别为：封装、继承和多态</p>
-<p>封装：<br>1、三个特点</p>
+    <div class="post-body" itemprop="articleBody"><h5 id="你知道c三大特性吗那你又是否清楚他们的特点呢">你知道c++三大特性吗？那你又是否清楚他们的特点呢？</h5>
+<p>c++三大特性分别为：封装、继承和多态</p>
+<p>封装： 1、三个特点</p>
 <p>结合性，即将属性（数据成员）和行为（成员函数）相结合</p>
 <p>信息隐蔽性，利用接口机制隐蔽内部实现细节，只留下接口给外界调用</p>
 <p>实现代码重用，在此举个例子解释所谓的实现代码重用：</p>
@@ -255,98 +259,154 @@
 <p>继承：</p>
 <p>类的派生就是指从已有类产生新类的过程，原有类称为基类或父类，产生的新类称为子类或派生类，子类继承基类后，可以创建子类对象调用基类的函数和变量等。</p>
 <p>多态：</p>
-<p>多态（Polymorphism）是面向对象编程中的一个重要概念，它允许使用基类类型的指针或引用来调用派生类对象的特定方法。C++中的多态性是通过虚函数（virtual function）和动态绑定（dynamic binding）实现的。</p>
-<p>在C++中，要实现多态，需要满足以下条件：</p>
-<ol>
-<li>基类（父类）中声明一个虚函数。</li>
-<li>派生类（子类）中重写（覆盖）这个虚函数，并使用关键字<code>override</code>进行标记。</li>
-</ol>
+<p>多态（Polymorphism）是面向对象编程中的一个重要概念，它允许使用基类类型的指针或引用来调用派生类对象的特定方法。C++中的多态性是通过虚函数（virtual
+function）和动态绑定（dynamic binding）实现的。</p>
+<p>在C++中，要实现多态，需要满足以下条件： 1.
+基类（父类）中声明一个虚函数。 2.
+派生类（子类）中重写（覆盖）这个虚函数，并使用关键字<code>override</code>进行标记。</p>
 <p>例如，考虑一个基类<code>Shape</code>和两个派生类<code>Circle</code>和<code>Rectangle</code>的示例：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Shape</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">draw</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;Drawing a shape.&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Circle</span> : <span class="keyword">public</span> Shape &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">draw</span><span class="params">()</span> <span class="keyword">override</span> </span>&#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;Drawing a circle.&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Rectangle</span> : <span class="keyword">public</span> Shape &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">draw</span><span class="params">()</span> <span class="keyword">override</span> </span>&#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;Drawing a rectangle.&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Shape* shape1 = <span class="keyword">new</span> <span class="built_in">Circle</span>();</span><br><span class="line">    Shape* shape2 = <span class="keyword">new</span> <span class="built_in">Rectangle</span>();</span><br><span class="line"></span><br><span class="line">    shape1-&gt;<span class="built_in">draw</span>();  <span class="comment">// 调用派生类的方法：Drawing a circle.</span></span><br><span class="line">    shape2-&gt;<span class="built_in">draw</span>();  <span class="comment">// 调用派生类的方法：Drawing a rectangle.</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">delete</span> shape1;</span><br><span class="line">    <span class="keyword">delete</span> shape2;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>在上面的例子中，基类<code>Shape</code>声明了一个虚函数<code>draw()</code>，并且两个派生类<code>Circle</code>和<code>Rectangle</code>分别重写了这个函数。在<code>main()</code>函数中，我们创建了两个指向基类的指针<code>shape1</code>和<code>shape2</code>，分别指向派生类<code>Circle</code>和<code>Rectangle</code>的对象。然后，通过基类指针调用<code>draw()</code>函数，由于这个函数是虚函数，实际调用的是派生类的版本，即产生了多态行为。</p>
 <p>通过多态，我们可以使用统一的接口来处理不同的对象，提高了代码的灵活性和可维护性。此外，通过将基类指针或引用传递给函数或方法，我们可以在运行时确定要调用的具体实现，而不是在编译时静态地确定。</p>
 <p>需要注意的是，在基类中使用关键字<code>virtual</code>来声明虚函数是很重要的，而派生类中的重写函数则使用关键字<code>override</code>进行标记，以确保正确的绑定和多态行为。</p>
-<h5 id="函数体内部声明一个string变量，未进行初始化，会进行默认初始化吗？"><a href="#函数体内部声明一个string变量，未进行初始化，会进行默认初始化吗？" class="headerlink" title="函数体内部声明一个string变量，未进行初始化，会进行默认初始化吗？"></a>函数体内部声明一个string变量，未进行初始化，会进行默认初始化吗？</h5><p>在c++中，如果你在函数体内部声明一个<code>std::string</code>变量而不进行初始化，该变量会被默认初始化。对于<code>std::string</code>，默认初始化意味着会创建一个空字符串。</p>
+<h5 id="函数体内部声明一个string变量未进行初始化会进行默认初始化吗">函数体内部声明一个string变量，未进行初始化，会进行默认初始化吗？</h5>
+<p>在c++中，如果你在函数体内部声明一个<code>std::string</code>变量而不进行初始化，该变量会被默认初始化。对于<code>std::string</code>，默认初始化意味着会创建一个空字符串。</p>
 <p>例如：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">someFunction</span><span class="params">()</span></span>&#123;</span><br><span class="line">    std::string s;</span><br><span class="line">    <span class="comment">// ..... </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>在这个例子中，<code>s</code> 被默认初始化为一个空字符串。当你尝试打印 <code>s</code> 或者获取 <code>s.length()</code> 时，你会发现<code>s</code>是一个空字符串。</p>
+<p>在这个例子中，<code>s</code> 被默认初始化为一个空字符串。当你尝试打印
+<code>s</code> 或者获取 <code>s.length()</code>
+时，你会发现<code>s</code>是一个空字符串。</p>
 <p>注意这与内置类型如<code>int</code>、<code>float</code>等不同，这些类型如果没有明确初始化，它们的值是未定义的。</p>
-<h6 id="string属于内置类型吗？"><a href="#string属于内置类型吗？" class="headerlink" title="string属于内置类型吗？"></a><span style="color:black">string属于内置类型吗？</span></h6><p>是的，<code>string</code> 类型不属于内置类型。<code>std::string</code> 是 C++ 标准库中的一个类，它是对字符数组（C 风格字符串）的封装，提供了更加方便、安全的字符串操作功能。</p>
-<p>内置类型（也称为基本类型或原始类型）是编程语言中预定义的、最基本的数据类型，例如 <code>int</code>、<code>float</code>、<code>double</code>、<code>char</code> 等。这些类型通常直接映射到计算机硬件上的表示，所以操作起来非常高效。</p>
-<p>相比之下，<code>std::string</code> 是一个类，其对象由多个数据成员和成员函数组成，提供了对字符串的各种操作。虽然 <code>std::string</code> 不是内置类型，但它在 C++ 中被广泛使用，因为它提供了比 C 风格字符串更方便和安全的方式来处理字符串。</p>
-<h5 id="pragma-once的作用和-ifndef一样么"><a href="#pragma-once的作用和-ifndef一样么" class="headerlink" title="#pragma once的作用和#ifndef一样么"></a><code>#pragma once</code>的作用和<code>#ifndef</code>一样么</h5><p>是的，<code>#pragma once</code> 和 <code>#ifndef</code>（加上对应的 <code>#define</code> 和 <code>#endif</code>）都用于防止头文件的重复包含。它们的作用相似，但实现方式有所不同。</p>
-<ol>
-<li><p><code>#pragma once</code>：<br><code>#pragma once</code> 是一种编译器指令，用于确保头文件只被包含一次。当编译器遇到 <code>#pragma once</code> 时，它会记录已经包含了该头文件，从而避免重复包含。这种方法简洁易懂，只需在头文件的开头添加一行代码。</p>
-<p>示例：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// header.h</span></span><br><span class="line"><span class="meta">#<span class="keyword">pragma</span> once</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ... 声明和定义</span></span><br></pre></td></tr></table></figure>
-
-<p>请注意，<code>#pragma once</code> 不是 C++ 标准的一部分，但大多数现代编译器都支持它。</p>
-</li>
-<li><p><code>#ifndef</code>，<code>#define</code> 和 <code>#endif</code>：<br>这是一种被称为“包含保护”的技术，通过预处理器指令来防止头文件的重复包含。首先使用 <code>#ifndef</code> 检查一个特定的宏是否已定义，如果未定义，则使用 <code>#define</code> 定义宏，并将头文件的内容包含在 <code>#ifndef</code> 和 <code>#endif</code> 之间。</p>
-<p>示例：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// header.h</span></span><br><span class="line"><span class="meta">#<span class="keyword">ifndef</span> HEADER_H</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> HEADER_H</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ... 声明和定义</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span> <span class="comment">// HEADER_H</span></span></span><br></pre></td></tr></table></figure>
-
-<p>这种方法是 C++ 标准的一部分，因此具有更好的可移植性。</p>
-</li>
+<h6 id="string属于内置类型吗"><span style="color:black">string属于内置类型吗？</span></h6>
+<p>是的，<code>string</code>
+类型不属于内置类型。<code>std::string</code> 是 C++
+标准库中的一个类，它是对字符数组（C
+风格字符串）的封装，提供了更加方便、安全的字符串操作功能。</p>
+<p>内置类型（也称为基本类型或原始类型）是编程语言中预定义的、最基本的数据类型，例如
+<code>int</code>、<code>float</code>、<code>double</code>、<code>char</code>
+等。这些类型通常直接映射到计算机硬件上的表示，所以操作起来非常高效。</p>
+<p>相比之下，<code>std::string</code>
+是一个类，其对象由多个数据成员和成员函数组成，提供了对字符串的各种操作。虽然
+<code>std::string</code> 不是内置类型，但它在 C++
+中被广泛使用，因为它提供了比 C
+风格字符串更方便和安全的方式来处理字符串。</p>
+<h5 id="pragma-once的作用和ifndef一样么"><code>#pragma once</code>的作用和<code>#ifndef</code>一样么</h5>
+<p>是的，<code>#pragma once</code> 和 <code>#ifndef</code>（加上对应的
+<code>#define</code> 和
+<code>#endif</code>）都用于防止头文件的重复包含。它们的作用相似，但实现方式有所不同。</p>
+<ol type="1">
+<li><p><code>#pragma once</code>： <code>#pragma once</code>
+是一种编译器指令，用于确保头文件只被包含一次。当编译器遇到
+<code>#pragma once</code>
+时，它会记录已经包含了该头文件，从而避免重复包含。这种方法简洁易懂，只需在头文件的开头添加一行代码。</p>
+<p>示例： <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// header.h</span></span><br><span class="line"><span class="meta">#<span class="keyword">pragma</span> once</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ... 声明和定义</span></span><br></pre></td></tr></table></figure></p>
+<p>请注意，<code>#pragma once</code> 不是 C++
+标准的一部分，但大多数现代编译器都支持它。</p></li>
+<li><p><code>#ifndef</code>，<code>#define</code> 和
+<code>#endif</code>：
+这是一种被称为“包含保护”的技术，通过预处理器指令来防止头文件的重复包含。首先使用
+<code>#ifndef</code> 检查一个特定的宏是否已定义，如果未定义，则使用
+<code>#define</code> 定义宏，并将头文件的内容包含在 <code>#ifndef</code>
+和 <code>#endif</code> 之间。</p>
+<p>示例： <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// header.h</span></span><br><span class="line"><span class="meta">#<span class="keyword">ifndef</span> HEADER_H</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> HEADER_H</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ... 声明和定义</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span> <span class="comment">// HEADER_H</span></span></span><br></pre></td></tr></table></figure></p>
+<p>这种方法是 C++ 标准的一部分，因此具有更好的可移植性。</p></li>
 </ol>
-<p>总的来说，<code>#pragma once</code> 和 <code>#ifndef</code> 都可以防止头文件的重复包含，但实现方式不同。在实际项目中，你可以根据编译器支持和代码可移植性的需求来选择其中一种方法。</p>
+<p>总的来说，<code>#pragma once</code> 和 <code>#ifndef</code>
+都可以防止头文件的重复包含，但实现方式不同。在实际项目中，你可以根据编译器支持和代码可移植性的需求来选择其中一种方法。</p>
 <p>总结一下上面的：作用是一样的，关于<code>ifndef</code>的具体细节可以去看<code>C++ primer</code>第68页的有关介绍。</p>
-<h5 id="C-分离式编译"><a href="#C-分离式编译" class="headerlink" title="C++分离式编译"></a>C++分离式编译</h5><p>举例一个简单情况：</p>
+<h5 id="c分离式编译">C++分离式编译</h5>
+<p>举例一个简单情况：</p>
 <p>我在<code>Chapter6.h</code>头文件中声明了<code>fact</code>函数，在<code>fact.cpp</code>文件中定义了<code>fact</code>函数，并在<code>factMain.cpp</code>文件中使用了<code>fact</code>函数，为什么在<code>factMain.cpp</code>文件中，只需要引入<code>Chapter6.h</code>头文件就可以调用到<code>fact</code>函数，<code>Chapter6.h</code>头文件里不是只有一个声明吗？</p>
 <p>解答：</p>
-<p><code>Chapter6.h</code> 头文件中只有 <code>fact</code> 函数的声明。然而，这就是在 C++ 中分离声明和定义的好处。你在头文件中声明函数（告诉编译器有一个名为 <code>fact</code> 的函数存在），然后在一个源文件（例如 <code>fact.cpp</code>）中定义该函数（提供函数的具体实现）。这样，其他源文件（例如 <code>factMain.cpp</code>）可以通过包含相应的头文件来获取函数的声明，从而能够调用该函数。</p>
-<p>在编译阶段，编译器会分别编译 <code>fact.cpp</code> 和 <code>factMain.cpp</code>，并生成相应的对象文件（例如 <code>fact.o</code> 和 <code>factMain.o</code>）。在 <code>fact.cpp</code> 中定义的 <code>fact</code> 函数的具体实现会在 <code>fact.o</code> 中。</p>
-<p>然后在链接阶段，链接器会把所有的对象文件连接在一起，形成一个可执行文件。链接器会解决所有未解决的符号引用，例如在 <code>factMain.o</code> 中对 <code>fact</code> 函数的调用。因为 <code>fact</code> 函数在 <code>fact.o</code> 中定义了，所以链接器能够找到它，并正确地设置引用。</p>
-<p>因此，尽管 <code>Chapter6.h</code> 头文件中只有 <code>fact</code> 函数的声明，但只要 <code>fact</code> 函数在其他地方被定义，那么在 <code>factMain.cpp</code> 中就可以通过包含 <code>Chapter6.h</code> 来调用 <code>fact</code> 函数。</p>
-<h5 id="为什么不可以同时用const和static修饰成员函数。详细解释一下"><a href="#为什么不可以同时用const和static修饰成员函数。详细解释一下" class="headerlink" title="为什么不可以同时用const和static修饰成员函数。详细解释一下"></a>为什么不可以同时用<code>const</code>和<code>static</code>修饰成员函数。详细解释一下</h5><p>在<code>C++</code>中，<code>const</code>和<code>static</code>都可以用于修饰成员函数，但它们有不同的含义，并且不能同时应用于同一个成员函数。下面我们来详细了解一下：</p>
-<ol>
+<p><code>Chapter6.h</code> 头文件中只有 <code>fact</code>
+函数的声明。然而，这就是在 C++
+中分离声明和定义的好处。你在头文件中声明函数（告诉编译器有一个名为
+<code>fact</code> 的函数存在），然后在一个源文件（例如
+<code>fact.cpp</code>）中定义该函数（提供函数的具体实现）。这样，其他源文件（例如
+<code>factMain.cpp</code>）可以通过包含相应的头文件来获取函数的声明，从而能够调用该函数。</p>
+<p>在编译阶段，编译器会分别编译 <code>fact.cpp</code> 和
+<code>factMain.cpp</code>，并生成相应的对象文件（例如
+<code>fact.o</code> 和 <code>factMain.o</code>）。在
+<code>fact.cpp</code> 中定义的 <code>fact</code> 函数的具体实现会在
+<code>fact.o</code> 中。</p>
+<p>然后在链接阶段，链接器会把所有的对象文件连接在一起，形成一个可执行文件。链接器会解决所有未解决的符号引用，例如在
+<code>factMain.o</code> 中对 <code>fact</code> 函数的调用。因为
+<code>fact</code> 函数在 <code>fact.o</code>
+中定义了，所以链接器能够找到它，并正确地设置引用。</p>
+<p>因此，尽管 <code>Chapter6.h</code> 头文件中只有 <code>fact</code>
+函数的声明，但只要 <code>fact</code> 函数在其他地方被定义，那么在
+<code>factMain.cpp</code> 中就可以通过包含 <code>Chapter6.h</code>
+来调用 <code>fact</code> 函数。</p>
+<h5 id="为什么不可以同时用const和static修饰成员函数详细解释一下">为什么不可以同时用<code>const</code>和<code>static</code>修饰成员函数。详细解释一下</h5>
+<p>在<code>C++</code>中，<code>const</code>和<code>static</code>都可以用于修饰成员函数，但它们有不同的含义，并且不能同时应用于同一个成员函数。下面我们来详细了解一下：</p>
+<ol type="1">
 <li><p><code>const</code>成员函数：如果一个成员函数被声明为<code>const</code>，那么它就不能修改对象的任何非静态数据成员或者调用任何非<code>const</code>成员函数。在<code>const</code>成员函数中，关键字<code>const</code>是在参数列表之后声明的。<code>const</code>成员函数可以被任何类型的对象调用，无论是<code>const</code>还是非<code>const</code>对象。</p>
 <p>例如：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MyClass</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">nonConstMethod</span><span class="params">()</span> </span>&#123; <span class="comment">/* 可以修改对象的状态 */</span> &#125;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">constMethod</span><span class="params">()</span> <span class="type">const</span> </span>&#123; <span class="comment">/* 不能修改对象的状态 */</span> &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><code>static</code> 成员函数：<code>static</code> 成员函数与类的对象无关，不需要对象就可以调用。它不能访问类的非静态成员（包括数据成员和成员函数），因为非静态成员都是与特定对象关联的，而 <code>static</code> 成员函数与任何对象都无关。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MyClass</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">nonConstMethod</span><span class="params">()</span> </span>&#123; <span class="comment">/* 可以修改对象的状态 */</span> &#125;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">constMethod</span><span class="params">()</span> <span class="type">const</span> </span>&#123; <span class="comment">/* 不能修改对象的状态 */</span> &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
+<li><p><code>static</code> 成员函数：<code>static</code>
+成员函数与类的对象无关，不需要对象就可以调用。它不能访问类的非静态成员（包括数据成员和成员函数），因为非静态成员都是与特定对象关联的，而
+<code>static</code> 成员函数与任何对象都无关。</p>
 <p>例如：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MyClass</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">static</span> <span class="type">void</span> <span class="title">staticMethod</span><span class="params">()</span> </span>&#123; <span class="comment">/* 不能访问非静态成员 */</span> &#125;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">nonStaticMethod</span><span class="params">()</span> </span>&#123; <span class="comment">/* 可以访问非静态成员 */</span> &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
 </ol>
-<p>这就是为什么不能同时用 <code>const</code> 和 <code>static</code> 修饰成员函数的原因：<code>const</code> 成员函数是基于对象的，它不能改变对象的状态，但可以访问对象的状态。而 <code>static</code> 成员函数是不基于对象的，它不能访问对象的状态。因此，<code>const</code> 和 <code>static</code> 在这里是冲突的，不能同时用于同一个成员函数。</p>
-<h6 id="如果一个成员函数被声明为-const，那么它就不能修改对象的任何非静态数据成员或者调用任何非-const-成员函数。能举个例子吗？解释的更通俗一点"><a href="#如果一个成员函数被声明为-const，那么它就不能修改对象的任何非静态数据成员或者调用任何非-const-成员函数。能举个例子吗？解释的更通俗一点" class="headerlink" title="如果一个成员函数被声明为 const，那么它就不能修改对象的任何非静态数据成员或者调用任何非 const 成员函数。能举个例子吗？解释的更通俗一点"></a><span style="color:black">如果一个成员函数被声明为 const，那么它就不能修改对象的任何非静态数据成员或者调用任何非 const 成员函数。能举个例子吗？解释的更通俗一点</span></h6><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MyClass</span> &#123;</span><br><span class="line">    <span class="type">int</span> data;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">MyClass</span>() : <span class="built_in">data</span>(<span class="number">0</span>) &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">increment</span><span class="params">()</span> </span>&#123; ++data; &#125;  <span class="comment">// 非const成员函数</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">getValue</span><span class="params">()</span> <span class="type">const</span> </span>&#123; <span class="keyword">return</span> data; &#125;  <span class="comment">// const成员函数</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">tryToModify</span><span class="params">()</span> <span class="type">const</span> </span>&#123; </span><br><span class="line">        <span class="comment">// ++data;  // 这里将导致编译错误，因为不能在const成员函数中修改非静态数据成员</span></span><br><span class="line">        <span class="comment">// increment();  // 这里也将导致编译错误，因为不能在const成员函数中调用非const成员函数</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>在这个类中，<code>increment()</code> 是一个非 <code>const</code> 成员函数，它可以修改对象的状态。<code>getValue()</code> 是一个 <code>const</code> 成员函数，它不能修改对象的状态，只能返回对象的状态。</p>
-<p><code>tryToModify()</code> 也是一个 <code>const</code> 成员函数，试图在其中修改 <code>data</code> 或者调用 <code>increment()</code> 都会导致编译错误，因为这些操作都会改变对象的状态，而 <code>const</code> 成员函数不允许这样做。</p>
-<p>通俗来说，<code>const</code> 成员函数就像一个诺言，它承诺我不会改变对象的状态。这样，你就可以放心地把对象传给这个函数，知道这个函数不会做任何坏事。这在编程中是非常有用的，因为它可以帮助你避免一些常见的错误，并使你的代码更容易理解和维护。</p>
-<h6 id="static-成员函数与类的对象无关，不需要对象就可以调用。这句话怎么理解呢？不需要对象如何调用呢？直接传参吗？能举个例子吗"><a href="#static-成员函数与类的对象无关，不需要对象就可以调用。这句话怎么理解呢？不需要对象如何调用呢？直接传参吗？能举个例子吗" class="headerlink" title="static 成员函数与类的对象无关，不需要对象就可以调用。这句话怎么理解呢？不需要对象如何调用呢？直接传参吗？能举个例子吗"></a><span style="color:black">static 成员函数与类的对象无关，不需要对象就可以调用。这句话怎么理解呢？不需要对象如何调用呢？直接传参吗？能举个例子吗</span></h6><p><code>static</code> 成员函数是与类本身相关联的，而不是与类的特定实例（即对象）相关联。因此，你不需要创建一个类的实例就可以调用 <code>static</code> 成员函数。你可以直接使用类名和作用域解析运算符 <code>::</code> 来调用 <code>static</code> 成员函数。</p>
+<p>这就是为什么不能同时用 <code>const</code> 和 <code>static</code>
+修饰成员函数的原因：<code>const</code>
+成员函数是基于对象的，它不能改变对象的状态，但可以访问对象的状态。而
+<code>static</code>
+成员函数是不基于对象的，它不能访问对象的状态。因此，<code>const</code>
+和 <code>static</code> 在这里是冲突的，不能同时用于同一个成员函数。</p>
+<h6 id="如果一个成员函数被声明为-const那么它就不能修改对象的任何非静态数据成员或者调用任何非-const-成员函数能举个例子吗解释的更通俗一点"><span style="color:black">如果一个成员函数被声明为
+const，那么它就不能修改对象的任何非静态数据成员或者调用任何非 const
+成员函数。能举个例子吗？解释的更通俗一点</span></h6>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MyClass</span> &#123;</span><br><span class="line">    <span class="type">int</span> data;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">MyClass</span>() : <span class="built_in">data</span>(<span class="number">0</span>) &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">increment</span><span class="params">()</span> </span>&#123; ++data; &#125;  <span class="comment">// 非const成员函数</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">getValue</span><span class="params">()</span> <span class="type">const</span> </span>&#123; <span class="keyword">return</span> data; &#125;  <span class="comment">// const成员函数</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">tryToModify</span><span class="params">()</span> <span class="type">const</span> </span>&#123; </span><br><span class="line">        <span class="comment">// ++data;  // 这里将导致编译错误，因为不能在const成员函数中修改非静态数据成员</span></span><br><span class="line">        <span class="comment">// increment();  // 这里也将导致编译错误，因为不能在const成员函数中调用非const成员函数</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>在这个类中，<code>increment()</code> 是一个非 <code>const</code>
+成员函数，它可以修改对象的状态。<code>getValue()</code> 是一个
+<code>const</code>
+成员函数，它不能修改对象的状态，只能返回对象的状态。</p>
+<p><code>tryToModify()</code> 也是一个 <code>const</code>
+成员函数，试图在其中修改 <code>data</code> 或者调用
+<code>increment()</code>
+都会导致编译错误，因为这些操作都会改变对象的状态，而 <code>const</code>
+成员函数不允许这样做。</p>
+<p>通俗来说，<code>const</code>
+成员函数就像一个诺言，它承诺我不会改变对象的状态。这样，你就可以放心地把对象传给这个函数，知道这个函数不会做任何坏事。这在编程中是非常有用的，因为它可以帮助你避免一些常见的错误，并使你的代码更容易理解和维护。</p>
+<h6 id="static-成员函数与类的对象无关不需要对象就可以调用这句话怎么理解呢不需要对象如何调用呢直接传参吗能举个例子吗"><span style="color:black">static
+成员函数与类的对象无关，不需要对象就可以调用。这句话怎么理解呢？不需要对象如何调用呢？直接传参吗？能举个例子吗</span></h6>
+<p><code>static</code>
+成员函数是与类本身相关联的，而不是与类的特定实例（即对象）相关联。因此，你不需要创建一个类的实例就可以调用
+<code>static</code> 成员函数。你可以直接使用类名和作用域解析运算符
+<code>::</code> 来调用 <code>static</code> 成员函数。</p>
 <p>下面是一个例子：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MyClass</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">static</span> <span class="type">void</span> <span class="title">staticMethod</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;Calling static method&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    MyClass::<span class="built_in">staticMethod</span>();  <span class="comment">// 不需要创建MyClass的实例就可以调用staticMethod</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>在这个例子中，我们没有创建 <code>MyClass</code> 的实例就直接调用了 <code>staticMethod</code>。这是因为 <code>staticMethod</code> 是一个 <code>static</code> 成员函数，它与类本身相关联，而不是与类的特定实例相关联。</p>
-<p>注意，<code>static</code> 成员函数不能访问类的非 <code>static</code> 成员（包括数据成员和成员函数），因为非 <code>static</code> 成员都是与特定对象关联的，而 <code>static</code> 成员函数与任何对象都无关。这也是为什么 <code>static</code> 成员函数不能有 <code>this</code> 指针的原因。</p>
-<h5 id="深拷贝和浅拷贝"><a href="#深拷贝和浅拷贝" class="headerlink" title="深拷贝和浅拷贝"></a>深拷贝和浅拷贝</h5><p>在用户未自定义拷贝构造函数的情况下，系统会调用默认的拷贝构造函数，系统默认的拷贝构造函数执行浅拷贝。当数据成员中没有指针时，浅拷贝是可行的。</p>
+<p>在这个例子中，我们没有创建 <code>MyClass</code> 的实例就直接调用了
+<code>staticMethod</code>。这是因为 <code>staticMethod</code> 是一个
+<code>static</code>
+成员函数，它与类本身相关联，而不是与类的特定实例相关联。</p>
+<p>注意，<code>static</code> 成员函数不能访问类的非 <code>static</code>
+成员（包括数据成员和成员函数），因为非 <code>static</code>
+成员都是与特定对象关联的，而 <code>static</code>
+成员函数与任何对象都无关。这也是为什么 <code>static</code>
+成员函数不能有 <code>this</code> 指针的原因。</p>
+<h5 id="深拷贝和浅拷贝">深拷贝和浅拷贝</h5>
+<p>在用户未自定义拷贝构造函数的情况下，系统会调用默认的拷贝构造函数，系统默认的拷贝构造函数执行浅拷贝。当数据成员中没有指针时，浅拷贝是可行的。</p>
 <p>但当数据成员中出现指针时，如果依旧使用默认的拷贝构造函数，就会出现调用两次析构函数，造成悬空指针问题。</p>
 <p>深拷贝与浅拷贝的区别就在于深拷贝会在<strong>堆内存中另外申请空间来储存数据</strong>，从而也就解决了指针悬挂的问题。简而言之，当数据成员中有指针时，必须要用深拷贝。</p>
-<h5 id="问了一个很愚蠢的问题：我发现在定义一个类的时候，构造函数会对private里的类似于int，string和指针等类型显式或隐式的初始化，而一些函数只给出了声明，函数为什么不用给出定义？"><a href="#问了一个很愚蠢的问题：我发现在定义一个类的时候，构造函数会对private里的类似于int，string和指针等类型显式或隐式的初始化，而一些函数只给出了声明，函数为什么不用给出定义？" class="headerlink" title="问了一个很愚蠢的问题：我发现在定义一个类的时候，构造函数会对private里的类似于int，string和指针等类型显式或隐式的初始化，而一些函数只给出了声明，函数为什么不用给出定义？"></a>问了一个很愚蠢的问题：我发现在定义一个类的时候，构造函数会对private里的类似于int，string和指针等类型显式或隐式的初始化，而一些函数只给出了声明，函数为什么不用给出定义？</h5><p>在<code>C++</code>中，类的定义通常分为两部分：声明和定义。声明是告诉编译器某个东西（例如变量、函数、类等）的存在，而定义则提供了这个东西的实际实现或分配了它的内存。</p>
+<h5 id="问了一个很愚蠢的问题我发现在定义一个类的时候构造函数会对private里的类似于intstring和指针等类型显式或隐式的初始化而一些函数只给出了声明函数为什么不用给出定义">问了一个很愚蠢的问题：我发现在定义一个类的时候，构造函数会对private里的类似于int，string和指针等类型显式或隐式的初始化，而一些函数只给出了声明，函数为什么不用给出定义？</h5>
+<p>在<code>C++</code>中，类的定义通常分为两部分：声明和定义。声明是告诉编译器某个东西（例如变量、函数、类等）的存在，而定义则提供了这个东西的实际实现或分配了它的内存。</p>
 <p>在类的定义中，构造函数对数据成员进行初始化，这是构造函数的主要目的。对于简单类型如<code>int</code>、<code>string</code>或者指针，可以在构造函数中显式初始化，也可以使用默认的初始化（对于类类型，调用其默认构造函数；对于内置类型，如果它们是静态存储期的对象，则进行值初始化，即初始化为0，否则不进行初始化）。</p>
 <p>对于成员函数，只需要在类定义中给出声明，这是因为我们通常希望将函数的定义（实现）放在类定义之外，例如在一个<code>.cpp</code>文件中。这样可以将接口（即类的声明）与实现（即函数的定义）分离，使代码更清晰，易于理解和维护。例如：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// MyClass.h</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyClass</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">MyClass</span>(<span class="type">int</span> a);  <span class="comment">// 构造函数声明</span></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">foo</span><span class="params">()</span></span>;  <span class="comment">// 成员函数声明</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="type">int</span> data;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// MyClass.cpp</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;MyClass.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line">MyClass::<span class="built_in">MyClass</span>(<span class="type">int</span> a) : <span class="built_in">data</span>(a) &#123;&#125;  <span class="comment">// 构造函数定义</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">MyClass::foo</span><span class="params">()</span> </span>&#123;  <span class="comment">// 成员函数定义</span></span><br><span class="line">    std::cout &lt;&lt; data &lt;&lt; std::endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>当然，也可以直接在类定义中提供成员函数的定义。这通常在函数体很短，或者希望函数被内联（<code>inline</code>）时这样做：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MyClass</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">MyClass</span>(<span class="type">int</span> a) : <span class="built_in">data</span>(a) &#123;&#125;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">foo</span><span class="params">()</span> </span>&#123; std::cout &lt;&lt; data &lt;&lt; std::endl; &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="type">int</span> data;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
 <p>在这种情况下，<code>foo</code>函数会自动被编译器视为内联函数，可以减少函数调用开销，但可能增加代码大小。</p>
-<h4 id="数组不允许拷贝和赋值"><a href="#数组不允许拷贝和赋值" class="headerlink" title="数组不允许拷贝和赋值"></a>数组不允许拷贝和赋值</h4><p>不能将数组的内容拷贝给其他数组作为其初始值，也不能用数组为其他数组赋值。</p>
+<h4 id="数组不允许拷贝和赋值">数组不允许拷贝和赋值</h4>
+<p>不能将数组的内容拷贝给其他数组作为其初始值，也不能用数组为其他数组赋值。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> a[] = &#123;<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>&#125;;</span><br><span class="line"><span class="type">int</span> a2[] = a;	<span class="comment">//错误，不允许使用一个数组初始化另一个数组</span></span><br><span class="line">a2 = a;			<span class="comment">//错误，不能把一个数组直接赋值给另外一个数组</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="标准库函数begin-和end"><a href="#标准库函数begin-和end" class="headerlink" title="标准库函数begin()和end()"></a>标准库函数begin()和end()</h4><p>数组毕竟不是类类型，因此这两个函数不是成员函数，正确的使用形式是把数组作为他们的参数传入：</p>
+<h4 id="标准库函数begin和end">标准库函数begin()和end()</h4>
+<p>数组毕竟不是类类型，因此这两个函数不是成员函数，正确的使用形式是把数组作为他们的参数传入：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> ia[] = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">10</span>&#125;</span><br><span class="line"><span class="type">int</span>* beg = <span class="built_in">begin</span>(ia);	<span class="comment">//指向ia首元素的指针</span></span><br><span class="line"><span class="type">int</span>* last = <span class="built_in">end</span>(ia);	<span class="comment">//指向ia尾元素的下一位置的指针</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<h5 id="创建一个vector容器存放string类型的对象"><a href="#创建一个vector容器存放string类型的对象" class="headerlink" title="创建一个vector容器存放string类型的对象"></a>创建一个<code>vector</code>容器存放<code>string</code>类型的对象</h5><p>1、首先我们确定一下这个类要实现哪些功能，初步设计包括三个：</p>
+<h5 id="创建一个vector容器存放string类型的对象">创建一个<code>vector</code>容器存放<code>string</code>类型的对象</h5>
+<p>1、首先我们确定一下这个类要实现哪些功能，初步设计包括三个：</p>
 <ul>
 <li>实现<code>push_back</code>向容器尾后迭代器指定位置添加元素；</li>
 <li>实现<code>size</code>获取容器中存放元素个数的功能；</li>
@@ -355,10 +415,8 @@
 <p>同时，可以想到以上三个要在<code>public</code>里实现，作为对外的接口。</p>
 <p>2、要实现以上这些功能（拷贝控制函数那些后面再实现）需要哪些变量呢？</p>
 <ul>
-<li><p>在一开始，我们需要获得一个原始内存，在这里我们采用一个<code>allocator</code>来获得原始内存；</p>
-</li>
-<li><p>三个指针，分别指向<code>vector</code>容器的首元素、最后一个实际元素之后的位置、分配的内存末尾之后的位置；</p>
-</li>
+<li><p>在一开始，我们需要获得一个原始内存，在这里我们采用一个<code>allocator</code>来获得原始内存；</p></li>
+<li><p>三个指针，分别指向<code>vector</code>容器的首元素、最后一个实际元素之后的位置、分配的内存末尾之后的位置；</p></li>
 </ul>
 <p>3、拷贝控制函数的实现需要哪些工具函数</p>
 <p>为了方便各种拷贝控制函数的实现，我们需要实现一些工具函数。拿拷贝构造函数举例来说，我们需要对一个<code>vector</code>容器对象进行拷贝，在拷贝构造函数里直接调用工具函数肯定会使得整个代码结构更加清晰明朗。</p>
@@ -368,40 +426,55 @@
 <li><code>chk_n_alloc</code>：保证<code>StrVec</code>至少有容纳一个新元素的空间。如果没有空间添加新元素，<code>chk_n_alloc</code>会调用<code>reallocate</code>来分配更多内存；</li>
 <li><code>reallocate</code>在内存用完时为<code>StrVec</code>分配新内存；</li>
 </ul>
-<h5 id="我决定先实现StrVec类的拷贝构造函数"><a href="#我决定先实现StrVec类的拷贝构造函数" class="headerlink" title="我决定先实现StrVec类的拷贝构造函数"></a>我决定先实现StrVec类的拷贝构造函数</h5><p>我们可以将拷贝构造函数设想为将一个vector容器里的所有string拷贝到另一个vector里面。可以简单思考一下，在实现拷贝构造函数时最先遇到的两个问题：</p>
+<h5 id="我决定先实现strvec类的拷贝构造函数">我决定先实现StrVec类的拷贝构造函数</h5>
+<p>我们可以将拷贝构造函数设想为将一个vector容器里的所有string拷贝到另一个vector里面。可以简单思考一下，在实现拷贝构造函数时最先遇到的两个问题：</p>
 <ul>
 <li>既然我要拷贝到另外一个vector里面，那我要如何分配这个新vector的空间？</li>
 <li>分配的新空间应该多大呢？</li>
 </ul>
 <p>在分配空间时我们需要使用到c++里的模板类allocator（后面我会给出有关介绍），</p>
-<h4 id="返回类型-函数名-形参列表-const-函数体，请问这个const作用是什么"><a href="#返回类型-函数名-形参列表-const-函数体，请问这个const作用是什么" class="headerlink" title="返回类型+函数名+形参列表+const+函数体，请问这个const作用是什么"></a>返回类型+函数名+形参列表+<code>const</code>+函数体，请问这个<code>const</code>作用是什么</h4><p>在 <code>C++</code>中，函数后面的 <code>const</code> 关键字用于说明函数是一个常量成员函数。这意味着该函数不能修改它所在类的任何非静态成员变量的值。换句话说，常量成员函数不能修改对象的状态。</p>
+<h4 id="返回类型函数名形参列表const函数体请问这个const作用是什么">返回类型+函数名+形参列表+<code>const</code>+函数体，请问这个<code>const</code>作用是什么</h4>
+<p>在 <code>C++</code>中，函数后面的 <code>const</code>
+关键字用于说明函数是一个常量成员函数。这意味着该函数不能修改它所在类的任何非静态成员变量的值。换句话说，常量成员函数不能修改对象的状态。</p>
 <p>例如，考虑以下类定义：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MyClass</span> &#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="type">int</span> x;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">MyClass</span>(<span class="type">int</span> val) : <span class="built_in">x</span>(val) &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">getValue</span><span class="params">()</span> <span class="type">const</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> x;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">setValue</span><span class="params">(<span class="type">int</span> val)</span> </span>&#123;</span><br><span class="line">        x = val;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>在这个例子中，<code>getValue()</code> 是一个常量成员函数，因为它后面有 <code>const</code> 关键字。这意味着 <code>getValue()</code> 函数不能修改 <code>MyClass</code> 对象的任何成员变量的值（在这个例子中是 <code>x</code>）。如果你尝试在 <code>getValue()</code> 函数中修改 <code>x</code> 的值，编译器会报错。</p>
+<p>在这个例子中，<code>getValue()</code>
+是一个常量成员函数，因为它后面有 <code>const</code> 关键字。这意味着
+<code>getValue()</code> 函数不能修改 <code>MyClass</code>
+对象的任何成员变量的值（在这个例子中是 <code>x</code>）。如果你尝试在
+<code>getValue()</code> 函数中修改 <code>x</code>
+的值，编译器会报错。</p>
 <p>常量成员函数通常用于定义不应改变对象状态的操作。这有助于提高代码的安全性和易读性，因为读者可以明确知道哪些函数不会修改对象的状态。</p>
 <p>另外，常量成员函数可以在常量对象上调用，非常量成员函数则不能。这使得你可以在需要保证对象不被修改的情况下，仍然可以调用其上的一些成员函数。</p>
-<h5 id="常量成员函数可以在常量对象上调用，非常量成员函数则不能。这句话的意思是常量对象不能调用非常量成员函数？"><a href="#常量成员函数可以在常量对象上调用，非常量成员函数则不能。这句话的意思是常量对象不能调用非常量成员函数？" class="headerlink" title="常量成员函数可以在常量对象上调用，非常量成员函数则不能。这句话的意思是常量对象不能调用非常量成员函数？"></a>常量成员函数可以在常量对象上调用，非常量成员函数则不能。这句话的意思是常量对象不能调用非常量成员函数？</h5><p>常量对象（即被 <code>const</code> 修饰的对象）只能调用常量成员函数。这是因为常量对象一旦初始化，其值就不能再被改变。因此，为了保证常量对象的状态不被改变，编译器禁止在常量对象上调用可能会改变对象状态的非常量成员函数。</p>
+<h5 id="常量成员函数可以在常量对象上调用非常量成员函数则不能这句话的意思是常量对象不能调用非常量成员函数">常量成员函数可以在常量对象上调用，非常量成员函数则不能。这句话的意思是常量对象不能调用非常量成员函数？</h5>
+<p>常量对象（即被 <code>const</code>
+修饰的对象）只能调用常量成员函数。这是因为常量对象一旦初始化，其值就不能再被改变。因此，为了保证常量对象的状态不被改变，编译器禁止在常量对象上调用可能会改变对象状态的非常量成员函数。</p>
 <p>举一个例子，如下：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MyClass</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="type">int</span> x;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">MyClass</span>(<span class="type">int</span> val) : <span class="built_in">x</span>(val) &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">getValue</span><span class="params">()</span> <span class="type">const</span> </span>&#123; <span class="keyword">return</span> x; &#125;    <span class="comment">// 常量成员函数</span></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">setValue</span><span class="params">(<span class="type">int</span> val)</span> </span>&#123; x = val; &#125;   <span class="comment">// 非常量成员函数</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="type">const</span> MyClass <span class="title">obj</span><span class="params">(<span class="number">10</span>)</span></span>;   <span class="comment">// 声明一个常量对象</span></span><br><span class="line">    std::cout &lt;&lt; obj.<span class="built_in">getValue</span>() &lt;&lt; std::endl;  <span class="comment">// 合法，因为getValue是常量成员函数</span></span><br><span class="line">    obj.<span class="built_in">setValue</span>(<span class="number">20</span>);  <span class="comment">// 非法，编译错误。因为setValue是非常量成员函数，不能在常量对象上调用</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>在上述代码中，<code>obj</code> 是一个常量对象。尽管 <code>setValue()</code> 是 <code>MyClass</code> 的一个成员函数，但你不能在 <code>obj</code> 上调用它，因为 <code>setValue()</code> 可能会改变对象的状态，这违反了 <code>obj</code> 是常量的事实。但你可以在 <code>obj</code> 上调用 <code>getValue()</code>，因为它是一个常量成员函数，不会改变对象的状态。</p>
+<p>在上述代码中，<code>obj</code> 是一个常量对象。尽管
+<code>setValue()</code> 是 <code>MyClass</code>
+的一个成员函数，但你不能在 <code>obj</code> 上调用它，因为
+<code>setValue()</code> 可能会改变对象的状态，这违反了 <code>obj</code>
+是常量的事实。但你可以在 <code>obj</code> 上调用
+<code>getValue()</code>，因为它是一个常量成员函数，不会改变对象的状态。</p>
 <p>总结：常量对象不能调用非常量成员函数，非常量对象可以调用常量成员函数。（<code>c++ primer p231</code>：引入<code>const</code>成员函数）</p>
-<h4 id="封装定义"><a href="#封装定义" class="headerlink" title="封装定义"></a>封装定义</h4><p>封装是指保护类的成员不被随意访问的能力，通过把类的实现细节设置为<code>private</code>，我们就能完成类的封装，实现类的接口与实现分离。</p>
+<h4 id="封装定义">封装定义</h4>
+<p>封装是指保护类的成员不被随意访问的能力，通过把类的实现细节设置为<code>private</code>，我们就能完成类的封装，实现类的接口与实现分离。</p>
 <p>封装的两个重要优点：</p>
 <p>1、用户代码不会无意间破坏封装对象的状态；</p>
 <p>2、被封装的类的具体实现细节可以随时改变，而无需调整用户级别的代码；</p>
-<h4 id="友元"><a href="#友元" class="headerlink" title="友元"></a>友元</h4><p>类允许其他类或者函数访问它的非公有成员（私有成员），方法是将其他类或者函数定义成友元，使用关键字<code>friend</code></p>
+<h4 id="友元">友元</h4>
+<p>类允许其他类或者函数访问它的非公有成员（私有成员），方法是将其他类或者函数定义成友元，使用关键字<code>friend</code></p>
 <p>注意：</p>
 <p>友元只能出现在类定义的内部，在类内出现的具体位置不受约束。友元不是类的成员，不受它所在区域访问控制级别的约束。</p>
-<h4 id="右值引用"><a href="#右值引用" class="headerlink" title="右值引用"></a>右值引用</h4><p>右值引用主要用来解决两个问题：</p>
+<h4 id="右值引用">右值引用</h4>
+<p>右值引用主要用来解决两个问题：</p>
 <p>1、临时对象非必要的昂贵的拷贝操作</p>
 <p>2、在模板函数中如何按照参数的实际类型进行转发</p>
 <p>在<code>c++11</code>中所有的值必属于左值、将亡值和纯右值之一。</p>
 <p>右值引用绑定了右值，让临时右值的生命周期延长了，可以利用这个特点做一些性能优化，即避免临时对象的拷贝构造和析构</p>
 <p>右值引用类型既可能是左值也可能是右值，如<code>T&amp;&amp; t</code>，这里的t既可能是左值也可能是右值。如下所示</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">f</span><span class="params">(T&amp;&amp; t)</span></span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">f</span>(<span class="number">10</span>); <span class="comment">//t是右值</span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> x = <span class="number">10</span>;</span><br><span class="line"><span class="built_in">f</span>(x); <span class="comment">//t是左值</span></span><br></pre></td></tr></table></figure>
-
 <p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/qicosmos/p/4283455.html">贴一个超级详细的连接</a></p>
 
     </div>
@@ -492,7 +565,7 @@
 
   
 
-  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"cdn":"https://cdn.jsdelivr.net/npm/mathjax@2.7.8/MathJax.js?config=TeX-AMS-MML_HTMLorMML","tags":"none","src":"custom_mathjax_source","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"mhchem":false,"cdn":"https://cdn.jsdelivr.net/npm/mathjax@2.7.8/MathJax.js?config=TeX-AMS-MML_HTMLorMML","src":"custom_mathjax_source","js":{"url":"//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"}}</script>
 <script src="/js/third-party/math/mathjax.js"></script>
 
 

@@ -19,12 +19,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"zcl0219.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":null,"show_result":true},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="1、HTTP常见的状态码  1XX	提示信息，表示目前是协议处理的中间状态，还需要后续的操作； 2XX    成功，报文已经成功收到并被正确处理； 3XX    重定向，资源位置发生变动，需要客户端重新发送请求； 4XX    客户端错误，请求报文有误，服务器无法处理； 5XX    服务器错误。服务器在处理请求时内部发生了错误；  2、HTTP请求和响应的各自组成部分 HTTP通信协议由请求（R">
+    <meta name="description" content="1、HTTP常见的状态码  1XX 提示信息，表示目前是协议处理的中间状态，还需要后续的操作； 2XX 成功，报文已经成功收到并被正确处理； 3XX 重定向，资源位置发生变动，需要客户端重新发送请求； 4XX 客户端错误，请求报文有误，服务器无法处理； 5XX 服务器错误。服务器在处理请求时内部发生了错误；  2、HTTP请求和响应的各自组成部分 HTTP通信协议由请求（Requ">
 <meta property="og:type" content="article">
 <meta property="og:title" content="计算机网络八股文">
 <meta property="og:url" content="http://zcl0219.github.io/2023/05/19/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%85%AB%E8%82%A1%E6%96%87/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="1、HTTP常见的状态码  1XX	提示信息，表示目前是协议处理的中间状态，还需要后续的操作； 2XX    成功，报文已经成功收到并被正确处理； 3XX    重定向，资源位置发生变动，需要客户端重新发送请求； 4XX    客户端错误，请求报文有误，服务器无法处理； 5XX    服务器错误。服务器在处理请求时内部发生了错误；  2、HTTP请求和响应的各自组成部分 HTTP通信协议由请求（R">
+<meta property="og:description" content="1、HTTP常见的状态码  1XX 提示信息，表示目前是协议处理的中间状态，还需要后续的操作； 2XX 成功，报文已经成功收到并被正确处理； 3XX 重定向，资源位置发生变动，需要客户端重新发送请求； 4XX 客户端错误，请求报文有误，服务器无法处理； 5XX 服务器错误。服务器在处理请求时内部发生了错误；  2、HTTP请求和响应的各自组成部分 HTTP通信协议由请求（Requ">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-05-19T06:52:49.000Z">
 <meta property="article:modified_time" content="2023-06-14T20:17:45.470Z">
@@ -144,7 +144,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#HTTP%E8%AF%B7%E6%B1%82"><span class="nav-number">1.</span> <span class="nav-text">HTTP请求</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#HTTP%E5%93%8D%E5%BA%94"><span class="nav-number">2.</span> <span class="nav-text">HTTP响应</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#HTTP%E8%AF%B7%E6%B1%82%E7%A4%BA%E4%BE%8B"><span class="nav-number">3.</span> <span class="nav-text">HTTP请求示例</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#HTTP%E5%93%8D%E5%BA%94%E7%A4%BA%E4%BE%8B"><span class="nav-number">4.</span> <span class="nav-text">HTTP响应示例</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#http%E8%AF%B7%E6%B1%82"><span class="nav-number">1.</span> <span class="nav-text">HTTP请求</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#http%E5%93%8D%E5%BA%94"><span class="nav-number">2.</span> <span class="nav-text">HTTP响应</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#http%E8%AF%B7%E6%B1%82%E7%A4%BA%E4%BE%8B"><span class="nav-number">3.</span> <span class="nav-text">HTTP请求示例</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#http%E5%93%8D%E5%BA%94%E7%A4%BA%E4%BE%8B"><span class="nav-number">4.</span> <span class="nav-text">HTTP响应示例</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -159,13 +159,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">33</span>
+          <span class="site-state-item-count">34</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -247,37 +247,44 @@
     
     <div class="post-body" itemprop="articleBody"><p>1、HTTP常见的状态码</p>
 <ul>
-<li>1XX	提示信息，表示目前是协议处理的中间状态，还需要后续的操作；</li>
-<li>2XX    成功，报文已经成功收到并被正确处理；</li>
-<li>3XX    重定向，资源位置发生变动，需要客户端重新发送请求；</li>
-<li>4XX    客户端错误，请求报文有误，服务器无法处理；</li>
-<li>5XX    服务器错误。服务器在处理请求时内部发生了错误；</li>
+<li>1XX 提示信息，表示目前是协议处理的中间状态，还需要后续的操作；</li>
+<li>2XX 成功，报文已经成功收到并被正确处理；</li>
+<li>3XX 重定向，资源位置发生变动，需要客户端重新发送请求；</li>
+<li>4XX 客户端错误，请求报文有误，服务器无法处理；</li>
+<li>5XX 服务器错误。服务器在处理请求时内部发生了错误；</li>
 </ul>
 <p>2、HTTP请求和响应的各自组成部分</p>
 <p>HTTP通信协议由请求（Request）和响应（Response）两部分构成。每个请求和响应都由头部和主体组成，其中头部包含了各种元数据，而主体则包含了实际的内容（如果有的话）。</p>
-<h5 id="HTTP请求"><a href="#HTTP请求" class="headerlink" title="HTTP请求"></a>HTTP请求</h5><p>HTTP请求包括以下字段：</p>
-<ol>
-<li><p><strong>请求行（Request Line）</strong>：请求行包括HTTP方法（比如GET、POST、PUT、DELETE等）、请求的URI、以及HTTP版本。</p>
-</li>
-<li><p><strong>请求头（Request Headers）</strong>：请求头包含了一系列的字段，每个字段都提供了一些关于请求的元数据。常见的请求头包括：</p>
+<h5 id="http请求">HTTP请求</h5>
+<p>HTTP请求包括以下字段：</p>
+<ol type="1">
+<li><strong>请求行（Request
+Line）</strong>：请求行包括HTTP方法（比如GET、POST、PUT、DELETE等）、请求的URI、以及HTTP版本。</li>
+<li><strong>请求头（Request
+Headers）</strong>：请求头包含了一系列的字段，每个字段都提供了一些关于请求的元数据。常见的请求头包括：
 <ul>
 <li>Host: 请求的目标主机名和端口号。</li>
-<li>User-Agent: 发起请求的用户代理的信息，通常包括浏览器类型、版本、操作系统等信息。</li>
+<li>User-Agent:
+发起请求的用户代理的信息，通常包括浏览器类型、版本、操作系统等信息。</li>
 <li>Accept: 客户端可以处理的MIME类型。</li>
 <li>Accept-Language: 客户端接受的语言。</li>
 <li>Accept-Encoding: 客户端接受的内容编码，比如gzip。</li>
 <li>Cookie: 客户端存储的用于服务器识别的cookie。</li>
-<li>Content-Type: 如果请求包含了主体，这个字段描述了主体的MIME类型。</li>
+<li>Content-Type:
+如果请求包含了主体，这个字段描述了主体的MIME类型。</li>
 <li>Content-Length: 如果请求包含了主体，这个字段描述了主体的长度。</li>
-</ul>
-</li>
-<li><p><strong>请求主体（Request Body）</strong>：不是所有的请求都包含主体。比如GET和HEAD请求就没有主体。但是POST和PUT请求通常会有主体，包含了要发送给服务器的数据。</p>
-</li>
+</ul></li>
+<li><strong>请求主体（Request
+Body）</strong>：不是所有的请求都包含主体。比如GET和HEAD请求就没有主体。但是POST和PUT请求通常会有主体，包含了要发送给服务器的数据。</li>
 </ol>
-<h5 id="HTTP响应"><a href="#HTTP响应" class="headerlink" title="HTTP响应"></a>HTTP响应</h5><p>HTTP响应包括以下字段：</p>
-<ol>
-<li><strong>状态行（Status Line）</strong>：状态行包括HTTP版本、状态码（比如200表示成功，404表示未找到等），以及状态描述。</li>
-<li><strong>响应头（Response Headers）</strong>：响应头包含了一系列的字段，每个字段都提供了一些关于响应的元数据。常见的响应头包括：<ul>
+<h5 id="http响应">HTTP响应</h5>
+<p>HTTP响应包括以下字段：</p>
+<ol type="1">
+<li><strong>状态行（Status
+Line）</strong>：状态行包括HTTP版本、状态码（比如200表示成功，404表示未找到等），以及状态描述。</li>
+<li><strong>响应头（Response
+Headers）</strong>：响应头包含了一系列的字段，每个字段都提供了一些关于响应的元数据。常见的响应头包括：
+<ul>
 <li>Server: 发送响应的服务器的信息。</li>
 <li>Content-Type: 响应主体的MIME类型。</li>
 <li>Content-Length: 响应主体的长度。</li>
@@ -285,18 +292,19 @@
 <li>Set-Cookie: 服务器想要设置在客户端的cookie。</li>
 <li>Last-Modified: 资源的最后修改日期。</li>
 <li>ETag: 资源的版本标识。</li>
-</ul>
-</li>
-<li><strong>响应主体（Response Body）</strong>：响应的主体包含了服务器返回的数据，比如HTML页面、图片、JSON数据等。</li>
+</ul></li>
+<li><strong>响应主体（Response
+Body）</strong>：响应的主体包含了服务器返回的数据，比如HTML页面、图片、JSON数据等。</li>
 </ol>
 <p>3、完整的HTTP请求和响应展示</p>
 <p>让我们来看一下一对典型的HTTP请求和响应。</p>
-<h5 id="HTTP请求示例"><a href="#HTTP请求示例" class="headerlink" title="HTTP请求示例"></a>HTTP请求示例</h5><p>假设你在浏览器中访问 <code>http://www.example.com</code>，你的浏览器可能会发送如下的GET请求：</p>
+<h5 id="http请求示例">HTTP请求示例</h5>
+<p>假设你在浏览器中访问
+<code>http://www.example.com</code>，你的浏览器可能会发送如下的GET请求：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">GET / HTTP/1.1</span><br><span class="line">Host: www.example.com</span><br><span class="line">User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.82 Safari/537.36</span><br><span class="line">Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9</span><br><span class="line">Accept-Language: en-US,en;q=0.9</span><br><span class="line">Accept-Encoding: gzip, deflate, br</span><br><span class="line">Connection: keep-alive</span><br></pre></td></tr></table></figure>
-
-<h5 id="HTTP响应示例"><a href="#HTTP响应示例" class="headerlink" title="HTTP响应示例"></a>HTTP响应示例</h5><p>对于上述的请求，服务器可能会返回如下的响应：</p>
+<h5 id="http响应示例">HTTP响应示例</h5>
+<p>对于上述的请求，服务器可能会返回如下的响应：</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">HTTP/1.1</span> <span class="number">200</span> <span class="string">OK</span></span><br><span class="line"><span class="attr">Date:</span> <span class="string">Mon,</span> <span class="number">23</span> <span class="string">May</span> <span class="number">2023 22:38:34 </span><span class="string">GMT</span></span><br><span class="line"><span class="attr">Server:</span> <span class="string">Apache/2.4.1</span> <span class="string">(Unix)</span></span><br><span class="line"><span class="attr">Last-Modified:</span> <span class="string">Sat,</span> <span class="number">20</span> <span class="string">May</span> <span class="number">2023 18:56:51 </span><span class="string">GMT</span></span><br><span class="line"><span class="attr">ETag:</span> <span class="string">&quot;2dcd3-2c-54b5a5e68b177&quot;</span></span><br><span class="line"><span class="attr">Accept-Ranges:</span> <span class="string">bytes</span></span><br><span class="line"><span class="attr">Content-Length:</span> <span class="number">44</span></span><br><span class="line"><span class="attr">Vary:</span> <span class="string">Accept-Encoding</span></span><br><span class="line"><span class="attr">Content-Type:</span> <span class="string">text/html</span></span><br><span class="line"></span><br><span class="line"><span class="string">&lt;html&gt;&lt;body&gt;&lt;h1&gt;It</span> <span class="string">works!&lt;/h1&gt;&lt;/body&gt;&lt;/html&gt;</span></span><br></pre></td></tr></table></figure>
-
 <p>这个响应表示请求成功（状态码是200），服务器返回了一个简单的HTML页面作为响应主体。响应头还包含了一些其他的信息，比如服务器类型（Apache），最后修改日期，内容长度，内容类型等。</p>
 <p>希望这些示例可以帮助你更好地理解HTTP请求和响应！</p>
 <p>4、TCP的KeepAlive和HTTP的Keep-Alive</p>
@@ -304,15 +312,26 @@
 <p><strong>TCP的KeepAlive</strong>：</p>
 <p>TCP的KeepAlive是一个底层的、可选的机制，其目的是为了检测和维护处于空闲状态的TCP连接。一旦启用，如果在特定的时间间隔内（通常在数小时）没有任何数据在TCP连接上进行交换，那么发送方就会发送一个KeepAlive数据包到接收方，而无需传输任何应用级别的数据。接收方需要对这个数据包做出响应。如果发送方在一定时间内没有收到响应，它将重发KeepAlive数据包，一般会尝试多次。如果仍然没有收到响应，发送方将假设连接已经断开，并将其关闭。</p>
 <p><strong>HTTP的Keep-Alive</strong>：</p>
-<p>HTTP的Keep-Alive是在HTTP 1.1引入的，用来允许单一的TCP连接被多个HTTP请求&#x2F;响应共享，而不是每个请求&#x2F;响应都重新建立一个新的连接。这显著提高了网络通信的效率，因为建立和关闭TCP连接需要时间和资源。</p>
-<p>在HTTP 1.0中，每个HTTP请求&#x2F;响应都需要一个新的TCP连接，这被称为非持久连接。而在HTTP 1.1中，默认启用了Keep-Alive，也就是说默认使用持久连接，除非明确指定”Connection: close”。</p>
-<p>当使用HTTP Keep-Alive时，HTTP请求的头部会包含一个”Connection: keep-alive”字段，这告诉服务器客户端希望保持连接以便发送更多的请求。服务器的响应也会包含一个”Connection: keep-alive”字段，这表示服务器同意保持连接。</p>
-<p>总的来说，这两个概念都关于连接的维护，但是工作在不同的层级。TCP的KeepAlive主要是为了检测和处理僵死连接，而HTTP的Keep-Alive则是为了提高效率，通过复用已存在的TCP连接来发送多个HTTP请求&#x2F;响应。</p>
+<p>HTTP的Keep-Alive是在HTTP
+1.1引入的，用来允许单一的TCP连接被多个HTTP请求/响应共享，而不是每个请求/响应都重新建立一个新的连接。这显著提高了网络通信的效率，因为建立和关闭TCP连接需要时间和资源。</p>
+<p>在HTTP
+1.0中，每个HTTP请求/响应都需要一个新的TCP连接，这被称为非持久连接。而在HTTP
+1.1中，默认启用了Keep-Alive，也就是说默认使用持久连接，除非明确指定”Connection:
+close”。</p>
+<p>当使用HTTP Keep-Alive时，HTTP请求的头部会包含一个”Connection:
+keep-alive”字段，这告诉服务器客户端希望保持连接以便发送更多的请求。服务器的响应也会包含一个”Connection:
+keep-alive”字段，这表示服务器同意保持连接。</p>
+<p>总的来说，这两个概念都关于连接的维护，但是工作在不同的层级。TCP的KeepAlive主要是为了检测和处理僵死连接，而HTTP的Keep-Alive则是为了提高效率，通过复用已存在的TCP连接来发送多个HTTP请求/响应。</p>
 <p><strong>队头阻塞</strong></p>
 <p>这里涉及到一个小概念需要说一下：可以想象，当我们开启Keep-Alive时，我们无需像以前那样，先发送A请求，等待服务器回应，再发送B请求…..一直如此运作下去。我们可以发送A请求后，无需等待服务器响应，紧接着发送B请求。但是服务器还是按照顺序响应，先响应A请求，完成后再响应B请求。其实这里很明显感觉到会有问题，如果迟迟收不到A响应，后面的响应就更收不到了，就会造成所谓的<strong>队头阻塞</strong>问题。</p>
 <p><strong>在使用HTTP长连接时，如果一个客户端完成了一个HTTP请求后不在发起请求，此时这个TCP连接一直占用不就会导致浪费资源吗？</strong></p>
-<p>对没错，所以为了避免资源浪费的情况，web 服务软件一般都会提供 <code>keepalive_timeout</code> 参数，用来指定 HTTP 长连接的超时时间。</p>
-<p>比如设置了 HTTP 长连接的超时时间是 60 秒，web 服务软件就会<strong>启动一个定时器</strong>，如果客户端在完后一个 HTTP 请求后，在 60 秒内都没有再发起新的请求，<strong>定时器的时间一到，就会触发回调函数来释放该连接。</strong></p>
+<p>对没错，所以为了避免资源浪费的情况，web 服务软件一般都会提供
+<code>keepalive_timeout</code> 参数，用来指定 HTTP
+长连接的超时时间。</p>
+<p>比如设置了 HTTP 长连接的超时时间是 60 秒，web
+服务软件就会<strong>启动一个定时器</strong>，如果客户端在完后一个 HTTP
+请求后，在 60
+秒内都没有再发起新的请求，<strong>定时器的时间一到，就会触发回调函数来释放该连接。</strong></p>
 <p><strong>传输层协议有哪些</strong></p>
 <p><code>UDP</code>和<code>TCP</code>协议；</p>
 <p><strong><code>TCP</code>协议的特点</strong></p>
@@ -331,13 +350,19 @@
 <p>16位校验和由发送端填充，接收端采取<code>CRC</code>算法对接收到的<code>TCP</code>报文段验证。</p>
 <p><strong>TCP连接的建立和关闭</strong></p>
 <p>首先，通过数据展示一下三次握手：</p>
-<p>发送端：<code>seq 12345 (SYN)</code>     ————-      接收端：<code>seq 56789 (SYN)</code>  <code>ack 12346</code>    ————-   发送端：<code>ack 56790</code></p>
+<p>发送端：<code>seq 12345 (SYN)</code> ————-
+接收端：<code>seq 56789 (SYN)</code> <code>ack 12346</code> ————-
+发送端：<code>ack 56790</code></p>
 <p>接下来是四次握手，假设发送端首先发出了断开连接请求</p>
-<p>发：<code>seq 12346</code>, <code>ack 56790</code> <code>(FIN)</code> —— 收：<code>ack 12347</code> —— 收：<code>seq 56790</code>, <code>ack 12347</code> <code>(FIN)</code> ——- 发：<code>ack 56791</code>  </p>
+<p>发：<code>seq 12346</code>, <code>ack 56790</code> <code>(FIN)</code>
+—— 收：<code>ack 12347</code> —— 收：<code>seq 56790</code>,
+<code>ack 12347</code> <code>(FIN)</code> ——-
+发：<code>ack 56791</code></p>
 <p>实际上，四次握手中的收的第一次确认报文段可以省略，因为下一次收的TCP报文段里包含了<code>ack</code>。其实第一个<code>ack</code>是否应该出现取决于<code>TCP</code>的延迟确认特性。</p>
 <p><strong>TCP状态转移</strong></p>
 <p>服务器处于被动等待客户连接，可以简单描述一下当有客户端请求连接时，该连接服务器端的状态变化为：</p>
-<p><code>LISTEN</code> ————- <code>SYN RCVD</code> —————– <code>ESTABLISHED</code>.</p>
+<p><code>LISTEN</code> ————- <code>SYN RCVD</code> —————–
+<code>ESTABLISHED</code>.</p>
 <p>当客户端主动关闭连接时，服务器端状态变化为：</p>
 <p><code>CLOSE_WAIT</code> ————– <code>LAST_ACK</code>.</p>
 <p>请求连接时，客户端状态变化为，考虑<code>connect</code>系统调用成功</p>
@@ -348,7 +373,8 @@
 <p>3、没有收到服务器端的应答报文</p>
 <p><code>connect</code>调用失败则返回<code>CLOSE</code>状态。</p>
 <p>客户端请求关闭时，客户端状态变化为</p>
-<p><code>FIN_WAIT_1</code> ———- <code>(FIN_WAIT_2)</code> ————– <code>TIME_WAIT</code></p>
+<p><code>FIN_WAIT_1</code> ———- <code>(FIN_WAIT_2)</code> ————–
+<code>TIME_WAIT</code></p>
 <p><strong>TIME_WAIT状态好好看看书的3.4.2节，讲的很好</strong></p>
 <p><strong>复位报文段</strong></p>
 <p><strong>什么情况下接收端会回复复位报文段？</strong></p>
@@ -362,9 +388,10 @@
 <p><strong>关于<code>MSS</code>的计算</strong></p>
 <p>首先需要了解两个名词，一个是<code>MTU</code>（<code>MaxMaximum Transmission Unit</code>）是指网络传输中最大的数据包大小，<code>MSS</code>（<code>Maximum Segment Size</code>）是指<code>TCP</code>协议中数据段的最大大小。在<code>TCP</code>协议中，<code>MSS</code>是由<code>MTU</code>减去<code>IP</code>和<code>TCP</code>头部的长度得出的。</p>
 <p><code>IP</code>头部的长度通常为20个字节，<code>TCP</code>头部的长度通常为20个字节，所以<code>MSS</code>的计算方法为：</p>
-<p><code>MSS</code>&#x3D; <code>MTU</code> - <code>IP</code>头部长度 - <code>TCP</code>头部长度</p>
+<p><code>MSS</code>= <code>MTU</code> - <code>IP</code>头部长度 -
+<code>TCP</code>头部长度</p>
 <p>因此，在<code>MTU</code>为16436字节的情况下，<code>MSS</code>的计算公式为：</p>
-<p><code>MSS</code> &#x3D; 16436 - 20 - 20 &#x3D; 16396</p>
+<p><code>MSS</code> = 16436 - 20 - 20 = 16396</p>
 <p>其中，20是<code>IP</code>头部和<code>TCP</code>头部的长度之和，这是因为<code>IP</code>和<code>TCP</code>协议都需要使用头部来传递各种控制信息，如源地址、目标地址、端口号、序列号、确认号等。因此，在<code>TCP</code>协议中，<code>MSS</code>是<code>MTU</code>减去<code>IP</code>和<code>TCP</code>头部长度的结果。</p>
 
     </div>
@@ -455,7 +482,7 @@
 
   
 
-  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"cdn":"https://cdn.jsdelivr.net/npm/mathjax@2.7.8/MathJax.js?config=TeX-AMS-MML_HTMLorMML","tags":"none","src":"custom_mathjax_source","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"mhchem":false,"cdn":"https://cdn.jsdelivr.net/npm/mathjax@2.7.8/MathJax.js?config=TeX-AMS-MML_HTMLorMML","src":"custom_mathjax_source","js":{"url":"//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"}}</script>
 <script src="/js/third-party/math/mathjax.js"></script>
 
 

@@ -19,12 +19,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"zcl0219.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":null,"show_result":true},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="多智能体强化学习通信方法综述摘要通信是协调多个智能体行为、拓宽它们对环境的认识以及支持它们协作的有效机制。在多智能体深度强化学习（MADRL）领域，智能体可以通过通信来提高整体学习性能并实现其目标。智能体可以与所有智能体或特定智能体组通信，或者根据特定约束条件进行通信。随着 MADRL 通信（Comm-MADRL）研究工作的不断增多，目前缺乏一种系统性和结构化的方法来区分和分类现有的 Comm-M">
+    <meta name="description" content="多智能体强化学习通信方法综述 摘要 通信是协调多个智能体行为、拓宽它们对环境的认识以及支持它们协作的有效机制。在多智能体深度强化学习（MADRL）领域，智能体可以通过通信来提高整体学习性能并实现其目标。智能体可以与所有智能体或特定智能体组通信，或者根据特定约束条件进行通信。随着 MADRL 通信（Comm-MADRL）研究工作的不断增多，目前缺乏一种系统性和结构化的方法来区分和分类现有的">
 <meta property="og:type" content="article">
 <meta property="og:title" content="强化学习综述">
 <meta property="og:url" content="http://zcl0219.github.io/2025/04/16/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%BB%BC%E8%BF%B0/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="多智能体强化学习通信方法综述摘要通信是协调多个智能体行为、拓宽它们对环境的认识以及支持它们协作的有效机制。在多智能体深度强化学习（MADRL）领域，智能体可以通过通信来提高整体学习性能并实现其目标。智能体可以与所有智能体或特定智能体组通信，或者根据特定约束条件进行通信。随着 MADRL 通信（Comm-MADRL）研究工作的不断增多，目前缺乏一种系统性和结构化的方法来区分和分类现有的 Comm-M">
+<meta property="og:description" content="多智能体强化学习通信方法综述 摘要 通信是协调多个智能体行为、拓宽它们对环境的认识以及支持它们协作的有效机制。在多智能体深度强化学习（MADRL）领域，智能体可以通过通信来提高整体学习性能并实现其目标。智能体可以与所有智能体或特定智能体组通信，或者根据特定约束条件进行通信。随着 MADRL 通信（Comm-MADRL）研究工作的不断增多，目前缺乏一种系统性和结构化的方法来区分和分类现有的">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2025-04-16T15:50:40.000Z">
 <meta property="article:modified_time" content="2025-07-06T16:27:54.766Z">
@@ -144,7 +144,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E9%80%9A%E4%BF%A1%E6%96%B9%E6%B3%95%E7%BB%BC%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">多智能体强化学习通信方法综述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%91%98%E8%A6%81"><span class="nav-number">1.1.</span> <span class="nav-text">摘要</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%BC%95%E8%A8%80"><span class="nav-number">1.2.</span> <span class="nav-text">1. 引言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E8%83%8C%E6%99%AF"><span class="nav-number">1.3.</span> <span class="nav-text">2. 背景</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0"><span class="nav-number">1.3.1.</span> <span class="nav-text">2.1 多智能体强化学习</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E5%80%BC"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">基于值</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E9%80%9A%E4%BF%A1%E6%96%B9%E6%B3%95%E7%BB%BC%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">多智能体强化学习通信方法综述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%91%98%E8%A6%81"><span class="nav-number">1.1.</span> <span class="nav-text">摘要</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%95%E8%A8%80"><span class="nav-number">1.2.</span> <span class="nav-text">1. 引言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%83%8C%E6%99%AF"><span class="nav-number">1.3.</span> <span class="nav-text">2. 背景</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0"><span class="nav-number">1.3.1.</span> <span class="nav-text">2.1 多智能体强化学习</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E5%80%BC"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">基于值</span></a></li></ol></li></ol></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -159,13 +159,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">33</span>
+          <span class="site-state-item-count">34</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -245,17 +245,114 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h2 id="多智能体强化学习通信方法综述"><a href="#多智能体强化学习通信方法综述" class="headerlink" title="多智能体强化学习通信方法综述"></a>多智能体强化学习通信方法综述</h2><h3 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h3><p>通信是协调多个智能体行为、拓宽它们对环境的认识以及支持它们协作的有效机制。在多智能体深度强化学习（MADRL）领域，智能体可以通过通信来提高整体学习性能并实现其目标。智能体可以与所有智能体或特定智能体组通信，或者根据特定约束条件进行通信。随着 MADRL 通信（Comm-MADRL）研究工作的不断增多，目前缺乏一种系统性和结构化的方法来区分和分类现有的 Comm-MADRL 方法。在本文中，我们回顾了 Comm-MADRL 领域的最新研究成果，并考虑了在设计和开发多智能体强化学习系统中可能发挥作用的通信的各个方面。考虑到这些方面，我们提出了 9 个维度，沿着这些维度可以对 Comm-MADRL 方法进行分析、开发和比较。通过将现有工作投射到多维空间中，我们发现了一些有趣的趋势。 我们还通过探索可能性的组合，提出了一些设计未来 Comm-MADRL 系统的创新方向。</p>
+    <div class="post-body" itemprop="articleBody"><h2 id="多智能体强化学习通信方法综述">多智能体强化学习通信方法综述</h2>
+<h3 id="摘要">摘要</h3>
+<p>通信是协调多个智能体行为、拓宽它们对环境的认识以及支持它们协作的有效机制。在多智能体深度强化学习（MADRL）领域，智能体可以通过通信来提高整体学习性能并实现其目标。智能体可以与所有智能体或特定智能体组通信，或者根据特定约束条件进行通信。随着
+MADRL
+通信（Comm-MADRL）研究工作的不断增多，目前缺乏一种系统性和结构化的方法来区分和分类现有的
+Comm-MADRL 方法。在本文中，我们回顾了 Comm-MADRL
+领域的最新研究成果，并考虑了在设计和开发多智能体强化学习系统中可能发挥作用的通信的各个方面。考虑到这些方面，我们提出了
+9 个维度，沿着这些维度可以对 Comm-MADRL
+方法进行分析、开发和比较。通过将现有工作投射到多维空间中，我们发现了一些有趣的趋势。
+我们还通过探索可能性的组合，提出了一些设计未来 Comm-MADRL
+系统的创新方向。</p>
 <span id="more"></span>
-<h3 id="1-引言"><a href="#1-引言" class="headerlink" title="1. 引言"></a>1. 引言</h3><p>许多现实场景，如自动驾驶<sup>[1]</sup>、传感器网络[2]、机器人[3]和游戏[4, 5]，都可以建模为多智能体系统。这些多智能体系统可以通过多智能体强化学习（MARL）技术进行设计和开发，以学习单个智能体的行为，这些行为可以是合作，竞争，或者它们的混合体。由于智能体通常分布在环境中，它们只能访问局部观察而不是环境的完整状态，因此在多智能体强化学习（MARL）中，部分可观测性成为一个基本假设[6-8]。此外，MARL 还面临着非平稳问题[9]，因为每个智能体都面临着受其他智能体变化和适应策略影响的动态环境。通信被视为解决 MARL 中部分可观测性和非平稳问题的关键手段。智能体可以交流个人信息，例如观察、意图、经验或派生特征，从而对环境有更全面的了解，这反过来又使他们能够做出明智的决策[9, 10]。</p>
-<p>由于深度学习[11]及其在强化学习[12]中的应用最近的成功，多智能体深度强化学习（MADRL）近年来取得了巨大成就，其中智能体可以处理高维数据，并在大状态和动作空间中具有泛化能力[7, 8]。我们注意到，大量研究工作集中在具有通信的学习任务上，这些任务旨在通过通信和共享信息来学习解决特定领域的任务，如导航、交通和视频游戏。据我们所知，目前还没有涵盖多智能体深度强化学习（Comm-MADRL）中关于具有通信的学习任务最新工作的综述文献。早期的综述考虑了通信在多智能体强化学习（MARL）中的作用，但将其视为预定义的，而不是学习主题[13-15]。大多数 Comm-MADRL 综述仅涵盖少量研究工作，没有提出一个精细的分类系统来比较和分析它们。在合作场景中，Hernandez-Leal 等人 [16] 使用学习通信来表示学习通信协议的领域，以促进智能体的合作。我们发现的唯一一份将一些早期工作分类到 Comm-MADRL 的综述来自 Gronauer 和 Diepold [17]，它基于区分消息是否被所有智能体、一组智能体或智能体网络接收。然而，Comm-MADRL 的其他方面，如消息类型和训练范式，对于通信至关重要，可以帮助描述现有的通信协议，却被忽略了。因此，关于具有通信的学习任务的近期综述中，所审查的论文相当有限，提出的分类过于狭窄，无法区分 Comm-MADRL 中的现有工作。另一方面，还有一个密切相关的研究领域，即涌现语言/通信，它也通过各种强化学习技术考虑通过学习通信。[18] 与 Comm-MADRL 不同，涌现语言研究的主要目标是学习一种符号语言。然而，涌现语言研究的一部分工作追求一个额外的目标，即利用可学习的符号语言来提高任务级别的性能。值得注意的是，这些研究成果尚未被现有 Comm-MADRL 综述所涵盖，但被纳入我们的调查，称为具有涌现语言的认知任务。总之，我们的调查在范围上与涌现语言的调查重叠（即在具有涌现语言的认知任务中），但我们的调查关注不同的主要目标（即实现特定领域的任务，而不是学习符号语言）。我们进一步在第 2.2 节中阐明具有通信和学习涌现语言的学习任务之间的区别。</p>
-<p>在我们的调查论文中，我们通过关注通信如何被利用来提高多智能体深度强化学习技术的性能，回顾了 Comm-MADRL 文献。具体来说，我们专注于可学习的通信协议，这些协议与强调通过深度强化学习技术开发动态和自适应通信的近期工作相一致，包括学习何时、如何以及与谁进行通信。通过对近期 Comm-MADRL 文献的全面回顾，我们提出了一种系统性和结构化的分类方法，旨在区分和分类各种 Comm-MADRL 方法。这种方法还将为新的 Comm-MADRL 系统的设计和进步提供指导。假设我们计划为当前领域任务开发一个 Comm-MADRL 系统。从何时、如何以及与谁进行通信的问题开始，系统可以从多个方面进行描述。智能体需要学习何时进行通信、与谁进行通信、传达什么信息、如何整合接收到的信息，最后，通过通信可以实现哪些学习目标。 我们提出了 9 个维度，对应于 Comm-MADRL 系统的独特方面：控制目标、通信约束、通信者类型、通信策略、传递消息、消息组合、内部整合、学习方法以及训练方案。这些维度构成了 Comm-MADRL 系统的骨架，可用于全面分析和深入了解设计的 Comm-MADRL 方法。通过将最近的 Comm-MADRL 方法映射到这个多维结构中，我们不仅提供了对该领域当前技术水平的洞察，还确定了设计未来 Comm-MADRL 系统的一些重要方向。</p>
-<p>本文剩余部分的结构如下。第 2 节讨论了多智能体强化学习的预备知识，以及关于通信的现有扩展和近期调查的详细比较。第 3 节，我们提出了我们的建议维度，解释了如何将近期的工作按每个维度的类别进行分组。第 4 节，我们讨论了文献中发现的趋势，并受建议维度驱动，提出了该研究领域的可能研究方向。第 5 节，我们总结了本文的结论。</p>
-<h3 id="2-背景"><a href="#2-背景" class="headerlink" title="2. 背景"></a>2. 背景</h3><p>在本节中，我们首先提供关于多智能体强化学习的必要背景知识。然后，我们展示如何将多智能体强化学习扩展到考虑智能体之间的通信。最后，我们介绍并比较了涉及通信的近期调查，从中我们可以直接看到我们填补现有调查中空白的原因。</p>
-<h4 id="2-1-多智能体强化学习"><a href="#2-1-多智能体强化学习" class="headerlink" title="2.1 多智能体强化学习"></a>2.1 多智能体强化学习</h4><p>现实世界的应用通常包含多个在环境中运行的智能体。智能体通常被认为是自主的，并且需要学习策略以实现其目标。多智能体环境可以根据环境是否完全可观测、智能体的目标如何相关联等因素以多种方式形式化[6]。其中，部分可观测随机博弈（POSG）[19, 20]是最灵活的形式化之一。POSG 由一个元组定义，其中 I 是（有限）智能体集合，按{1, …, n}索引，S 是环境状态集合，𝜌是状态空间 S 上的初始状态分布，A 是智能体 i 可用的动作集合，O 是智能体 i 的观察集合。我们表示联合动作空间为 A = ×A，智能体联合观察空间为 O = ×O。因此，P ∶ S × A → Δ(S)表示从状态 s ∈ S 到新状态 s∈ S 的转移概率，给定智能体的联合动作⃗ a = ⟨a, …, a ⟩，其中⃗ a ∈ A。当环境过渡到新状态 s 时，给定联合动作⃗</p>
-<p>a 根据观察概率函数 O ∶ S × A → Δ(O)确定。然后，每个智能体根据其自身的奖励函数 R∶ S × A × S → ℝ获得即时奖励。与联合动作和观察类似，我们可以将⃗ r = ⟨r, …, r⟩表示为联合奖励。如果智能体的奖励函数恰好相同，即它们具有相同的目标，那么对于每个时间步，r= r= … = r 都成立。在这种情况下，POSG 简化为 Dec-POMDP [6]。如果每个时间步的状态可以从智能体的当前观察集中唯一确定，即 s ≡⃗ o，则 Dec-POMDP 简化为 Dec-MDP。如果每个智能体都知道真实的环境状态，则 Dec-MDP 简化为多智能体 MDP。如果智能体集合中只有一个智能体，即 I = {1}，则多智能体 MDP 简化为 MDP，而 DecPOMDP 简化为 POMDP。由于部分可观测性，MARL 方法通常使用每个智能体的观察-动作历史𝜏= {o , a, o, …, o }直到时间步 t 来近似环境状态。请注意，为了简化，时间步 t 通常被省略。</p>
-<p>在多智能体强化学习环境中，智能体可以以去中心化或中心化的方式学习其策略。在去中心化学习中（例如，去中心化 Q 学习[21, 22]），n 个智能体的多智能体强化学习问题被分解为 n 个去中心化的单智能体问题，其中每个智能体通过将所有其他智能体视为环境的一部分来学习自己的策略[23, 24]。在这样的去中心化设置中，每个智能体学习的策略取决于其局部观察和历史。去中心化学习的一个主要问题是环境的所谓非平稳性，即每个智能体在一个其他智能体同时探索和学习的环境中学习。中心化学习可以训练所有智能体的单个联合策略或中心化的价值函数，以促进 n 个去中心化策略的学习。虽然中心化（联合）学习消除了或减轻了部分可观察性和非平稳性问题，但它面临着联合行动（和观察）空间随着智能体数量及其行动的指数级扩展的挑战。 想要深入了解多智能体强化学习（MARL）中使用的各种训练方案，我们推荐阅读[17]的全面综述，该综述为策略的训练和执行提供了宝贵的见解。根据策略是从值函数导出还是直接学习，多智能体强化学习方法可以分为基于值的方法和基于策略的方法。这两种方法在通信多智能体深度强化学习（Comm-MADRL）中得到了广泛的应用。</p>
-<h5 id="基于值"><a href="#基于值" class="headerlink" title="基于值"></a>基于值</h5><p>在多智能体情况下，基于值的方法借鉴了单智能体案例中的许多想法。作为最流行的基于值的方法之一，分布式 Q 学习为每个智能体学习一个局部 Q 函数。在智能体共享共同奖励的协作设置中，智能体 i 的更新规则如下：<br>其中 r 是共享奖励，ais 是下一个状态 s 中具有最高 Q 值的动作。在部分可观察环境中，环境状态不是完全可观察的，通常由每个代理的个体观察或历史记录来代替。每个状态-动作对的 Q 值根据 TD 误差逐步更新。这个误差，即 r + 𝛾 maxQ(s, a) − Q(s, a )，表示基于 Bellman 方程[25]的新估计（即 r + 𝛾 maxQ(s, a)）和当前估计（即 Q(s, a)）之间的差异。由于状态和动作空间可能太大，难以频繁遇到以进行准确估计，因此函数逼近方法，如深度神经网络，已经变得流行，为价值或策略模型赋予在离散和连续状态和动作上的泛化能力[12]。例如，深度 Q 网络（DQN）[12]最小化从采样奖励计算的新估计与参数化 Q 函数的当前估计之间的差异。在基于 DQN 的方法中，方程 1 中的 Q 函数表示为 Q(s, a ;𝜃)，它依赖于可学习的参数𝜃。 然而，基于价值的集中式学习方法学习一个联合 Q 函数 Q(s,⃗ a;𝜃)与参数𝜃。然而，这种方法在代理数量增加时难以扩展。值分解方法[26-29]是流行的多智能体强化学习（MARL）方法，可以将联合 Q 函数分解以实现高效的训练。这些方法也广泛应用于 Comm-MADRL 的研究工作中[30-32]。在部分可观察环境中，线性值分解方法将基于历史的联合 Q 函数分解如下：<br>其中，联合 Q 函数基于所有代理的联合历史，并基于个体历史分解为局部 Q 函数。权重 w 可以是固定值[26, 28]或受特定约束的可学习参数[29]。优势函数也可以替换上述方程中的 Q 函数以减少方差[33]。</p>
+<h3 id="引言">1. 引言</h3>
+<p>许多现实场景，如自动驾驶<sup>[1]</sup>、传感器网络[2]、机器人[3]和游戏[4,
+5]，都可以建模为多智能体系统。这些多智能体系统可以通过多智能体强化学习（MARL）技术进行设计和开发，以学习单个智能体的行为，这些行为可以是合作，竞争，或者它们的混合体。由于智能体通常分布在环境中，它们只能访问局部观察而不是环境的完整状态，因此在多智能体强化学习（MARL）中，部分可观测性成为一个基本假设[6-8]。此外，MARL
+还面临着非平稳问题[9]，因为每个智能体都面临着受其他智能体变化和适应策略影响的动态环境。通信被视为解决
+MARL
+中部分可观测性和非平稳问题的关键手段。智能体可以交流个人信息，例如观察、意图、经验或派生特征，从而对环境有更全面的了解，这反过来又使他们能够做出明智的决策[9,
+10]。</p>
+<p>由于深度学习[11]及其在强化学习[12]中的应用最近的成功，多智能体深度强化学习（MADRL）近年来取得了巨大成就，其中智能体可以处理高维数据，并在大状态和动作空间中具有泛化能力[7,
+8]。我们注意到，大量研究工作集中在具有通信的学习任务上，这些任务旨在通过通信和共享信息来学习解决特定领域的任务，如导航、交通和视频游戏。据我们所知，目前还没有涵盖多智能体深度强化学习（Comm-MADRL）中关于具有通信的学习任务最新工作的综述文献。早期的综述考虑了通信在多智能体强化学习（MARL）中的作用，但将其视为预定义的，而不是学习主题[13-15]。大多数
+Comm-MADRL
+综述仅涵盖少量研究工作，没有提出一个精细的分类系统来比较和分析它们。在合作场景中，Hernandez-Leal
+等人 [16]
+使用学习通信来表示学习通信协议的领域，以促进智能体的合作。我们发现的唯一一份将一些早期工作分类到
+Comm-MADRL 的综述来自 Gronauer 和 Diepold
+[17]，它基于区分消息是否被所有智能体、一组智能体或智能体网络接收。然而，Comm-MADRL
+的其他方面，如消息类型和训练范式，对于通信至关重要，可以帮助描述现有的通信协议，却被忽略了。因此，关于具有通信的学习任务的近期综述中，所审查的论文相当有限，提出的分类过于狭窄，无法区分
+Comm-MADRL
+中的现有工作。另一方面，还有一个密切相关的研究领域，即涌现语言/通信，它也通过各种强化学习技术考虑通过学习通信。[18]
+与 Comm-MADRL
+不同，涌现语言研究的主要目标是学习一种符号语言。然而，涌现语言研究的一部分工作追求一个额外的目标，即利用可学习的符号语言来提高任务级别的性能。值得注意的是，这些研究成果尚未被现有
+Comm-MADRL
+综述所涵盖，但被纳入我们的调查，称为具有涌现语言的认知任务。总之，我们的调查在范围上与涌现语言的调查重叠（即在具有涌现语言的认知任务中），但我们的调查关注不同的主要目标（即实现特定领域的任务，而不是学习符号语言）。我们进一步在第
+2.2 节中阐明具有通信和学习涌现语言的学习任务之间的区别。</p>
+<p>在我们的调查论文中，我们通过关注通信如何被利用来提高多智能体深度强化学习技术的性能，回顾了
+Comm-MADRL
+文献。具体来说，我们专注于可学习的通信协议，这些协议与强调通过深度强化学习技术开发动态和自适应通信的近期工作相一致，包括学习何时、如何以及与谁进行通信。通过对近期
+Comm-MADRL
+文献的全面回顾，我们提出了一种系统性和结构化的分类方法，旨在区分和分类各种
+Comm-MADRL 方法。这种方法还将为新的 Comm-MADRL
+系统的设计和进步提供指导。假设我们计划为当前领域任务开发一个 Comm-MADRL
+系统。从何时、如何以及与谁进行通信的问题开始，系统可以从多个方面进行描述。智能体需要学习何时进行通信、与谁进行通信、传达什么信息、如何整合接收到的信息，最后，通过通信可以实现哪些学习目标。
+我们提出了 9 个维度，对应于 Comm-MADRL
+系统的独特方面：控制目标、通信约束、通信者类型、通信策略、传递消息、消息组合、内部整合、学习方法以及训练方案。这些维度构成了
+Comm-MADRL 系统的骨架，可用于全面分析和深入了解设计的 Comm-MADRL
+方法。通过将最近的 Comm-MADRL
+方法映射到这个多维结构中，我们不仅提供了对该领域当前技术水平的洞察，还确定了设计未来
+Comm-MADRL 系统的一些重要方向。</p>
+<p>本文剩余部分的结构如下。第 2
+节讨论了多智能体强化学习的预备知识，以及关于通信的现有扩展和近期调查的详细比较。第
+3
+节，我们提出了我们的建议维度，解释了如何将近期的工作按每个维度的类别进行分组。第
+4
+节，我们讨论了文献中发现的趋势，并受建议维度驱动，提出了该研究领域的可能研究方向。第
+5 节，我们总结了本文的结论。</p>
+<h3 id="背景">2. 背景</h3>
+<p>在本节中，我们首先提供关于多智能体强化学习的必要背景知识。然后，我们展示如何将多智能体强化学习扩展到考虑智能体之间的通信。最后，我们介绍并比较了涉及通信的近期调查，从中我们可以直接看到我们填补现有调查中空白的原因。</p>
+<h4 id="多智能体强化学习">2.1 多智能体强化学习</h4>
+<p>现实世界的应用通常包含多个在环境中运行的智能体。智能体通常被认为是自主的，并且需要学习策略以实现其目标。多智能体环境可以根据环境是否完全可观测、智能体的目标如何相关联等因素以多种方式形式化[6]。其中，部分可观测随机博弈（POSG）[19,
+20]是最灵活的形式化之一。POSG 由一个元组定义，其中 I
+是（有限）智能体集合，按{1, …, n}索引，S 是环境状态集合，𝜌是状态空间 S
+上的初始状态分布，A 是智能体 i 可用的动作集合，O 是智能体 i
+的观察集合。我们表示联合动作空间为 A = ×A，智能体联合观察空间为 O =
+×O。因此，P ∶ S × A → Δ(S)表示从状态 s ∈ S 到新状态 s∈ S
+的转移概率，给定智能体的联合动作⃗ a = ⟨a, …, a ⟩，其中⃗ a ∈
+A。当环境过渡到新状态 s 时，给定联合动作⃗</p>
+<p>a 根据观察概率函数 O ∶ S × A →
+Δ(O)确定。然后，每个智能体根据其自身的奖励函数 R∶ S × A × S →
+ℝ获得即时奖励。与联合动作和观察类似，我们可以将⃗ r = ⟨r, …,
+r⟩表示为联合奖励。如果智能体的奖励函数恰好相同，即它们具有相同的目标，那么对于每个时间步，r=
+r= … = r 都成立。在这种情况下，POSG 简化为 Dec-POMDP
+[6]。如果每个时间步的状态可以从智能体的当前观察集中唯一确定，即 s ≡⃗
+o，则 Dec-POMDP 简化为 Dec-MDP。如果每个智能体都知道真实的环境状态，则
+Dec-MDP 简化为多智能体 MDP。如果智能体集合中只有一个智能体，即 I =
+{1}，则多智能体 MDP 简化为 MDP，而 DecPOMDP 简化为
+POMDP。由于部分可观测性，MARL 方法通常使用每个智能体的观察-动作历史𝜏= {o
+, a, o, …, o }直到时间步 t 来近似环境状态。请注意，为了简化，时间步 t
+通常被省略。</p>
+<p>在多智能体强化学习环境中，智能体可以以去中心化或中心化的方式学习其策略。在去中心化学习中（例如，去中心化
+Q 学习[21, 22]），n 个智能体的多智能体强化学习问题被分解为 n
+个去中心化的单智能体问题，其中每个智能体通过将所有其他智能体视为环境的一部分来学习自己的策略[23,
+24]。在这样的去中心化设置中，每个智能体学习的策略取决于其局部观察和历史。去中心化学习的一个主要问题是环境的所谓非平稳性，即每个智能体在一个其他智能体同时探索和学习的环境中学习。中心化学习可以训练所有智能体的单个联合策略或中心化的价值函数，以促进
+n
+个去中心化策略的学习。虽然中心化（联合）学习消除了或减轻了部分可观察性和非平稳性问题，但它面临着联合行动（和观察）空间随着智能体数量及其行动的指数级扩展的挑战。
+想要深入了解多智能体强化学习（MARL）中使用的各种训练方案，我们推荐阅读[17]的全面综述，该综述为策略的训练和执行提供了宝贵的见解。根据策略是从值函数导出还是直接学习，多智能体强化学习方法可以分为基于值的方法和基于策略的方法。这两种方法在通信多智能体深度强化学习（Comm-MADRL）中得到了广泛的应用。</p>
+<h5 id="基于值">基于值</h5>
+<p>在多智能体情况下，基于值的方法借鉴了单智能体案例中的许多想法。作为最流行的基于值的方法之一，分布式
+Q 学习为每个智能体学习一个局部 Q
+函数。在智能体共享共同奖励的协作设置中，智能体 i 的更新规则如下： 其中 r
+是共享奖励，ais 是下一个状态 s 中具有最高 Q
+值的动作。在部分可观察环境中，环境状态不是完全可观察的，通常由每个代理的个体观察或历史记录来代替。每个状态-动作对的
+Q 值根据 TD 误差逐步更新。这个误差，即 r + 𝛾 maxQ(s, a) − Q(s, a
+)，表示基于 Bellman 方程[25]的新估计（即 r + 𝛾 maxQ(s,
+a)）和当前估计（即 Q(s,
+a)）之间的差异。由于状态和动作空间可能太大，难以频繁遇到以进行准确估计，因此函数逼近方法，如深度神经网络，已经变得流行，为价值或策略模型赋予在离散和连续状态和动作上的泛化能力[12]。例如，深度
+Q 网络（DQN）[12]最小化从采样奖励计算的新估计与参数化 Q
+函数的当前估计之间的差异。在基于 DQN 的方法中，方程 1 中的 Q 函数表示为
+Q(s, a ;𝜃)，它依赖于可学习的参数𝜃。
+然而，基于价值的集中式学习方法学习一个联合 Q 函数 Q(s,⃗
+a;𝜃)与参数𝜃。然而，这种方法在代理数量增加时难以扩展。值分解方法[26-29]是流行的多智能体强化学习（MARL）方法，可以将联合
+Q 函数分解以实现高效的训练。这些方法也广泛应用于 Comm-MADRL
+的研究工作中[30-32]。在部分可观察环境中，线性值分解方法将基于历史的联合
+Q 函数分解如下： 其中，联合 Q
+函数基于所有代理的联合历史，并基于个体历史分解为局部 Q 函数。权重 w
+可以是固定值[26,
+28]或受特定约束的可学习参数[29]。优势函数也可以替换上述方程中的 Q
+函数以减少方差[33]。</p>
 
     </div>
 
@@ -345,7 +442,7 @@
 
   
 
-  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"cdn":"https://cdn.jsdelivr.net/npm/mathjax@2.7.8/MathJax.js?config=TeX-AMS-MML_HTMLorMML","tags":"none","src":"custom_mathjax_source","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"mhchem":false,"cdn":"https://cdn.jsdelivr.net/npm/mathjax@2.7.8/MathJax.js?config=TeX-AMS-MML_HTMLorMML","src":"custom_mathjax_source","js":{"url":"//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"}}</script>
 <script src="/js/third-party/math/mathjax.js"></script>
 
 
